@@ -138,6 +138,9 @@
       <button onclick="switchModule('poes')" id="mnav-poes" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-amber-500/40 bg-amber-950/80 text-xs font-bold text-amber-300 flex items-center gap-1.5">
         <span>🛡️</span> <span>Pliego 1: Carpeta POES & BPM</span>
       </button>
+      <button onclick="switchModule('haccp')" id="mnav-haccp" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-teal-500/40 bg-teal-950/80 text-xs font-bold text-teal-300 flex items-center gap-1.5">
+        <span>🔬</span> <span>Pliego 4: HACCP, TACCP & Res. 1407</span>
+      </button>
     </div>
 
     <!-- MENÚ LATERAL DE LOS 8 MÓDULOS OPERATIVOS (ESCRITORIO) -->
@@ -179,6 +182,10 @@
           <button onclick="switchModule('poes')" id="nav-poes" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-amber-500/30 bg-amber-950/30 text-xs sm:text-sm font-bold text-amber-300 hover:text-white transition flex items-center justify-between cursor-pointer">
             <span class="flex items-center gap-2.5"><span>🛡️</span> <span>9. Pliego 1: Carpeta POES & BPM (PDF)</span></span>
             <span class="px-1.5 py-0.5 rounded bg-emerald-500 text-slate-950 font-mono font-extrabold text-[10px]">Art. 26</span>
+          </button>
+          <button onclick="switchModule('haccp')" id="nav-haccp" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-teal-500/30 bg-teal-950/30 text-xs sm:text-sm font-bold text-teal-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🔬</span> <span>10. Pliego 4: HACCP, TACCP & Res. 1407</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-teal-400 text-slate-950 font-mono font-extrabold text-[10px]">Dec. 60</span>
           </button>
         </nav>
       </div>
@@ -314,6 +321,19 @@
             </div>
             <p class="text-xs text-zinc-300 leading-relaxed">
               Personaliza con el nombre, NIT y datos de la planta de tu cliente el <strong>Documento Maestro de los 4 Programas de Saneamiento Básico (Limpieza y Desinfección POES en ppm, Agua Potable Res. 2115, Residuos Sólidos/Líquidos Res. 2184 y Control Integrado de Plagas MIP)</strong> + las 4 planillas de registro diario listas para imprimir en carpeta física.
+            </p>
+          </div>
+
+          <div onclick="switchModule('haccp')" class="p-5 rounded-2xl glass-card border border-teal-400/40 hover:border-teal-400 transition cursor-pointer group sm:col-span-2 xl:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🔬</span>
+                <h3 class="text-base font-extrabold text-teal-300 group-hover:text-white transition">Pliego 4: Sistema HACCP (12 Pasos y 7 Principios Codex) + PPRO (ISO 22000) + TACCP/VACCP + Res. 1407/2022</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-mono text-[11px] font-bold">Decreto 60/2002 • Codex 2020/2022 • Res. 1407/2022</span>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Incluye la <strong>Calculadora del Árbol de Decisiones Codex (PCC vs. PPRO vs. PPR)</strong>, el selector de <strong>Criterios Microbiológicos Oficiales (Res. 1407 de 2022: n, c, m, M)</strong> y el <strong>Generador en PDF del Plan Maestro HACCP + TACCP (Food Defense) + VACCP (Food Fraud)</strong> listo para auditoría de certificación INVIMA.
             </p>
           </div>
         </div>
@@ -1137,6 +1157,309 @@
         </div>
       </section>
 
+      <!-- =========================================================================
+           MÓDULO 10: PLIEGO 4 — SISTEMA HACCP, PPRO (ISO 22000), TACCP, VACCP & RES. 1407/2022
+           ========================================================================= -->
+      <section id="mod-haccp" class="hidden space-y-6">
+        <div class="p-6 rounded-3xl glass-card border border-teal-400/40 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-teal-500/20 border border-teal-400/40 text-teal-300 font-mono text-xs font-bold">
+                PLIEGO 4 • DECRETO 60 DE 2002 • CODEX ALIMENTARIUS 2020/2022 • ISO 22000 • RES. 1407 DE 2022
+              </span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-2">🔬 Centro de Ingeniería: Sistema HACCP + PPRO + TACCP + VACCP</h2>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
+                Todo lo que necesita el ingeniero para levantar, validar y certificar el Sistema de Análisis de Peligros y Puntos Críticos de Control en planta: <strong>Árbol de Decisiones Codex</strong>, <strong>Buscador Microbiológico Res. 1407/2022</strong>, <strong>Matrices Excel</strong> y <strong>Generador del Plan Maestro HACCP + TACCP + VACCP en PDF</strong>.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <a href="./Paquete_Maestro_BPM_POES_HACCP_INVIMA.xlsx" download class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+                📥 Descargar Matrices Excel HACCP
+              </a>
+              <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+                🖨️ Imprimir Plan Maestro HACCP (PDF)
+              </button>
+            </div>
+          </div>
+
+          <!-- ENLACES DIRECTOS A LAS 4 BASES NORMATIVAS DEL PLIEGO 4 -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+            <a href="./normas/Decreto_60_de_2002_HACCP.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-teal-500/30 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-teal-300 font-bold">NORMA COLOMBIA</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 Decreto 60 de 2002 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Requisitos legales para certificación oficial del Sistema HACCP ante el INVIMA.</p>
+            </a>
+            <a href="./normas/Codex_Alimentarius_CXC_1_1969_Rev_2020_2022_ES.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-emerald-300 font-bold">ESTÁNDAR GLOBAL</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 Codex CXC 1-1969 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Los 12 pasos y 7 principios oficiales del Codex Alimentarius Rev. 2020/2022.</p>
+            </a>
+            <a href="./normas/Resolucion_1407_de_2022_Criterios_Microbiologicos_Alimentos.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-amber-500/30 hover:border-amber-400 transition block">
+              <span class="text-[10px] font-mono text-amber-300 font-bold">VALIDACIÓN LAB</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 Resolución 1407/2022 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Criterios microbiológicos obligatorios (planes de muestreo n, c, m, M) por grupo.</p>
+            </a>
+            <a href="./Paquete_Maestro_BPM_POES_HACCP_INVIMA.xlsx" download class="p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">FORMATOS EN PLANTA</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📊 Hojas FOR-HACCP y FOR-PCC</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Matrices editables de Peligros, PCC, Producto No Conforme y Verificación.</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- HERRAMIENTA INTERACTIVA 1: EVALUADOR DE PELIGROS (P×S) Y ÁRBOL DE DECISIONES CODEX (PCC vs. PPRO vs. PPR) -->
+        <div class="grid lg:grid-cols-12 gap-5 no-print">
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-teal-500/30 space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-teal-300 font-bold">PRINCIPIO 1 Y 2 • ISO 22000 & CODEX ALIMENTARIUS</span>
+            <h3 class="text-base font-extrabold text-white">🌳 Calculadora del Árbol de Decisiones Codex (¿Es PCC, PPRO o PPR?)</h3>
+            <p class="text-xs text-zinc-400">Evalúa cualquier etapa del proceso de tu cliente combinando la matriz <strong>Probabilidad × Severidad</strong> y las 4 preguntas del Codex.</p>
+
+            <div class="grid sm:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1">Probabilidad de Ocurrencia (P)</label>
+                <select id="haccpProb" onchange="evalCodexTree()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+                  <option value="1">1 — Baja (Improbable / Raro)</option>
+                  <option value="2" selected>2 — Media (Posible en proceso)</option>
+                  <option value="3">3 — Alta (Frecuente sin control)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">Severidad del Daño al Consumidor (S)</label>
+                <select id="haccpSev" onchange="evalCodexTree()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+                  <option value="1">1 — Leve (Sin incapacidad)</option>
+                  <option value="2">2 — Moderada (Infección reversible)</option>
+                  <option value="3" selected>3 — Grave / Mortal (Salmonella, Listeria, Metal)</option>
+                </select>
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-zinc-400 mb-1">P1. ¿Existen medidas preventivas de control en esta etapa o proceso?</label>
+                <select id="codexQ1" onchange="evalCodexTree()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+                  <option value="si" selected>SÍ — Existen medidas de control (térmico, detector, pH, cadena de frío)</option>
+                  <option value="no">NO — No existen medidas preventivas en esta etapa</option>
+                </select>
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-zinc-400 mb-1">P2. ¿Ha sido esta etapa diseñada específicamente para eliminar o reducir el peligro a un nivel aceptable?</label>
+                <select id="codexQ2" onchange="evalCodexTree()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+                  <option value="si" selected>SÍ — Diseñada específicamente (ej. Pasteurización, Cocción ≥74°C, Detector Metales)</option>
+                  <option value="no">NO — No fue diseñada específicamente para eliminar el peligro</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">P3. ¿Podría la contaminación superar niveles aceptables?</label>
+                <select id="codexQ3" onchange="evalCodexTree()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+                  <option value="si" selected>SÍ — Podría superar niveles seguros</option>
+                  <option value="no">NO — No superaría niveles seguros</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">P4. ¿Una etapa posterior eliminará el peligro?</label>
+                <select id="codexQ4" onchange="evalCodexTree()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+                  <option value="no" selected>NO — Ninguna etapa posterior lo elimina</option>
+                  <option value="si">SÍ — Una etapa posterior (ej. cocción) lo eliminará</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="codexResultBox" class="p-4 rounded-xl bg-red-950/70 border border-red-400 text-xs text-red-100 leading-relaxed">
+              <!-- Poblado por JS -->
+            </div>
+          </div>
+
+          <!-- HERRAMIENTA INTERACTIVA 2: RESUMEN DE LOS 12 PASOS CODEX + PPRO + TACCP + VACCP -->
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-white/10 space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">GUÍA DE CAMPO DEL INGENIERO • 12 PASOS Y 7 PRINCIPIOS</span>
+            <h3 class="text-base font-extrabold text-white">📋 Ruta de Implementación InHouse (Codex + ISO 22000 + GFSI)</h3>
+            <div class="space-y-2 text-xs text-zinc-300">
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-teal-300">Pasos Preliminares 1 al 5:</strong> (1) Acta del Equipo HACCP multidisciplinario; (2) Ficha técnica de inocuidad ($pH$, $a_w$, humedad, ${}^\circ\text{Brix}$, Res. 1407/2022); (3) Uso previsto, población destino y declaración de los <strong>8 grupos de alérgenos</strong>; (4) Diagrama de flujo de proceso; (5) Verificación <em>In Situ</em> firmada en planta.
+              </div>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-emerald-300">Los 7 Principios Codex (Pasos 6 al 12):</strong> (P1) Análisis de Peligros Biológicos, Químicos, Físicos y Alérgenos; (P2) Determinación de PCC; (P3) Límites Críticos medibles ($\text{Temp}$, $\text{tiempo}$, $pH$, $\text{mm}$); (P4) Sistema de Monitoreo (<em>Qué, Cómo, Frecuencia, Quién</em>); (P5) Acciones Correctivas sobre proceso y lote retenido; (P6) Validación y Verificación (Lab Res. 1407/2022 y calibración); (P7) Registros (<code>FOR-HACCP-001</code>, <code>FOR-PCC-01</code>).
+              </div>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-amber-300">Diferencia PCC vs. PPRO (ISO 22000:2018):</strong>
+                <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[11px]">
+                  <li><strong>PCC (Punto Crítico de Control):</strong> Etapa con límite crítico cuantitativo estricto cuya pérdida de control genera riesgo inaceptable directo (ej. <em>Pasteurización $\ge 74^\circ\text{C}$ por $15\text{ s}$</em> o <em>Detector de Metales</em>).</li>
+                  <li><strong>PPRO (Prerrequisito Operativo):</strong> Medida de control esencial con criterio de acción donde el peligro no es eliminado de forma absoluta en un único punto, pero previene su proliferación (ej. <em>Abatimiento/enfriamiento de $60^\circ\text{C}$ a $\le 4^\circ\text{C}$ en $&lt;4\text{ h}$</em>, control de alérgenos en cambio de línea o filtros sanitarios).</li>
+                </ul>
+              </div>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-teal-300">Módulos TACCP (Food Defense) y VACCP (Food Fraud):</strong>
+                <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[11px]">
+                  <li><strong>TACCP (Defensa Alimentaria):</strong> Evaluación de amenazas intencionales/sabotaje (cerramiento perimetral, candados en tanque de agua potable y cuarto de químicos, precintos numerados en transporte).</li>
+                  <li><strong>VACCP (Prevención de Fraude):</strong> Mitigación de adulteración económica por dilución o sustitución en materias primas críticas (leche, aceites, miel, especias, cacao) con Certificados de Análisis (CoA) y pruebas de autenticidad.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GENERADOR INTERACTIVO DEL PLAN MAESTRO HACCP + TACCP + VACCP + RES. 1407 EN PDF -->
+        <div class="p-6 rounded-2xl glass-card border border-teal-500/30 space-y-4 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-teal-300 font-bold">ENTREGABLE DOCUMENTAL LLAVE EN MANO • DECRETO 60 DE 2002 & RES. 1407 DE 2022</span>
+              <h3 class="text-lg font-extrabold text-white">📄 Generador del Plan Maestro HACCP + PPRO + TACCP + VACCP (Imprimible en PDF)</h3>
+              <p class="text-xs text-zinc-400">Personaliza la línea de producción, selecciona el grupo microbiológico oficial de la <strong>Resolución 1407 de 2022</strong> e imprime el documento oficial listo para firma del Equipo HACCP.</p>
+            </div>
+            <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              🖨️ Imprimir / Guardar Plan HACCP en PDF
+            </button>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="block text-zinc-400 mb-1">Empresa / Planta Certificada</label>
+              <input type="text" id="hcEmpresa" value="Alimentos Del Valle S.A.S. — NIT 901.456.789-1" oninput="renderHaccpManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Línea de Proceso / Producto Alcance</label>
+              <input type="text" id="hcLinea" value="Línea de Salsas, Aderezos y Conservas Pasteurizadas" oninput="renderHaccpManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Grupo Microbiológico (Resolución 1407 de 2022)</label>
+              <select id="hcMicroPreset" onchange="applyMicroPreset()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-teal-500/40 text-teal-300 font-bold">
+                <option value="lacteos">Grupo 1: Leche y Derivados Lácteos Pasteurizados</option>
+                <option value="carnicos">Grupo 6: Derivados Cárnicos Cocidos / Embutidos</option>
+                <option value="panaderia">Grupo 8: Productos de Panadería, Pastelería y Repostería</option>
+                <option value="comidas">Grupo 13: Comidas Preparadas Listas para el Consumo (RTE)</option>
+                <option value="salsas" selected>Grupo 14: Salsas, Aderezos, Condimentos y Bases Culinarias</option>
+                <option value="bebidas">Grupo 12: Jugos, Pulpas Pasteurizadas y Bebidas No Alcohólicas</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Parámetros Fisicoquímicos de Inocuidad ($pH$, $a_w$, ${}^\circ\text{Brix}$) y Alérgenos</label>
+              <input type="text" id="hcFisico" value="pH ≤ 4.2 (Acidificado seguro) • aw: 0.94 • Alérgenos: Sin alérgenos declarables (o declarar según fórmula)" oninput="renderHaccpManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">PCC 1 (Tratamiento Térmico / Letalidad Biológica)</label>
+              <input type="text" id="hcPcc1" value="Pasteurización / Cocción: Temp. interna centro geométrico ≥ 74°C sostenida por ≥ 15 segundos (Monitoreo cada bache en FOR-PCC-01)." oninput="renderHaccpManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">PCC 2 (Control Físico / Tamizado o Detector de Metales)</label>
+              <input type="text" id="hcPcc2" value="Tamizado Sanitario Malla INOX 316 / Detector de Metales: 100% íntegro sin rupturas; ausencia de partículas ≥ 2.0 mm (FOR-PCC-02)." oninput="renderHaccpManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">PPRO 1 — ISO 22000 (Choque Térmico / Cadena de Frío / Alérgenos)</label>
+              <input type="text" id="hcPpro1" value="Enfriamiento Rápido y Envasado en Caliente (Hot-Fill ≥ 65°C) o abatimiento a ≤ 4°C en menos de 4 horas + control de lavado de línea." oninput="renderHaccpManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-zinc-400 mb-1">Criterios Microbiológicos Oficiales Res. 1407 de 2022 (Plan de Muestreo n, c, m, M)</label>
+              <input type="text" id="hcMicroText" value="Salmonella spp. / 25g (n=5, c=0, m=Ausencia) • E. coli (n=5, c=0, m=<10 UFC/g) • Mohos y Levaduras (n=5, c=2, m=10², M=10³ UFC/g) • Staph. aureus coagulasa+ (n=5, c=1, m=<100, M=10² UFC/g)." oninput="renderHaccpManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+          </div>
+        </div>
+
+        <!-- HOJA OFICIAL IMPRIMIBLE: PLAN MAESTRO HACCP + PPRO + TACCP + VACCP (DECRETO 60 / CODEX / RES. 1407) -->
+        <div class="p-8 rounded-2xl bg-white text-slate-900 border border-slate-300 shadow-2xl space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-teal-800 pb-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-teal-800 font-bold">DECRETO 60 DE 2002 • CODEX ALIMENTARIUS CXC 1-1969 (REV. 2020/2022) • ISO 22000</span>
+              <h3 class="text-xl font-black text-slate-950 mt-0.5">PLAN MAESTRO HACCP, PPRO, TACCP Y VACCP</h3>
+              <p class="text-xs text-slate-600 font-bold" id="hcPrintHeaderSub">Planta: Alimentos Del Valle S.A.S. • Línea: Salsas y Conservas</p>
+            </div>
+            <div class="text-right font-mono text-[11px] bg-slate-100 p-2.5 rounded-lg border border-slate-300">
+              <div><strong>Código:</strong> <span>MAN-HACCP-001</span></div>
+              <div><strong>Norma Lab:</strong> <span>Resolución 1407 de 2022</span></div>
+              <div><strong>Estado:</strong> <span>Validado In-Situ (12 Pasos)</span></div>
+            </div>
+          </div>
+
+          <!-- 1. FICHA DE ALCANCE Y PARÁMETROS CRÍTICOS -->
+          <table class="w-full text-xs border-collapse border border-slate-300">
+            <tbody>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">Establecimiento / Titular:</td>
+                <td class="p-2 border border-slate-300 font-bold w-1/4" id="hcPrintEmpresa">--</td>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">Línea de Proceso Alcance:</td>
+                <td class="p-2 border border-slate-300 font-bold text-teal-900 w-1/4" id="hcPrintLinea">--</td>
+              </tr>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300">Parámetros Intrinsecos y Alérgenos:</td>
+                <td class="p-2 border border-slate-300" colspan="3" id="hcPrintFisico">--</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 2. MATRIZ MAESTRA DE PUNTOS CRÍTICOS DE CONTROL (PCC) Y PPRO (ISO 22000) -->
+          <div class="space-y-1.5">
+            <h4 class="text-xs font-black text-teal-950 uppercase bg-teal-100 px-3 py-1.5 rounded border-l-4 border-teal-700">
+              1. MATRIZ DE CONTROL DE PUNTOS CRÍTICOS (PCC 1, PCC 2) Y PRERREQUISITOS OPERATIVOS (PPRO 1) — PRINCIPIOS 1 AL 7 CODEX
+            </h4>
+            <table class="w-full text-[11px] border-collapse border border-slate-300">
+              <thead>
+                <tr class="bg-slate-800 text-white">
+                  <th class="p-2 border border-slate-400 text-left w-1/6">Punto de Control</th>
+                  <th class="p-2 border border-slate-400 text-left w-2/6">Límite Crítico / Criterio de Acción y Monitoreo</th>
+                  <th class="p-2 border border-slate-400 text-left w-2/6">Acción Correctiva (Principio 5)</th>
+                  <th class="p-2 border border-slate-400 text-left w-1/6">Verificación y Registro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p-2 border border-slate-300 font-bold text-red-900">PCC 1 (Biológico)<br><span class="text-[10px] text-slate-600">Etapa Térmica</span></td>
+                  <td class="p-2 border border-slate-300 leading-relaxed" id="hcPrintPcc1">--</td>
+                  <td class="p-2 border border-slate-300 leading-relaxed">Retener bache de inmediato, prolongar tratamiento térmico hasta alcanzar el límite crítico validado o declarar Producto No Conforme (<code>FOR-PNC-01</code>).</td>
+                  <td class="p-2 border border-slate-300 font-mono text-[10px]">Termómetro patrón calibrado • Registro <code>FOR-PCC-01</code></td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-2 border border-slate-300 font-bold text-red-900">PCC 2 (Físico)<br><span class="text-[10px] text-slate-600">Tamiz / Detector</span></td>
+                  <td class="p-2 border border-slate-300 leading-relaxed" id="hcPrintPcc2">--</td>
+                  <td class="p-2 border border-slate-300 leading-relaxed">Detener línea, poner en cuarentena el lote producido desde el último chequeo conforme y re-inspeccionar al 100%.</td>
+                  <td class="p-2 border border-slate-300 font-mono text-[10px]">Verificación inicio/2h/fin • Registro <code>FOR-PCC-02</code></td>
+                </tr>
+                <tr>
+                  <td class="p-2 border border-slate-300 font-bold text-amber-900">PPRO 1 (ISO 22000)<br><span class="text-[10px] text-slate-600">Control Operativo</span></td>
+                  <td class="p-2 border border-slate-300 leading-relaxed" id="hcPrintPpro1">--</td>
+                  <td class="p-2 border border-slate-300 leading-relaxed">Ajustar velocidad de enfriamiento/cadena de frío y ejecutar hisopado de verificación de limpieza de alérgenos antes de liberar línea.</td>
+                  <td class="p-2 border border-slate-300 font-mono text-[10px]">Inspección Calidad • Bitácora <code>FOR-HACCP-001</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 3. VALIDACIÓN MICROBIOLÓGICA BAJO RESOLUCIÓN 1407 DE 2022 -->
+          <div class="space-y-1.5">
+            <h4 class="text-xs font-black text-teal-950 uppercase bg-teal-100 px-3 py-1.5 rounded border-l-4 border-teal-700">
+              2. VALIDACIÓN MICROBIOLÓGICA OBLIGATORIA (RESOLUCIÓN 1407 DE 2022 MINSALUD — PRINCIPIO 6)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              <strong>Plan de Muestreo Oficial ($n, c, m, M$) para Liberación y Verificación Periódica en Laboratorio Acreditado ONAC:</strong><br>
+              <span id="hcPrintMicro" class="font-mono font-bold text-slate-900">--</span>
+            </p>
+          </div>
+
+          <!-- 4. DEFENSA ALIMENTARIA (TACCP) Y PREVENCIÓN DE FRAUDE (VACCP) -->
+          <div class="grid sm:grid-cols-2 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-300">
+              <strong class="text-slate-950 block mb-1">🛡️ 3. MÓDULO TACCP (DEFENSA ALIMENTARIA — FOOD DEFENSE):</strong>
+              <p class="text-[11px] text-slate-700 leading-relaxed">
+                Mitigación de contaminación intencional o sabotaje (metodología CARVER + Shock): (1) Control de acceso perimetral y bitácora de visitantes; (2) Candados de seguridad restringidos en tanque de agua potable y almacén de químicos; (3) Verificación de precintos numerados en recepción y despacho.
+              </p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-300">
+              <strong class="text-slate-950 block mb-1">🔍 4. MÓDULO VACCP (PREVENCIÓN DE FRAUDE — FOOD FRAUD):</strong>
+              <p class="text-[11px] text-slate-700 leading-relaxed">
+                Mitigación de vulnerabilidad por sustitución, dilución o falsificación económica (metodología SSAFE / GFSI): (1) Homologación de proveedores críticos; (2) Exigencia de Certificado de Análisis (CoA) por lote recibido; (3) Inspección fisicoquímica de autenticidad en recepción (${}^\circ\text{Brix}$, densidad, pH, integridad de sellos).
+              </p>
+            </div>
+          </div>
+
+          <!-- FIRMAS DEL EQUIPO HACCP -->
+          <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Líder del Equipo HACCP / Representante Legal</strong><br>
+              <span class="text-slate-600" id="hcPrintFirma">Alimentos Del Valle S.A.S.</span>
+            </div>
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Validado por Ingeniería de Alimentos y Auditoría</strong><br>
+              <span class="text-slate-600">AYC Ingeniería y Asesorías de Alimentos • Tel: +57 315 717 2270</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -1158,7 +1481,7 @@
     }
 
     // 2. CAMBIO DE MÓDULOS
-    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes'];
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp'];
     function switchModule(modId) {
       MODULES.forEach(m => {
         document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
@@ -1461,6 +1784,81 @@
       setTxt('poesPrintFirmaCliente', `${emp} (${val('poesRepLegal')})`);
     }
 
+    // 9. MÓDULO PLIEGO 4: ÁRBOL DE DECISIONES CODEX + RES. 1407/2022 + GENERADOR PLAN HACCP
+    function evalCodexTree() {
+      const p = parseInt(document.getElementById('haccpProb').value || '2', 10);
+      const s = parseInt(document.getElementById('haccpSev').value || '3', 10);
+      const risk = p * s;
+      const q1 = document.getElementById('codexQ1').value;
+      const q2 = document.getElementById('codexQ2').value;
+      const q3 = document.getElementById('codexQ3').value;
+      const q4 = document.getElementById('codexQ4').value;
+      const box = document.getElementById('codexResultBox');
+
+      if (risk < 4 && s < 3) {
+        box.className = 'p-4 rounded-xl bg-emerald-950/70 border border-emerald-400 text-xs text-emerald-100 leading-relaxed';
+        box.innerHTML = `✅ <strong>PELIGRO NO SIGNIFICATIVO (Puntaje P×S = ${risk}/9):</strong> Se controla eficazmente mediante los <strong>Programas de Prerrequisitos (PPR: BPM y Plan de Saneamiento POES)</strong>. No requiere establecer PCC.`;
+        return;
+      }
+
+      if (q1 === 'no') {
+        box.className = 'p-4 rounded-xl bg-amber-950/80 border border-amber-400 text-xs text-amber-100 leading-relaxed';
+        box.innerHTML = `⚠️ <strong>MODIFICAR ETAPA O PROCESO (Puntaje P×S = ${risk}/9):</strong> El peligro es significativo pero no existen medidas preventivas en esta etapa. Se debe implementar control en el proceso o controlar en un prerrequisito.`;
+        return;
+      }
+
+      if (q2 === 'si' || (q3 === 'si' && q4 === 'no')) {
+        box.className = 'p-4 rounded-xl bg-red-950/80 border border-red-400 text-xs text-red-100 leading-relaxed';
+        box.innerHTML = `🚨 <strong>DICTAMEN CODEX: ES UN PUNTO CRÍTICO DE CONTROL (PCC) — Puntaje P×S = ${risk}/9:</strong> Esta etapa requiere Límites Críticos medibles (Principio 3), Monitoreo continuo o por bache en <code>FOR-PCC-01</code> (Principio 4) y Acción Correctiva obligatoria (Principio 5).`;
+      } else if (q3 === 'si' && q4 === 'si') {
+        box.className = 'p-4 rounded-xl bg-teal-950/80 border border-teal-400 text-xs text-teal-100 leading-relaxed';
+        box.innerHTML = `🛡️ <strong>DICTAMEN ISO 22000: ES UN PRERREQUISITO OPERATIVO (PPRO) — Puntaje P×S = ${risk}/9:</strong> Aunque el peligro es significativo, una etapa posterior (ej. cocción/pasteurización) lo eliminará. Se gestiona como <strong>PPRO</strong> con criterio de acción y vigilancia en planta.`;
+      } else {
+        box.className = 'p-4 rounded-xl bg-emerald-950/70 border border-emerald-400 text-xs text-emerald-100 leading-relaxed';
+        box.innerHTML = `✅ <strong>DICTAMEN: NO ES UN PCC (Controlar por PPR / BPM — Puntaje P×S = ${risk}/9):</strong> La contaminación no supera niveles aceptables. Mantener bajo control del Plan de Saneamiento Básico (POES).`;
+      }
+    }
+
+    const MICRO_PRESETS_1407 = {
+      lacteos: 'Salmonella spp. / 25g (n=5, c=0, m=Ausencia) • Listeria monocytogenes / 25g (n=5, c=0, m=Ausencia) • E. coli (n=5, c=0, m=<10 UFC/g) • Staph. aureus coagulasa+ (n=5, c=1, m=100, M=10³ UFC/g).',
+      carnicos: 'Salmonella spp. / 25g (n=5, c=0, m=Ausencia) • Listeria monocytogenes / 25g (n=5, c=0, m=Ausencia) • Clostridium sulfito reductor (n=5, c=1, m=10, M=10² UFC/g) • E. coli (n=5, c=0, m=<10 UFC/g).',
+      panaderia: 'Salmonella spp. / 25g (n=5, c=0, m=Ausencia) • Mohos y Levaduras (n=5, c=2, m=10², M=10³ UFC/g) • Staph. aureus coagulasa+ (n=5, c=1, m=<100, M=10² UFC/g) • Bacillus cereus (n=5, c=1, m=10², M=10³ UFC/g).',
+      comidas: 'Salmonella spp. / 25g (n=5, c=0, m=Ausencia) • Listeria monocytogenes / 25g (n=5, c=0, m=Ausencia) • E. coli (n=5, c=0, m=<10 UFC/g) • Staph. aureus coagulasa+ (n=5, c=0, m=<100 UFC/g).',
+      salsas: 'Salmonella spp. / 25g (n=5, c=0, m=Ausencia) • E. coli (n=5, c=0, m=<10 UFC/g) • Mohos y Levaduras (n=5, c=2, m=10², M=10³ UFC/g) • Staph. aureus coagulasa+ (n=5, c=1, m=<100, M=10² UFC/g).',
+      bebidas: 'Salmonella spp. / 25mL (n=5, c=0, m=Ausencia) • E. coli / 100mL (n=5, c=0, m=Ausencia) • Aerobios Mesófilos (n=5, c=1, m=10², M=10³ UFC/mL) • Mohos y Levaduras (n=5, c=2, m=10, M=10² UFC/mL).'
+    };
+
+    function applyMicroPreset() {
+      const key = document.getElementById('hcMicroPreset').value;
+      if (MICRO_PRESETS_1407[key]) {
+        document.getElementById('hcMicroText').value = MICRO_PRESETS_1407[key];
+        renderHaccpManual();
+      }
+    }
+
+    function renderHaccpManual() {
+      const val = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.value : '';
+      };
+      const setTxt = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+
+      const emp = val('hcEmpresa') || 'Planta de Alimentos';
+      const linea = val('hcLinea') || 'Línea de Producción';
+      setTxt('hcPrintHeaderSub', `Planta: ${emp} • Alcance: ${linea}`);
+      setTxt('hcPrintEmpresa', emp);
+      setTxt('hcPrintLinea', linea);
+      setTxt('hcPrintFisico', val('hcFisico'));
+      setTxt('hcPrintPcc1', val('hcPcc1'));
+      setTxt('hcPrintPcc2', val('hcPcc2'));
+      setTxt('hcPrintPpro1', val('hcPpro1'));
+      setTxt('hcPrintMicro', val('hcMicroText'));
+      setTxt('hcPrintFirma', emp);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initAuditTable();
       calcPpm();
@@ -1468,6 +1866,8 @@
       initPdfLibrary();
       renderFichaInvima();
       renderPoesManual();
+      evalCodexTree();
+      renderHaccpManual();
     });
   </script>
 </body>
