@@ -135,6 +135,9 @@
       <button onclick="switchModule('invima')" id="mnav-invima" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-emerald-500/40 bg-emerald-950/80 text-xs font-bold text-emerald-300 flex items-center gap-1.5">
         <span>🏛️</span> <span>Pliego 3: INVIMA & Ley 2069</span>
       </button>
+      <button onclick="switchModule('poes')" id="mnav-poes" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-amber-500/40 bg-amber-950/80 text-xs font-bold text-amber-300 flex items-center gap-1.5">
+        <span>🛡️</span> <span>Pliego 1: Carpeta POES & BPM</span>
+      </button>
     </div>
 
     <!-- MENÚ LATERAL DE LOS 8 MÓDULOS OPERATIVOS (ESCRITORIO) -->
@@ -172,6 +175,10 @@
           <button onclick="switchModule('invima')" id="nav-invima" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-950/40 text-xs sm:text-sm font-bold text-emerald-300 hover:text-white transition flex items-center justify-between cursor-pointer">
             <span class="flex items-center gap-2.5"><span>🏛️</span> <span>8. Pliego 3: Trámite INVIMA & Ley 2069</span></span>
             <span class="px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 font-mono font-extrabold text-[10px]">RSA/PSA/NSA</span>
+          </button>
+          <button onclick="switchModule('poes')" id="nav-poes" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-amber-500/30 bg-amber-950/30 text-xs sm:text-sm font-bold text-amber-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🛡️</span> <span>9. Pliego 1: Carpeta POES & BPM (PDF)</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-emerald-500 text-slate-950 font-mono font-extrabold text-[10px]">Art. 26</span>
           </button>
         </nav>
       </div>
@@ -294,6 +301,19 @@
             </div>
             <p class="text-xs text-zinc-300 leading-relaxed">
               Incluye enlaces directos a la <strong>Oficina Virtual INVIMA</strong>, Tarifario Oficial, Consulta de Registros, Paso a Paso de Radicación en 5 Fases, Checklist de los 7 documentos que debe entregar el cliente y el <strong>Generador de Ficha Técnica Oficial de Producto en PDF</strong> para anexar al expediente sanitario.
+            </p>
+          </div>
+
+          <div onclick="switchModule('poes')" class="p-5 rounded-2xl glass-card border border-emerald-400/40 hover:border-emerald-400 transition cursor-pointer group sm:col-span-2 xl:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🛡️</span>
+                <h3 class="text-base font-extrabold text-emerald-300 group-hover:text-white transition">Pliego 1: Generador de Carpeta Oficial Plan de Saneamiento Básico (POES) + BPM en PDF y Excel</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-bold">Art. 26 Res. 2674/2013 • FOR-PSB-001 a 004</span>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Personaliza con el nombre, NIT y datos de la planta de tu cliente el <strong>Documento Maestro de los 4 Programas de Saneamiento Básico (Limpieza y Desinfección POES en ppm, Agua Potable Res. 2115, Residuos Sólidos/Líquidos Res. 2184 y Control Integrado de Plagas MIP)</strong> + las 4 planillas de registro diario listas para imprimir en carpeta física.
             </p>
           </div>
         </div>
@@ -869,6 +889,254 @@
         </div>
       </section>
 
+      <!-- =========================================================================
+           MÓDULO 9: PLIEGO 1 — IMPLEMENTACIÓN BPM + PLAN DE SANEAMIENTO BÁSICO (POES)
+           ========================================================================= -->
+      <section id="mod-poes" class="hidden space-y-6">
+        <div class="p-6 rounded-3xl glass-card border border-emerald-400/40 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-mono text-xs font-bold">
+                PLIEGO 1 • KIT INTEGRAL BPM + PLAN DE SANEAMIENTO BÁSICO (POES) — RES. 2674 DE 2013
+              </span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-2">🛡️ Centro de Ejecución: BPM y Plan de Saneamiento Básico (POES)</h2>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
+                Aquí tienes integradas las <strong>5 herramientas operativas</strong> que necesitas para entregarle a tu cliente el Pliego 1 completo y dejar su planta con <strong>Concepto Sanitario Favorable (≥90%)</strong> ante el INVIMA o la Secretaría de Salud.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <a href="./Paquete_Maestro_BPM_POES_HACCP_INVIMA.xlsx" download class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+                📥 1. Descargar Libro Excel (FOR-PSB-001 a 004)
+              </a>
+              <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+                🖨️ 2. Imprimir Carpeta POES Personalizada (PDF)
+              </button>
+            </div>
+          </div>
+
+          <!-- RUTA RÁPIDA DE LAS 5 HERRAMIENTAS QUE COMPONEN EL PLIEGO 1 -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+            <button onclick="switchModule('auditoria')" class="text-left p-3.5 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition cursor-pointer">
+              <span class="text-[10px] font-mono text-emerald-400 font-bold">PASO 1 EN PLANTA</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📋 Diagnóstico Inicial (100 Pts)</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Evalúa los 21 numerales de la Res. 2674 en el Módulo 3 e imprime el Acta de Auditoría.</p>
+            </button>
+            <button onclick="switchModule('ppm')" class="text-left p-3.5 rounded-2xl bg-zinc-900/90 border border-teal-500/30 hover:border-teal-400 transition cursor-pointer">
+              <span class="text-[10px] font-mono text-teal-300 font-bold">PASO 2 DOSIFICACIÓN</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🧪 Tablas PPM y Cloro/pH</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Calcula los mL exactos de desinfectante en el Módulo 4 para plastificar en pared.</p>
+            </button>
+            <button onclick="switchModule('academia')" class="text-left p-3.5 rounded-2xl bg-zinc-900/90 border border-amber-500/30 hover:border-amber-400 transition cursor-pointer">
+              <span class="text-[10px] font-mono text-amber-300 font-bold">PASO 3 CAPACITACIÓN</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🎓 Curso 10h + Carnés</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Dicta las 12 diapositivas en el Módulo 5 y emite los Diplomas y Carnés (Art. 12 y 13).</p>
+            </button>
+            <a href="./Paquete_Maestro_BPM_POES_HACCP_INVIMA.xlsx" download class="text-left p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">PASO 4 BITÁCORAS EXCEL</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📊 Formatos FOR-PSB-001 a 004</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Descarga el Excel editable con las 4 bitácoras diarias para el operario.</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- FORMULARIO PERSONALIZADOR DE LA CARPETA FÍSICA DEL PLAN DE SANEAMIENTO (POES) -->
+        <div class="p-6 rounded-2xl glass-card border border-amber-500/30 space-y-4 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-amber-300 font-bold">PASO 5 • ENTREGABLE DOCUMENTAL LLAVE EN MANO (ART. 26 RES. 2674/2013)</span>
+              <h3 class="text-lg font-extrabold text-white">📄 Generador de Carpeta Oficial: Plan de Saneamiento Básico (Los 4 Programas + 4 Formatos en PDF)</h3>
+              <p class="text-xs text-zinc-400">Ingresa los datos del establecimiento de tu cliente; el documento técnico inferior se actualiza en vivo con los 4 programas normativos y los 4 formatos listos para imprimir y archivar en la carpeta sanitaria de la planta.</p>
+            </div>
+            <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              🖨️ Imprimir / Guardar Carpeta POES en PDF
+            </button>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div>
+              <label class="block text-zinc-400 mb-1">Razón Social / Establecimiento</label>
+              <input type="text" id="poesEmpresa" value="Alimentos Del Valle S.A.S." oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">NIT / Identificación Tributaria</label>
+              <input type="text" id="poesNit" value="901.456.789-1" oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Dirección de Planta y Ciudad</label>
+              <input type="text" id="poesDireccion" value="Zona Industrial — Colombia" oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Representante Legal / Jefe de Planta</label>
+              <input type="text" id="poesRepLegal" value="Gerencia General / Jefe de Calidad" oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Tipo de Planta / Actividad</label>
+              <input type="text" id="poesActividad" value="Elaboración, procesamiento y envasado de alimentos" oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Tanque de Reserva de Agua Potable</label>
+              <input type="text" id="poesTanque" value="Tanque aéreo en Polietileno Virgen de 1.000 Litros (Autonomía ≥ 24h)" oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Rotación de Principios Desinfectantes</label>
+              <input type="text" id="poesQuimicos" value="Hipoclorito de Sodio (5.25%) + Amonio Cuaternario 5ta Generación / Ácido Peracético" oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Empresa Control de Plagas y Aseo</label>
+              <input type="text" id="poesProveedores" value="Empresa MIP con Concepto Sanitario Favorable vigente / Operador Municipal de Aseo" oninput="renderPoesManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+          </div>
+        </div>
+
+        <!-- HOJA OFICIAL IMPRIMIBLE: MANUAL MAESTRO PLAN DE SANEAMIENTO BÁSICO (POES) + 4 FORMATOS -->
+        <div class="p-8 rounded-2xl bg-white text-slate-900 border border-slate-300 shadow-2xl space-y-6">
+          <!-- ENCABEZADO CONTROL DOCUMENTAL -->
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-emerald-800 pb-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-800 font-bold">SISTEMA DOCUMENTAL DE INOCUIDAD • ARTÍCULO 26 RESOLUCIÓN 2674 DE 2013</span>
+              <h3 class="text-xl font-black text-slate-950 mt-0.5">PLAN DE SANEAMIENTO BÁSICO (POES / SSOP)</h3>
+              <p class="text-xs text-slate-600 font-bold" id="poesPrintHeaderSub">Establecimiento: Alimentos Del Valle S.A.S. • NIT: 901.456.789-1</p>
+            </div>
+            <div class="text-right font-mono text-[11px] bg-slate-100 p-2.5 rounded-lg border border-slate-300">
+              <div><strong>Código:</strong> <span>MAN-PSB-001</span></div>
+              <div><strong>Versión:</strong> <span>2026.1 (Vigente)</span></div>
+              <div><strong>Norma:</strong> <span>Res. 2674/2013 • Res. 2115/2007</span></div>
+            </div>
+          </div>
+
+          <!-- DATOS DEL ESTABLECIMIENTO -->
+          <table class="w-full text-xs border-collapse border border-slate-300">
+            <tbody>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">Razón Social:</td>
+                <td class="p-2 border border-slate-300 font-bold w-1/4" id="poesPrintEmpresa">--</td>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">NIT:</td>
+                <td class="p-2 border border-slate-300 w-1/4" id="poesPrintNit">--</td>
+              </tr>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300">Dirección de Planta:</td>
+                <td class="p-2 border border-slate-300" id="poesPrintDireccion">--</td>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300">Representante / Responsable:</td>
+                <td class="p-2 border border-slate-300" id="poesPrintRepLegal">--</td>
+              </tr>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300">Actividad Industrial:</td>
+                <td class="p-2 border border-slate-300" id="poesPrintActividad">--</td>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300">Almacenamiento Agua Potable:</td>
+                <td class="p-2 border border-slate-300" id="poesPrintTanque">--</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- PROGRAMA 1: LIMPIEZA Y DESINFECCIÓN -->
+          <div class="space-y-2">
+            <h4 class="text-sm font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              1. PROGRAMA DE LIMPIEZA Y DESINFECCIÓN (POES — ART. 26 NUMERAL 1 RES. 2674 DE 2013)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              <strong>Principios Activos en Rotación:</strong> <span id="poesPrintQuimicos" class="font-bold">--</span>. La preparación de soluciones desinfectantes se rige por la ecuación <code>V1 (mL) = [V2 (L) × C2 (ppm)] / [C1 (%) × 10]</code>. Se prohíbe el uso de escobas de paja, utensilios de madera, esponjillas metálicas o trapos textiles reutilizables.
+            </p>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              <strong>Protocolo Operativo Estandarizado en 7 Pasos:</strong> (1) Prelimpieza en seco con rasqueta/cepillo sanitario; (2) Pre-enjuague con agua potable; (3) Lavado con detergente biodegradable grado alimenticio ejerciendo acción mecánica; (4) Enjuague intermedio con agua potable hasta retiro total de espuma; (5) Inspección visual y táctil de ausencia de biopelículas; (6) Desinfección por inmersión o aspersión respetando el tiempo de contacto (5 a 15 min); (7) Enjuague final (cuando supere 200 ppm) y secado sanitario.
+            </p>
+            <table class="w-full text-[11px] border-collapse border border-slate-300">
+              <thead>
+                <tr class="bg-slate-800 text-white">
+                  <th class="p-1.5 border border-slate-400 text-left">Superficie / Elemento</th>
+                  <th class="p-1.5 border border-slate-400 text-center">Concentración (ppm)</th>
+                  <th class="p-1.5 border border-slate-400 text-center">mL Hipoclorito (5.25%) / 1 L Agua</th>
+                  <th class="p-1.5 border border-slate-400 text-center">mL Hipoclorito (5.25%) / 10 L Agua</th>
+                  <th class="p-1.5 border border-slate-400 text-center">Contacto / Frecuencia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p-1.5 border border-slate-300 font-bold">Frutas, verduras y hortalizas (inmersión)</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">50 – 100 ppm</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">1.0 – 1.9 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">10 – 19 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center">5 min • Cada lote (Enjuagar)</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-1.5 border border-slate-300 font-bold">Mesones INOX, equipos y utensilios en contacto directo</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">100 – 200 ppm</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">1.9 – 3.8 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">19 – 38 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center">10 min • Antes y después de turno</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 border border-slate-300 font-bold">Pisos, paredes, puertas y áreas de proceso</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">250 – 300 ppm</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">4.8 – 5.7 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">48 – 57 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center">15 min • Diario fin de jornada</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-1.5 border border-slate-300 font-bold">Unidades sanitarias, sifones, cuartos de residuos y pediluvios</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">400 – 500 ppm</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">7.6 – 9.5 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">76 – 95 mL</td>
+                  <td class="p-1.5 border border-slate-300 text-center">15 – 20 min • Diario</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- PROGRAMA 2: CONTROL DE AGUA POTABLE -->
+          <div class="space-y-1.5">
+            <h4 class="text-sm font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              2. PROGRAMA DE ABASTECIMIENTO Y CONTROL DE AGUA POTABLE (RESOLUCIÓN 2115 DE 2007)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              El establecimiento cuenta con: <strong id="poesPrintTanque2">--</strong>, garantizando suministro continuo para mínimo un (1) día de operación industrial. El lavado y desinfección interna del tanque se realiza cada <strong>seis (6) meses</strong> con empresa certificada. Diariamente, antes de iniciar procesos, se mide por método colorimétrico DPD en grifos de planta: <strong>Cloro Residual Libre entre 0.3 mg/L y 2.0 mg/L (ppm)</strong> y <strong>pH entre 6.5 y 9.0</strong>, registrando en el formato <code>FOR-PSB-002</code>.
+            </p>
+          </div>
+
+          <!-- PROGRAMA 3: MANEJO DE RESIDUOS SÓLIDOS Y LÍQUIDOS -->
+          <div class="space-y-1.5">
+            <h4 class="text-sm font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              3. PROGRAMA DE MANEJO INTEGRAL DE RESIDUOS SÓLIDOS Y LÍQUIDOS (ART. 26 NUM. 2 • RES. 2184 DE 2019)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              Se implementa el código de colores unificado nacional: <strong>Recipiente Blanco</strong> (residuos aprovechables limpios: plástico, cartón, vidrio), <strong>Recipiente Verde</strong> (residuos orgánicos de proceso) y <strong>Recipiente Negro</strong> (residuos no aprovechables). Los recipientes en proceso son de accionamiento por pedal con bolsa interna y se evacúan antes de alcanzar el 80% de su capacidad. Las trampas de grasa reciben limpieza y retiro de natas semanal/quincenal, registrando en el formato <code>FOR-PSB-003</code>.
+            </p>
+          </div>
+
+          <!-- PROGRAMA 4: CONTROL INTEGRADO DE PLAGAS (MIP) -->
+          <div class="space-y-1.5">
+            <h4 class="text-sm font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              4. PROGRAMA DE CONTROL INTEGRADO DE PLAGAS — TRIPLE BARRERA (ART. 26 NUMERAL 3)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              Basado en prevención física (mallas milimétricas anti-insectos en ventanas/extractores, burletes bajo puertas &lt; 5 mm y sifones con rejilla asegurada). <strong>Regla Crítica INVIMA:</strong> Está estrictamente prohibido ubicar cebos raticidas tóxicos dentro de las áreas de procesamiento o empaque de alimentos; el control químico perimetral y fumigación es ejecutado por: <strong id="poesPrintProveedores">--</strong>, anexando a esta carpeta su Concepto Sanitario Favorable vigente, hojas MSDS de plaguicidas y certificado de aplicación. La inspección semanal de hermeticidad se registra en <code>FOR-PSB-004</code>.
+            </p>
+          </div>
+
+          <!-- RESUMEN DE LOS 4 FORMATOS DE REGISTRO DIARIO INCLUIDOS -->
+          <div class="p-3 rounded-xl bg-slate-100 border border-slate-300 text-xs">
+            <div class="font-black text-slate-900 mb-1">📋 PLANILLAS OFICIALES DE REGISTRO DIARIO VINCULADAS A ESTE PLAN:</div>
+            <div class="grid sm:grid-cols-2 gap-1.5 text-[11px] text-slate-700">
+              <div>• <strong>FOR-PSB-001:</strong> Registro Diario de Limpieza y Desinfección de Áreas, Equipos y Utensilios (ppm).</div>
+              <div>• <strong>FOR-PSB-002:</strong> Control Diario de Cloro Residual Libre (0.3–2.0 mg/L) y pH (6.5–9.0) del Agua Potable.</div>
+              <div>• <strong>FOR-PSB-003:</strong> Registro de Evacuación de Residuos Sólidos y Mantenimiento de Trampas de Grasa.</div>
+              <div>• <strong>FOR-PSB-004:</strong> Inspección Semanal de Barreras Físicas de Hermeticidad y Control Integrado de Plagas.</div>
+            </div>
+          </div>
+
+          <!-- FIRMAS DE APROBACIÓN -->
+          <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Aprobado por Representante Legal / Dirección de Planta</strong><br>
+              <span class="text-slate-600" id="poesPrintFirmaCliente">Alimentos Del Valle S.A.S.</span>
+            </div>
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Estructurado y Avalado por Ingeniería de Alimentos</strong><br>
+              <span class="text-slate-600">AYC Ingeniería y Asesorías de Alimentos • WhatsApp: +57 315 717 2270</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -890,7 +1158,7 @@
     }
 
     // 2. CAMBIO DE MÓDULOS
-    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima'];
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes'];
     function switchModule(modId) {
       MODULES.forEach(m => {
         document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
@@ -1166,12 +1434,40 @@
       setTxt('ftpFirmaTitular', titular);
     }
 
+    // 8. GENERADOR DE CARPETA PLAN DE SANEAMIENTO BÁSICO (POES — PLIEGO 1)
+    function renderPoesManual() {
+      const val = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.value : '';
+      };
+      const setTxt = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+
+      const emp = val('poesEmpresa') || 'Empresa de Alimentos';
+      const nit = val('poesNit') || '--';
+      const tanque = val('poesTanque') || '--';
+      setTxt('poesPrintHeaderSub', `Establecimiento: ${emp} • NIT: ${nit}`);
+      setTxt('poesPrintEmpresa', emp);
+      setTxt('poesPrintNit', nit);
+      setTxt('poesPrintDireccion', val('poesDireccion'));
+      setTxt('poesPrintRepLegal', val('poesRepLegal'));
+      setTxt('poesPrintActividad', val('poesActividad'));
+      setTxt('poesPrintTanque', tanque);
+      setTxt('poesPrintTanque2', tanque);
+      setTxt('poesPrintQuimicos', val('poesQuimicos'));
+      setTxt('poesPrintProveedores', val('poesProveedores'));
+      setTxt('poesPrintFirmaCliente', `${emp} (${val('poesRepLegal')})`);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initAuditTable();
       calcPpm();
       initQuoteBuilder();
       initPdfLibrary();
       renderFichaInvima();
+      renderPoesManual();
     });
   </script>
 </body>
