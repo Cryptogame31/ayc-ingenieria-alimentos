@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es-CO" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro de Comando e Ingeniería en Planta | AYC Ingeniería y Asesorías de Alimentos</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #040b08;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .glass-card {
+      background: rgba(9, 25, 19, 0.85);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      backdrop-filter: blur(12px);
+    }
+    .nav-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(20, 184, 166, 0.15));
+      border-color: #10b981;
+      color: #34d399;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .print-sheet { background: #ffffff !important; color: #000000 !important; border: 1px solid #000 !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- PANTALLA DE ACCESO RÁPIDO (PIN DE SEGURIDAD EJECUTOR) -->
+  <div id="pinLockModal" class="fixed inset-0 z-50 bg-[#020604]/95 backdrop-blur-xl flex items-center justify-center p-4 no-print">
+    <div class="max-w-md w-full rounded-3xl glass-card p-8 border border-emerald-500/40 shadow-2xl text-center">
+      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-slate-950 font-black text-2xl mx-auto mb-4 shadow-lg shadow-emerald-500/30">
+        AYC
+      </div>
+      <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-xs font-bold">
+        SISTEMA INTERNO DEL EJECUTOR / INGENIERO
+      </span>
+      <h1 class="text-2xl font-extrabold text-white mt-3">Centro de Operaciones AYC</h1>
+      <p class="text-xs text-zinc-400 mt-1 mb-6">
+        Acceso exclusivo para Dirección e Ingenieros de Planta de <strong>AYC Ingeniería y Asesorías de Alimentos</strong>.
+      </p>
+      <form onsubmit="unlockSuite(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-zinc-300 mb-1.5 uppercase tracking-wider">Código de Acceso Operativo</label>
+          <input type="password" id="pinInput" value="2026" placeholder="Ingresa PIN (2026)" class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-white/15 text-center font-mono text-lg text-emerald-300 focus:outline-none focus:border-emerald-400">
+          <p class="text-[11px] text-zinc-500 mt-1">PIN predeterminado: <code class="text-emerald-400 font-bold">2026</code> (Listo para entrar con 1 clic)</p>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-300 hover:to-teal-400 text-slate-950 font-extrabold text-sm shadow-lg shadow-emerald-500/25 transition cursor-pointer">
+          🔓 Entrar al Sistema Operativo AYC →
+        </button>
+      </form>
+      <div class="mt-5 pt-4 border-t border-white/10">
+        <a href="../index.html" class="text-xs text-zinc-400 hover:text-emerald-300 transition">← Volver a la Landing Page Comercial Pública</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA SUPERIOR DEL SISTEMA OPERATIVO -->
+  <header class="sticky top-0 z-40 bg-[#040b08]/95 backdrop-blur-md border-b border-emerald-500/20 px-4 sm:px-6 py-3 no-print">
+    <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-slate-950 font-black text-base shadow-md">
+          AYC
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-white text-sm sm:text-base">SUITE OPERATIVA DE INGENIERÍA AYC</span>
+            <span class="hidden sm:inline-block px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-mono text-[10px] font-bold">MODO EJECUTOR v2.6</span>
+          </div>
+          <p class="text-[11px] text-zinc-400">Calculadora Nutricional Res. 2492 • Auditor INVIMA Res. 2674 • Dosificador PPM • Academia 10h • Cotizador B2B</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <a href="https://docs.google.com/spreadsheets/d/1GVOdGD49OJmPY74bWDbY7XgCzdU4H4fQYAmu-HTVuVE/edit?gid=0#gid=0" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500 hover:text-slate-950 font-bold text-xs transition flex items-center gap-1.5">
+          <span>📊</span> <span class="hidden md:inline">Abrir CRM Leads (Google Sheet)</span>
+        </a>
+        <a href="https://t.me/AYCalimentosleads_bot" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl bg-sky-500/15 border border-sky-500/40 text-sky-300 hover:bg-sky-500 hover:text-slate-950 font-bold text-xs transition flex items-center gap-1.5">
+          <span>🤖</span> <span class="hidden md:inline">Bot Telegram Alertas</span>
+        </a>
+        <a href="../index.html" target="_blank" class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white font-bold text-xs transition">
+          🌐 Ver Web Pública
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- LAYOUT PRINCIPAL: SIDEBAR + ÁREA DE TRABAJO -->
+  <div class="flex-1 max-w-[1600px] w-full mx-auto grid lg:grid-cols-12 gap-5 p-4 sm:p-6">
+
+    <!-- MENÚ LATERAL DE LOS 7 MÓDULOS OPERATIVOS -->
+    <aside class="lg:col-span-3 xl:col-span-3 space-y-2 no-print">
+      <div class="p-3 rounded-2xl glass-card mb-3">
+        <p class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold mb-2 px-2">🛠️ Herramientas de Ingeniería</p>
+        <nav class="space-y-1.5">
+          <button onclick="switchModule('dashboard')" id="nav-dashboard" class="nav-btn active w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center gap-2.5 cursor-pointer">
+            <span>🏠</span> <span>1. Panel Principal & Accesos</span>
+          </button>
+          <button onclick="switchModule('calculadora')" id="nav-calculadora" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🏷️</span> <span>2. Calculadora Nutricional y Sellos</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Res. 2492</span>
+          </button>
+          <button onclick="switchModule('auditoria')" id="nav-auditoria" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>📋</span> <span>3. Auditoría Planta INVIMA (100 pts)</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">Res. 2674</span>
+          </button>
+          <button onclick="switchModule('ppm')" id="nav-ppm" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🧪</span> <span>4. Calculadora Químicos PPM y Agua</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">POES</span>
+          </button>
+          <button onclick="switchModule('academia')" id="nav-academia" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🎓</span> <span>5. Curso 10h + Diplomas y Carnés</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">12 Slides</span>
+          </button>
+          <button onclick="switchModule('cotizador')" id="nav-cotizador" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>💼</span> <span>6. Generador Cotizaciones PDF</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Ventas</span>
+          </button>
+          <button onclick="switchModule('biblioteca')" id="nav-biblioteca" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>📚</span> <span>7. Biblioteca 18 Normas PDF & Excel</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-white/10 text-zinc-300 font-mono text-[10px]">Offline</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- TARJETA DESCARGA LIBRO MAESTRO EXCEL -->
+      <div class="p-4 rounded-2xl bg-gradient-to-br from-emerald-950/90 to-zinc-950 border border-emerald-500/30">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">📦 PAQUETE ENTREGABLE EN PLANTA</span>
+        <h3 class="text-sm font-extrabold text-white mt-1">Libro Maestro Excel BPM + POES + HACCP</h3>
+        <p class="text-xs text-zinc-300 mt-1 mb-3 leading-relaxed">
+          Descarga el consolidado editable `.xlsx` con todos los formatos `FOR-PSB-001` a `004` y matrices `HACCP` para entregar a tu cliente.
+        </p>
+        <a href="./Paquete_Maestro_BPM_POES_HACCP_INVIMA.xlsx" download class="block w-full py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs text-center transition">
+          📥 Descargar Libro Maestro (.xlsx)
+        </a>
+      </div>
+    </aside>
+
+    <!-- ÁREA DE CONTENIDO DINÁMICO -->
+    <main class="lg:col-span-9 xl:col-span-9">
+
+      <!-- ==========================================
+           MÓDULO 1: DASHBOARD PRINCIPAL DEL EJECUTOR
+           ========================================== -->
+      <section id="mod-dashboard" class="space-y-6">
+        <div class="p-6 rounded-3xl glass-card border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-xs font-bold">
+              PANEL CENTRAL DEL INGENIERO EJECUTOR
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Bienvenido al Centro de Ingeniería AYC</h2>
+            <p class="text-xs sm:text-sm text-zinc-300 mt-1 max-w-2xl">
+              Desde aquí ejecutas el trabajo técnico que vendes en la Landing Page: formulas tablas nutricionales con sellos octogonales, auditas plantas con el acta oficial del INVIMA, calculas dosificaciones en ppm, dictas el curso de 10 horas, emites carnés y generas cotizaciones formales en PDF.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 shrink-0">
+            <button onclick="switchModule('calculadora')" class="px-4 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              🏷️ Abrir Calculadora Nutricional →
+            </button>
+            <button onclick="switchModule('cotizador')" class="px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              💼 Crear Cotización PDF →
+            </button>
+          </div>
+        </div>
+
+        <!-- TARJETAS DE ACCESO RÁPIDO A LOS 6 MÓDULOS DE TRABAJO -->
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div onclick="switchModule('calculadora')" class="p-5 rounded-2xl glass-card hover:border-amber-400/60 transition cursor-pointer group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">🏷️</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono text-[11px] font-bold">Res. 810 y 2492</span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-amber-300 transition">Calculadora de Tabla Nutricional y Sellos</h3>
+            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+              Conectada a la base <strong>TCAC 2018 del ICBF</strong>. Calcula macros, micros, merma de cocción, orden legal de ingredientes y genera los sellos octogonales vectoriales SVG listos para imprimir en PDF.
+            </p>
+          </div>
+
+          <div onclick="switchModule('auditoria')" class="p-5 rounded-2xl glass-card hover:border-emerald-400/60 transition cursor-pointer group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">📋</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-bold">Res. 2674/2013</span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-emerald-300 transition">Auditoría Sanitaria Ponderada (100 Pts)</h3>
+            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+              Evalúa en vivo los 21 numerales críticos y no críticos en la planta del cliente, calcula el puntaje exacto y emite el dictamen: <strong>Favorable (≥90%)</strong>, Requerimientos o Desfavorable.
+            </p>
+          </div>
+
+          <div onclick="switchModule('ppm')" class="p-5 rounded-2xl glass-card hover:border-teal-400/60 transition cursor-pointer group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">🧪</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-mono text-[11px] font-bold">POES & Agua</span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-teal-300 transition">Calculadora de Dilución PPM y Cloro/pH</h3>
+            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+              Calcula al instante cuántos mililitros (mL) de hipoclorito, amonio o ácido peracético usar según el volumen de agua y genera la tabla plastificada para pegar en la planta del cliente.
+            </p>
+          </div>
+
+          <div onclick="switchModule('academia')" class="p-5 rounded-2xl glass-card hover:border-emerald-400/60 transition cursor-pointer group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">🎓</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-bold">Art. 12 y 13</span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-emerald-300 transition">Curso 10 Horas + Generador de Carnés</h3>
+            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+              Proyecta las 12 diapositivas con notas de orador para tus capacitaciones en empresas y genera al instante los <strong>Diplomas y Carnés de Manipulador</strong> listos para imprimir en PDF.
+            </p>
+          </div>
+
+          <div onclick="switchModule('cotizador')" class="p-5 rounded-2xl glass-card hover:border-amber-400/60 transition cursor-pointer group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">💼</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono text-[11px] font-bold">Cierre B2B</span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-amber-300 transition">Generador de Cotizaciones Oficiales AYC</h3>
+            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+              Selecciona los servicios o Pliegos Llave en Mano que te pidió el prospecto, personaliza precios y alcances, e imprime la propuesta formal en PDF o envíala por WhatsApp.
+            </p>
+          </div>
+
+          <div onclick="switchModule('biblioteca')" class="p-5 rounded-2xl glass-card hover:border-emerald-400/60 transition cursor-pointer group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">📚</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-zinc-200 font-mono text-[11px] font-bold">18 PDFs Oficiales</span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-emerald-300 transition">Biblioteca Normativa INVIMA / MinSalud</h3>
+            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+              Consulta y descarga en 1 clic las resoluciones originales en PDF (`Res. 2674`, `810`, `2492`, `254`, `1407`, `2115`, `719`, `Ley 2069`, `Decreto 60` y `Codex Alimentarius`).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           MÓDULO 2: CALCULADORA NUTRICIONAL Y SELLOS
+           ========================================== -->
+      <section id="mod-calculadora" class="hidden space-y-4">
+        <div class="p-4 rounded-2xl glass-card flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-extrabold text-white">🏷️ Suite de Formulación ICBF (TCAC) y Calculadora de Rotulado (Res. 810 y 2492)</h2>
+            <p class="text-xs text-zinc-400">Calcula tablas nutricionales por receta o laboratorio, evalúa umbrales de sellos octogonales y exporta la ficha técnica en PDF.</p>
+          </div>
+          <a href="./calculadora-nutricional.html" target="_blank" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+            ↗ Abrir Calculadora en Pantalla Completa para Imprimir PDF
+          </a>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-emerald-500/30 bg-white shadow-2xl" style="height: 820px;">
+          <iframe src="./calculadora-nutricional.html" class="w-full h-full border-0" title="Calculadora Interactiva de Rotulado Nutricional"></iframe>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           MÓDULO 3: AUDITORÍA SANITARIA INVIMA (100 PTS)
+           ========================================== -->
+      <section id="mod-auditoria" class="hidden space-y-5">
+        <div class="p-5 rounded-2xl glass-card flex flex-wrap items-center justify-between gap-4 no-print">
+          <div>
+            <span class="text-xs font-mono uppercase text-emerald-400 font-bold">INSPECCIÓN TÉCNICA EN PLANTA — RESOLUCIÓN 2674 DE 2013</span>
+            <h2 class="text-xl font-extrabold text-white">📋 Matriz Ponderada de Diagnóstico Sanitario INVIMA (100 Puntos)</h2>
+            <p class="text-xs text-zinc-300 mt-0.5">Califica cada ítem durante tu visita a la planta del cliente y genera el Acta de Diagnóstico Sanitario en PDF.</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+              🖨️ Imprimir Acta de Auditoría (PDF)
+            </button>
+            <a href="./Matriz_Diagnostico_Sanitario_Res_2674_INVIMA.csv" download class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition">
+              📥 Descargar CSV
+            </a>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl glass-card print-sheet space-y-5">
+          <div class="grid sm:grid-cols-3 gap-4 border-b border-white/10 pb-4">
+            <div>
+              <label class="block text-xs font-bold text-zinc-400 mb-1">Empresa / Planta Auditada</label>
+              <input type="text" id="audEmpresa" value="Alimentos Procesados S.A.S." class="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-white/15 text-sm text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-zinc-400 mb-1">Ingeniero Auditor AYC</label>
+              <input type="text" id="audIngeniero" value="Dirección de Ingeniería AYC Alimentos" class="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-white/15 text-sm text-white">
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-center">
+              <span class="text-[11px] font-mono text-emerald-300 uppercase font-bold">Puntaje Total y Concepto</span>
+              <div id="audTotalScore" class="text-2xl font-black text-emerald-400 mt-0.5">100 / 100 pts (100%)</div>
+              <div id="audConceptBadge" class="text-xs font-extrabold text-white mt-0.5">✅ CONCEPTO FAVORABLE</div>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-emerald-500/30 text-emerald-300 uppercase font-mono">
+                  <th class="py-2.5 px-2">Bloque / Numeral Res. 2674</th>
+                  <th class="py-2.5 px-2">Aspecto y Criterio Técnico Sanitario</th>
+                  <th class="py-2.5 px-2 text-center">Crítico</th>
+                  <th class="py-2.5 px-2 text-center">Pts Máx</th>
+                  <th class="py-2.5 px-2 text-center">Estado / Calificación</th>
+                  <th class="py-2.5 px-2">Hallazgos / Acción Correctiva</th>
+                </tr>
+              </thead>
+              <tbody id="auditTableBody" class="divide-y divide-white/10"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           MÓDULO 4: CALCULADORA QUÍMICOS PPM Y AGUA
+           ========================================== -->
+      <section id="mod-ppm" class="hidden space-y-5">
+        <div class="p-5 rounded-2xl glass-card flex flex-wrap items-center justify-between gap-4 no-print">
+          <div>
+            <span class="text-xs font-mono uppercase text-teal-400 font-bold">INGENIERÍA POES — ART. 26 RES. 2674/2013 & RES. 2115/2007</span>
+            <h2 class="text-xl font-extrabold text-white">🧪 Calculadora Exacta de Dilución de Desinfectantes (PPM) y Control de Agua</h2>
+            <p class="text-xs text-zinc-300 mt-0.5">Calcula la dosificación exacta ($V_1 = \frac{V_2 \times C_2}{C_1 \times 10}$) para cualquier principio activo y volumen de tanque o balde.</p>
+          </div>
+          <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+            🖨️ Imprimir Ficha de Dosificación para Planta
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          <!-- CALCULADORA INTERACTIVA V1 -->
+          <div class="p-6 rounded-2xl glass-card print-sheet space-y-4">
+            <h3 class="text-base font-extrabold text-emerald-300 border-b border-white/10 pb-2">1. Cálculo Instantáneo de Dosificación en Mililitros (mL)</h3>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-zinc-300 mb-1">Principio Activo Comercial</label>
+                <select id="ppmPreset" onchange="applyPpmPreset()" class="w-full px-3 py-2.5 rounded-xl bg-zinc-900 border border-white/15 text-xs sm:text-sm text-white">
+                  <option value="5.25">Hipoclorito de Sodio Comercial (5.25%)</option>
+                  <option value="13">Hipoclorito de Sodio Industrial (13.0%)</option>
+                  <option value="10">Amonio Cuaternario 5ta Generación (10.0%)</option>
+                  <option value="15">Ácido Peracético Grado Alimenticio (15.0%)</option>
+                  <option value="custom">Otra concentración comercial (%)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-zinc-300 mb-1">Concentración del Producto ($C_1$ en %)</label>
+                <input type="number" id="ppmC1" value="5.25" step="0.05" oninput="calcPpm()" class="w-full px-3 py-2.5 rounded-xl bg-zinc-900 border border-white/15 text-sm font-mono text-emerald-300">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-zinc-300 mb-1">Volumen de Agua a Preparar ($V_2$ en Litros)</label>
+                <input type="number" id="ppmV2" value="10" step="1" oninput="calcPpm()" class="w-full px-3 py-2.5 rounded-xl bg-zinc-900 border border-white/15 text-sm font-mono text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-zinc-300 mb-1">Concentración Deseada ($C_2$ en ppm)</label>
+                <select id="ppmC2" onchange="calcPpm()" class="w-full px-3 py-2.5 rounded-xl bg-zinc-900 border border-white/15 text-xs sm:text-sm text-amber-300 font-bold">
+                  <option value="80">80 ppm — Lavado de frutas, verduras y hortalizas</option>
+                  <option value="100">100 ppm — Inmersión de utensilios y manos</option>
+                  <option value="200" selected>200 ppm — Mesones INOX y equipos en contacto</option>
+                  <option value="300">300 ppm — Pisos, paredes, puertas y áreas de proceso</option>
+                  <option value="500">500 ppm — Baños, sifones, cuartos de basura y pediluvios</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-950 to-teal-950 border-2 border-emerald-400 text-center space-y-1">
+              <span class="text-xs font-mono uppercase text-emerald-300 font-bold">DOSIS EXACTA A MEDIR CON JERINGA O PROBETA ($V_1$)</span>
+              <div id="ppmResultVal" class="text-3xl sm:text-4xl font-black text-white font-mono">38.1 mL</div>
+              <p id="ppmResultText" class="text-xs text-emerald-200">
+                Agregar <strong>38.1 mL</strong> de producto concentrado al <strong>5.25%</strong> para completar <strong>10 Litros</strong> de solución a <strong>200 ppm</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- VALIDADOR DE AGUA POTABLE RES. 2115 -->
+          <div class="p-6 rounded-2xl glass-card print-sheet space-y-4">
+            <h3 class="text-base font-extrabold text-amber-300 border-b border-white/10 pb-2">2. Verificador en Planta de Agua Potable (Res. 2115/2007)</h3>
+            <p class="text-xs text-zinc-300">Ingresa la lectura del kit colorimétrico DPD en el grifo de la planta para validar el cumplimiento ante el INVIMA:</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-zinc-300 mb-1">Cloro Residual Libre (mg/L o ppm)</label>
+                <input type="number" id="waterCl" value="1.2" step="0.1" oninput="checkWater()" class="w-full px-3 py-2.5 rounded-xl bg-zinc-900 border border-white/15 text-sm font-mono text-white">
+                <span class="text-[10px] text-zinc-400">Rango legal: 0.3 a 2.0 mg/L</span>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-zinc-300 mb-1">Nivel de pH medido</label>
+                <input type="number" id="waterPh" value="7.2" step="0.1" oninput="checkWater()" class="w-full px-3 py-2.5 rounded-xl bg-zinc-900 border border-white/15 text-sm font-mono text-white">
+                <span class="text-[10px] text-zinc-400">Rango legal: 6.5 a 9.0</span>
+              </div>
+            </div>
+            <div id="waterStatusBox" class="p-4 rounded-xl bg-emerald-950/70 border border-emerald-400 text-xs text-emerald-100 leading-relaxed">
+              ✅ <strong>AGUA APTA PARA PROCESAMIENTO DE ALIMENTOS:</strong> Tanto el Cloro Residual Libre (1.2 mg/L) como el pH (7.2) cumplen estrictamente la Resolución 2115 de 2007. Registrar en formato <code>FOR-PSB-002</code>.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           MÓDULO 5: CURSO 10H + CERTIFICADOS Y CARNÉS
+           ========================================== -->
+      <section id="mod-academia" class="hidden space-y-4">
+        <div class="p-4 rounded-2xl glass-card flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-extrabold text-white">🎓 Academia en Planta (12 Diapositivas) y Generador de Certificados + Carnés (10 Horas — Res. 2674)</h2>
+            <p class="text-xs text-zinc-400">Usa el botón superior derecho dentro del módulo para alternar entre las Diapositivas del Curso y el Generador de Diplomas/Carnés.</p>
+          </div>
+          <a href="./academia-manipulacion-10h.html" target="_blank" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs transition">
+            ↗ Abrir en Pantalla Completa para Proyectar o Imprimir Carnés
+          </a>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-emerald-500/30 bg-slate-900 shadow-2xl" style="height: 780px;">
+          <iframe src="./academia-manipulacion-10h.html" class="w-full h-full border-0" title="Academia de Manipulación de Alimentos 10 Horas y Generador de Certificados"></iframe>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           MÓDULO 6: GENERADOR DE COTIZACIONES PDF B2B
+           ========================================== -->
+      <section id="mod-cotizador" class="hidden space-y-5">
+        <div class="p-5 rounded-2xl glass-card flex flex-wrap items-center justify-between gap-4 no-print">
+          <div>
+            <span class="text-xs font-mono uppercase text-amber-400 font-bold">HERRAMIENTA DE CIERRE COMERCIAL — AYC INGENIERÍA</span>
+            <h2 class="text-xl font-extrabold text-white">💼 Generador de Propuestas Técnicas y Económicas en PDF</h2>
+            <p class="text-xs text-zinc-300 mt-0.5">Arma en 30 segundos la cotización formal para los leads que te llegan al Google Sheet o Telegram, imprímela en PDF y envíala por WhatsApp.</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+              🖨️ Imprimir / Guardar Cotización en PDF
+            </button>
+            <button onclick="sendQuoteViaWa()" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+              💬 Enviar Resumen al WhatsApp del Cliente
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTROLES DEL EJECUTOR (NO SE IMPRIMEN) -->
+        <div class="p-5 rounded-2xl glass-card space-y-4 no-print">
+          <div class="grid sm:grid-cols-4 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-zinc-300 mb-1">Nombre del Cliente</label>
+              <input type="text" id="qClientName" value="Gerencia de Planta" oninput="renderQuotePreview()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-zinc-300 mb-1">Empresa Solicitante</label>
+              <input type="text" id="qCompany" value="Alimentos de Colombia S.A.S." oninput="renderQuotePreview()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-zinc-300 mb-1">WhatsApp del Cliente (sin +57)</label>
+              <input type="text" id="qClientWa" placeholder="Ej: 3001234567" oninput="renderQuotePreview()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-zinc-300 mb-1">Validez de la Oferta</label>
+              <input type="text" id="qValidity" value="15 días calendario (Bono 72h incluido)" oninput="renderQuotePreview()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-xs text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-emerald-300 mb-2">Selecciona los Pliegos o Servicios a incluir en la Cotización (puedes editar el valor en COP):</label>
+            <div id="quoteItemsSelector" class="grid sm:grid-cols-2 gap-2.5"></div>
+          </div>
+        </div>
+
+        <!-- HOJA IMPRIMIBLE DE LA COTIZACIÓN OFICIAL AYC -->
+        <div id="quotePrintableSheet" class="p-8 rounded-2xl bg-white text-slate-900 shadow-2xl print-sheet space-y-6">
+          <div class="flex flex-wrap items-start justify-between gap-4 border-b-4 border-emerald-700 pb-4">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 font-extrabold text-[11px]">PROPUESTA TÉCNICA Y ECONÓMICA "LLAVE EN MANO"</span>
+              <h2 class="text-2xl font-black text-emerald-950 mt-1">AYC INGENIERÍA Y ASESORÍAS DE ALIMENTOS</h2>
+              <p class="text-xs text-slate-600">Consultoría en Calidad, Inocuidad, Asuntos Regulatorios INVIMA, BPM, HACCP y Rotulado Nutricional</p>
+              <p class="text-xs font-bold text-emerald-800 mt-0.5">Línea Oficial WhatsApp: +57 315 717 2270 • Web: https://ayc-ingenieria-alimentos.vercel.app</p>
+            </div>
+            <div class="text-right text-xs">
+              <div class="font-bold text-slate-800" id="qPrintDate">Fecha: --</div>
+              <div class="text-slate-600" id="qPrintClient">Cliente: --</div>
+              <div class="text-emerald-800 font-bold mt-1" id="qPrintValidity">Validez: 15 días</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-extrabold text-emerald-900 uppercase tracking-wider mb-2">1. Alcance Técnico y Servicios Cotizados</h3>
+            <table class="w-full text-left border-collapse text-xs border border-slate-300">
+              <thead>
+                <tr class="bg-emerald-900 text-white">
+                  <th class="p-2.5">Ítem / Servicio de Ingeniería</th>
+                  <th class="p-2.5">Entregables Técnicos "Llave en Mano"</th>
+                  <th class="p-2.5 text-right">Inversión (COP)</th>
+                </tr>
+              </thead>
+              <tbody id="qPrintTableBody" class="divide-y divide-slate-200"></tbody>
+              <tfoot>
+                <tr class="bg-emerald-50 font-black text-sm text-emerald-950">
+                  <td colspan="2" class="p-3 text-right">INVERSIÓN TOTAL ESTIMADA:</td>
+                  <td class="p-3 text-right" id="qPrintTotal">$0 COP</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div>
+              <h4 class="font-extrabold text-emerald-900 mb-1">🎁 Bono Especial Incluido (72 Horas):</h4>
+              <p class="text-slate-700 leading-relaxed">Incluye sin costo adicional <strong>Pre-Auditoría de 1 Etiqueta Nutricional (Res. 2492) o Diagnóstico Sanitario Inicial</strong> y entrega del Kit de Blindaje INVIMA 2026.</p>
+            </div>
+            <div>
+              <h4 class="font-extrabold text-emerald-900 mb-1">📌 Condiciones Comerciales Sugeridas:</h4>
+              <p class="text-slate-700 leading-relaxed">• Forma de pago: 50% anticipo al iniciar levantamiento técnico y 50% contra entrega de carpetas/radicación.<br>• Garantía de acompañamiento técnico ante requerimientos sanitarios.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           MÓDULO 7: BIBLIOTECA DE 18 NORMAS PDF
+           ========================================== -->
+      <section id="mod-biblioteca" class="hidden space-y-5">
+        <div class="p-5 rounded-2xl glass-card">
+          <span class="text-xs font-mono uppercase text-emerald-400 font-bold">CONSULTA RÁPIDA EN PLANTA Y AUDITORÍAS</span>
+          <h2 class="text-xl font-extrabold text-white">📚 Biblioteca Legal Oficial Colombiana e Internacional (18 Documentos PDF)</h2>
+          <p class="text-xs text-zinc-300 mt-1">Haz clic en cualquier norma para abrir el PDF oficial del Ministerio de Salud / INVIMA / Codex Alimentarius en una pestaña nueva:</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5" id="pdfLibraryGrid"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // 1. DESBLOQUEO DE PIN (GUARDADO EN SESSIONSTORAGE)
+    function unlockSuite(e) {
+      if (e) e.preventDefault();
+      const val = document.getElementById('pinInput').value.trim();
+      if (val === '2026' || val.toLowerCase() === 'ayc') {
+        sessionStorage.setItem('ayc_suite_unlocked', '1');
+        document.getElementById('pinLockModal').classList.add('hidden');
+      } else {
+        alert('Código incorrecto. Usa el PIN predeterminado: 2026');
+      }
+    }
+
+    if (sessionStorage.getItem('ayc_suite_unlocked') === '1') {
+      document.getElementById('pinLockModal').classList.add('hidden');
+    }
+
+    // 2. CAMBIO DE MÓDULOS
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca'];
+    function switchModule(modId) {
+      MODULES.forEach(m => {
+        document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
+        const btn = document.getElementById('nav-' + m);
+        if (btn) btn.classList.toggle('active', m === modId);
+      });
+    }
+
+    // 3. MATRIZ DE AUDITORÍA INVIMA RES. 2674 (100 PUNTOS)
+    const AUDIT_ITEMS = [
+      { bloque: '1. Instalaciones Físicas', num: 'Art. 6 (1-2)', asp: 'Localización y alrededores sin focos de insalubridad ni agua estancada', crit: false, max: 2 },
+      { bloque: '1. Instalaciones Físicas', num: 'Art. 6 (2.1)', asp: 'Separación física efectiva y flujo secuencial lineal sin contaminación cruzada', crit: true, max: 4 },
+      { bloque: '1. Instalaciones Físicas', num: 'Art. 7 (1)', asp: 'Pisos impermeables, sin grietas, pendiente 2% y sifones con rejilla', crit: false, max: 2 },
+      { bloque: '1. Instalaciones Físicas', num: 'Art. 7 (2)', asp: 'Paredes lisas lavables color claro y uniones redondeadas media caña (≥2.5 cm)', crit: false, max: 2 },
+      { bloque: '1. Instalaciones Físicas', num: 'Art. 7 (3-5)', asp: 'Techos sin condensación, ventanas con malla anti-insectos y puertas autocerrables', crit: false, max: 2 },
+      { bloque: '1. Instalaciones Físicas', num: 'Art. 7 (7-8)', asp: 'Iluminación con protector anti-rotura y ventilación adecuada', crit: false, max: 2 },
+      { bloque: '1. Instalaciones Físicas', num: 'Art. 6 (6.1)', asp: 'Servicios sanitarios y vestieres separados, lavamanos no manual con jabón desinfectante', crit: true, max: 4 },
+      { bloque: '2. Saneamiento Básico', num: 'Art. 6 / Res. 2115', asp: 'Tanque de agua potable (mín 1 día), lavado semestral y control diario Cloro (0.3-2.0) y pH', crit: true, max: 8 },
+      { bloque: '2. Saneamiento Básico', num: 'Art. 26 (1)', asp: 'Programa de Limpieza y Desinfección POES con tablas en ppm y formato FOR-PSB-001 al día', crit: true, max: 6 },
+      { bloque: '2. Saneamiento Básico', num: 'Art. 26 (2)', asp: 'Manejo de Residuos Sólidos y Líquidos (código colores Res. 2184 y trampas de grasa)', crit: false, max: 4 },
+      { bloque: '2. Saneamiento Básico', num: 'Art. 26 (3)', asp: 'Control Integrado de Plagas: cero evidencia, triple barrera, sin cebos tóxicos en proceso', crit: true, max: 8 },
+      { bloque: '3. Personal Manipulador', num: 'Art. 11', asp: 'Certificados médicos anuales de aptitud (KOH uñas, frotis faríngeo, coprológico)', crit: true, max: 6 },
+      { bloque: '3. Personal Manipulador', num: 'Art. 12 y 13', asp: 'Plan Anual de Capacitación (mínimo 10 horas certificadas), examen escrito y carnés', crit: false, max: 4 },
+      { bloque: '3. Personal Manipulador', num: 'Art. 14', asp: 'Dotación clara sin botones/bolsillos superiores, cofia, tapabocas, cero joyas/esmalte', crit: true, max: 6 },
+      { bloque: '4. Equipos y Utensilios', num: 'Art. 8-9 / Res. 683', asp: 'Equipos y mesones en Acero Inoxidable 304/316 sanitario, sin óxido, pintura ni madera', crit: true, max: 6 },
+      { bloque: '4. Equipos y Utensilios', num: 'Art. 10', asp: 'Mantenimiento preventivo, lubricantes grado alimenticio NSF H1 y calibración de termómetros', crit: false, max: 4 },
+      { bloque: '5. Fabricación', num: 'Art. 16', asp: 'Recepción de materias primas con control de temperatura, fichas técnicas, rotación PEPS y estibas', crit: true, max: 6 },
+      { bloque: '5. Fabricación', num: 'Art. 17 / Res. 2492', asp: 'Envases de primer uso y etiquetas que cumplen Res. 5109, Tabla Res. 810 y Sellos Res. 2492', crit: true, max: 6 },
+      { bloque: '5. Fabricación', num: 'Art. 18 y 19', asp: 'Control de temperaturas seguras (cocción ≥65-74°C, frío ≤4°C, congelación ≤-18°C)', crit: true, max: 8 },
+      { bloque: '5. Fabricación', num: 'Art. 20', asp: 'Envasado en área exclusiva y codificación indeleble de Lote y Fecha de Vencimiento', crit: false, max: 4 },
+      { bloque: '6. Aseguramiento Calidad', num: 'Art. 21-25 / Res. 1407', asp: 'Cronograma de laboratorio microbiológico (Res. 1407/2022), trazabilidad y plan de Recall', crit: true, max: 6 }
+    ];
+
+    function initAuditTable() {
+      const tbody = document.getElementById('auditTableBody');
+      tbody.innerHTML = AUDIT_ITEMS.map((item, idx) => `
+        <tr>
+          <td class="py-2.5 px-2 font-bold text-white">${item.bloque}<br><span class="text-[10px] font-mono text-emerald-400">${item.num}</span></td>
+          <td class="py-2.5 px-2 text-zinc-300">${item.asp}</td>
+          <td class="py-2.5 px-2 text-center">${item.crit ? '<span class="px-2 py-0.5 rounded bg-red-500/20 text-red-300 font-bold text-[10px]">SÍ</span>' : '<span class="text-zinc-500 text-[10px]">NO</span>'}</td>
+          <td class="py-2.5 px-2 text-center font-mono font-bold text-white">${item.max}</td>
+          <td class="py-2.5 px-2 text-center">
+            <select id="audSel_${idx}" onchange="recalcAudit()" class="px-2 py-1 rounded bg-zinc-900 border border-white/15 text-xs text-emerald-300 font-bold">
+              <option value="1">Cumple Total (100%)</option>
+              <option value="0.5">Cumple Parcial (50%)</option>
+              <option value="0">No Cumple (0%)</option>
+            </select>
+          </td>
+          <td class="py-2.5 px-2">
+            <input type="text" placeholder="Sin hallazgos..." class="w-full px-2 py-1 rounded bg-zinc-900/70 border border-white/10 text-xs text-zinc-200">
+          </td>
+        </tr>
+      `).join('');
+      recalcAudit();
+    }
+
+    function recalcAudit() {
+      let total = 0;
+      let criticalFailed = false;
+      AUDIT_ITEMS.forEach((item, idx) => {
+        const factor = parseFloat(document.getElementById('audSel_' + idx).value || '1');
+        total += item.max * factor;
+        if (item.crit && factor === 0) criticalFailed = true;
+      });
+      const scoreEl = document.getElementById('audTotalScore');
+      const badgeEl = document.getElementById('audConceptBadge');
+      scoreEl.textContent = `${total.toFixed(1)} / 100 pts (${total.toFixed(1)}%)`;
+
+      if (total >= 90 && !criticalFailed) {
+        scoreEl.className = 'text-2xl font-black text-emerald-400 mt-0.5';
+        badgeEl.innerHTML = '✅ CONCEPTO FAVORABLE (90% – 100%)';
+      } else if (total >= 60 && !criticalFailed) {
+        scoreEl.className = 'text-2xl font-black text-amber-400 mt-0.5';
+        badgeEl.innerHTML = '⚠️ FAVORABLE CON REQUERIMIENTOS (60% – 89.9%)';
+      } else {
+        scoreEl.className = 'text-2xl font-black text-red-400 mt-0.5';
+        badgeEl.innerHTML = '🚨 CONCEPTO DESFAVORABLE (<60% o Fallo Crítico)';
+      }
+    }
+
+    // 4. CALCULADORA PPM Y AGUA POTABLE
+    function applyPpmPreset() {
+      const val = document.getElementById('ppmPreset').value;
+      if (val !== 'custom') {
+        document.getElementById('ppmC1').value = val;
+        calcPpm();
+      }
+    }
+
+    function calcPpm() {
+      const c1 = parseFloat(document.getElementById('ppmC1').value) || 5.25;
+      const v2 = parseFloat(document.getElementById('ppmV2').value) || 10;
+      const c2 = parseFloat(document.getElementById('ppmC2').value) || 200;
+      const v1 = (v2 * c2) / (c1 * 10);
+      document.getElementById('ppmResultVal').textContent = `${v1.toFixed(1)} mL`;
+      document.getElementById('ppmResultText').innerHTML = `Agregar <strong>${v1.toFixed(1)} mL</strong> de desinfectante concentrado al <strong>${c1}%</strong> en <strong>${v2} Litros</strong> de agua potable para obtener una solución exacta a <strong>${c2} ppm</strong>.`;
+    }
+
+    function checkWater() {
+      const cl = parseFloat(document.getElementById('waterCl').value);
+      const ph = parseFloat(document.getElementById('waterPh').value);
+      const box = document.getElementById('waterStatusBox');
+      const clOk = cl >= 0.3 && cl <= 2.0;
+      const phOk = ph >= 6.5 && ph <= 9.0;
+
+      if (clOk && phOk) {
+        box.className = 'p-4 rounded-xl bg-emerald-950/70 border border-emerald-400 text-xs text-emerald-100 leading-relaxed';
+        box.innerHTML = `✅ <strong>AGUA APTA PARA PROCESAMIENTO DE ALIMENTOS:</strong> Cloro Residual Libre (${cl} mg/L) y pH (${ph}) cumplen estrictamente la Resolución 2115 de 2007. Registrar en formato <code>FOR-PSB-002</code>.`;
+      } else {
+        box.className = 'p-4 rounded-xl bg-red-950/80 border border-red-400 text-xs text-red-100 leading-relaxed';
+        box.innerHTML = `🚨 <strong>ALERTA SANITARIA EN AGUA POTABLE:</strong> ${!clOk ? `Cloro (${cl} mg/L) fuera del rango legal (0.3 – 2.0 mg/L). ` : ''}${!phOk ? `pH (${ph}) fuera del rango legal (6.5 – 9.0). ` : ''}Detener uso en proceso directo, ajustar dosificación del tanque y registrar acción correctiva en <code>FOR-PSB-002</code>.`;
+      }
+    }
+
+    // 5. GENERADOR DE COTIZACIONES PDF B2B
+    const CATALOG_SERVICES = [
+      { id: 'pliego1', name: 'Pliego 1: Implementación BPM + Plan de Saneamiento POES + Curso 10h (Res. 2674/2013)', deliverables: 'Diagnóstico sanitario inicial (100 pts), los 4 programas POES en ppm, formatos FOR-PSB-001 a 004, Curso 10h con carnés y acompañamiento INVIMA.', price: 700000, checked: true },
+      { id: 'pliego2', name: 'Pliego 2: Tablas Nutricionales, Sellos Octogonales y Reformulación (Res. 810 y 2492)', deliverables: 'Cálculo estandarizado ICBF TCAC 2018, sellos frontales vectoriales SVG, auditoría de etiqueta Res. 5109/2005 y asesoría Clean Label.', price: 450000, checked: true },
+      { id: 'pliego3', name: 'Pliego 3: Trámite Regulatorio INVIMA (RSA / PSA / NSA) + Gestión Ley 2069', deliverables: 'Clasificación de riesgo Res. 719/2015, fichas técnicas de producto, radicación en plataforma INVIMA y gestión de Tarifa $0 para microempresas.', price: 650000, checked: false },
+      { id: 'pliego4', name: 'Pliego 4: Diseño e Implementación Sistema HACCP + TACCP + VACCP (Dec. 60/2002)', deliverables: 'Levantamiento de los 12 pasos y 7 principios Codex, matriz PCC/PPRO, Defensa Alimentaria, Fraude y criterios microbiológicos Res. 1407/2022.', price: 1200000, checked: false },
+      { id: 'pliego5', name: 'Servicio 5: Diseño Higiénico de Planta de Alimentos (Criterios EHEDG)', deliverables: 'Layout sanitario con flujos unidireccionales, zonificación por colores, especificación de pisos/drenajes/medias cañas y acero INOX 304/316.', price: 1500000, checked: false },
+      { id: 'pliego6', name: 'Servicio 6: Curso Corporativo Manipulación de Alimentos (10 Horas — Res. 2674)', deliverables: 'Capacitación teórico-práctica de 10 horas, evaluación escrita calificada (≥80%), emisión de Certificados y Carnés para manipuladores.', price: 350000, checked: false }
+    ];
+
+    function initQuoteBuilder() {
+      const container = document.getElementById('quoteItemsSelector');
+      container.innerHTML = CATALOG_SERVICES.map((s, idx) => `
+        <div class="p-3 rounded-xl bg-zinc-900/90 border border-white/10 flex flex-col justify-between gap-2">
+          <label class="flex items-start gap-2 cursor-pointer text-xs font-bold text-white">
+            <input type="checkbox" id="qChk_${idx}" ${s.checked ? 'checked' : ''} onchange="renderQuotePreview()" class="mt-0.5 accent-emerald-400">
+            <span>${s.name}</span>
+          </label>
+          <div class="flex items-center justify-between gap-2 pl-5">
+            <span class="text-[11px] text-zinc-400">Valor (COP):</span>
+            <input type="number" id="qPrice_${idx}" value="${s.price}" step="50000" oninput="renderQuotePreview()" class="w-36 px-2.5 py-1 rounded bg-zinc-950 border border-emerald-500/40 text-xs font-mono text-emerald-300 font-bold text-right">
+          </div>
+        </div>
+      `).join('');
+      renderQuotePreview();
+    }
+
+    function formatCOP(num) {
+      return '$' + Math.round(num).toLocaleString('es-CO') + ' COP';
+    }
+
+    function renderQuotePreview() {
+      const client = document.getElementById('qClientName').value || 'Cliente';
+      const company = document.getElementById('qCompany').value || 'Empresa';
+      const validity = document.getElementById('qValidity').value || '15 días';
+      const today = new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      document.getElementById('qPrintDate').textContent = `Fecha: ${today}`;
+      document.getElementById('qPrintClient').textContent = `Para: ${client} — ${company}`;
+      document.getElementById('qPrintValidity').textContent = `Validez: ${validity}`;
+
+      let total = 0;
+      const rows = [];
+      CATALOG_SERVICES.forEach((s, idx) => {
+        const chk = document.getElementById('qChk_' + idx);
+        const price = parseFloat(document.getElementById('qPrice_' + idx).value) || 0;
+        if (chk && chk.checked) {
+          total += price;
+          rows.push(`
+            <tr>
+              <td class="p-2.5 font-bold text-slate-900">${s.name}</td>
+              <td class="p-2.5 text-slate-700">${s.deliverables}</td>
+              <td class="p-2.5 text-right font-mono font-bold text-emerald-900">${formatCOP(price)}</td>
+            </tr>
+          `);
+        }
+      });
+
+      document.getElementById('qPrintTableBody').innerHTML = rows.length ? rows.join('') : '<tr><td colspan="3" class="p-4 text-center text-slate-500">Selecciona al menos un servicio arriba.</td></tr>';
+      document.getElementById('qPrintTotal').textContent = formatCOP(total);
+    }
+
+    function sendQuoteViaWa() {
+      const client = document.getElementById('qClientName').value || 'Cliente';
+      const company = document.getElementById('qCompany').value || 'tu empresa';
+      const rawPhone = (document.getElementById('qClientWa').value || '').replace(/\D/g, '');
+      const phone = rawPhone.length === 10 ? '57' + rawPhone : (rawPhone || '573157172270');
+
+      let total = 0;
+      const selectedList = [];
+      CATALOG_SERVICES.forEach((s, idx) => {
+        const chk = document.getElementById('qChk_' + idx);
+        const price = parseFloat(document.getElementById('qPrice_' + idx).value) || 0;
+        if (chk && chk.checked) {
+          total += price;
+          selectedList.push(`• ${s.name}: *${formatCOP(price)}*`);
+        }
+      });
+
+      const msg = [
+        `¡Hola *${client}*! Te saludamos de *AYC Ingeniería y Asesorías de Alimentos* 🛡️.`,
+        ``,
+        `Aquí tienes el resumen de la propuesta técnica "Llave en Mano" para *${company}*:`,
+        ...selectedList,
+        ``,
+        `💰 *Inversión Total:* *${formatCOP(total)}*`,
+        `🎁 *Bono 72h Incluido:* Pre-Auditoría de 1 Etiqueta Nutricional (Res. 2492) o Diagnóstico Sanitario Inicial sin costo.`,
+        ``,
+        `¿Agendamos el inicio de actividades esta semana?`
+      ].join('\n');
+
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // 6. BIBLIOTECA DE 18 NORMAS OFICIALES EN PDF
+    const OFFICIAL_PDFS = [
+      { cat: 'BPM & Saneamiento', title: 'Resolución 2674 de 2013 (BPM e INVIMA)', file: 'Resolucion_2674_de_2013_BPM.pdf' },
+      { cat: 'Agua Potable', title: 'Resolución 2115 de 2007 (Calidad Agua Potable)', file: 'Resolucion_2115_de_2007_Calidad_Agua_Potable.pdf' },
+      { cat: 'Etiquetado y Sellos', title: 'Resolución 810 de 2021 (Tabla Nutricional)', file: 'Resolucion_810_de_2021_Etiquetado_Nutricional.pdf' },
+      { cat: 'Etiquetado y Sellos', title: 'Resolución 2492 de 2022 (Sellos Octogonales)', file: 'Resolucion_2492_de_2022_Sellos_Octogonales.pdf' },
+      { cat: 'Etiquetado y Sellos', title: 'Resolución 254 de 2023 (Corrección Etiquetado)', file: 'Resolucion_254_de_2023_Correccion_Etiquetado.pdf' },
+      { cat: 'Rotulado General', title: 'Resolución 5109 de 2005 (Rotulado General)', file: 'Resolucion_5109_de_2005_Rotulado_General.pdf' },
+      { cat: 'Trámites INVIMA', title: 'Resolución 719 de 2015 (Clasificación Riesgo)', file: 'Resolucion_719_de_2015_Clasificacion_Riesgo_Alimentos.pdf' },
+      { cat: 'Tarifa $0 INVIMA', title: 'Ley 2069 de 2020 (Emprendimiento y Tarifas INVIMA)', file: 'Ley_2069_de_2020_Emprendimiento_Tarifas_INVIMA.pdf' },
+      { cat: 'HACCP & Inocuidad', title: 'Decreto 60 de 2002 (Certificación Sistema HACCP)', file: 'Decreto_60_de_2002_HACCP.pdf' },
+      { cat: 'HACCP & Inocuidad', title: 'Codex Alimentarius CXC 1-1969 (Rev. 2020/2022)', file: 'Codex_Alimentarius_CXC_1_1969_Rev_2020_2022_ES.pdf' },
+      { cat: 'Microbiología', title: 'Resolución 1407 de 2022 (Criterios Microbiológicos)', file: 'Resolucion_1407_de_2022_Criterios_Microbiologicos_Alimentos.pdf' },
+      { cat: 'Cárnicos', title: 'Decreto 1500 de 2007 (Inspección Cárnicos)', file: 'Decreto_1500_de_2007_Carnicos.pdf' },
+      { cat: 'Envases y Equipos', title: 'Resolución 683 de 2012 (Materiales en Contacto)', file: 'Resolucion_683_de_2012_Envases_Equipos_Contacto_Alimentos.pdf' },
+      { cat: 'Envases Metálicos', title: 'Resolución 4142 de 2012 (Envases Metálicos)', file: 'Resolucion_4142_de_2012_Envases_Metalicos.pdf' },
+      { cat: 'Envases Plásticos', title: 'Resolución 4143 de 2012 (Envases Plásticos)', file: 'Resolucion_4143_de_2012_Envases_Plasticos_Elastomeros.pdf' },
+      { cat: 'Reducción de Sodio', title: 'Resolución 2013 de 2020 (Metas de Sodio)', file: 'Resolucion_2013_de_2020_Reduccion_Sodio.pdf' },
+      { cat: 'Reducción de Sodio', title: 'Resolución 2056 de 2023 (Modificación Sodio)', file: 'Resolucion_2056_de_2023_Modificacion_Sodio.pdf' },
+      { cat: 'Bebidas INVIMA', title: 'Regulación Bebidas Hidratantes y Energéticas', file: 'Regulación Colombiana de Bebidas Hidratantes-Energéticas.pdf' }
+    ];
+
+    function initPdfLibrary() {
+      const grid = document.getElementById('pdfLibraryGrid');
+      grid.innerHTML = OFFICIAL_PDFS.map(p => `
+        <a href="./normas/${encodeURIComponent(p.file)}" target="_blank" class="p-4 rounded-2xl glass-card hover:border-emerald-400 transition flex flex-col justify-between gap-2 group">
+          <div>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono text-[10px] font-bold">${p.cat}</span>
+            <h3 class="text-xs sm:text-sm font-extrabold text-white group-hover:text-emerald-300 transition mt-1.5">${p.title}</h3>
+          </div>
+          <div class="text-[11px] font-bold text-amber-300 flex items-center justify-between pt-2 border-t border-white/10">
+            <span>📄 Abrir Documento PDF Oficial</span>
+            <span>↗</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initAuditTable();
+      calcPpm();
+      initQuoteBuilder();
+      initPdfLibrary();
+    });
+  </script>
+</body>
+</html>

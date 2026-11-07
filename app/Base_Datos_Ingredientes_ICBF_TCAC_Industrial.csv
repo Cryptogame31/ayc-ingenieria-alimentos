@@ -1,0 +1,84 @@
+Codigo_ICBF;Grupo_Alimento;Nombre_Ingrediente;Kcal_100g;Grasa_Total_g;Grasa_Saturada_g;Grasa_Trans_mg;Carbohidratos_g;Fibra_g;Azucares_Totales_g;Azucares_Anadidos_g;Proteina_g;Sodio_mg;Vitamina_D_ug;Hierro_mg;Calcio_mg;Zinc_mg;Aporta_Azucar_Anadido;Aporta_Grasa_Anadida;Aporta_Sodio_Anadido;Es_Edulcorante;Alergeno_Declarable
+C001;Cereales y Derivados;Harina de trigo fortificada todo uso;364;1.0;0.2;0;76.3;2.7;0.3;0;10.3;2;0;4.6;15;0.7;NO;NO;NO;NO;Gluten (Trigo)
+C002;Cereales y Derivados;Harina de trigo integral;340;2.5;0.4;0;72.0;10.7;0.4;0;13.2;2;0;3.6;34;2.6;NO;NO;NO;NO;Gluten (Trigo)
+C003;Cereales y Derivados;Avena en hojuelas;389;6.9;1.2;0;66.3;10.6;0.8;0;16.9;2;0;4.7;54;4.0;NO;NO;NO;NO;Gluten (Avena)
+C004;Cereales y Derivados;Harina de maíz blanco precocida;365;3.6;0.5;0;77.0;7.3;0.6;0;7.5;5;0;3.8;18;1.7;NO;NO;NO;NO;Ninguno
+C005;Cereales y Derivados;Harina de maíz amarillo precocida;362;3.3;0.5;0;76.9;7.3;0.6;0;8.1;35;0;3.5;6;1.8;NO;NO;NO;NO;Ninguno
+C006;Cereales y Derivados;Arroz blanco pulido crudo;365;0.7;0.2;0;80.0;1.3;0.1;0;7.1;5;0;0.8;28;1.1;NO;NO;NO;NO;Ninguno
+C007;Cereales y Derivados;Almidón de maíz (Maizena);381;0.1;0.0;0;91.3;0.9;0.0;0;0.3;9;0;0.5;2;0.1;NO;NO;NO;NO;Ninguno
+C008;Cereales y Derivados;Quinua en grano o harina;368;6.1;0.7;0;64.2;7.0;1.6;0;14.1;5;0;4.6;47;3.1;NO;NO;NO;NO;Ninguno
+T001;Tubérculos y Plátanos;Almidón de yuca (agrio o dulce);355;0.2;0.0;0;87.5;0.5;0.0;0;0.4;4;0;1.0;18;0.1;NO;NO;NO;NO;Ninguno
+T002;Tubérculos y Plátanos;Yuca blanca cruda;160;0.3;0.1;0;38.1;1.8;1.7;0;1.4;14;0;0.3;16;0.3;NO;NO;NO;NO;Ninguno
+T003;Tubérculos y Plátanos;Plátano hartón verde crudo;135;0.2;0.1;0;34.4;2.3;1.5;0;1.2;4;0;0.6;3;0.1;NO;NO;NO;NO;Ninguno
+T004;Tubérculos y Plátanos;Plátano hartón maduro crudo;122;0.4;0.1;0;31.9;2.3;15.0;0;1.3;4;0;0.6;3;0.1;NO;NO;NO;NO;Ninguno
+T005;Tubérculos y Plátanos;Papa común cruda sin cáscara;77;0.1;0.0;0;17.5;2.2;0.8;0;2.0;6;0;0.8;12;0.3;NO;NO;NO;NO;Ninguno
+T006;Tubérculos y Plátanos;Papa criolla cruda;87;0.1;0.0;0;20.1;1.8;1.1;0;1.9;6;0;0.9;9;0.4;NO;NO;NO;NO;Ninguno
+A001;Azúcares y Endulzantes;Azúcar blanco refinado o común;387;0.0;0.0;0;99.9;0.0;99.9;99.9;0.0;1;0;0.1;1;0.0;SI;NO;NO;NO;Ninguno
+A002;Azúcares y Endulzantes;Azúcar morena;380;0.0;0.0;0;98.1;0.0;97.0;97.0;0.1;28;0;0.7;83;0.0;SI;NO;NO;NO;Ninguno
+A003;Azúcares y Endulzantes;Panela colombiana en bloque o pulverizada;351;0.1;0.0;0;91.0;0.0;89.5;89.5;0.5;18;0;2.8;80;0.2;SI;NO;NO;NO;Ninguno
+A004;Azúcares y Endulzantes;Miel de abejas pura;304;0.0;0.0;0;82.4;0.2;82.1;82.1;0.3;4;0;0.4;6;0.2;SI;NO;NO;NO;Ninguno
+A005;Azúcares y Endulzantes;Jarabe de glucosa / maíz;316;0.0;0.0;0;79.0;0.0;45.0;45.0;0.0;55;0;0.1;12;0.0;SI;NO;NO;NO;Ninguno
+A006;Azúcares y Endulzantes;Maltodextrina en polvo;380;0.0;0.0;0;95.0;0.0;6.0;6.0;0.0;40;0;0.0;5;0.0;SI;NO;NO;NO;Ninguno
+A007;Azúcares y Endulzantes;Arequipe / Dulce de leche;315;7.4;4.5;120;55.4;0.0;49.5;42.0;6.8;129;0.1;0.2;251;0.9;SI;SI;NO;NO;Leche (Lactosa)
+A008;Azúcares y Endulzantes;Polidextrosa / Fibra soluble;100;0.0;0.0;0;90.0;85.0;0.0;0.0;0.0;10;0;0.0;0;0.0;NO;NO;NO;NO;Ninguno
+A009;Azúcares y Endulzantes;Eritritol (Polialcohol edulcorante);20;0.0;0.0;0;100.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;NO;NO;SI;Ninguno
+A010;Azúcares y Endulzantes;Estevia (Glucósidos de esteviol) / Sucralosa;0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;NO;NO;SI;Ninguno
+G001;Grasas y Aceites;Aceite vegetal de girasol / soya / maíz;884;100.0;11.0;150;0.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;SI;NO;NO;Ninguno
+G002;Grasas y Aceites;Aceite de palma refinado (oleína);884;100.0;49.3;200;0.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;SI;NO;NO;Ninguno
+G003;Grasas y Aceites;Aceite de oliva extra virgen;884;100.0;13.8;0;0.0;0.0;0.0;0.0;0.0;2;0;0.6;1;0.0;NO;SI;NO;NO;Ninguno
+G004;Grasas y Aceites;Aceite de coco virgen;862;100.0;86.5;0;0.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;SI;NO;NO;Ninguno
+G005;Grasas y Aceites;Mantequilla de vaca con sal;717;81.1;51.4;2500;0.1;0.0;0.1;0.0;0.9;643;1.5;0.0;24;0.1;NO;SI;SI;NO;Leche
+G006;Grasas y Aceites;Mantequilla de vaca sin sal;717;81.1;51.4;2500;0.1;0.0;0.1;0.0;0.9;11;1.5;0.0;24;0.1;NO;SI;NO;NO;Leche
+G007;Grasas y Aceites;Margarina industrial panadería / repostería;717;80.4;35.0;450;0.7;0.0;0.0;0.0;0.2;750;0;0.0;15;0.0;NO;SI;SI;NO;Ninguno
+G008;Grasas y Aceites;Manteca vegetal hidrogenada;884;100.0;42.0;1200;0.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;SI;NO;NO;Ninguno
+L001;Lácteos y Derivados;Leche de vaca entera líquida pasteurizada;61;3.3;1.9;80;4.8;0.0;4.8;0.0;3.2;43;1.0;0.0;113;0.4;NO;NO;NO;NO;Leche (Lactosa)
+L002;Lácteos y Derivados;Leche de vaca descremada líquida;34;0.1;0.1;0;5.0;0.0;5.0;0.0;3.4;42;1.0;0.0;122;0.4;NO;NO;NO;NO;Leche (Lactosa)
+L003;Lácteos y Derivados;Leche entera en polvo;496;26.7;16.7;600;38.4;0.0;38.4;0.0;26.3;371;2.0;0.5;912;3.3;NO;NO;NO;NO;Leche (Lactosa)
+L004;Lácteos y Derivados;Leche descremada en polvo;362;0.8;0.5;0;52.0;0.0;52.0;0.0;36.2;535;2.0;0.3;1257;4.1;NO;NO;NO;NO;Leche (Lactosa)
+L005;Lácteos y Derivados;Suero de leche dulce en polvo;353;1.1;0.7;0;74.5;0.0;74.5;0.0;12.9;1079;0.0;0.9;796;2.0;NO;NO;NO;NO;Leche (Lactosa)
+L006;Lácteos y Derivados;Crema de leche entera (35% grasa);340;35.0;22.0;900;2.8;0.0;2.8;0.0;2.1;34;0.7;0.0;65;0.2;NO;SI;NO;NO;Leche (Lactosa)
+L007;Lácteos y Derivados;Queso campesino / fresco colombiano;264;20.2;12.8;400;2.5;0.0;1.5;0.0;17.8;480;0.4;0.2;490;2.2;NO;NO;SI;NO;Leche (Lactosa)
+L008;Lácteos y Derivados;Queso doble crema / mozzarella colombiano;300;22.4;13.9;450;2.2;0.0;1.0;0.0;22.2;627;0.4;0.4;505;2.9;NO;NO;SI;NO;Leche (Lactosa)
+L009;Lácteos y Derivados;Queso costeño salado;325;25.0;15.8;500;1.8;0.0;0.8;0.0;23.0;1250;0.4;0.3;610;3.1;NO;NO;SI;NO;Leche (Lactosa)
+L010;Lácteos y Derivados;Cuajada fresca;215;15.5;9.8;300;3.2;0.0;2.5;0.0;15.8;240;0.2;0.2;420;1.8;NO;NO;SI;NO;Leche (Lactosa)
+P001;Carnes, Aves, Pescados y Huevos;Huevo de gallina entero crudo (sin cáscara);143;9.5;3.1;38;0.7;0.0;0.4;0.0;12.6;142;2.0;1.8;56;1.3;NO;NO;NO;NO;Huevo
+P002;Carnes, Aves, Pescados y Huevos;Clara de huevo líquida;52;0.2;0.0;0;0.7;0.0;0.7;0.0;10.9;166;0.0;0.1;7;0.0;NO;NO;NO;NO;Huevo
+P003;Carnes, Aves, Pescados y Huevos;Yema de huevo líquida;322;26.5;9.6;70;3.6;0.0;0.6;0.0;15.9;48;5.4;2.7;129;2.3;NO;NO;NO;NO;Huevo
+P004;Carnes, Aves, Pescados y Huevos;Carne de res magra cruda;135;4.6;1.8;120;0.0;0.0;0.0;0.0;21.9;57;0.1;2.6;12;4.8;NO;NO;NO;NO;Ninguno
+P005;Carnes, Aves, Pescados y Huevos;Carne de res semigorda (80/20) para hamburguesa;254;20.0;7.8;450;0.0;0.0;0.0;0.0;17.2;66;0.1;1.9;18;4.2;NO;NO;NO;NO;Ninguno
+P006;Carnes, Aves, Pescados y Huevos;Pechuga de pollo sin piel cruda;120;2.6;0.6;15;0.0;0.0;0.0;0.0;22.5;45;0.1;0.4;5;0.7;NO;NO;NO;NO;Ninguno
+P007;Carnes, Aves, Pescados y Huevos;Carne de cerdo magra (lomo/pierna) cruda;143;5.4;1.9;25;0.0;0.0;0.0;0.0;21.8;52;0.5;0.9;14;2.1;NO;NO;NO;NO;Ninguno
+P008;Carnes, Aves, Pescados y Huevos;Tocino / Grasa dorsal de cerdo;648;68.0;25.2;180;0.0;0.0;0.0;0.0;8.5;160;0.8;0.5;7;1.1;NO;SI;NO;NO;Ninguno
+P009;Carnes, Aves, Pescados y Huevos;Filete de tilapia / mojarra crudo;96;1.7;0.6;0;0.0;0.0;0.0;0.0;20.1;52;3.1;0.6;10;0.3;NO;NO;NO;NO;Pescado
+F001;Frutas Colombianas y Pulpas;Pulpa de mora de Castilla;43;0.5;0.0;0;9.6;5.3;4.9;0.0;1.4;1;0;0.6;29;0.5;NO;NO;NO;NO;Ninguno
+F002;Frutas Colombianas y Pulpas;Pulpa de lulo;25;0.1;0.0;0;5.9;1.4;3.7;0.0;0.7;4;0;0.4;8;0.1;NO;NO;NO;NO;Ninguno
+F003;Frutas Colombianas y Pulpas;Pulpa de maracuyá;68;0.4;0.0;0;15.8;1.5;11.2;0.0;1.5;19;0;1.3;11;0.1;NO;NO;NO;NO;Ninguno
+F004;Frutas Colombianas y Pulpas;Pulpa de guayaba rosada / blanca;68;1.0;0.3;0;14.3;5.4;8.9;0.0;2.6;2;0;0.3;18;0.2;NO;NO;NO;NO;Ninguno
+F005;Frutas Colombianas y Pulpas;Pulpa de mango maduro;60;0.4;0.1;0;15.0;1.6;13.7;0.0;0.8;1;0;0.2;11;0.1;NO;NO;NO;NO;Ninguno
+F006;Frutas Colombianas y Pulpas;Pulpa de guanábana;66;0.3;0.1;0;16.8;3.3;13.5;0.0;1.0;14;0;0.6;14;0.1;NO;NO;NO;NO;Ninguno
+F007;Frutas Colombianas y Pulpas;Uchuva fresca;53;0.7;0.1;0;11.2;1.9;7.8;0.0;1.9;1;0;1.0;9;0.2;NO;NO;NO;NO;Ninguno
+F008;Frutas Colombianas y Pulpas;Fresa fresca;32;0.3;0.0;0;7.7;2.0;4.9;0.0;0.7;1;0;0.4;16;0.1;NO;NO;NO;NO;Ninguno
+F009;Frutas Colombianas y Pulpas;Banano común maduro;89;0.3;0.1;0;22.8;2.6;12.2;0.0;1.1;1;0;0.3;5;0.2;NO;NO;NO;NO;Ninguno
+F010;Frutas Colombianas y Pulpas;Coco rallado deshidratado sin azúcar;660;64.5;57.2;0;23.7;16.3;7.4;0.0;6.9;37;0;3.3;26;2.0;NO;NO;NO;NO;Ninguno
+V001;Hortalizas y Leguminosas;Tomate chonto / milano maduro;18;0.2;0.0;0;3.9;1.2;2.6;0.0;0.9;5;0;0.3;10;0.2;NO;NO;NO;NO;Ninguno
+V002;Hortalizas y Leguminosas;Cebolla cabezona blanca;40;0.1;0.0;0;9.3;1.7;4.2;0.0;1.1;4;0;0.2;23;0.2;NO;NO;NO;NO;Ninguno
+V003;Hortalizas y Leguminosas;Ajo fresco o en pasta pura;149;0.5;0.1;0;33.1;2.1;1.0;0.0;6.4;17;0;1.7;181;1.2;NO;NO;NO;NO;Ninguno
+V004;Hortalizas y Leguminosas;Proteína aislada de soya (90%);338;3.4;0.4;0;0.0;0.0;0.0;0.0;88.3;1005;0;14.5;178;4.0;NO;NO;NO;NO;Soya
+V005;Hortalizas y Leguminosas;Proteína texturizada de soya (CARVE seco);336;1.2;0.2;0;30.0;17.5;8.0;0.0;51.5;15;0;9.2;241;4.2;NO;NO;NO;NO;Soya
+V006;Hortalizas y Leguminosas;Garbanzo / Lenteja / Fríjol seco;352;2.5;0.4;0;62.0;15.0;3.0;0.0;23.0;12;0;6.2;75;3.3;NO;NO;NO;NO;Ninguno
+K001;Cacao, Nueces y Semillas;Cacao en polvo natural alcalinizado (10-12% grasa);228;13.7;8.1;0;57.9;33.2;1.8;0.0;19.6;21;0;13.9;128;6.8;NO;NO;NO;NO;Ninguno
+K002;Cacao, Nueces y Semillas;Licor / Pasta de cacao 100%;598;53.0;32.5;0;28.0;16.0;1.5;0.0;12.0;8;0;11.9;73;3.3;NO;NO;NO;NO;Ninguno
+K003;Cacao, Nueces y Semillas;Manteca de cacao pura;884;100.0;59.7;0;0.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;SI;NO;NO;Ninguno
+K004;Cacao, Nueces y Semillas;Maní tostado sin sal (o pasta de maní);587;49.7;6.9;0;21.3;8.4;4.9;0.0;24.4;6;0;2.3;58;3.3;NO;NO;NO;NO;Maní
+K005;Cacao, Nueces y Semillas;Almendra entera o harina de almendras;579;49.9;3.8;0;21.6;12.5;4.4;0.0;21.2;1;0;3.7;269;3.1;NO;NO;NO;NO;Frutos de cáscara (Almendra)
+I001;Sales, Agua y Aditivos;Agua potable tratada;0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;2;0;0.0;3;0.0;NO;NO;NO;NO;Ninguno
+I002;Sales, Agua y Aditivos;Sal común yodada (Cloruro de Sodio);0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;38758;0;0.3;24;0.1;NO;NO;SI;NO;Ninguno
+I003;Sales, Agua y Aditivos;Sal reducida en sodio (50% NaCl / 50% KCl);0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;19300;0;0.0;10;0.0;NO;NO;SI;NO;Ninguno
+I004;Sales, Agua y Aditivos;Polvo para hornear (doble acción);53;0.0;0.0;0;27.7;0.2;0.0;0.0;0.1;10600;0;11.0;5876;0.1;NO;NO;SI;NO;Ninguno
+I005;Sales, Agua y Aditivos;Bicarbonato de sodio grado alimenticio;0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;27360;0;0.0;0;0.0;NO;NO;SI;NO;Ninguno
+I006;Sales, Agua y Aditivos;Benzoato de sodio / Sorbato de potasio (Conservante);0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;15900;0;0.0;0;0.0;NO;NO;SI;NO;Ninguno
+I007;Sales, Agua y Aditivos;Ácido cítrico / Ácido ascórbico;0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;0;0;0.0;0;0.0;NO;NO;NO;NO;Ninguno
+I008;Sales, Agua y Aditivos;Goma xantana / Goma guar / CMC;320;0.0;0.0;0;80.0;80.0;0.0;0.0;0.0;1200;0;0.0;0;0.0;NO;NO;NO;NO;Ninguno
+I009;Sales, Agua y Aditivos;Lecitina de soya líquida;763;100.0;15.0;0;0.0;0.0;0.0;0.0;0.0;10;0;0.0;10;0.0;NO;SI;NO;NO;Soya
+I010;Sales, Agua y Aditivos;Polifosfato de sodio / Tripolifosfato (Embutidos);0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;31200;0;0.0;0;0.0;NO;NO;SI;NO;Ninguno
+I011;Sales, Agua y Aditivos;Nitrito de sodio / Sal de cura (6% nitrito);0;0.0;0.0;0;0.0;0.0;0.0;0.0;0.0;37500;0;0.0;0;0.0;NO;NO;SI;NO;Ninguno

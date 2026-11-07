@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentación Interactiva y Generador de Certificados/Carnés: Curso Manipulación de Alimentos (10 Horas - Res. 2674/2013)</title>
+  <style>
+    :root {
+      --primary: #0b5d3b;
+      --primary-dark: #063923;
+      --primary-light: #e6f4ed;
+      --gold: #b45309;
+      --dark: #111827;
+      --gray: #4b5563;
+    }
+    * { box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { margin: 0; background: #0f172a; color: var(--dark); }
+    .top-bar { background: #1e293b; color: #fff; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
+    .top-bar .brand { font-weight: 800; font-size: 1rem; color: #4ade80; }
+    .nav-btns { display: flex; gap: 8px; }
+    .nav-btns button { background: #334155; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
+    .nav-btns button.active { background: #16a34a; }
+
+    /* Visor de Diapositivas */
+    #viewSlides { max-width: 1120px; margin: 28px auto; padding: 0 20px; }
+    .slide-card { background: #fff; border-radius: 16px; min-height: 560px; padding: 42px 52px; box-shadow: 0 20px 45px rgba(0,0,0,0.35); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; border-top: 10px solid var(--primary); }
+    .slide-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 5px 12px; border-radius: 99px; font-weight: 800; font-size: 0.8rem; margin-bottom: 12px; }
+    .slide-title { font-size: 2rem; font-weight: 900; color: var(--primary-dark); margin: 0 0 18px 0; line-height: 1.2; }
+    .slide-body { font-size: 1.08rem; line-height: 1.6; color: #1f2937; flex: 1; }
+    .slide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 14px; }
+    .slide-box { background: #f8fafc; border-left: 5px solid var(--primary); padding: 16px 20px; border-radius: 8px; }
+    .slide-box h4 { margin: 0 0 8px 0; color: var(--primary-dark); font-size: 1.05rem; }
+    .slide-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 16px; margin-top: 24px; font-size: 0.85rem; color: var(--gray); }
+    .notes-box { background: #fef3c7; border: 1px solid #f59e0b; color: #78350f; padding: 14px 18px; border-radius: 10px; margin-top: 16px; font-size: 0.92rem; }
+    .controls-bar { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 20px; }
+    .controls-bar button { background: var(--primary); color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+
+    /* Generador de Certificado + Carné */
+    #viewCert { max-width: 1120px; margin: 28px auto; padding: 0 20px; display: none; }
+    .cert-form { background: #1e293b; color: #fff; padding: 20px; border-radius: 12px; margin-bottom: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .cert-form label { display: block; font-size: 0.78rem; color: #cbd5e1; margin-bottom: 4px; }
+    .cert-form input { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; }
+    .cert-sheet { background: #fff; padding: 36px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .diploma { border: 6px double var(--primary); padding: 32px; text-align: center; background: #fffdf9; margin-bottom: 28px; }
+    .diploma h2 { color: var(--primary-dark); font-size: 1.7rem; margin: 6px 0; letter-spacing: 1px; }
+    .diploma .student-name { font-size: 1.85rem; font-weight: 900; color: #111827; border-bottom: 2px solid var(--gold); display: inline-block; padding: 4px 28px; margin: 12px 0; }
+    .signatures { display: flex; justify-content: space-around; margin-top: 36px; padding-top: 12px; }
+    .sig-block { border-top: 1.5px solid #111827; width: 240px; padding-top: 6px; font-size: 0.84rem; }
+
+    /* Carné recortable */
+    .carnet { width: 420px; margin: 0 auto; border: 2px dashed var(--primary); border-radius: 10px; padding: 16px; background: #f8fafc; display: flex; flex-direction: column; gap: 6px; }
+    .carnet-header { background: var(--primary); color: #fff; padding: 8px 12px; border-radius: 6px; font-weight: 800; font-size: 0.88rem; text-align: center; }
+    .carnet-row { font-size: 0.82rem; display: flex; justify-content: space-between; border-bottom: 1px solid #e2e8f0; padding: 3px 0; }
+
+    @media print {
+      body { background: #fff; }
+      .no-print { display: none !important; }
+      #viewCert, #viewSlides { margin: 0; padding: 0; max-width: 100%; }
+      .cert-sheet, .slide-card { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar no-print">
+  <div class="brand">CURSO CERTIFICADO MANIPULACIÓN DE ALIMENTOS (10 HORAS — RES. 2674 DE 2013)</div>
+  <div class="nav-btns">
+    <button id="btnModeSlides" class="active" onclick="cambiarVista('slides')">Diapositivas del Curso (12 Slides)</button>
+    <button id="btnModeCert" onclick="cambiarVista('cert')">Generador de Certificado + Carné</button>
+  </div>
+</div>
+
+<!-- VISTA 1: DIAPOSITIVAS INTERACTIVAS -->
+<div id="viewSlides">
+  <div id="slideRender" class="slide-card"></div>
+  <div id="speakerNotes" class="notes-box no-print"></div>
+  <div class="controls-bar no-print">
+    <button onclick="prevSlide()">◀ Anterior</button>
+    <span id="slideCounter" style="color:#fff; font-weight:700;">1 / 12</span>
+    <button onclick="nextSlide()">Siguiente ▶</button>
+  </div>
+</div>
+
+<!-- VISTA 2: GENERADOR DE CERTIFICADO Y CARNÉ -->
+<div id="viewCert">
+  <div class="cert-form no-print">
+    <div>
+      <label>Firma Consultora / Capacitadora</label>
+      <input type="text" id="cEmpresaCap" value="AYC INGENIERÍA Y ASESORÍAS DE ALIMENTOS" oninput="renderCert()">
+    </div>
+    <div>
+      <label>Nombre Completo del Manipulador</label>
+      <input type="text" id="cNombre" value="CARLOS ANDRÉS PÉREZ GÓMEZ" oninput="renderCert()">
+    </div>
+    <div>
+      <label>Cédula / Documento de Identidad</label>
+      <input type="text" id="cDoc" value="1.020.456.789" oninput="renderCert()">
+    </div>
+    <div>
+      <label>Empresa Cliente (Establecimiento)</label>
+      <input type="text" id="cCliente" value="ALIMENTOS DEL VALLE S.A.S." oninput="renderCert()">
+    </div>
+    <div>
+      <label>Nombre del Profesional Capacitador</label>
+      <input type="text" id="cInstructor" value="Ing. de Alimentos — Director Técnico" oninput="renderCert()">
+    </div>
+    <div>
+      <label>Matrícula / Tarjeta Profesional No.</label>
+      <input type="text" id="cMatricula" value="TP-254891 COPNIA / MinSalud" oninput="renderCert()">
+    </div>
+    <div>
+      <label>Fecha de Expedición</label>
+      <input type="text" id="cFecha" value="07 de Noviembre de 2026" oninput="renderCert()">
+    </div>
+    <div>
+      <label>Fecha de Vencimiento (1 Año)</label>
+      <input type="text" id="cVence" value="07 de Noviembre de 2027" oninput="renderCert()">
+    </div>
+    <div style="display:flex; align-items:end;">
+      <button onclick="window.print()" style="width:100%; background:#16a34a; color:#fff; border:none; padding:10px; border-radius:6px; font-weight:700; cursor:pointer;">Imprimir Certificado y Carné en PDF</button>
+    </div>
+  </div>
+
+  <div class="cert-sheet" id="certOutput"></div>
+</div>
+
+<script>
+const SLIDES = [
+  {
+    modulo: "MÓDULO 1 — INTRODUCCIÓN Y NORMATIVIDAD (2 HORAS)",
+    titulo: "Curso Certificado de Manipulación Higiénica de Alimentos e Inocuidad",
+    contenido: `
+      <p><strong>Marco Regulatorio Vigente en Colombia:</strong></p>
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Resolución 2674 de 2013 (MinSalud)</h4>
+          <p>Establece los requisitos sanitarios de Buenas Prácticas de Manufactura (BPM) y exige mínimo <strong>10 horas anuales</strong> de capacitación continua (Art. 12 y 13).</p>
+        </div>
+        <div class="slide-box">
+          <h4>Calidad vs. Inocuidad</h4>
+          <p><strong>Calidad</strong> es que el alimento sea rico y atractivo (negociable). <strong>Inocuidad</strong> es la garantía absoluta de que NO causará daño ni enfermedad al consumidor (INNEGOCIABLE).</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Iniciar resaltando la responsabilidad ética y legal del manipulador de alimentos frente a la salud pública y ante las visitas de inspección del INVIMA y Secretarías de Salud."
+  },
+  {
+    modulo: "MÓDULO 1 — PELIGROS EN LOS ALIMENTOS",
+    titulo: "Los 4 Tipos de Peligros Alimentarios que Debemos Prevenir",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>1. Peligros Físicos</h4>
+          <p>Vidrio roto, fragmentos metálicos, esmalte de uñas, cabello, joyas, grapas, madera, piedras o curitas.</p>
+        </div>
+        <div class="slide-box">
+          <h4>2. Peligros Químicos</h4>
+          <p>Restos de detergente o hipoclorito por mal enjuague, lubricantes mecánicos no grado alimenticio, plaguicidas.</p>
+        </div>
+        <div class="slide-box">
+          <h4>3. Peligros Biológicos (El #1 en ETA)</h4>
+          <p>Bacterias (<em>Salmonella, Listeria, E. coli, S. aureus</em>), virus (Hepatitis A, Norovirus), parásitos y hongos.</p>
+        </div>
+        <div class="slide-box">
+          <h4>4. Alérgenos Declarables</h4>
+          <p>Gluten (trigo/avena), leche, huevo, soya, maní, frutos secos, pescado, crustáceos y sulfitos.</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Mostrar ejemplos reales de hallazgos críticos del INVIMA por presencia de objetos personales o envases de químicos reenvasados en botellas de gaseosa (estrictamente prohibido)."
+  },
+  {
+    modulo: "MÓDULO 2 — MICROBIOLOGÍA APLICADA Y ETA (2 HORAS)",
+    titulo: "Las 6 Condiciones CHATTO para el Crecimiento Bacteriano",
+    contenido: `
+      <p>Una sola bacteria puede dividirse cada 20 minutos y convertirse en más de <strong>16 millones en 8 horas</strong> si encuentra estas 6 condiciones:</p>
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>C - Comida | H - Humedad | A - Acidez</h4>
+          <p>Alimentos altos en proteína y humedad (carnes, pollo, lácteos, salsas, huevos) con pH neutro son de <strong>Alto Riesgo en Salud Pública (Res. 719 de 2015)</strong>.</p>
+        </div>
+        <div class="slide-box">
+          <h4>T - Temperatura | T - Tiempo | O - Oxígeno</h4>
+          <p><strong>Zona de Peligro Térmico: 4°C a 60°C.</strong> Nunca deje alimentos de alto riesgo a temperatura ambiente por más de 2 horas.</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Explicar que el frío (refrigeración <= 4°C y congelación <= -18°C) NO mata bacterias, solo detiene o frena su multiplicación; solo la cocción (>= 74°C) o los desinfectantes las destruyen."
+  },
+  {
+    modulo: "MÓDULO 2 — ENFERMEDADES TRANSMITIDAS POR ALIMENTOS (ETA)",
+    titulo: "Los 4 Enemigos Invisibles más Peligrosos en Planta",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Staphylococcus aureus</h4>
+          <p>Habita en nariz, garganta, piel y heridas del manipulador. Produce una toxina resistente al calor si tosemos sobre el alimento o no nos lavamos las manos.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Salmonella spp. y E. coli</h4>
+          <p>Asociadas a aves crudas, huevos sucios, carne mal cocida y contaminación fecal por no lavarse las manos después de ir al baño.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Listeria monocytogenes</h4>
+          <p>Capaz de crecer en cuartos fríos (2°C - 4°C) y drenajes húmedos. Crítica en lácteos, quesos frescos y carnes frías listas para consumo.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Clostridium botulinum / perfringens</h4>
+          <p>Formadores de esporas que crecen sin oxígeno (conservas, empacados al vacío o enfriamientos lentos de grandes ollas).</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Conectar cada microorganismo con la Resolución 1407 de 2022 (Criterios Microbiológicos en Colombia)."
+  },
+  {
+    modulo: "MÓDULO 3 — SALUD E HIGIENE DEL MANIPULADOR (2 HORAS)",
+    titulo: "Estado de Salud y Dotación Reglamentaria (Art. 11 y 14 Res. 2674)",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Certificado Médico Anual (Art. 11)</h4>
+          <p>Reconocimiento médico mínimo 1 vez al año (con frotis faríngeo, KOH de uñas y coprológico). Obligación de reportar diarrea, vómito, fiebre o heridas en manos.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Dotación e Indumentaria (Art. 14)</h4>
+          <p>Uniforme color claro sin botones ni bolsillos superiores, cofia cubriendo 100% del cabello y orejas, tapabocas sobre nariz y boca, calzado cerrado impermeable.</p>
+        </div>
+      </div>
+      <p style="margin-top:14px; font-weight:700; color:#b91c1c;">PROHIBIDO EN PLANTA: Anillos, argollas, relojes, pulseras, aretes, uñas largas o con esmalte, maquillaje, comer/fumar/masticar chicle y usar celular.</p>
+    `,
+    notas: "Nota para el Instructor: Explicar por qué una argolla de matrimonio o el teléfono celular acumulan miles de UFC de enterobacterias y estafilococos."
+  },
+  {
+    modulo: "MÓDULO 3 — PROTOCOLO CLÍNICO DE LAVADO DE MANOS",
+    titulo: "Técnica Estándar de Lavado y Desinfección de Manos (60 Segundos)",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>¿Cuándo es Obligatorio Lavarse las Manos?</h4>
+          <ul>
+            <li>Antes de ingresar a planta e iniciar labores.</li>
+            <li>Después de ir al baño, toser, estornudar o tocarse el rostro.</li>
+            <li>Al cambiar de alimento crudo a cocido / listo.</li>
+            <li>Después de tocar basuras, cajas, dinero o celulares.</li>
+          </ul>
+        </div>
+        <div class="slide-box">
+          <h4>Los 6 Pasos Efectivos</h4>
+          <ol>
+            <li>Accionar lavamanos no manual (pedal/sensor/codo) y mojar hasta el antebrazo.</li>
+            <li>Aplicar jabón antibacteriano inodoro.</li>
+            <li>Frotar palmas, dorsos, entre dedos, pulgares y uñas por ≥ 20 seg.</li>
+            <li>Enjuagar con abundante agua potable.</li>
+            <li>Secar con toalla desechable de papel.</li>
+            <li>Aplicar gel antibacterial (sobre manos limpias y secas).</li>
+          </ol>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Realizar aquí el taller práctico en el filtro sanitario verificando lavado de uñas y espacios interdigitales."
+  },
+  {
+    modulo: "MÓDULO 4 — PLAN DE SANEAMIENTO BÁSICO (2 HORAS)",
+    titulo: "Programa de Limpieza y Desinfección (POES - Art. 26 Res. 2674)",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Limpiar ≠ Desinfectar</h4>
+          <p><strong>1° Limpiar:</strong> Remover grasa y suciedad visible con agua, detergente y cepillado.<br><strong>2° Enjuagar:</strong> Retirar toda la espuma.<br><strong>3° Desinfectar:</strong> Aplicar solución en <strong>ppm</strong> exactas sobre la superficie ya limpia.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Fórmula Universal de Dilución (ppm)</h4>
+          <p style="font-size:1.15rem; font-weight:800; text-align:center;">V₁ (mL) = [ V₂ (L) × C₂ (ppm) ] ÷ [ C₁ (%) × 10 ]</p>
+          <p><strong>Ejemplo (Hipoclorito al 5.25%):</strong><br>• Frutas/verduras (50-100 ppm): 1 a 2 mL por Litro.<br>• Mesones y equipos (200 ppm): 3.8 mL por Litro.<br>• Pisos y paredes (300 ppm): 5.7 mL por Litro.</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Recalcar que NUNCA se mezcla hipoclorito con detergente ni con agua caliente (se evapora el cloro y libera gases tóxicos)."
+  },
+  {
+    modulo: "MÓDULO 4 — AGUA POTABLE, RESIDUOS Y CONTROL DE PLAGAS",
+    titulo: "Los Otros 3 Pilares del Plan de Saneamiento Básico",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Agua Potable (Res. 2115 de 2007)</h4>
+          <p>Tanque de reserva para mínimo 1 día de producción, lavado cada 6 meses. Control diario en grifos:<br>• <strong>Cloro Residual Libre:</strong> 0.3 a 2.0 mg/L (ppm).<br>• <strong>pH:</strong> 6.5 a 9.0.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Residuos (Res. 2184/2019) y Plagas</h4>
+          <p><strong>Código de colores:</strong> Blanco (Aprovechables), Verde (Orgánicos), Negro (No aprovechables). Canecas con tapa de pedal.<br><strong>Plagas:</strong> Cero cebos tóxicos dentro de áreas de proceso; mallas y rejillas siempre puestas.</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Mostrar el kit comparador colorimétrico DPD de cloro y pH y explicar que un agua con 0.0 ppm de cloro es hallazgo crítico ante el INVIMA."
+  },
+  {
+    modulo: "MÓDULO 5 — CONTROLES OPERATIVOS Y PROCESO (2 HORAS)",
+    titulo: "Prevención de Contaminación Cruzada y Código de Colores",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Contaminación Cruzada Directa e Indirecta</h4>
+          <p><strong>Directa:</strong> Cuando un alimento crudo toca o gotea sobre uno cocido en la nevera.<br><strong>Indirecta:</strong> Usar el mismo cuchillo, tabla o manos sin lavar entre crudo y cocido.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Código Internacional de Tablas y Cuchillos</h4>
+          <p>🔴 <strong>Rojo:</strong> Carnes rojas crudas.<br>🟡 <strong>Amarillo:</strong> Pollo y aves crudas.<br>🔵 <strong>Azul:</strong> Pescados y mariscos.<br>🟢 <strong>Verde:</strong> Frutas y verduras.<br>⚪ <strong>Blanco:</strong> Panadería, quesos y listos.</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Explicar el orden correcto dentro de una nevera vertical (Arriba: alimentos cocidos/listos para consumo; Abajo: carnes crudas en recipientes cerrados)."
+  },
+  {
+    modulo: "MÓDULO 5 — TEMPERATURAS SEGURAS, RECEPCIÓN Y ALMACENAMIENTO",
+    titulo: "Control Térmico, Estibas y Rotación PEPS / FEFO",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Temperaturas Críticas de Seguridad</h4>
+          <ul>
+            <li><strong>Congelación:</strong> ≤ -18°C.</li>
+            <li><strong>Refrigeración:</strong> 0°C a 4°C.</li>
+            <li><strong>Mantenimiento en caliente:</strong> ≥ 60°C.</li>
+            <li><strong>Cocción interna segura:</strong> ≥ 74°C en el centro del producto.</li>
+          </ul>
+        </div>
+        <div class="slide-box">
+          <h4>Almacenamiento Sanitario y PEPS/FEFO</h4>
+          <ul>
+            <li><strong>FEFO / PEPS:</strong> Lo primero que vence es lo primero que sale.</li>
+            <li><strong>Estibas plásticas:</strong> Mínimo a 15 cm del piso y 50 cm de las paredes.</li>
+            <li>Todo producto abierto debe rotularse con nombre, fecha de apertura y fecha de vencimiento interna.</li>
+          </ul>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Explicar los 3 métodos seguros de descongelación permitidos por INVIMA (en refrigeración a 4°C, bajo chorro de agua fría potable corriendo o como parte directa de la cocción; NUNCA a temperatura ambiente)."
+  },
+  {
+    modulo: "MÓDULO 5 — ROTULADO Y TRAZABILIDAD (RES. 5109, 810 Y 2492)",
+    titulo: "Rotulado Reglamentario, Lote y Trazabilidad",
+    contenido: `
+      <div class="slide-grid">
+        <div class="slide-box">
+          <h4>Requisitos de Etiqueta (Res. 5109/2005)</h4>
+          <p>Nombre real del alimento, lista de ingredientes de mayor a menor peso, declaración de alérgenos, contenido neto, fabricante, instrucciones de conservación, <strong>Lote y Fecha de Vencimiento indelebles</strong>.</p>
+        </div>
+        <div class="slide-box">
+          <h4>Trazabilidad Hacia Atrás y Hacia Adelante</h4>
+          <p>El código de <strong>Lote</strong> nos permite reconstruir en minutos con qué materias primas se fabricó un producto, qué operarios intervinieron, a qué temperaturas se cocinó y a qué clientes se entregó.</p>
+        </div>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Resaltar que llenar los formatos de planta con letra clara y en tiempo real es lo que salva a la empresa en una auditoría sanitaria o reclamo de calidad."
+  },
+  {
+    modulo: "CIERRE Y EVALUACIÓN DE CERTIFICACIÓN",
+    titulo: "¡Compromiso con la Cultura de Inocuidad!",
+    contenido: `
+      <div style="text-align:center; padding: 20px;">
+        <h3 style="color:var(--primary); font-size:1.5rem;">"La inocuidad alimentaria es hacer lo correcto incluso cuando nadie nos está mirando."</h3>
+        <p style="font-size:1.1rem; max-width:720px; margin:18px auto;">A continuación realizaremos la evaluación escrita de 10 preguntas y la entrega de su <strong>Certificado de 10 Horas y Carné de Manipulador de Alimentos</strong> conforme a la Resolución 2674 de 2013.</p>
+      </div>
+    `,
+    notas: "Nota para el Instructor: Pasar a la pestaña superior 'Generador de Certificado + Carné' para emitir los certificados y carnés personalizados de los participantes."
+  }
+];
+
+let currentSlide = 0;
+
+function renderSlide() {
+  const s = SLIDES[currentSlide];
+  document.getElementById('slideRender').innerHTML = `
+    <div>
+      <span class="slide-badge">${s.modulo}</span>
+      <h2 class="slide-title">${s.titulo}</h2>
+      <div class="slide-body">${s.contenido}</div>
+    </div>
+    <div class="slide-footer">
+      <span>Curso Certificado de Manipulación de Alimentos — Resolución 2674 de 2013</span>
+      <span>Diapositiva ${currentSlide + 1} de ${SLIDES.length}</span>
+    </div>
+  `;
+  document.getElementById('speakerNotes').textContent = s.notas;
+  document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${SLIDES.length}`;
+}
+
+function nextSlide() {
+  if (currentSlide < SLIDES.length - 1) { currentSlide++; renderSlide(); }
+}
+function prevSlide() {
+  if (currentSlide > 0) { currentSlide--; renderSlide(); }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (document.getElementById('viewSlides').style.display !== 'none') {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  }
+});
+
+function cambiarVista(v) {
+  document.getElementById('viewSlides').style.display = v === 'slides' ? 'block' : 'none';
+  document.getElementById('viewCert').style.display = v === 'cert' ? 'block' : 'none';
+  document.getElementById('btnModeSlides').classList.toggle('active', v === 'slides');
+  document.getElementById('btnModeCert').classList.toggle('active', v === 'cert');
+  if (v === 'cert') renderCert();
+}
+
+function renderCert() {
+  const empCap = document.getElementById('cEmpresaCap').value;
+  const nombre = document.getElementById('cNombre').value;
+  const doc = document.getElementById('cDoc').value;
+  const cliente = document.getElementById('cCliente').value;
+  const inst = document.getElementById('cInstructor').value;
+  const mat = document.getElementById('cMatricula').value;
+  const fecha = document.getElementById('cFecha').value;
+  const vence = document.getElementById('cVence').value;
+
+  document.getElementById('certOutput').innerHTML = `
+    <div class="diploma">
+      <div style="font-weight:800; color:var(--primary); font-size:0.95rem;">${empCap}</div>
+      <h2>CERTIFICADO DE CAPACITACIÓN EN MANIPULACIÓN HIGIÉNICA DE ALIMENTOS</h2>
+      <p style="margin:6px 0; font-size:0.9rem;">En cumplimiento de los Artículos 12, 13 y 14 de la <strong>Resolución 2674 de 2013</strong> del Ministerio de Salud y Protección Social</p>
+      <p style="margin-top:16px;">Certifica que:</p>
+      <div class="student-name">${nombre}</div>
+      <p style="margin:4px 0;">Identificado(a) con Documento No. <strong>${doc}</strong> — Vinculado(a) a: <strong>${cliente}</strong></p>
+      <p style="max-width:740px; margin:14px auto; font-size:0.92rem; line-height:1.5;">
+        Cursó y aprobó satisfactoriamente el programa teórico-práctico de <strong>Buenas Prácticas de Manufactura (BPM), Inocuidad Alimentaria, Prevención de ETA, Plan de Saneamiento Básico (POES) y Controles Operativos en Manipulación de Alimentos</strong>, con una intensidad horaria de <strong>DIEZ (10) HORAS</strong>.
+      </p>
+      <p style="font-size:0.86rem;">Expedido el <strong>${fecha}</strong> — Válido hasta el <strong>${vence}</strong></p>
+      <div class="signatures">
+        <div class="sig-block">
+          <strong>${inst}</strong><br>
+          Matrícula Profesional: ${mat}<br>
+          Capacitador Autorizado
+        </div>
+        <div class="sig-block">
+          <strong>${empCap}</strong><br>
+          Dirección Técnica de Inocuidad<br>
+          Verificación de Competencias
+        </div>
+      </div>
+    </div>
+
+    <div class="carnet">
+      <div class="carnet-header">CARNÉ DE MANIPULADOR DE ALIMENTOS — RES. 2674 DE 2013</div>
+      <div class="carnet-row"><span><strong>Nombre:</strong></span><span>${nombre}</span></div>
+      <div class="carnet-row"><span><strong>Documento (CC):</strong></span><span>${doc}</span></div>
+      <div class="carnet-row"><span><strong>Empresa:</strong></span><span>${cliente}</span></div>
+      <div class="carnet-row"><span><strong>Intensidad:</strong></span><span>10 Horas (Aprobado)</span></div>
+      <div class="carnet-row"><span><strong>Expedición / Vencimiento:</strong></span><span>${fecha} — ${vence}</span></div>
+      <div class="carnet-row"><span><strong>Capacitador:</strong></span><span>${inst} (${mat})</span></div>
+    </div>
+  `;
+}
+
+renderSlide();
+renderCert();
+</script>
+</body>
+</html>

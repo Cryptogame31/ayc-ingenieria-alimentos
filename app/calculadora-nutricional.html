@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suite de Formulación ICBF (TCAC) y Calculadora de Rotulado Nutricional (Res. 810/2021, 2492/2022, 254/2023 y 5109/2005)</title>
+  <style>
+    :root {
+      --primary: #0b5d3b;
+      --primary-dark: #064028;
+      --primary-light: #e6f4ed;
+      --accent: #d97706;
+      --dark: #111827;
+      --gray: #4b5563;
+      --border: #d1d5db;
+      --danger: #b91c1c;
+      --ok: #15803d;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    body { margin: 0; padding: 20px; background: #f3f4f6; color: var(--dark); }
+    .container { max-width: 1380px; margin: 0 auto; }
+    header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 18px 26px; border-radius: 12px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    header h1 { margin: 0 0 4px 0; font-size: 1.38rem; }
+    header p { margin: 0; opacity: 0.92; font-size: 0.88rem; }
+    .mode-tabs { display: flex; gap: 8px; background: rgba(255,255,255,0.15); padding: 6px; border-radius: 8px; }
+    .mode-tab { background: transparent; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
+    .mode-tab.active { background: #fff; color: var(--primary); }
+
+    .grid { display: grid; grid-template-columns: 1.32fr 0.88fr; gap: 20px; align-items: start; }
+    @media (max-width: 1024px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 18px; break-inside: avoid; page-break-inside: avoid; }
+    .card h2 { margin-top: 0; font-size: 1.08rem; color: var(--primary); border-bottom: 2px solid var(--primary-light); padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+
+    /* Buscador ICBF */
+    .search-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+    .search-controls { display: grid; grid-template-columns: 0.9fr 1.4fr 0.6fr auto; gap: 10px; align-items: end; }
+    @media (max-width: 760px) { .search-controls { grid-template-columns: 1fr; } }
+    .search-results { max-height: 200px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; background: #fff; margin-top: 10px; }
+    .search-item { display: flex; justify-content: space-between; align-items: center; padding: 7px 12px; border-bottom: 1px solid #f1f5f9; font-size: 0.83rem; cursor: pointer; }
+    .search-item:hover { background: var(--primary-light); }
+    .search-item.selected { background: #bbf7d0; font-weight: 700; }
+    .search-item .meta { color: var(--gray); font-size: 0.75rem; }
+    .badge-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.69rem; font-weight: 700; margin-left: 4px; }
+    .tag-sugar { background: #fee2e2; color: #991b1b; }
+    .tag-fat { background: #fef3c7; color: #92400e; }
+    .tag-sod { background: #e0e7ff; color: #1e40af; }
+    .tag-allergen { background: #f3e8ff; color: #6b21a8; }
+
+    /* Tabla de Bache / Receta */
+    table.recipe-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 6px; }
+    table.recipe-table th { background: var(--primary-light); color: var(--primary-dark); text-align: left; padding: 6px 8px; border-bottom: 2px solid var(--primary); }
+    table.recipe-table td { padding: 5px 8px; border-bottom: 1px solid #e5e7eb; vertical-align: middle; }
+    table.recipe-table input[type="number"] { width: 74px; padding: 4px; border: 1px solid var(--border); border-radius: 4px; font-weight: 600; }
+    .btn-del { background: #fee2e2; color: var(--danger); border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 0.75rem; }
+    .summary-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; background: var(--primary-light); padding: 10px; border-radius: 8px; margin-top: 10px; text-align: center; }
+    .summary-strip .val { font-size: 1.02rem; font-weight: 800; color: var(--primary-dark); }
+    .summary-strip .lbl { font-size: 0.72rem; color: var(--gray); }
+
+    .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 10px; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { font-size: 0.79rem; font-weight: 600; margin-bottom: 3px; color: #374151; }
+    .form-group input, .form-group select { padding: 6px 9px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.88rem; }
+    .checkbox-row { display: flex; gap: 14px; margin: 10px 0; padding: 9px 12px; background: var(--primary-light); border-radius: 8px; flex-wrap: wrap; }
+    .checkbox-row label { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+
+    /* Sellos octogonales vectoriales SVG (Siempre visibles en PDF e impresión) */
+    .seals-container { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 10px 0; min-height: 115px; align-items: center; }
+    .seal-svg { width: 116px; height: 116px; display: block; }
+
+    /* Tabla nutricional formato oficial Res. 810/2492 */
+    .nutri-table {
+      border: 2.5px solid #000;
+      padding: 10px 12px;
+      max-width: 390px;
+      margin: 0 auto;
+      background: #fff;
+      color: #000;
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+    }
+    .nutri-title { font-size: 1.28rem; font-weight: 900; border-bottom: 1px solid #000; padding-bottom: 3px; margin-bottom: 4px; }
+    .nutri-servings { font-size: 0.84rem; border-bottom: 5px solid #000; padding-bottom: 5px; margin-bottom: 5px; }
+    .nutri-header { display: grid; grid-template-columns: 1.55fr 0.72fr 0.73fr; font-weight: 800; font-size: 0.77rem; border-bottom: 2px solid #000; padding-bottom: 3px; text-align: right; }
+    .nutri-header span:first-child { text-align: left; }
+    .nutri-grid { display: grid; grid-template-columns: 1.55fr 0.72fr 0.73fr; border-bottom: 1px solid #000; padding: 2.5px 0; font-size: 0.82rem; text-align: right; }
+    .nutri-grid span:first-child { text-align: left; }
+    .nutri-grid.sub span:first-child { padding-left: 14px; }
+    .nutri-grid.bold { font-weight: 800; }
+    .nutri-grid.thick { border-bottom: 4px solid #000; }
+    .nutri-footer { font-size: 0.71rem; padding-top: 5px; line-height: 1.25; }
+
+    .badge-ok { background: #dcfce7; color: var(--ok); padding: 6px 12px; border-radius: 999px; font-weight: 700; font-size: 0.84rem; border: 1.5px solid var(--ok); }
+    .audit-list { font-size: 0.8rem; margin-top: 8px; padding-left: 18px; margin-bottom: 0; }
+    .audit-list li { margin-bottom: 4px; }
+    .legal-box { background: #f8fafc; border-left: 4px solid var(--primary); padding: 9px 12px; font-size: 0.81rem; margin-top: 10px; border-radius: 0 6px 6px 0; }
+    .btn-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    button.primary-btn { background: var(--primary); color: #fff; border: none; padding: 9px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.84rem; }
+    button.secondary-btn { background: #374151; color: #fff; border: none; padding: 9px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.84rem; }
+
+    /* ==========================================================================
+       OPTIMIZACIÓN DE IMPRESIÓN / PDF EN UNA SOLA HOJA SIN PARTIR LA TABLA
+       ========================================================================== */
+    @page {
+      size: letter portrait;
+      margin: 8mm 10mm;
+    }
+    @media print {
+      body { background: #fff !important; padding: 0 !important; margin: 0 !important; font-size: 11px !important; }
+      .no-print { display: none !important; }
+      .container { max-width: 100% !important; margin: 0 !important; }
+      header { padding: 8px 14px !important; margin-bottom: 8px !important; border-radius: 6px !important; background: #0b5d3b !important; color: #fff !important; }
+      header h1 { font-size: 1.05rem !important; margin: 0 !important; }
+      header p { font-size: 0.72rem !important; }
+      .grid { display: grid !important; grid-template-columns: 1.15fr 0.85fr !important; gap: 12px !important; align-items: start !important; }
+      .card { box-shadow: none !important; border: 1px solid #cbd5e1 !important; padding: 8px 10px !important; margin-bottom: 8px !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+      .card h2 { font-size: 0.88rem !important; padding-bottom: 4px !important; margin-bottom: 6px !important; }
+      .form-row { gap: 6px !important; margin-bottom: 4px !important; }
+      .form-group label { font-size: 0.68rem !important; margin-bottom: 1px !important; }
+      .form-group input, .form-group select { padding: 2px 5px !important; font-size: 0.75rem !important; border: 1px solid #9ca3af !important; }
+      table.recipe-table { font-size: 0.68rem !important; }
+      table.recipe-table th, table.recipe-table td { padding: 2px 4px !important; }
+      table.recipe-table input[type="number"] { border: none !important; width: 45px !important; padding: 0 !important; font-size: 0.7rem !important; background: transparent !important; }
+      .summary-strip { padding: 5px !important; margin-top: 6px !important; }
+      .summary-strip .val { font-size: 0.82rem !important; }
+      .summary-strip .lbl { font-size: 0.62rem !important; }
+      .legal-box { padding: 5px 8px !important; font-size: 0.69rem !important; margin-top: 6px !important; }
+      .seals-container { min-height: 85px !important; margin: 4px 0 !important; gap: 8px !important; }
+      .seal-svg { width: 92px !important; height: 92px !important; }
+      .audit-list { font-size: 0.68rem !important; margin-top: 4px !important; }
+      .audit-list li { margin-bottom: 2px !important; }
+      .nutri-table { max-width: 100% !important; padding: 7px 9px !important; border: 2px solid #000 !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+      .nutri-title { font-size: 1.05rem !important; padding-bottom: 2px !important; margin-bottom: 2px !important; }
+      .nutri-servings { font-size: 0.74rem !important; padding-bottom: 3px !important; margin-bottom: 3px !important; border-bottom-width: 4px !important; }
+      .nutri-header { font-size: 0.7rem !important; padding-bottom: 2px !important; }
+      .nutri-grid { font-size: 0.73rem !important; padding: 1.5px 0 !important; }
+      .nutri-footer { font-size: 0.62rem !important; padding-top: 3px !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>Suite de Formulación ICBF (TCAC 2018) y Calculadora de Rotulado Nutricional</h1>
+      <p>Cumplimiento integral: Res. 810/2021 + Res. 2492/2022 + Res. 254/2023 (Nutricional y Sellos) + Res. 5109/2005 (Lista de Ingredientes y Alérgenos)</p>
+    </div>
+    <div class="mode-tabs no-print">
+      <button id="tabReceta" class="mode-tab active" onclick="setModo('receta')">1. Formulador por Ingredientes ICBF</button>
+      <button id="tabManual" class="mode-tab" onclick="setModo('manual')">2. Ingreso Directo Laboratorio (100g)</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <!-- COLUMNA IZQUIERDA -->
+    <div>
+      <!-- DATOS DEL PRODUCTO -->
+      <div class="card">
+        <h2>1. Identificación Técnica del Producto y Porción Declarada</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre Comercial / Denominación Legal (Res. 5109/2005)</label>
+            <input type="text" id="prodName" value="Galleta de Avena con Cacao y Panela" oninput="recalcularTodo()">
+          </div>
+          <div class="form-group">
+            <label>Estado Físico del Alimento</label>
+            <select id="estado" onchange="recalcularTodo()">
+              <option value="solido">Sólido (declarado en g)</option>
+              <option value="liquido">Líquido (declarado en mL)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tamaño de Porción (g o mL)</label>
+            <input type="number" id="porcion" value="30" min="1" step="0.5" oninput="recalcularTodo()">
+          </div>
+          <div class="form-group">
+            <label>Medida Casera (Res. 810/2021)</label>
+            <input type="text" id="medidaCasera" value="2 galletas" oninput="recalcularTodo()">
+          </div>
+          <div class="form-group">
+            <label>Porciones por Envase</label>
+            <input type="text" id="porcionesEnvase" value="Aprox. 6" oninput="recalcularTodo()">
+          </div>
+        </div>
+      </div>
+
+      <!-- MODO 1: FORMULADOR CON BUSCADOR ICBF -->
+      <div class="card" id="panelReceta">
+        <h2>
+          <span>2. Fórmula del Producto (Base TCAC 2018 - ICBF)</span>
+          <span class="no-print" style="font-size:0.76rem; color:var(--gray);" id="countDB">79 ingredientes ICBF</span>
+        </h2>
+
+        <div class="search-box no-print">
+          <div class="search-controls">
+            <div class="form-group">
+              <label>Filtrar por Grupo ICBF</label>
+              <select id="filtroGrupo" onchange="filtrarIngredientes()">
+                <option value="">Todos los grupos</option>
+                <option value="Cereales y Derivados">Cereales, Harinas y Almidones</option>
+                <option value="Tubérculos y Plátanos">Tubérculos, Yuca, Papa y Plátano</option>
+                <option value="Azúcares y Endulzantes">Azúcares, Panela, Miel y Edulcorantes</option>
+                <option value="Grasas y Aceites">Grasas, Aceites, Mantequilla y Margarina</option>
+                <option value="Lácteos y Derivados">Lácteos, Quesos, Leche en Polvo y Suero</option>
+                <option value="Carnes, Aves, Pescados y Huevos">Carnes, Pollo, Cerdo, Pescado y Huevos</option>
+                <option value="Frutas Colombianas y Pulpas">Frutas Colombianas y Pulpas</option>
+                <option value="Hortalizas y Leguminosas">Hortalizas, Soya y Leguminosas</option>
+                <option value="Cacao, Nueces y Semillas">Cacao, Chocolate, Maní y Nueces</option>
+                <option value="Sales, Agua y Aditivos">Agua, Sales, Polvo Hornear y Aditivos</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Buscar Ingrediente (nombre o código ICBF)</label>
+              <input type="text" id="busquedaTexto" placeholder="Ej: harina, panela, queso, avena, lulo, sal..." oninput="filtrarIngredientes()">
+            </div>
+            <div class="form-group">
+              <label>Cantidad en Fórmula (g)</label>
+              <input type="number" id="cantAgregar" value="100" min="0.1" step="1">
+            </div>
+            <button class="primary-btn" onclick="agregarSeleccionado()">+ Agregar a Fórmula</button>
+          </div>
+
+          <div id="listaResultados" class="search-results"></div>
+        </div>
+
+        <!-- Merma de cocción/horneado -->
+        <div class="form-row no-print">
+          <div class="form-group">
+            <label>% Merma por Cocción / Horneado / Evaporación</label>
+            <input type="number" id="mermaPct" value="12" min="-50" max="85" step="0.5" oninput="recalcularTodo()">
+          </div>
+          <div class="form-group">
+            <label>Plantillas Rápidas de Ejemplo</label>
+            <select id="presetReceta" onchange="cargarPreset(this.value)">
+              <option value="galleta">Galleta de Avena con Cacao y Panela (Panadería)</option>
+              <option value="pandebono">Pandebono Tradicional Valluno (Queso y Almidón)</option>
+              <option value="bebida">Néctar de Maracuyá y Mango Endulzado (Bebidas)</option>
+              <option value="hamburguesa">Carne de Hamburguesa Artesanal (Cárnicos)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="recipe-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Ingrediente (Base TCAC ICBF)</th>
+                <th>Peso Crudo (g)</th>
+                <th>% Mezcla</th>
+                <th>Kcal</th>
+                <th>Etiquetas Críticas</th>
+                <th class="no-print"></th>
+              </tr>
+            </thead>
+            <tbody id="tablaBacheBody"></tbody>
+          </table>
+        </div>
+
+        <div class="summary-strip">
+          <div>
+            <div class="val" id="pesoCrudoTotal">0 g</div>
+            <div class="lbl">Mezcla Cruda</div>
+          </div>
+          <div>
+            <div class="val" id="pesoFinalTotal">0 g</div>
+            <div class="lbl">Peso Final (Merma <span id="lblMerma">12</span>%)</div>
+          </div>
+          <div>
+            <div class="val" id="numPorcionesBache">0</div>
+            <div class="lbl">Porciones / Bache</div>
+          </div>
+          <div>
+            <div class="val" id="kcalPor100">0 kcal</div>
+            <div class="lbl">Energía / 100g</div>
+          </div>
+        </div>
+
+        <!-- Declaración legal automática Res. 5109 de 2005 -->
+        <div class="legal-box" id="declaracionIngredientesBox"></div>
+      </div>
+
+      <!-- MODO 2: COMPOSICIÓN POR 100G (SE OCULTA AL IMPRIMIR PORQUE YA APARECE EN LA TABLA NUTRICIONAL DE LA DERECHA) -->
+      <div class="card no-print">
+        <h2>
+          <span>3. Perfil Bromatológico Consolidado por 100 g / 100 mL (Editable)</span>
+          <span id="badgeModo" style="font-size:0.75rem; background:var(--primary-light); padding:3px 8px; border-radius:4px;">Calculado desde Receta ICBF</span>
+        </h2>
+
+        <div class="checkbox-row">
+          <label><input type="checkbox" id="addedSugar" checked onchange="calcularSellosYTabla()"> ¿Tiene azúcares añadidos?</label>
+          <label><input type="checkbox" id="addedFat" checked onchange="calcularSellosYTabla()"> ¿Tiene grasas añadidas?</label>
+          <label><input type="checkbox" id="addedSodium" checked onchange="calcularSellosYTabla()"> ¿Tiene sodio añadido?</label>
+          <label><input type="checkbox" id="hasSweetener" onchange="calcularSellosYTabla()"> ¿Contiene edulcorantes?</label>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group"><label>Calorías (kcal / 100g)</label><input type="number" id="kcal" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Grasa Total (g)</label><input type="number" id="grasaTotal" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Grasa Saturada (g)</label><input type="number" id="grasaSat" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Grasas Trans (mg)</label><input type="number" id="grasaTrans" step="1" oninput="calcularSellosYTabla()"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Carbohidratos Totales (g)</label><input type="number" id="carbs" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Fibra Dietaria (g)</label><input type="number" id="fibra" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Azúcares Totales (g)</label><input type="number" id="azucarTotal" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Azúcares Añadidos (g)</label><input type="number" id="azucarAnadido" step="0.1" oninput="calcularSellosYTabla()"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Proteína (g)</label><input type="number" id="proteina" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Sodio (mg)</label><input type="number" id="sodio" step="1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Vitamina D (µg)</label><input type="number" id="vitD" step="0.1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Hierro (mg)</label><input type="number" id="hierro" step="0.1" oninput="calcularSellosYTabla()"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Calcio (mg)</label><input type="number" id="calcio" step="1" oninput="calcularSellosYTabla()"></div>
+          <div class="form-group"><label>Zinc (mg)</label><input type="number" id="zinc" step="0.1" oninput="calcularSellosYTabla()"></div>
+        </div>
+
+        <div class="btn-bar">
+          <button class="primary-btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF (Todo en 1 Hoja)</button>
+          <button class="secondary-btn" onclick="exportarCSV()">📊 Descargar Fórmula y Tabla en CSV (Excel)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA (SELLOS VECTORIALES SVG + TABLA NUTRICIONAL SIN PARTIRSE) -->
+    <div>
+      <div class="card">
+        <h2> Sellos Frontales de Advertencia (Res. 2492 de 2022 / Res. 254 de 2023)</h2>
+        <div id="sealsOutput" class="seals-container"></div>
+        <ul id="auditCriteria" class="audit-list"></ul>
+      </div>
+
+      <div class="card">
+        <h2> Tabla Nutricional Oficial (Res. 810/2021 y Res. 2492/2022)</h2>
+        <div id="tablaNutricional" class="nutri-table"></div>
+        <div class="btn-bar no-print" style="justify-content:center; margin-top:12px;">
+          <button class="primary-btn" onclick="window.print()">🖨️ Imprimir Ficha en 1 Sola Hoja PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DB_ICBF = [
+  { id:"C001", grupo:"Cereales y Derivados", nombre:"Harina de trigo fortificada todo uso", kcal:364, gt:1.0, gs:0.2, tr:0, cho:76.3, fib:2.7, azt:0.3, aza:0, pro:10.3, na:2, vd:0, fe:4.6, ca:15, zn:0.7, addSug:false, addFat:false, addSod:false, edul:false, aler:"Gluten (Trigo)" },
+  { id:"C002", grupo:"Cereales y Derivados", nombre:"Harina de trigo integral", kcal:340, gt:2.5, gs:0.4, tr:0, cho:72.0, fib:10.7, azt:0.4, aza:0, pro:13.2, na:2, vd:0, fe:3.6, ca:34, zn:2.6, addSug:false, addFat:false, addSod:false, edul:false, aler:"Gluten (Trigo)" },
+  { id:"C003", grupo:"Cereales y Derivados", nombre:"Avena en hojuelas", kcal:389, gt:6.9, gs:1.2, tr:0, cho:66.3, fib:10.6, azt:0.8, aza:0, pro:16.9, na:2, vd:0, fe:4.7, ca:54, zn:4.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"Gluten (Avena)" },
+  { id:"C004", grupo:"Cereales y Derivados", nombre:"Harina de maíz blanco precocida", kcal:365, gt:3.6, gs:0.5, tr:0, cho:77.0, fib:7.3, azt:0.6, aza:0, pro:7.5, na:5, vd:0, fe:3.8, ca:18, zn:1.7, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"C005", grupo:"Cereales y Derivados", nombre:"Harina de maíz amarillo precocida", kcal:362, gt:3.3, gs:0.5, tr:0, cho:76.9, fib:7.3, azt:0.6, aza:0, pro:8.1, na:35, vd:0, fe:3.5, ca:6, zn:1.8, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"C006", grupo:"Cereales y Derivados", nombre:"Arroz blanco pulido crudo", kcal:365, gt:0.7, gs:0.2, tr:0, cho:80.0, fib:1.3, azt:0.1, aza:0, pro:7.1, na:5, vd:0, fe:0.8, ca:28, zn:1.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"C007", grupo:"Cereales y Derivados", nombre:"Almidón de maíz (Maizena)", kcal:381, gt:0.1, gs:0.0, tr:0, cho:91.3, fib:0.9, azt:0.0, aza:0, pro:0.3, na:9, vd:0, fe:0.5, ca:2, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"C008", grupo:"Cereales y Derivados", nombre:"Quinua en grano o harina", kcal:368, gt:6.1, gs:0.7, tr:0, cho:64.2, fib:7.0, azt:1.6, aza:0, pro:14.1, na:5, vd:0, fe:4.6, ca:47, zn:3.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"T001", grupo:"Tubérculos y Plátanos", nombre:"Almidón de yuca (agrio o dulce)", kcal:355, gt:0.2, gs:0.0, tr:0, cho:87.5, fib:0.5, azt:0.0, aza:0, pro:0.4, na:4, vd:0, fe:1.0, ca:18, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"T002", grupo:"Tubérculos y Plátanos", nombre:"Yuca blanca cruda", kcal:160, gt:0.3, gs:0.1, tr:0, cho:38.1, fib:1.8, azt:1.7, aza:0, pro:1.4, na:14, vd:0, fe:0.3, ca:16, zn:0.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"T003", grupo:"Tubérculos y Plátanos", nombre:"Plátano hartón verde crudo", kcal:135, gt:0.2, gs:0.1, tr:0, cho:34.4, fib:2.3, azt:1.5, aza:0, pro:1.2, na:4, vd:0, fe:0.6, ca:3, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"T004", grupo:"Tubérculos y Plátanos", nombre:"Plátano hartón maduro crudo", kcal:122, gt:0.4, gs:0.1, tr:0, cho:31.9, fib:2.3, azt:15.0, aza:0, pro:1.3, na:4, vd:0, fe:0.6, ca:3, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"T005", grupo:"Tubérculos y Plátanos", nombre:"Papa común cruda sin cáscara", kcal:77, gt:0.1, gs:0.0, tr:0, cho:17.5, fib:2.2, azt:0.8, aza:0, pro:2.0, na:6, vd:0, fe:0.8, ca:12, zn:0.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"T006", grupo:"Tubérculos y Plátanos", nombre:"Papa criolla cruda", kcal:87, gt:0.1, gs:0.0, tr:0, cho:20.1, fib:1.8, azt:1.1, aza:0, pro:1.9, na:6, vd:0, fe:0.9, ca:9, zn:0.4, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A001", grupo:"Azúcares y Endulzantes", nombre:"Azúcar blanco refinado o común", kcal:387, gt:0.0, gs:0.0, tr:0, cho:99.9, fib:0.0, azt:99.9, aza:99.9, pro:0.0, na:1, vd:0, fe:0.1, ca:1, zn:0.0, addSug:true, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A002", grupo:"Azúcares y Endulzantes", nombre:"Azúcar morena", kcal:380, gt:0.0, gs:0.0, tr:0, cho:98.1, fib:0.0, azt:97.0, aza:97.0, pro:0.1, na:28, vd:0, fe:0.7, ca:83, zn:0.0, addSug:true, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A003", grupo:"Azúcares y Endulzantes", nombre:"Panela colombiana en bloque o pulverizada", kcal:351, gt:0.1, gs:0.0, tr:0, cho:91.0, fib:0.0, azt:89.5, aza:89.5, pro:0.5, na:18, vd:0, fe:2.8, ca:80, zn:0.2, addSug:true, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A004", grupo:"Azúcares y Endulzantes", nombre:"Miel de abejas pura", kcal:304, gt:0.0, gs:0.0, tr:0, cho:82.4, fib:0.2, azt:82.1, aza:82.1, pro:0.3, na:4, vd:0, fe:0.4, ca:6, zn:0.2, addSug:true, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A005", grupo:"Azúcares y Endulzantes", nombre:"Jarabe de glucosa / maíz", kcal:316, gt:0.0, gs:0.0, tr:0, cho:79.0, fib:0.0, azt:45.0, aza:45.0, pro:0.0, na:55, vd:0, fe:0.1, ca:12, zn:0.0, addSug:true, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A006", grupo:"Azúcares y Endulzantes", nombre:"Maltodextrina en polvo", kcal:380, gt:0.0, gs:0.0, tr:0, cho:95.0, fib:0.0, azt:6.0, aza:6.0, pro:0.0, na:40, vd:0, fe:0.0, ca:5, zn:0.0, addSug:true, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A007", grupo:"Azúcares y Endulzantes", nombre:"Arequipe / Dulce de leche", kcal:315, gt:7.4, gs:4.5, tr:120, cho:55.4, fib:0.0, azt:49.5, aza:42.0, pro:6.8, na:129, vd:0.1, fe:0.2, ca:251, zn:0.9, addSug:true, addFat:true, addSod:false, edul:false, aler:"Leche (Lactosa)" },
+  { id:"A008", grupo:"Azúcares y Endulzantes", nombre:"Polidextrosa / Fibra soluble", kcal:100, gt:0.0, gs:0.0, tr:0, cho:90.0, fib:85.0, azt:0.0, aza:0.0, pro:0.0, na:10, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"A009", grupo:"Azúcares y Endulzantes", nombre:"Eritritol (Polialcohol edulcorante)", kcal:20, gt:0.0, gs:0.0, tr:0, cho:100.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:false, edul:true, aler:"" },
+  { id:"A010", grupo:"Azúcares y Endulzantes", nombre:"Estevia (Glucósidos de esteviol) / Sucralosa", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:false, edul:true, aler:"" },
+  { id:"G001", grupo:"Grasas y Aceites", nombre:"Aceite vegetal de girasol / soya / maíz", kcal:884, gt:100.0, gs:11.0, tr:150, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:true, addSod:false, edul:false, aler:"" },
+  { id:"G002", grupo:"Grasas y Aceites", nombre:"Aceite de palma refinado (oleína)", kcal:884, gt:100.0, gs:49.3, tr:200, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:true, addSod:false, edul:false, aler:"" },
+  { id:"G003", grupo:"Grasas y Aceites", nombre:"Aceite de oliva extra virgen", kcal:884, gt:100.0, gs:13.8, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:2, vd:0, fe:0.6, ca:1, zn:0.0, addSug:false, addFat:true, addSod:false, edul:false, aler:"" },
+  { id:"G004", grupo:"Grasas y Aceites", nombre:"Aceite de coco virgen", kcal:862, gt:100.0, gs:86.5, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:true, addSod:false, edul:false, aler:"" },
+  { id:"G005", grupo:"Grasas y Aceites", nombre:"Mantequilla de vaca con sal", kcal:717, gt:81.1, gs:51.4, tr:2500, cho:0.1, fib:0.0, azt:0.1, aza:0.0, pro:0.9, na:643, vd:1.5, fe:0.0, ca:24, zn:0.1, addSug:false, addFat:true, addSod:true, edul:false, aler:"Leche" },
+  { id:"G006", grupo:"Grasas y Aceites", nombre:"Mantequilla de vaca sin sal", kcal:717, gt:81.1, gs:51.4, tr:2500, cho:0.1, fib:0.0, azt:0.1, aza:0.0, pro:0.9, na:11, vd:1.5, fe:0.0, ca:24, zn:0.1, addSug:false, addFat:true, addSod:false, edul:false, aler:"Leche" },
+  { id:"G007", grupo:"Grasas y Aceites", nombre:"Margarina industrial panadería / repostería", kcal:717, gt:80.4, gs:35.0, tr:450, cho:0.7, fib:0.0, azt:0.0, aza:0.0, pro:0.2, na:750, vd:0, fe:0.0, ca:15, zn:0.0, addSug:false, addFat:true, addSod:true, edul:false, aler:"" },
+  { id:"G008", grupo:"Grasas y Aceites", nombre:"Manteca vegetal hidrogenada", kcal:884, gt:100.0, gs:42.0, tr:1200, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:true, addSod:false, edul:false, aler:"" },
+  { id:"L001", grupo:"Lácteos y Derivados", nombre:"Leche de vaca entera líquida pasteurizada", kcal:61, gt:3.3, gs:1.9, tr:80, cho:4.8, fib:0.0, azt:4.8, aza:0.0, pro:3.2, na:43, vd:1.0, fe:0.0, ca:113, zn:0.4, addSug:false, addFat:false, addSod:false, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L002", grupo:"Lácteos y Derivados", nombre:"Leche de vaca descremada líquida", kcal:34, gt:0.1, gs:0.1, tr:0, cho:5.0, fib:0.0, azt:5.0, aza:0.0, pro:3.4, na:42, vd:1.0, fe:0.0, ca:122, zn:0.4, addSug:false, addFat:false, addSod:false, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L003", grupo:"Lácteos y Derivados", nombre:"Leche entera en polvo", kcal:496, gt:26.7, gs:16.7, tr:600, cho:38.4, fib:0.0, azt:38.4, aza:0.0, pro:26.3, na:371, vd:2.0, fe:0.5, ca:912, zn:3.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L004", grupo:"Lácteos y Derivados", nombre:"Leche descremada en polvo", kcal:362, gt:0.8, gs:0.5, tr:0, cho:52.0, fib:0.0, azt:52.0, aza:0.0, pro:36.2, na:535, vd:2.0, fe:0.3, ca:1257, zn:4.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L005", grupo:"Lácteos y Derivados", nombre:"Suero de leche dulce en polvo", kcal:353, gt:1.1, gs:0.7, tr:0, cho:74.5, fib:0.0, azt:74.5, aza:0.0, pro:12.9, na:1079, vd:0.0, fe:0.9, ca:796, zn:2.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L006", grupo:"Lácteos y Derivados", nombre:"Crema de leche entera (35% grasa)", kcal:340, gt:35.0, gs:22.0, tr:900, cho:2.8, fib:0.0, azt:2.8, aza:0.0, pro:2.1, na:34, vd:0.7, fe:0.0, ca:65, zn:0.2, addSug:false, addFat:true, addSod:false, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L007", grupo:"Lácteos y Derivados", nombre:"Queso campesino / fresco colombiano", kcal:264, gt:20.2, gs:12.8, tr:400, cho:2.5, fib:0.0, azt:1.5, aza:0.0, pro:17.8, na:480, vd:0.4, fe:0.2, ca:490, zn:2.2, addSug:false, addFat:false, addSod:true, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L008", grupo:"Lácteos y Derivados", nombre:"Queso doble crema / mozzarella colombiano", kcal:300, gt:22.4, gs:13.9, tr:450, cho:2.2, fib:0.0, azt:1.0, aza:0.0, pro:22.2, na:627, vd:0.4, fe:0.4, ca:505, zn:2.9, addSug:false, addFat:false, addSod:true, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L009", grupo:"Lácteos y Derivados", nombre:"Queso costeño salado", kcal:325, gt:25.0, gs:15.8, tr:500, cho:1.8, fib:0.0, azt:0.8, aza:0.0, pro:23.0, na:1250, vd:0.4, fe:0.3, ca:610, zn:3.1, addSug:false, addFat:false, addSod:true, edul:false, aler:"Leche (Lactosa)" },
+  { id:"L010", grupo:"Lácteos y Derivados", nombre:"Cuajada fresca", kcal:215, gt:15.5, gs:9.8, tr:300, cho:3.2, fib:0.0, azt:2.5, aza:0.0, pro:15.8, na:240, vd:0.2, fe:0.2, ca:420, zn:1.8, addSug:false, addFat:false, addSod:true, edul:false, aler:"Leche (Lactosa)" },
+  { id:"P001", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Huevo de gallina entero crudo (sin cáscara)", kcal:143, gt:9.5, gs:3.1, tr:38, cho:0.7, fib:0.0, azt:0.4, aza:0.0, pro:12.6, na:142, vd:2.0, fe:1.8, ca:56, zn:1.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"Huevo" },
+  { id:"P002", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Clara de huevo líquida", kcal:52, gt:0.2, gs:0.0, tr:0, cho:0.7, fib:0.0, azt:0.7, aza:0.0, pro:10.9, na:166, vd:0.0, fe:0.1, ca:7, zn:0.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"Huevo" },
+  { id:"P003", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Yema de huevo líquida", kcal:322, gt:26.5, gs:9.6, tr:70, cho:3.6, fib:0.0, azt:0.6, aza:0.0, pro:15.9, na:48, vd:5.4, fe:2.7, ca:129, zn:2.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"Huevo" },
+  { id:"P004", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Carne de res magra cruda", kcal:135, gt:4.6, gs:1.8, tr:120, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:21.9, na:57, vd:0.1, fe:2.6, ca:12, zn:4.8, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"P005", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Carne de res semigorda (80/20) para hamburguesa", kcal:254, gt:20.0, gs:7.8, tr:450, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:17.2, na:66, vd:0.1, fe:1.9, ca:18, zn:4.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"P006", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Pechuga de pollo sin piel cruda", kcal:120, gt:2.6, gs:0.6, tr:15, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:22.5, na:45, vd:0.1, fe:0.4, ca:5, zn:0.7, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"P007", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Carne de cerdo magra (lomo/pierna) cruda", kcal:143, gt:5.4, gs:1.9, tr:25, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:21.8, na:52, vd:0.5, fe:0.9, ca:14, zn:2.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"P008", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Tocino / Grasa dorsal de cerdo", kcal:648, gt:68.0, gs:25.2, tr:180, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:8.5, na:160, vd:0.8, fe:0.5, ca:7, zn:1.1, addSug:false, addFat:true, addSod:false, edul:false, aler:"" },
+  { id:"P009", grupo:"Carnes, Aves, Pescados y Huevos", nombre:"Filete de tilapia / mojarra crudo", kcal:96, gt:1.7, gs:0.6, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:20.1, na:52, vd:3.1, fe:0.6, ca:10, zn:0.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"Pescado" },
+  { id:"F001", grupo:"Frutas Colombianas y Pulpas", nombre:"Pulpa de mora de Castilla", kcal:43, gt:0.5, gs:0.0, tr:0, cho:9.6, fib:5.3, azt:4.9, aza:0.0, pro:1.4, na:1, vd:0, fe:0.6, ca:29, zn:0.5, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F002", grupo:"Frutas Colombianas y Pulpas", nombre:"Pulpa de lulo", kcal:25, gt:0.1, gs:0.0, tr:0, cho:5.9, fib:1.4, azt:3.7, aza:0.0, pro:0.7, na:4, vd:0, fe:0.4, ca:8, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F003", grupo:"Frutas Colombianas y Pulpas", nombre:"Pulpa de maracuyá", kcal:68, gt:0.4, gs:0.0, tr:0, cho:15.8, fib:1.5, azt:11.2, aza:0.0, pro:1.5, na:19, vd:0, fe:1.3, ca:11, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F004", grupo:"Frutas Colombianas y Pulpas", nombre:"Pulpa de guayaba rosada / blanca", kcal:68, gt:1.0, gs:0.3, tr:0, cho:14.3, fib:5.4, azt:8.9, aza:0.0, pro:2.6, na:2, vd:0, fe:0.3, ca:18, zn:0.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F005", grupo:"Frutas Colombianas y Pulpas", nombre:"Pulpa de mango maduro", kcal:60, gt:0.4, gs:0.1, tr:0, cho:15.0, fib:1.6, azt:13.7, aza:0.0, pro:0.8, na:1, vd:0, fe:0.2, ca:11, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F006", grupo:"Frutas Colombianas y Pulpas", nombre:"Pulpa de guanábana", kcal:66, gt:0.3, gs:0.1, tr:0, cho:16.8, fib:3.3, azt:13.5, aza:0.0, pro:1.0, na:14, vd:0, fe:0.6, ca:14, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F007", grupo:"Frutas Colombianas y Pulpas", nombre:"Uchuva fresca", kcal:53, gt:0.7, gs:0.1, tr:0, cho:11.2, fib:1.9, azt:7.8, aza:0.0, pro:1.9, na:1, vd:0, fe:1.0, ca:9, zn:0.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F008", grupo:"Frutas Colombianas y Pulpas", nombre:"Fresa fresca", kcal:32, gt:0.3, gs:0.0, tr:0, cho:7.7, fib:2.0, azt:4.9, aza:0.0, pro:0.7, na:1, vd:0, fe:0.4, ca:16, zn:0.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F009", grupo:"Frutas Colombianas y Pulpas", nombre:"Banano común maduro", kcal:89, gt:0.3, gs:0.1, tr:0, cho:22.8, fib:2.6, azt:12.2, aza:0.0, pro:1.1, na:1, vd:0, fe:0.3, ca:5, zn:0.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"F010", grupo:"Frutas Colombianas y Pulpas", nombre:"Coco rallado deshidratado sin azúcar", kcal:660, gt:64.5, gs:57.2, tr:0, cho:23.7, fib:16.3, azt:7.4, aza:0.0, pro:6.9, na:37, vd:0, fe:3.3, ca:26, zn:2.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"V001", grupo:"Hortalizas y Leguminosas", nombre:"Tomate chonto / milano maduro", kcal:18, gt:0.2, gs:0.0, tr:0, cho:3.9, fib:1.2, azt:2.6, aza:0.0, pro:0.9, na:5, vd:0, fe:0.3, ca:10, zn:0.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"V002", grupo:"Hortalizas y Leguminosas", nombre:"Cebolla cabezona blanca", kcal:40, gt:0.1, gs:0.0, tr:0, cho:9.3, fib:1.7, azt:4.2, aza:0.0, pro:1.1, na:4, vd:0, fe:0.2, ca:23, zn:0.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"V003", grupo:"Hortalizas y Leguminosas", nombre:"Ajo fresco o en pasta pura", kcal:149, gt:0.5, gs:0.1, tr:0, cho:33.1, fib:2.1, azt:1.0, aza:0.0, pro:6.4, na:17, vd:0, fe:1.7, ca:181, zn:1.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"V004", grupo:"Hortalizas y Leguminosas", nombre:"Proteína aislada de soya (90%)", kcal:338, gt:3.4, gs:0.4, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:88.3, na:1005, vd:0, fe:14.5, ca:178, zn:4.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"Soya" },
+  { id:"V005", grupo:"Hortalizas y Leguminosas", nombre:"Proteína texturizada de soya (CARVE seco)", kcal:336, gt:1.2, gs:0.2, tr:0, cho:30.0, fib:17.5, azt:8.0, aza:0.0, pro:51.5, na:15, vd:0, fe:9.2, ca:241, zn:4.2, addSug:false, addFat:false, addSod:false, edul:false, aler:"Soya" },
+  { id:"V006", grupo:"Hortalizas y Leguminosas", nombre:"Garbanzo / Lenteja / Fríjol seco", kcal:352, gt:2.5, gs:0.4, tr:0, cho:62.0, fib:15.0, azt:3.0, aza:0.0, pro:23.0, na:12, vd:0, fe:6.2, ca:75, zn:3.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"K001", grupo:"Cacao, Nueces y Semillas", nombre:"Cacao en polvo natural alcalinizado (10-12% grasa)", kcal:228, gt:13.7, gs:8.1, tr:0, cho:57.9, fib:33.2, azt:1.8, aza:0.0, pro:19.6, na:21, vd:0, fe:13.9, ca:128, zn:6.8, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"K002", grupo:"Cacao, Nueces y Semillas", nombre:"Licor / Pasta de cacao 100%", kcal:598, gt:53.0, gs:32.5, tr:0, cho:28.0, fib:16.0, azt:1.5, aza:0.0, pro:12.0, na:8, vd:0, fe:11.9, ca:73, zn:3.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"K003", grupo:"Cacao, Nueces y Semillas", nombre:"Manteca de cacao pura", kcal:884, gt:100.0, gs:59.7, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:true, addSod:false, edul:false, aler:"" },
+  { id:"K004", grupo:"Cacao, Nueces y Semillas", nombre:"Maní tostado sin sal (o pasta de maní)", kcal:587, gt:49.7, gs:6.9, tr:0, cho:21.3, fib:8.4, azt:4.9, aza:0.0, pro:24.4, na:6, vd:0, fe:2.3, ca:58, zn:3.3, addSug:false, addFat:false, addSod:false, edul:false, aler:"Maní" },
+  { id:"K005", grupo:"Cacao, Nueces y Semillas", nombre:"Almendra entera o harina de almendras", kcal:579, gt:49.9, gs:3.8, tr:0, cho:21.6, fib:12.5, azt:4.4, aza:0.0, pro:21.2, na:1, vd:0, fe:3.7, ca:269, zn:3.1, addSug:false, addFat:false, addSod:false, edul:false, aler:"Frutos de cáscara (Almendra)" },
+  { id:"I001", grupo:"Sales, Agua y Aditivos", nombre:"Agua potable tratada", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:2, vd:0, fe:0.0, ca:3, zn:0.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"I002", grupo:"Sales, Agua y Aditivos", nombre:"Sal común yodada (Cloruro de Sodio)", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:38758, vd:0, fe:0.3, ca:24, zn:0.1, addSug:false, addFat:false, addSod:true, edul:false, aler:"" },
+  { id:"I003", grupo:"Sales, Agua y Aditivos", nombre:"Sal reducida en sodio (50% NaCl / 50% KCl)", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:19300, vd:0, fe:0.0, ca:10, zn:0.0, addSug:false, addFat:false, addSod:true, edul:false, aler:"" },
+  { id:"I004", grupo:"Sales, Agua y Aditivos", nombre:"Polvo para hornear (doble acción)", kcal:53, gt:0.0, gs:0.0, tr:0, cho:27.7, fib:0.2, azt:0.0, aza:0.0, pro:0.1, na:10600, vd:0, fe:11.0, ca:5876, zn:0.1, addSug:false, addFat:false, addSod:true, edul:false, aler:"" },
+  { id:"I005", grupo:"Sales, Agua y Aditivos", nombre:"Bicarbonato de sodio grado alimenticio", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:27360, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:true, edul:false, aler:"" },
+  { id:"I006", grupo:"Sales, Agua y Aditivos", nombre:"Benzoato de sodio / Sorbato de potasio (Conservante)", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:15900, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:true, edul:false, aler:"" },
+  { id:"I007", grupo:"Sales, Agua y Aditivos", nombre:"Ácido cítrico / Ácido ascórbico", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:0, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"I008", grupo:"Sales, Agua y Aditivos", nombre:"Goma xantana / Goma guar / CMC", kcal:320, gt:0.0, gs:0.0, tr:0, cho:80.0, fib:80.0, azt:0.0, aza:0.0, pro:0.0, na:1200, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:false, edul:false, aler:"" },
+  { id:"I009", grupo:"Sales, Agua y Aditivos", nombre:"Lecitina de soya líquida", kcal:763, gt:100.0, gs:15.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:10, vd:0, fe:0.0, ca:10, zn:0.0, addSug:false, addFat:true, addSod:false, edul:false, aler:"Soya" },
+  { id:"I010", grupo:"Sales, Agua y Aditivos", nombre:"Polifosfato de sodio / Tripolifosfato (Embutidos)", kcal:0, gt:0.0, gs:0.0, tr:0, cho:0.0, fib:0.0, azt:0.0, aza:0.0, pro:0.0, na:31200, vd:0, fe:0.0, ca:0, zn:0.0, addSug:false, addFat:false, addSod:true, edul:false, aler:"" }
+];
+
+let modoActual = 'receta';
+let idSeleccionado = "C003";
+let receta = [
+  { id:"C003", gramos:350 },
+  { id:"C001", gramos:250 },
+  { id:"A003", gramos:160 },
+  { id:"G005", gramos:140 },
+  { id:"P001", gramos:100 },
+  { id:"K001", gramos:40 },
+  { id:"I004", gramos:8 },
+  { id:"I002", gramos:3 }
+];
+
+function setModo(m) {
+  modoActual = m;
+  document.getElementById('tabReceta').classList.toggle('active', m === 'receta');
+  document.getElementById('tabManual').classList.toggle('active', m === 'manual');
+  document.getElementById('panelReceta').style.display = m === 'receta' ? 'block' : 'none';
+  document.getElementById('badgeModo').textContent = m === 'receta' ? 'Calculado desde Receta ICBF' : 'Ingreso Directo Laboratorio (Editable)';
+  if (m === 'receta') recalcularTodo();
+}
+
+function filtrarIngredientes() {
+  const grupo = document.getElementById('filtroGrupo').value;
+  const q = document.getElementById('busquedaTexto').value.toLowerCase().trim();
+  const filtrados = DB_ICBF.filter(item => {
+    const matchGrupo = !grupo || item.grupo === grupo;
+    const matchQ = !q || item.nombre.toLowerCase().includes(q) || item.id.toLowerCase().includes(q) || item.grupo.toLowerCase().includes(q);
+    return matchGrupo && matchQ;
+  });
+
+  const cont = document.getElementById('listaResultados');
+  if (filtrados.length === 0) {
+    cont.innerHTML = `<div style="padding:12px; color:#6b7280; font-size:0.84rem;">No se encontraron ingredientes con ese filtro.</div>`;
+    return;
+  }
+  cont.innerHTML = filtrados.map(it => {
+    const sel = it.id === idSeleccionado ? 'selected' : '';
+    let tags = '';
+    if (it.addSug) tags += `<span class="badge-tag tag-sugar">+Azúcar</span>`;
+    if (it.addFat) tags += `<span class="badge-tag tag-fat">+Grasa</span>`;
+    if (it.addSod) tags += `<span class="badge-tag tag-sod">+Sodio</span>`;
+    if (it.aler) tags += `<span class="badge-tag tag-allergen">Alérgeno: ${it.aler}</span>`;
+    return `<div class="search-item ${sel}" onclick="seleccionarIngrediente('${it.id}')" ondblclick="seleccionarIngrediente('${it.id}'); agregarSeleccionado();">
+      <div>
+        <strong>[${it.id}] ${it.nombre}</strong> ${tags}
+        <div class="meta">${it.grupo} — ${it.kcal} kcal | Prot: ${it.pro}g | Grasa: ${it.gt}g (Sat: ${it.gs}g) | CHO: ${it.cho}g (Azúc: ${it.azt}g) | Sodio: ${it.na}mg</div>
+      </div>
+      <span style="font-size:0.76rem; color:var(--primary); font-weight:700;">Clic / Doble clic</span>
+    </div>`;
+  }).join('');
+}
+
+function seleccionarIngrediente(id) {
+  idSeleccionado = id;
+  filtrarIngredientes();
+}
+
+function agregarSeleccionado() {
+  if (!idSeleccionado) return;
+  const cant = parseFloat(document.getElementById('cantAgregar').value) || 100;
+  const existente = receta.find(r => r.id === idSeleccionado);
+  if (existente) {
+    existente.gramos += cant;
+  } else {
+    receta.push({ id: idSeleccionado, gramos: cant });
+  }
+  recalcularTodo();
+}
+
+function eliminarDeReceta(idx) {
+  receta.splice(idx, 1);
+  recalcularTodo();
+}
+
+function actualizarGramos(idx, val) {
+  receta[idx].gramos = Math.max(0, parseFloat(val) || 0);
+  recalcularTodo();
+}
+
+function cargarPreset(tipo) {
+  if (tipo === 'galleta') {
+    document.getElementById('prodName').value = "Galleta de Avena con Cacao y Panela";
+    document.getElementById('estado').value = "solido";
+    document.getElementById('porcion').value = 30;
+    document.getElementById('medidaCasera').value = "2 galletas";
+    document.getElementById('mermaPct').value = 12;
+    receta = [
+      { id:"C003", gramos:350 }, { id:"C001", gramos:250 }, { id:"A003", gramos:160 },
+      { id:"G005", gramos:140 }, { id:"P001", gramos:100 }, { id:"K001", gramos:40 },
+      { id:"I004", gramos:8 }, { id:"I002", gramos:3 }
+    ];
+  } else if (tipo === 'pandebono') {
+    document.getElementById('prodName').value = "Pandebono Valluno Tradicional Horneado";
+    document.getElementById('estado').value = "solido";
+    document.getElementById('porcion').value = 60;
+    document.getElementById('medidaCasera').value = "1 unidad";
+    document.getElementById('mermaPct').value = 15;
+    receta = [
+      { id:"L009", gramos:450 }, { id:"T001", gramos:350 }, { id:"C005", gramos:100 },
+      { id:"L001", gramos:220 }, { id:"P001", gramos:100 }, { id:"G007", gramos:80 },
+      { id:"A001", gramos:35 }
+    ];
+  } else if (tipo === 'bebida') {
+    document.getElementById('prodName').value = "Néctar de Maracuyá y Mango";
+    document.getElementById('estado').value = "liquido";
+    document.getElementById('porcion').value = 200;
+    document.getElementById('medidaCasera').value = "1 vaso";
+    document.getElementById('mermaPct').value = 2;
+    receta = [
+      { id:"I001", gramos:680 }, { id:"F005", gramos:140 }, { id:"F003", gramos:90 },
+      { id:"A001", gramos:88 }, { id:"I007", gramos:1.5 }, { id:"I008", gramos:0.5 }
+    ];
+  } else if (tipo === 'hamburguesa') {
+    document.getElementById('prodName').value = "Carne de Hamburguesa de Res y Cerdo";
+    document.getElementById('estado').value = "solido";
+    document.getElementById('porcion').value = 100;
+    document.getElementById('medidaCasera').value = "1 unidad";
+    document.getElementById('mermaPct').value = 5;
+    receta = [
+      { id:"P005", gramos:650 }, { id:"P007", gramos:200 }, { id:"I001", gramos:80 },
+      { id:"V005", gramos:35 }, { id:"V002", gramos:15 }, { id:"I002", gramos:13 },
+      { id:"V003", gramos:5 }, { id:"I010", gramos:2 }
+    ];
+  }
+  recalcularTodo();
+}
+
+function recalcularTodo() {
+  if (modoActual !== 'receta') {
+    calcularSellosYTabla();
+    return;
+  }
+
+  const mermaPct = parseFloat(document.getElementById('mermaPct').value) || 0;
+  document.getElementById('lblMerma').textContent = mermaPct;
+  const porcion = parseFloat(document.getElementById('porcion').value) || 30;
+  let pesoCrudo = 0;
+  receta.forEach(r => pesoCrudo += r.gramos);
+  const pesoFinal = Math.max(1, pesoCrudo * (1 - mermaPct / 100.0));
+
+  let tot = { kcal:0, gt:0, gs:0, tr:0, cho:0, fib:0, azt:0, aza:0, pro:0, na:0, vd:0, fe:0, ca:0, zn:0 };
+  let flagSug = false, flagFat = false, flagSod = false, flagEdul = false;
+  const alergenosSet = new Set();
+
+  const tbody = document.getElementById('tablaBacheBody');
+  tbody.innerHTML = receta.map((r, idx) => {
+    const ing = DB_ICBF.find(d => d.id === r.id);
+    if (!ing) return '';
+    const f = r.gramos / 100.0;
+    tot.kcal += ing.kcal * f;
+    tot.gt   += ing.gt * f;
+    tot.gs   += ing.gs * f;
+    tot.tr   += ing.tr * f;
+    tot.cho  += ing.cho * f;
+    tot.fib  += ing.fib * f;
+    tot.azt  += ing.azt * f;
+    tot.aza  += ing.aza * f;
+    tot.pro  += ing.pro * f;
+    tot.na   += ing.na * f;
+    tot.vd   += ing.vd * f;
+    tot.fe   += ing.fe * f;
+    tot.ca   += ing.ca * f;
+    tot.zn   += ing.zn * f;
+
+    if (r.gramos > 0) {
+      if (ing.addSug) flagSug = true;
+      if (ing.addFat) flagFat = true;
+      if (ing.addSod) flagSod = true;
+      if (ing.edul)   flagEdul = true;
+      if (ing.aler)   alergenosSet.add(ing.aler);
+    }
+
+    const pctMezcla = pesoCrudo > 0 ? ((r.gramos / pesoCrudo) * 100).toFixed(1) : "0.0";
+    let badges = '';
+    if (ing.addSug) badges += `<span class="badge-tag tag-sugar">+Azúcar</span>`;
+    if (ing.addFat) badges += `<span class="badge-tag tag-fat">+Grasa</span>`;
+    if (ing.addSod) badges += `<span class="badge-tag tag-sod">+Sodio</span>`;
+    if (ing.aler)   badges += `<span class="badge-tag tag-allergen">${ing.aler}</span>`;
+
+    return `<tr>
+      <td><strong>${ing.id}</strong></td>
+      <td>${ing.nombre}</td>
+      <td><input type="number" value="${r.gramos}" min="0" step="1" oninput="actualizarGramos(${idx}, this.value)"></td>
+      <td>${pctMezcla}%</td>
+      <td>${(ing.kcal * f).toFixed(0)}</td>
+      <td>${badges || '—'}</td>
+      <td class="no-print"><button class="btn-del" onclick="eliminarDeReceta(${idx})">✕</button></td>
+    </tr>`;
+  }).join('');
+
+  const factor100 = 100.0 / pesoFinal;
+  document.getElementById('kcal').value         = (tot.kcal * factor100).toFixed(1);
+  document.getElementById('grasaTotal').value   = (tot.gt * factor100).toFixed(1);
+  document.getElementById('grasaSat').value     = (tot.gs * factor100).toFixed(1);
+  document.getElementById('grasaTrans').value   = (tot.tr * factor100).toFixed(0);
+  document.getElementById('carbs').value        = (tot.cho * factor100).toFixed(1);
+  document.getElementById('fibra').value        = (tot.fib * factor100).toFixed(1);
+  document.getElementById('azucarTotal').value  = (tot.azt * factor100).toFixed(1);
+  document.getElementById('azucarAnadido').value= (tot.aza * factor100).toFixed(1);
+  document.getElementById('proteina').value     = (tot.pro * factor100).toFixed(1);
+  document.getElementById('sodio').value        = (tot.na * factor100).toFixed(0);
+  document.getElementById('vitD').value         = (tot.vd * factor100).toFixed(1);
+  document.getElementById('hierro').value       = (tot.fe * factor100).toFixed(1);
+  document.getElementById('calcio').value       = (tot.ca * factor100).toFixed(0);
+  document.getElementById('zinc').value         = (tot.zn * factor100).toFixed(1);
+
+  document.getElementById('addedSugar').checked   = flagSug;
+  document.getElementById('addedFat').checked     = flagFat;
+  document.getElementById('addedSodium').checked  = flagSod;
+  document.getElementById('hasSweetener').checked = flagEdul;
+
+  document.getElementById('pesoCrudoTotal').textContent    = `${pesoCrudo.toFixed(0)} g`;
+  document.getElementById('pesoFinalTotal').textContent    = `${pesoFinal.toFixed(0)} g`;
+  document.getElementById('numPorcionesBache').textContent = `${(pesoFinal / porcion).toFixed(1)}`;
+  document.getElementById('kcalPor100').textContent        = `${(tot.kcal * factor100).toFixed(0)} kcal`;
+
+  const ordenados = [...receta]
+    .filter(r => r.gramos > 0)
+    .sort((a, b) => b.gramos - a.gramos)
+    .map(r => {
+      const ing = DB_ICBF.find(d => d.id === r.id);
+      return ing ? ing.nombre.split('(')[0].trim().toLowerCase() : '';
+    });
+  const listaTexto = ordenados.length > 0
+    ? ordenados.join(', ').replace(/^./, c => c.toUpperCase()) + '.'
+    : 'Sin ingredientes registrados.';
+  const alerTexto = alergenosSet.size > 0
+    ? `<strong>CONTIENE: ${Array.from(alergenosSet).join(', ').toUpperCase()}.</strong>`
+    : `Sin alérgenos mayores de declaración obligatoria en la fórmula actual.`;
+
+  document.getElementById('declaracionIngredientesBox').innerHTML = `
+    <div><strong>Declaración de Ingredientes (Res. 5109 de 2005):</strong> Ingredientes: ${listaTexto}</div>
+    <div style="margin-top:3px; color:#991b1b;"><strong>Declaración de Alérgenos:</strong> ${alerTexto}</div>
+  `;
+
+  calcularSellosYTabla();
+}
+
+// Generador de Sello Octogonal en SVG Vectorial Nativo (Garantiza impresión en negro sólido en cualquier PDF)
+function crearSelloSVG(tipo) {
+  const topText = tipo === 'EDULCORANTES' ? 'CONTIENE' : 'EXCESO EN';
+  let linea1 = tipo;
+  let linea2 = '';
+  if (tipo === 'GRASAS SATURADAS') {
+    linea1 = 'GRASAS';
+    linea2 = 'SATURADAS';
+  } else if (tipo === 'GRASAS TRANS') {
+    linea1 = 'GRASAS';
+    linea2 = 'TRANS';
+  }
+
+  const textoCentral = linea2
+    ? `<text x="60" y="54" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="12.5">${linea1}</text>
+       <text x="60" y="69" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="12.5">${linea2}</text>`
+    : `<text x="60" y="62" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="13">${linea1}</text>`;
+
+  return `
+  <svg class="seal-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- Borde exterior negro -->
+    <polygon points="36,2 84,2 118,36 118,84 84,118 36,118 2,84 2,36" fill="#000000" stroke="#000000" stroke-width="2"/>
+    <!-- Línea blanca octogonal reglamentaria -->
+    <polygon points="38,6 82,6 114,38 114,82 82,114 38,114 6,82 6,38" fill="#000000" stroke="#ffffff" stroke-width="3"/>
+    <!-- Texto superior -->
+    <text x="60" y="36" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-weight="800" font-size="11">${topText}</text>
+    <!-- Nutriente crítico -->
+    ${textoCentral}
+    <!-- Línea divisoria y MINSALUD -->
+    <line x1="32" y1="82" x2="88" y2="82" stroke="#ffffff" stroke-width="1.2"/>
+    <text x="60" y="95" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-weight="800" font-size="9.5" letter-spacing="0.5">MINSALUD</text>
+  </svg>`;
+}
+
+function redondearNutriente(val, tipo) {
+  if (isNaN(val) || val <= 0) return "0";
+  if (tipo === 'kcal') {
+    if (val <= 4) return "0";
+    if (val <= 50) return (Math.round(val / 5) * 5).toString();
+    return (Math.round(val / 10) * 10).toString();
+  }
+  if (tipo === 'macro' || tipo === 'grasaSat') {
+    if (val < 0.5) return "0";
+    if (val < 5) return Number(val.toFixed(1)).toString();
+    return Math.round(val).toString();
+  }
+  if (tipo === 'mgEntero') {
+    if (val < 5) return "0";
+    if (val <= 140) return (Math.round(val / 5) * 5).toString();
+    return (Math.round(val / 10) * 10).toString();
+  }
+  if (tipo === 'micro') {
+    return Number(val.toFixed(1)).toString();
+  }
+  return Number(val.toFixed(1)).toString();
+}
+
+function calcularSellosYTabla() {
+  const estado = document.getElementById('estado').value;
+  const unidad = estado === 'solido' ? 'g' : 'mL';
+  const porcion = parseFloat(document.getElementById('porcion').value) || 100;
+  const factor = porcion / 100.0;
+  const medidaCasera = document.getElementById('medidaCasera').value;
+  const porcionesEnvase = document.getElementById('porcionesEnvase').value;
+
+  const kcal = parseFloat(document.getElementById('kcal').value) || 0;
+  const grasaTotal = parseFloat(document.getElementById('grasaTotal').value) || 0;
+  const grasaSat = parseFloat(document.getElementById('grasaSat').value) || 0;
+  const grasaTrans = parseFloat(document.getElementById('grasaTrans').value) || 0;
+  const carbs = parseFloat(document.getElementById('carbs').value) || 0;
+  const fibra = parseFloat(document.getElementById('fibra').value) || 0;
+  const azucarTotal = parseFloat(document.getElementById('azucarTotal').value) || 0;
+  const azucarAnadido = parseFloat(document.getElementById('azucarAnadido').value) || 0;
+  const proteina = parseFloat(document.getElementById('proteina').value) || 0;
+  const sodio = parseFloat(document.getElementById('sodio').value) || 0;
+  const vitD = parseFloat(document.getElementById('vitD').value) || 0;
+  const hierro = parseFloat(document.getElementById('hierro').value) || 0;
+  const calcio = parseFloat(document.getElementById('calcio').value) || 0;
+  const zinc = parseFloat(document.getElementById('zinc').value) || 0;
+
+  const addedSugar = document.getElementById('addedSugar').checked;
+  const addedFat = document.getElementById('addedFat').checked;
+  const addedSodium = document.getElementById('addedSodium').checked;
+  const hasSweetener = document.getElementById('hasSweetener').checked;
+
+  const sellos = [];
+  const criterios = [];
+
+  const pctAzucar = kcal > 0 ? ((azucarAnadido * 4) / kcal) * 100 : 0;
+  if (addedSugar && pctAzucar >= 10) {
+    sellos.push("AZÚCARES");
+    criterios.push(`<li><strong style="color:#b91c1c;">EXCESO EN AZÚCARES:</strong> Aporta <strong>${pctAzucar.toFixed(1)}%</strong> de kcal (Límite: ≥ 10%). <em>Meta sin sello: &lt; ${((kcal * 0.099) / 4).toFixed(1)} g/100${unidad}.</em></li>`);
+  } else {
+    criterios.push(`<li><strong>Azúcares libres:</strong> ${pctAzucar.toFixed(1)}% de kcal (Cumple &lt; 10%, sin sello).</li>`);
+  }
+
+  const pctSat = kcal > 0 ? ((grasaSat * 9) / kcal) * 100 : 0;
+  if (addedFat && pctSat >= 10) {
+    sellos.push("GRASAS SATURADAS");
+    criterios.push(`<li><strong style="color:#b91c1c;">EXCESO EN GRASAS SATURADAS:</strong> Aporta <strong>${pctSat.toFixed(1)}%</strong> de kcal (Límite: ≥ 10%). <em>Meta sin sello: &lt; ${((kcal * 0.099) / 9).toFixed(1)} g/100${unidad}.</em></li>`);
+  } else {
+    criterios.push(`<li><strong>Grasas saturadas:</strong> ${pctSat.toFixed(1)}% de kcal (Cumple &lt; 10%, sin sello).</li>`);
+  }
+
+  const pctTrans = kcal > 0 ? (((grasaTrans / 1000.0) * 9) / kcal) * 100 : 0;
+  if (addedFat && pctTrans >= 1) {
+    sellos.push("GRASAS TRANS");
+    criterios.push(`<li><strong style="color:#b91c1c;">EXCESO EN GRASAS TRANS:</strong> Aporta <strong>${pctTrans.toFixed(2)}%</strong> de kcal (Límite: ≥ 1%).</li>`);
+  } else {
+    criterios.push(`<li><strong>Grasas trans:</strong> ${pctTrans.toFixed(2)}% de kcal (Cumple &lt; 1%, sin sello).</li>`);
+  }
+
+  const ratioSodioKcal = kcal > 0 ? (sodio / kcal) : 0;
+  let excesoSodio = false;
+  if (addedSodium) {
+    if (estado === 'solido') {
+      if (ratioSodioKcal >= 1 || sodio >= 300) excesoSodio = true;
+    } else {
+      if (kcal === 0 && sodio >= 40) excesoSodio = true;
+      else if (ratioSodioKcal >= 1 || sodio >= 300) excesoSodio = true;
+    }
+  }
+  if (excesoSodio) {
+    sellos.push("SODIO");
+    criterios.push(`<li><strong style="color:#b91c1c;">EXCESO EN SODIO:</strong> <strong>${sodio} mg/100${unidad}</strong> | <strong>${ratioSodioKcal.toFixed(2)} mg/kcal</strong> (Límite: ≥ 1 mg/kcal o ≥ 300 mg/100${unidad}).</li>`);
+  } else {
+    criterios.push(`<li><strong>Sodio:</strong> ${sodio} mg/100${unidad} | ${ratioSodioKcal.toFixed(2)} mg/kcal (Sin sello).</li>`);
+  }
+
+  if (hasSweetener) {
+    sellos.push("EDULCORANTES");
+    criterios.push(`<li><strong style="color:#b91c1c;">CONTIENE EDULCORANTES:</strong> Presencia declarada en fórmula.</li>`);
+  }
+
+  const sealsDiv = document.getElementById('sealsOutput');
+  if (sellos.length === 0) {
+    sealsDiv.innerHTML = `<div class="badge-ok">✓ Producto Libre de Sellos de Advertencia (Cumple Res. 2492/2022)</div>`;
+  } else {
+    sealsDiv.innerHTML = sellos.map(s => crearSelloSVG(s)).join('');
+  }
+  document.getElementById('auditCriteria').innerHTML = criterios.join('');
+
+  const tabla = document.getElementById('tablaNutricional');
+  tabla.innerHTML = `
+    <div class="nutri-title">Información Nutricional</div>
+    <div class="nutri-servings">
+      <div>Tamaño de porción: ${medidaCasera} (${porcion} ${unidad})</div>
+      <div>Número de porciones por envase: ${porcionesEnvase}</div>
+    </div>
+    <div class="nutri-header">
+      <span></span>
+      <span>Por 100 ${unidad}</span>
+      <span>Por porción</span>
+    </div>
+    <div class="nutri-grid bold thick">
+      <span>Calorías (kcal)</span>
+      <span>${redondearNutriente(kcal, 'kcal')}</span>
+      <span>${redondearNutriente(kcal * factor, 'kcal')}</span>
+    </div>
+    <div class="nutri-grid bold">
+      <span>Grasa Total</span>
+      <span>${redondearNutriente(grasaTotal, 'macro')} g</span>
+      <span>${redondearNutriente(grasaTotal * factor, 'macro')} g</span>
+    </div>
+    <div class="nutri-grid sub">
+      <span>Grasa Saturada</span>
+      <span>${redondearNutriente(grasaSat, 'grasaSat')} g</span>
+      <span>${redondearNutriente(grasaSat * factor, 'grasaSat')} g</span>
+    </div>
+    <div class="nutri-grid sub">
+      <span>Grasas Trans</span>
+      <span>${redondearNutriente(grasaTrans, 'mgEntero')} mg</span>
+      <span>${redondearNutriente(grasaTrans * factor, 'mgEntero')} mg</span>
+    </div>
+    <div class="nutri-grid bold">
+      <span>Carbohidratos Totales</span>
+      <span>${redondearNutriente(carbs, 'macro')} g</span>
+      <span>${redondearNutriente(carbs * factor, 'macro')} g</span>
+    </div>
+    <div class="nutri-grid sub">
+      <span>Fibra Dietaria</span>
+      <span>${redondearNutriente(fibra, 'macro')} g</span>
+      <span>${redondearNutriente(fibra * factor, 'macro')} g</span>
+    </div>
+    <div class="nutri-grid sub">
+      <span>Azúcares Totales</span>
+      <span>${redondearNutriente(azucarTotal, 'macro')} g</span>
+      <span>${redondearNutriente(azucarTotal * factor, 'macro')} g</span>
+    </div>
+    <div class="nutri-grid sub">
+      <span>Azúcares Añadidos</span>
+      <span>${redondearNutriente(azucarAnadido, 'macro')} g</span>
+      <span>${redondearNutriente(azucarAnadido * factor, 'macro')} g</span>
+    </div>
+    <div class="nutri-grid bold">
+      <span>Proteína</span>
+      <span>${redondearNutriente(proteina, 'macro')} g</span>
+      <span>${redondearNutriente(proteina * factor, 'macro')} g</span>
+    </div>
+    <div class="nutri-grid bold thick">
+      <span>Sodio</span>
+      <span>${redondearNutriente(sodio, 'mgEntero')} mg</span>
+      <span>${redondearNutriente(sodio * factor, 'mgEntero')} mg</span>
+    </div>
+    <div class="nutri-grid">
+      <span>Vitamina D</span>
+      <span>${redondearNutriente(vitD, 'micro')} µg</span>
+      <span>${redondearNutriente(vitD * factor, 'micro')} µg</span>
+    </div>
+    <div class="nutri-grid">
+      <span>Hierro</span>
+      <span>${redondearNutriente(hierro, 'micro')} mg</span>
+      <span>${redondearNutriente(hierro * factor, 'micro')} mg</span>
+    </div>
+    <div class="nutri-grid">
+      <span>Calcio</span>
+      <span>${redondearNutriente(calcio, 'mgEntero')} mg</span>
+      <span>${redondearNutriente(calcio * factor, 'mgEntero')} mg</span>
+    </div>
+    <div class="nutri-grid">
+      <span>Zinc</span>
+      <span>${redondearNutriente(zinc, 'micro')} mg</span>
+      <span>${redondearNutriente(zinc * factor, 'micro')} mg</span>
+    </div>
+    <div class="nutri-footer">
+      * Valores aproximados según reglas de redondeo oficial de la Resolución 810 de 2021 y Resolución 2492 de 2022 (MinSalud).
+    </div>
+  `;
+}
+
+function exportarCSV() {
+  const prod = document.getElementById('prodName').value;
+  let csv = "\uFEFFProducto;" + prod + "\n\n";
+  csv += "FORMULA DEL BACHE (BASE TCAC ICBF)\n";
+  csv += "Codigo_ICBF;Ingrediente;Peso_Crudo_g\n";
+  receta.forEach(r => {
+    const ing = DB_ICBF.find(d => d.id === r.id);
+    if (ing) csv += `${ing.id};${ing.nombre};${r.gramos}\n`;
+  });
+  csv += "\nTABLA NUTRICIONAL POR 100g/mL\n";
+  csv += `Calorias_kcal;${document.getElementById('kcal').value}\n`;
+  csv += `Grasa_Total_g;${document.getElementById('grasaTotal').value}\n`;
+  csv += `Grasa_Saturada_g;${document.getElementById('grasaSat').value}\n`;
+  csv += `Grasas_Trans_mg;${document.getElementById('grasaTrans').value}\n`;
+  csv += `Carbohidratos_g;${document.getElementById('carbs').value}\n`;
+  csv += `Fibra_g;${document.getElementById('fibra').value}\n`;
+  csv += `Azucares_Totales_g;${document.getElementById('azucarTotal').value}\n`;
+  csv += `Azucares_Anadidos_g;${document.getElementById('azucarAnadido').value}\n`;
+  csv += `Proteina_g;${document.getElementById('proteina').value}\n`;
+  csv += `Sodio_mg;${document.getElementById('sodio').value}\n`;
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const a = new Blob ? document.createElement('a') : null;
+  a.href = URL.createObjectURL(blob);
+  a.download = `Ficha_Nutricional_${prod.replace(/\s+/g, '_')}.csv`;
+  a.click();
+}
+
+document.getElementById('countDB').textContent = `${DB_ICBF.length} ingredientes ICBF`;
+filtrarIngredientes();
+recalcularTodo();
+</script>
+</body>
+</html>
