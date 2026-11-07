@@ -7,8 +7,8 @@
 - **País y Cobertura:** Colombia (Atención nacional a plantas procesadoras de alimentos, restaurantes, panaderías, servicios de catering, bebidas, lácteos y cárnicos).
 - **Canal Oficial de Cotizaciones y WhatsApp:** `+57 315 717 2270`
 - **TikTok Oficial:** `https://www.tiktok.com/@ayc.alimentos` (Video destacado: `https://www.tiktok.com/@ayc.alimentos/video/7705506268483489032` / `https://vt.tiktok.com/ZSpkUtY6G/`)
-- **URL Principal:** https://aycalimentos.com/
-- **Lead Magnet Oficial (Acceso Libre):** https://aycalimentos.com/kit-blindaje-invima-2026.html
+- **URL Principal:** https://ayc-ingenieria-alimentos.vercel.app/
+- **Lead Magnet Oficial (Acceso Libre):** https://ayc-ingenieria-alimentos.vercel.app/kit-blindaje-invima-2026.html
 
 ## Las 8 Líneas de Servicio Comercial B2B
 1. **BPM y Plan de Saneamiento Básico (Resolución 2674 de 2013):** Desde `$700.000 COP` (paquete base). Incluye diagnóstico sanitario inicial ponderado, los 4 programas obligatorios (Limpieza y Desinfección POES con tablas de dosificación exacta en ppm, Calidad de Agua Potable bajo Res. 2115 de 2007, Residuos Sólidos/Líquidos bajo Res. 2184 de 2019 y Control Integrado de Plagas), Curso Certificado de 10 Horas para manipuladores y acompañamiento en visita INVIMA o Secretaría de Salud.
@@ -19,4 +19,5 @@
 6. **Certificaciones Globales GFSI (FSSC 22000 v6, BRCGS, IFS) y FDA (FSMA / PCQI):** Cultura de Inocuidad y Monitoreo Ambiental de Patógenos (*Listeria* y *Salmonella*) para exportación y grandes superficies.
 7. **Sistemas Integrados de Gestión ISO (9001, 14001, 45001):** Integración bajo Estructura de Alto Nivel (HLS) con el sistema sanitario BPM/HACCP.
 8. **Investigación y Desarrollo (I+D) y Estudios de Vida Útil (Shelf Life):** Prototipado de nuevos alimentos, reducción de sodio (Res. 2013/2020 y 2056/2023), sustitución de alérgenos y estudios de estabilidad.
+
 

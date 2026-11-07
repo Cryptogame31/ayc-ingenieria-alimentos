@@ -29,5 +29,6 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://aycalimentos.com/sitemap.xml
+Sitemap: https://ayc-ingenieria-alimentos.vercel.app/sitemap.xml
+
 
