@@ -132,9 +132,12 @@
       <button onclick="switchModule('biblioteca')" id="mnav-biblioteca" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-white/15 bg-zinc-900/90 text-xs font-bold text-zinc-200 flex items-center gap-1.5">
         <span>📚</span> <span>18 Normas PDF</span>
       </button>
+      <button onclick="switchModule('invima')" id="mnav-invima" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-emerald-500/40 bg-emerald-950/80 text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+        <span>🏛️</span> <span>Pliego 3: INVIMA & Ley 2069</span>
+      </button>
     </div>
 
-    <!-- MENÚ LATERAL DE LOS 7 MÓDULOS OPERATIVOS (ESCRITORIO) -->
+    <!-- MENÚ LATERAL DE LOS 8 MÓDULOS OPERATIVOS (ESCRITORIO) -->
     <aside class="hidden lg:block lg:col-span-3 xl:col-span-3 space-y-2 no-print">
       <div class="p-3 rounded-2xl glass-card mb-3">
         <p class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold mb-2 px-2">🛠️ Herramientas de Ingeniería</p>
@@ -165,6 +168,10 @@
           <button onclick="switchModule('biblioteca')" id="nav-biblioteca" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-transparent text-xs sm:text-sm font-bold text-zinc-300 hover:text-white transition flex items-center justify-between cursor-pointer">
             <span class="flex items-center gap-2.5"><span>📚</span> <span>7. Biblioteca 18 Normas PDF & Excel</span></span>
             <span class="px-1.5 py-0.5 rounded bg-white/10 text-zinc-300 font-mono text-[10px]">Offline</span>
+          </button>
+          <button onclick="switchModule('invima')" id="nav-invima" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-950/40 text-xs sm:text-sm font-bold text-emerald-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🏛️</span> <span>8. Pliego 3: Trámite INVIMA & Ley 2069</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 font-mono font-extrabold text-[10px]">RSA/PSA/NSA</span>
           </button>
         </nav>
       </div>
@@ -274,6 +281,19 @@
             <h3 class="text-base font-extrabold text-white group-hover:text-emerald-300 transition">Biblioteca Normativa INVIMA / MinSalud</h3>
             <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">
               Consulta y descarga en 1 clic las resoluciones originales en PDF (`Res. 2674`, `810`, `2492`, `254`, `1407`, `2115`, `719`, `Ley 2069`, `Decreto 60` y `Codex Alimentarius`).
+            </p>
+          </div>
+
+          <div onclick="switchModule('invima')" class="p-5 rounded-2xl glass-card border border-amber-400/40 hover:border-amber-400 transition cursor-pointer group sm:col-span-2 xl:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🏛️</span>
+                <h3 class="text-base font-extrabold text-amber-300 group-hover:text-white transition">Pliego 3: Manual Operativo Trámites INVIMA (RSA / PSA / NSA) + Ley 2069 + Generador de Ficha Técnica</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono text-[11px] font-bold">Res. 719/2015 • Ley 2069/2020 (Tarifa $0)</span>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Incluye enlaces directos a la <strong>Oficina Virtual INVIMA</strong>, Tarifario Oficial, Consulta de Registros, Paso a Paso de Radicación en 5 Fases, Checklist de los 7 documentos que debe entregar el cliente y el <strong>Generador de Ficha Técnica Oficial de Producto en PDF</strong> para anexar al expediente sanitario.
             </p>
           </div>
         </div>
@@ -561,6 +581,294 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5" id="pdfLibraryGrid"></div>
       </section>
 
+      <!-- ==========================================
+           MÓDULO 8: PLIEGO 3 — TRÁMITE INVIMA (RSA/PSA/NSA) + LEY 2069 + FICHA TÉCNICA
+           ========================================== -->
+      <section id="mod-invima" class="hidden space-y-6">
+        <div class="p-5 rounded-2xl glass-card flex flex-wrap items-center justify-between gap-4 no-print">
+          <div>
+            <span class="text-xs font-mono uppercase text-amber-400 font-bold">MANUAL OPERATIVO Y EJECUTOR — PLIEGO 3 (RES. 2674/2013 • RES. 719/2015 • LEY 2069/2020)</span>
+            <h2 class="text-xl font-extrabold text-white">🏛️ Centro de Trámites Regulatorios INVIMA (RSA / PSA / NSA) + Tarifa $0 Microempresas</h2>
+            <p class="text-xs text-zinc-300 mt-0.5">Todo lo que necesita el ingeniero para radicar sin rechazos: enlaces directos a las plataformas del INVIMA, checklist de documentos al cliente, paso a paso y Generador de Ficha Técnica Oficial en PDF.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <a href="./normas/Resolucion_719_de_2015_Clasificacion_Riesgo_Alimentos.pdf" target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-bold text-xs hover:bg-emerald-500 hover:text-slate-950 transition">
+              📄 Abrir Res. 719/2015 (Riesgo)
+            </a>
+            <a href="./normas/Ley_2069_de_2020_Emprendimiento_Tarifas_INVIMA.pdf" target="_blank" class="px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 font-bold text-xs hover:bg-amber-400 hover:text-slate-950 transition">
+              📄 Abrir Ley 2069/2020 (Tarifa $0)
+            </a>
+          </div>
+        </div>
+
+        <!-- 1. DIRECTORIO DE PORTALES OFICIALES DEL INVIMA (1 CLIC) -->
+        <div class="p-5 rounded-2xl glass-card no-print">
+          <h3 class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider mb-3">🔗 1. Portales Oficiales de Radicación y Consulta (INVIMA / VUCE / ICA)</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <a href="https://tramitesenlinea.invima.gov.co/" target="_blank" rel="noopener" class="p-3.5 rounded-xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition flex flex-col justify-between gap-2">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 font-bold">PORTAL DE RADICACIÓN</span>
+                <p class="font-extrabold text-white text-sm mt-0.5">Oficina Virtual INVIMA (Trámites en Línea)</p>
+                <p class="text-zinc-400 mt-1">Plataforma oficial para radicar RSA, PSA, NSA, modificaciones y renovaciones.</p>
+              </div>
+              <span class="text-amber-300 font-bold">Ir a tramitesenlinea.invima.gov.co ↗</span>
+            </a>
+
+            <a href="https://www.invima.gov.co/tramites-y-servicios/tarifas" target="_blank" rel="noopener" class="p-3.5 rounded-xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition flex flex-col justify-between gap-2">
+              <div>
+                <span class="font-mono text-[10px] text-amber-400 font-bold">MANUAL TARIFARIO Y LEY 2069</span>
+                <p class="font-extrabold text-white text-sm mt-0.5">Tarifas Oficiales INVIMA y Códigos Tarifa $0</p>
+                <p class="text-zinc-400 mt-1">Consulta de códigos tarifarios vigentes y códigos de exención de pago para microempresas (Ley 2069).</p>
+              </div>
+              <span class="text-amber-300 font-bold">Abrir Manual Tarifario INVIMA ↗</span>
+            </a>
+
+            <a href="https://consultaregistro.invima.gov.co/Consultas/consultaregistro.jsf" target="_blank" rel="noopener" class="p-3.5 rounded-xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition flex flex-col justify-between gap-2">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 font-bold">VERIFICACIÓN DE REGISTROS</span>
+                <p class="font-extrabold text-white text-sm mt-0.5">Consulta Pública de Registros Sanitarios</p>
+                <p class="text-zinc-400 mt-1">Verifica estado de expedientes RSA/PSA/NSA de clientes, maquiladores o proveedores de materias primas.</p>
+              </div>
+              <span class="text-amber-300 font-bold">Consultar Expediente INVIMA ↗</span>
+            </a>
+
+            <a href="https://www.invima.gov.co/alimentos-y-bebidas" target="_blank" rel="noopener" class="p-3.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-emerald-400 transition flex flex-col justify-between gap-2">
+              <div>
+                <span class="font-mono text-[10px] text-teal-400 font-bold">INSCRIPCIÓN DE PLANTA Y FORMATOS</span>
+                <p class="font-extrabold text-white text-sm mt-0.5">Dirección de Alimentos y Bebidas INVIMA</p>
+                <p class="text-zinc-400 mt-1">Descarga del Formulario Único de Alimentos, inscripción de fábricas (Art. 126 Dec. 019/2012) y guías.</p>
+              </div>
+              <span class="text-emerald-300 font-bold">Abrir Portal Alimentos INVIMA ↗</span>
+            </a>
+
+            <a href="https://www.vuce.gov.co/" target="_blank" rel="noopener" class="p-3.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-emerald-400 transition flex flex-col justify-between gap-2">
+              <div>
+                <span class="font-mono text-[10px] text-sky-400 font-bold">COMERCIO EXTERIOR</span>
+                <p class="font-extrabold text-white text-sm mt-0.5">VUCE (Ventanilla Única de Comercio Exterior)</p>
+                <p class="text-zinc-400 mt-1">Vistos buenos de importación/exportación de alimentos, materias primas e insumos ante INVIMA.</p>
+              </div>
+              <span class="text-emerald-300 font-bold">Abrir Portal VUCE ↗</span>
+            </a>
+
+            <a href="https://www.ica.gov.co/" target="_blank" rel="noopener" class="p-3.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-emerald-400 transition flex flex-col justify-between gap-2">
+              <div>
+                <span class="font-mono text-[10px] text-emerald-400 font-bold">PRODUCCIÓN PRIMARIA / INSUMOS</span>
+                <p class="font-extrabold text-white text-sm mt-0.5">Portal Oficial ICA Colombia</p>
+                <p class="text-zinc-400 mt-1">Trámites para alimentos sin procesar, producción primaria agropecuaria y registros ICA.</p>
+              </div>
+              <span class="text-emerald-300 font-bold">Abrir Portal ICA ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. MANUAL PASO A PASO EN 5 ETAPAS + CHECKLIST DE DOCUMENTOS A PEDIR AL CLIENTE -->
+        <div class="grid md:grid-cols-2 gap-5 no-print">
+          <!-- PASO A PASO DEL INGENIERO -->
+          <div class="p-5 rounded-2xl glass-card space-y-3">
+            <h3 class="text-sm font-extrabold text-amber-400 uppercase tracking-wider border-b border-white/10 pb-2">📋 2. Paso a Paso Operativo del Ingeniero (5 Fases)</h3>
+            <ol class="space-y-3 text-xs text-zinc-200 leading-relaxed">
+              <li class="p-3 rounded-xl bg-zinc-900/80 border-l-4 border-emerald-400">
+                <strong class="text-white block">FASE 1: Inscripción de la Fábrica ante el INVIMA</strong>
+                Antes de sacar cualquier RSA/PSA/NSA, la planta fabricante (propia o maquilador) debe estar inscrita en el Directorio de Empresas de Alimentos del INVIMA y contar con <strong>Concepto Sanitario Favorable o Favorable con Requerimientos</strong> vigente de visita INVIMA.
+              </li>
+              <li class="p-3 rounded-xl bg-zinc-900/80 border-l-4 border-amber-400">
+                <strong class="text-white block">FASE 2: Clasificación de Riesgo y Agrupamiento (Amparar variedades)</strong>
+                Ubica el producto en el Anexo de la <code>Resolución 719 de 2015</code> (Grupo, Subgrupo y Categoría):<br>
+                • <strong>Riesgo Alto → RSA</strong> (5 años)<br>
+                • <strong>Riesgo Medio → PSA</strong> (7 años)<br>
+                • <strong>Riesgo Bajo → NSA</strong> (10 años)<br>
+                <em>Tip de Ingeniería:</em> Bajo el Art. 42 de la <code>Res. 2674/2013</code>, puedes amparar varios sabores o presentaciones bajo <strong>un mismo registro sanitario</strong> si comparten la misma clasificación y proceso base.
+              </li>
+              <li class="p-3 rounded-xl bg-zinc-900/80 border-l-4 border-emerald-400">
+                <strong class="text-white block">FASE 3: Validación de Tarifa $0 (Ley 2069 de 2020 y Dec. 957/2019)</strong>
+                Verifica los ingresos por actividades ordinarias anuales de la empresa en el certificado de Cámara de Comercio o certificación de Contador Público:<br>
+                • Si clasifica como <strong>Microempresa</strong> (o pequeño productor agropecuario asociativo), selecciona en el tarifario INVIMA el <strong>Código de Exención Ley 2069 de 2020 (Valor a pagar al INVIMA: $0 COP)</strong>.
+              </li>
+              <li class="p-3 rounded-xl bg-zinc-900/80 border-l-4 border-teal-400">
+                <strong class="text-white block">FASE 4: Armado del Dossier Técnico (El corazón del trámite)</strong>
+                Genera abajo la <strong>Ficha Técnica Oficial del Producto</strong> (obligatoria bajo la Res. 2674/2013) y el boceto de etiqueta/rotulado auditado con el Módulo 2 (`Res. 5109/2005` + `Res. 810/2021` + `Res. 2492/2022`).
+              </li>
+              <li class="p-3 rounded-xl bg-zinc-900/80 border-l-4 border-emerald-400">
+                <strong class="text-white block">FASE 5: Radicación Automática y Seguimiento a Control Posterior</strong>
+                En Colombia, los RSA, PSA y NSA de alimentos se expiden con <strong>concesión automática e inmediata tras la radicación completa</strong>, pero pasan a <strong>revisión posterior obligatoria</strong> por parte de los ingenieros del INVIMA. Un dossier bien hecho evita el temido <em>Auto de Requerimiento</em> (que da solo 1 mes para responder).
+              </li>
+            </ol>
+          </div>
+
+          <!-- CHECKLIST DE DOCUMENTOS QUE DEBE ENTREGAR EL CLIENTE -->
+          <div class="p-5 rounded-2xl glass-card space-y-3">
+            <h3 class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider border-b border-white/10 pb-2">📂 3. Checklist de Documentos que Debes Pedirle al Cliente</h3>
+            <p class="text-xs text-zinc-400">Marca cada requisito a medida que el cliente te lo envíe por WhatsApp o correo:</p>
+            <div class="space-y-2 text-xs text-zinc-200">
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 accent-emerald-400">
+                <span><strong>1. Certificado de Cámara de Comercio (≤ 30 días):</strong> Con objeto social que incluya fabricación/comercialización de alimentos y tamaño empresarial visible.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 accent-emerald-400">
+                <span><strong>2. RUT Actualizado (DIAN):</strong> Con códigos CIIU de industria alimentaria (Grupo 10 / 11).</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 accent-emerald-400">
+                <span><strong>3. Certificación de Ingresos (Solo para Tarifa $0 Ley 2069):</strong> Firmada por Contador Público o Revisor Fiscal (con copia de tarjeta profesional y cédula) certificando condición de Microempresa según Decreto 957 de 2019.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 accent-emerald-400">
+                <span><strong>4. Poder o Autorización Técnica:</strong> Firmado por el Representante Legal autorizando al ingeniero de AYC para gestionar y radicar el trámite ante el INVIMA.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 accent-emerald-400">
+                <span><strong>5. Contrato de Maquila (Solo si no tiene planta propia):</strong> Si el cliente manda a fabricar su marca donde un tercero, copia del contrato o certificación donde la planta (con Concepto Sanitario INVIMA) autoriza fabricar el producto.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 accent-emerald-400">
+                <span><strong>6. Fórmula Cuali-Cuantitativa en % (Suma = 100%):</strong> Receta exacta con aditivos expresados con su nombre genérico y número SIN/INS (verificable en Res. 2606/2009).</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
+                <input type="checkbox" class="mt-0.5 accent-emerald-400">
+                <span><strong>7. Fichas Técnicas de Empaque Primario:</strong> Certificación del proveedor de bolsas/envases de que son aptos para contacto con alimentos (`Res. 683, 4142 o 4143 de 2012`).</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. GENERADOR INTERACTIVO DE FICHA TÉCNICA OFICIAL DE PRODUCTO PARA INVIMA (PDF) -->
+        <div class="p-5 rounded-2xl glass-card space-y-4 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
+            <div>
+              <span class="text-xs font-mono text-emerald-400 font-bold uppercase">GENERADOR AUTOMATIZADO DE DOSSIER TÉCNICO</span>
+              <h3 class="text-lg font-extrabold text-white">📄 4. Generador de Ficha Técnica Oficial de Producto para Radicación INVIMA</h3>
+              <p class="text-xs text-zinc-400">Diligencia los campos técnicos del producto y haz clic en Imprimir / Guardar en PDF para adjuntarlo en la Oficina Virtual del INVIMA.</p>
+            </div>
+            <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+              🖨️ Imprimir Ficha Técnica INVIMA (PDF)
+            </button>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Tipo de Trámite y Riesgo (Res. 719/2015)</label>
+              <select id="ftTipoTramite" onchange="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-emerald-300 font-bold">
+                <option value="REGISTRO SANITARIO (RSA — Riesgo Alto • Vigencia 5 Años)">REGISTRO SANITARIO (RSA — Riesgo Alto)</option>
+                <option value="PERMISO SANITARIO (PSA — Riesgo Medio • Vigencia 7 Años)">PERMISO SANITARIO (PSA — Riesgo Medio)</option>
+                <option value="NOTIFICACIÓN SANITARIA (NSA — Riesgo Bajo • Vigencia 10 Años)">NOTIFICACIÓN SANITARIA (NSA — Riesgo Bajo)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Denominación Real del Alimento (Res. 5109/2005)</label>
+              <input type="text" id="ftNombreProd" value="Queso Fresco Semigraso Semiduro Variedad Campesino" oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Marca(s) Comercial(es)</label>
+              <input type="text" id="ftMarca" value="DELICIAS DE LA SABANA" oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Titular del Registro (Empresa y NIT)</label>
+              <input type="text" id="ftTitular" value="Lácteos y Alimentos de Colombia S.A.S. — NIT 901.000.000-1" oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Fabricante / Planta y Ubicación</label>
+              <input type="text" id="ftFabricante" value="Planta Principal — Medellín, Antioquia" oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Grupo / Categoría Res. 719 de 2015</label>
+              <input type="text" id="ftGrupo719" value="Grupo 1: Leche y productos lácteos (Categoría 1.4 — Quesos frescos)" oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-3">
+              <label class="block font-bold text-zinc-300 mb-1">Composición Cuali-Cuantitativa en Orden Decreciente de Peso (Ingredients + Aditivos SIN)</label>
+              <textarea id="ftComposicion" rows="2" oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">Leche entera higienizada de vaca (96.2%), Sal refinada yodada y fluorizada (1.8%), Cloruro de calcio — Estabilizante SIN 509 (0.02%), Cuajo microbiano enzimático (0.01%). Contiene: Leche (Lactosa).</textarea>
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Presentaciones Comerciales y Material de Envase</label>
+              <input type="text" id="ftPresentacion" value="Bolsa multicapa termoencogible al vacío (PEBD/PA grado alimenticio Res. 4143/2012) por 250 g, 500 g, 1000 g y 2500 g." oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Condiciones de Conservación y Vida Útil</label>
+              <input type="text" id="ftVidaUtil" value="Manténgase en refrigeración entre 0°C y 4°C. Vida útil estimada: 30 días en empaque al vacío sin abrir." oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block font-bold text-zinc-300 mb-1">Sistema de Codificación de Lote y Vencimiento</label>
+              <input type="text" id="ftLote" value="Lote alfanumérico DDMMAA (Día/Mes/Año de producción) + Fecha de vencimiento DD/MM/AAAA impresa en cara frontal." oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-3">
+              <label class="block font-bold text-zinc-300 mb-1">Descripción del Proceso de Elaboración (Diagrama de Flujo Descriptivo)</label>
+              <textarea id="ftProceso" rows="2" oninput="renderFichaInvima()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">1. Recepción y filtrado de leche cruda (≤4°C) → 2. Pasteurización HTST (72°C x 15 seg - PCC1) → 3. Enfriamiento a 35°C y adición de cloruro de calcio y cuajo → 4. Coagulación (30 min), corte de cuajada y desuerado → 5. Salado y moldeo en prensa INOX 304 → 6. Enfriamiento a 4°C, empaque al vacío, rotulado y almacenamiento en cuarto frío (0°C a 4°C).</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- VISTA IMPRIMIBLE DE LA FICHA TÉCNICA OFICIAL INVIMA -->
+        <div id="fichaTecnicaPrintSheet" class="p-4 sm:p-8 rounded-2xl bg-white text-slate-900 shadow-2xl print-sheet space-y-4 text-xs">
+          <div class="border-b-4 border-emerald-800 pb-3 flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-900 font-extrabold text-[10px]" id="ftpTramite">REGISTRO SANITARIO (RSA)</span>
+              <h3 class="text-xl font-black text-emerald-950 mt-1">FICHA TÉCNICA DE PRODUCTO ALIMENTICIO — DOSSIER INVIMA</h3>
+              <p class="text-[11px] text-slate-600">Elaborada conforme a la Resolución 2674 de 2013, Resolución 719 de 2015, Resolución 5109 de 2005 y Resolución 1407 de 2022.</p>
+            </div>
+            <div class="text-right font-mono text-[11px] text-slate-700">
+              <div><strong>Código Doc:</strong> FT-INVIMA-001</div>
+              <div><strong>Asesoría Técnica:</strong> AYC Ingeniería de Alimentos</div>
+            </div>
+          </div>
+
+          <table class="w-full border-collapse border border-slate-300 text-xs">
+            <tbody>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300 w-1/3">1. Nombre / Denominación Verdadera del Alimento:</td>
+                <td class="p-2.5 font-extrabold text-emerald-950 border border-slate-300" id="ftpNombre">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">2. Marca(s) Comercial(es):</td>
+                <td class="p-2.5 border border-slate-300 font-bold" id="ftpMarca">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">3. Titular del Registro / Permiso / Notificación:</td>
+                <td class="p-2.5 border border-slate-300" id="ftpTitular">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">4. Fabricante / Empacador y Ubicación:</td>
+                <td class="p-2.5 border border-slate-300" id="ftpFabricante">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">5. Clasificación de Riesgo (Res. 719 de 2015):</td>
+                <td class="p-2.5 border border-slate-300 font-semibold text-emerald-900" id="ftpGrupo719">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">6. Composición Cuali-Cuantitativa (Orden Decreciente):</td>
+                <td class="p-2.5 border border-slate-300 leading-relaxed" id="ftpComposicion">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">7. Presentaciones Comerciales y Material de Envase:</td>
+                <td class="p-2.5 border border-slate-300 leading-relaxed" id="ftpPresentacion">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">8. Condiciones de Conservación y Vida Útil Estimada:</td>
+                <td class="p-2.5 border border-slate-300 leading-relaxed" id="ftpVidaUtil">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">9. Sistema de Identificación de Lote y Vencimiento:</td>
+                <td class="p-2.5 border border-slate-300 leading-relaxed" id="ftpLote">--</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 bg-slate-100 font-bold border border-slate-300">10. Descripción del Proceso de Elaboración:</td>
+                <td class="p-2.5 border border-slate-300 leading-relaxed" id="ftpProceso">--</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Firma Representante Legal (Titular)</strong><br>
+              <span class="text-slate-600" id="ftpFirmaTitular">Empresa Solicitante</span>
+            </div>
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Elaborado y Avalado por Ingeniería de Alimentos</strong><br>
+              <span class="text-slate-600">AYC Ingeniería y Asesorías de Alimentos • Tel: +57 315 717 2270</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -582,7 +890,7 @@
     }
 
     // 2. CAMBIO DE MÓDULOS
-    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca'];
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima'];
     function switchModule(modId) {
       MODULES.forEach(m => {
         document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
@@ -832,11 +1140,38 @@
       `).join('');
     }
 
+    // 7. GENERADOR DE FICHA TÉCNICA OFICIAL DE PRODUCTO PARA RADICACIÓN INVIMA (PLIEGO 3)
+    function renderFichaInvima() {
+      const val = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.value : '';
+      };
+      const setTxt = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+
+      const titular = val('ftTitular') || 'Empresa Solicitante';
+      setTxt('ftpTramite', val('ftTramite'));
+      setTxt('ftpNombre', val('ftNombre'));
+      setTxt('ftpMarca', val('ftMarca'));
+      setTxt('ftpTitular', titular);
+      setTxt('ftpFabricante', val('ftFabricante'));
+      setTxt('ftpGrupo719', val('ftGrupo719'));
+      setTxt('ftpComposicion', val('ftComposicion'));
+      setTxt('ftpPresentacion', val('ftPresentacion'));
+      setTxt('ftpVidaUtil', val('ftVidaUtil'));
+      setTxt('ftpLote', val('ftLote'));
+      setTxt('ftpProceso', val('ftProceso'));
+      setTxt('ftpFirmaTitular', titular);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initAuditTable();
       calcPpm();
       initQuoteBuilder();
       initPdfLibrary();
+      renderFichaInvima();
     });
   </script>
 </body>
