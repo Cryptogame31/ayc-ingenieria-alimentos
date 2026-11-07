@@ -141,6 +141,9 @@
       <button onclick="switchModule('haccp')" id="mnav-haccp" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-teal-500/40 bg-teal-950/80 text-xs font-bold text-teal-300 flex items-center gap-1.5">
         <span>🔬</span> <span>Pliego 4: HACCP, TACCP & Res. 1407</span>
       </button>
+      <button onclick="switchModule('planta')" id="mnav-planta" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-emerald-500/40 bg-emerald-950/80 text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+        <span>🏗️</span> <span>Servicio 5: Diseño Planta 2D & INOX</span>
+      </button>
     </div>
 
     <!-- MENÚ LATERAL DE LOS 8 MÓDULOS OPERATIVOS (ESCRITORIO) -->
@@ -186,6 +189,10 @@
           <button onclick="switchModule('haccp')" id="nav-haccp" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-teal-500/30 bg-teal-950/30 text-xs sm:text-sm font-bold text-teal-300 hover:text-white transition flex items-center justify-between cursor-pointer">
             <span class="flex items-center gap-2.5"><span>🔬</span> <span>10. Pliego 4: HACCP, TACCP & Res. 1407</span></span>
             <span class="px-1.5 py-0.5 rounded bg-teal-400 text-slate-950 font-mono font-extrabold text-[10px]">Dec. 60</span>
+          </button>
+          <button onclick="switchModule('planta')" id="nav-planta" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-950/30 text-xs sm:text-sm font-bold text-emerald-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🏗️</span> <span>11. Servicio 5: Diseño Planta 2D & INOX</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 font-mono font-extrabold text-[10px]">EHEDG</span>
           </button>
         </nav>
       </div>
@@ -334,6 +341,19 @@
             </div>
             <p class="text-xs text-zinc-300 leading-relaxed">
               Incluye la <strong>Calculadora del Árbol de Decisiones Codex (PCC vs. PPRO vs. PPR)</strong>, el selector de <strong>Criterios Microbiológicos Oficiales (Res. 1407 de 2022: n, c, m, M)</strong> y el <strong>Generador en PDF del Plan Maestro HACCP + TACCP (Food Defense) + VACCP (Food Fraud)</strong> listo para auditoría de certificación INVIMA.
+            </p>
+          </div>
+
+          <div onclick="switchModule('planta')" class="p-5 rounded-2xl glass-card border border-amber-400/40 hover:border-amber-400 transition cursor-pointer group sm:col-span-2 xl:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🏗️</span>
+                <h3 class="text-base font-extrabold text-amber-300 group-hover:text-white transition">Servicio 5: Diseño Higiénico de Plantas de Alimentos (Layout 2D Vectorial + Pisos 2% + Media Caña + INOX 304/316)</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono text-[11px] font-bold">EHEDG • Art. 6–9 Res. 2674/2013 • Res. 683/2012</span>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Calcula áreas en $\text{m}^2$, sifones, pendiente del $2\%$ y curvas media caña ($\ge 2.5\text{ cm}$), selecciona entre <strong>Acero Inoxidable AISI 304 y AISI 316L</strong>, genera el <strong>Plano 2D Vectorial con Zonificación por Colores y Flujo Unidireccional</strong> e imprime la <strong>Memoria Constructiva Antidemolición en PDF (`MEM-DIS-001`)</strong>.
             </p>
           </div>
         </div>
@@ -1460,6 +1480,239 @@
         </div>
       </section>
 
+      <!-- =========================================================================
+           MÓDULO 11: SERVICIO 5 — DISEÑO HIGIÉNICO DE PLANTAS DE ALIMENTOS (LAYOUT 2D & INOX)
+           ========================================================================= -->
+      <section id="mod-planta" class="hidden space-y-6">
+        <div class="p-6 rounded-3xl glass-card border border-amber-400/40 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 font-mono text-xs font-bold">
+                SERVICIO 5 • DIRECTRICES EHEDG • ART. 6 AL 9 RES. 2674 DE 2013 • RESOLUCIÓN 683 DE 2012
+              </span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-2">🏗️ Diseño Higiénico de Plantas de Alimentos, Layout 2D y Equipos INOX</h2>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
+                Ingeniería de infraestructura sanitaria que evita demoliciones ante el INVIMA: dimensiona áreas por colores (<strong>Zona Negra / Gris / Blanca</strong>), calcula sifones, pendientes del <strong>2%</strong> y curvas <strong>media caña ($\ge 2.5\text{ cm}$)</strong>, selecciona el grado de <strong>Acero Inoxidable AISI 304 vs. 316L</strong> e imprime el <strong>Plano Esquemático 2D + Memoria Constructiva en PDF</strong>.
+              </p>
+            </div>
+            <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              🖨️ Imprimir Plano 2D + Memoria Constructiva (PDF)
+            </button>
+          </div>
+
+          <!-- ENLACES DIRECTOS A LAS 4 NORMAS DE INFRAESTRUCTURA Y EQUIPOS -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+            <a href="./normas/Resolucion_2674_de_2013_BPM.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-emerald-300 font-bold">EDIFICACIONES (ART. 6–9)</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 Resolución 2674/2013 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Pisos, drenajes, paredes, media caña, techos, iluminación y flujo lineal.</p>
+            </a>
+            <a href="./normas/Resolucion_683_de_2012_Envases_Equipos_Contacto_Alimentos.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-amber-500/30 hover:border-amber-400 transition block">
+              <span class="text-[10px] font-mono text-amber-300 font-bold">CONTACTO CON ALIMENTOS</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 Resolución 683/2012 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Reglamento técnico general de materiales y equipamientos grado alimenticio.</p>
+            </a>
+            <a href="./normas/Resolucion_4142_de_2012_Envases_Metalicos.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-teal-500/30 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-teal-300 font-bold">ACERO INOX 304 / 316</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 Resolución 4142/2012 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Requisitos para materiales metálicos y aleaciones inoxidables sin migración.</p>
+            </a>
+            <a href="./normas/Resolucion_4143_de_2012_Envases_Plasticos_Elastomeros.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">POLÍMEROS PEAD / PP</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 Resolución 4143/2012 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Estibas plásticas, tablas de picado PEAD y empaques poliméricos.</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- PANEL DE PARÁMETROS DE INGENIERÍA DE PLANTA (NO-PRINT) -->
+        <div class="p-6 rounded-2xl glass-card border border-emerald-500/30 space-y-4 no-print">
+          <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-300 font-bold">CALCULADORA DE DIMENSIONAMIENTO CIVIL, PENDIENTES 2%, MEDIA CAÑA Y SELECCIÓN INOX</span>
+          <h3 class="text-lg font-extrabold text-white">📐 Configurador del Proyecto de Planta y Especificación de Materiales</h3>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div>
+              <label class="block text-zinc-400 mb-1">Empresa / Cliente Proyecto</label>
+              <input type="text" id="plEmpresa" value="Alimentos Del Valle S.A.S." oninput="calcPlantDesign()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Ubicación / Bodega o Local</label>
+              <input type="text" id="plUbicacion" value="Bodega Industrial — Colombia" oninput="calcPlantDesign()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Largo Total de la Planta (Metros)</label>
+              <input type="number" id="plLargo" value="15" min="4" max="200" step="0.5" oninput="calcPlantDesign()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-emerald-500/40 text-emerald-300 font-mono font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Ancho Total de la Planta (Metros)</label>
+              <input type="number" id="plAncho" value="8" min="3" max="100" step="0.5" oninput="calcPlantDesign()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-emerald-500/40 text-emerald-300 font-mono font-bold">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-zinc-400 mb-1">Naturaleza Química del Alimento (Selección Automática Acero INOX Res. 683/2012)</label>
+              <select id="plMatriz" onchange="calcPlantDesign()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-amber-500/40 text-amber-300 font-bold">
+                <option value="304">Alimento Neutro / Seco / Panadería / Fruver / Empaque (Acero Inoxidable AISI 304)</option>
+                <option value="316" selected>Alimento Ácido (pH &lt; 4.5), Salsas, Salmueras, Cárnicos con Cloruros o CIP Ácido (AISI 316L + 304)</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-zinc-400 mb-1">Tipo de Recubrimiento Sanitario de Pisos Recomendado (Art. 7 Num. 1)</label>
+              <select id="plPiso" onchange="calcPlantDesign()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+                <option value="Mortero Monolítico de Poliuretano-Cemento (4 a 6 mm, resistente a choque térmico 120°C y ácidos) con pendiente del 2%" selected>Poliuretano-Cemento Sanitario (4–6 mm • Choque térmico 120°C • Pendiente 2%)</option>
+                <option value="Recubrimiento Epóxico Autonivelante Sanitario de Alto Espesor (3 mm, cero juntas) con pendiente del 2%">Epóxico Autonivelante Sanitario (3 mm • Tráfico medio/seco • Pendiente 2%)</option>
+                <option value="Gres Porcelánico Industrial Vitrificado (Absorción < 0.5%) sellado con Boquilla Epóxica Impermeable y pendiente del 2%">Gres Industrial Vitrificado + Boquilla Epóxica Anti-Hongos (Pendiente 2%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- INDICADORES CALCULADOS EN TIEMPO REAL -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+            <div class="p-3.5 rounded-xl bg-zinc-900/90 border border-emerald-500/30">
+              <span class="text-[10px] font-mono text-zinc-400 uppercase">ÁREA TOTAL PLANTA</span>
+              <div id="plKpiArea" class="text-xl font-black text-emerald-400 mt-0.5">120.0 m²</div>
+              <p id="plKpiZonas" class="text-[11px] text-zinc-400 mt-0.5">Blanca: 60 m² • Gris: 38.4 m² • Negra: 21.6 m²</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-zinc-900/90 border border-teal-500/30">
+              <span class="text-[10px] font-mono text-zinc-400 uppercase">PENDIENTE 2% Y SIFONES INOX</span>
+              <div id="plKpiSifones" class="text-xl font-black text-teal-300 mt-0.5">3 Sifones Ø 4"</div>
+              <p id="plKpiDesnivel" class="text-[11px] text-zinc-400 mt-0.5">Desnivel hidráulico transversal (2%): 8.0 cm</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-zinc-900/90 border border-amber-500/30">
+              <span class="text-[10px] font-mono text-zinc-400 uppercase">CURVA SANITARIA MEDIA CAÑA</span>
+              <div id="plKpiMediaCana" class="text-xl font-black text-amber-300 mt-0.5">92.0 m lineales</div>
+              <p class="text-[11px] text-zinc-400 mt-0.5">Radio mín. ≥ 2.5 cm a 5.0 cm (Piso-Pared y Muros)</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-zinc-900/90 border border-white/20">
+              <span class="text-[10px] font-mono text-zinc-400 uppercase">GRADO DE ACERO INOX (RES. 683)</span>
+              <div id="plKpiInox" class="text-xl font-black text-white mt-0.5">AISI 316L / 304</div>
+              <p class="text-[11px] text-zinc-400 mt-0.5">Rugosidad Ra ≤ 0.8 μm • Soldadura TIG</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOJA OFICIAL IMPRIMIBLE: PLANO ESQUEMÁTICO 2D VECTORIAL + MEMORIA CONSTRUCTIVA (MEM-DIS-001) -->
+        <div class="p-8 rounded-2xl bg-white text-slate-900 border border-slate-300 shadow-2xl space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-emerald-800 pb-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-800 font-bold">MEMORIA DE INGENIERÍA HIGIÉNICA • EHEDG • ART. 6 AL 9 RES. 2674 DE 2013 • RES. 683 DE 2012</span>
+              <h3 class="text-xl font-black text-slate-950 mt-0.5">LAYOUT SANITARIO 2D Y ESPECIFICACIONES ANTIDEMOLICIÓN</h3>
+              <p class="text-xs text-slate-600 font-bold" id="plPrintHeaderSub">Proyecto: Alimentos Del Valle S.A.S. • Área: 120.0 m² (15m × 8m)</p>
+            </div>
+            <div class="text-right font-mono text-[11px] bg-slate-100 p-2.5 rounded-lg border border-slate-300">
+              <div><strong>Código:</strong> <span>MEM-DIS-001</span></div>
+              <div><strong>Norma:</strong> <span>Res. 2674/2013 & 683/2012</span></div>
+              <div><strong>Flujo:</strong> <span>Lineal Unidireccional (0 Cruces)</span></div>
+            </div>
+          </div>
+
+          <!-- PLANO ESQUEMÁTICO 2D VECTORIAL (SVG) CON ZONIFICACIÓN POR COLORES Y FLUJO LINEAL -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-300 space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <strong class="text-slate-900">1. PLANO ESQUEMÁTICO 2D DE ZONIFICACIÓN HIGIÉNICA Y FLUJO UNIDIRECCIONAL EN "U" SANITARIA:</strong>
+              <div class="flex flex-wrap items-center gap-3 text-[11px] font-bold">
+                <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-slate-700 inline-block"></span> Zona Negra (Sucia)</span>
+                <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-amber-300 border border-amber-600 inline-block"></span> Zona Gris (Bodegas / Pre-proceso)</span>
+                <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-emerald-200 border border-emerald-700 inline-block"></span> Zona Blanca (Proceso + Envasado Presión +)</span>
+              </div>
+            </div>
+
+            <div class="w-full overflow-x-auto">
+              <svg viewBox="0 0 900 420" class="w-full h-auto border-2 border-slate-800 rounded-lg bg-white">
+                <!-- ZONA NEGRA (IZQUIERDA SUPERIOR E INFERIOR: VESTIERES + CUARTO RESIDUOS) -->
+                <rect x="10" y="10" width="180" height="190" fill="#334155" stroke="#0f172a" stroke-width="2"/>
+                <text x="100" y="45" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">ZONA NEGRA 1</text>
+                <text x="100" y="65" fill="#cbd5e1" font-size="10" text-anchor="middle">Vestieres y Baños</text>
+                <text x="100" y="82" fill="#cbd5e1" font-size="10" text-anchor="middle">(Separados de Proceso)</text>
+                <text x="100" y="105" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">Art. 6 Num. 6.1</text>
+
+                <rect x="10" y="210" width="180" height="200" fill="#475569" stroke="#0f172a" stroke-width="2"/>
+                <text x="100" y="245" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">ZONA NEGRA 2</text>
+                <text x="100" y="265" fill="#e2e8f0" font-size="10" text-anchor="middle">Cuarto Residuos Sólidos</text>
+                <text x="100" y="282" fill="#e2e8f0" font-size="10" text-anchor="middle">(Blanco / Verde / Negro)</text>
+                <text x="100" y="305" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">Salida Exclusiva Calle</text>
+
+                <!-- FILTRO SANITARIO EXCLUSIVO (ESCLUSA) -->
+                <rect x="195" y="10" width="110" height="190" fill="#6ee7b7" stroke="#047857" stroke-width="2"/>
+                <text x="250" y="45" fill="#064e3b" font-size="11" font-weight="bold" text-anchor="middle">FILTRO SANITARIO</text>
+                <text x="250" y="65" fill="#065f46" font-size="9.5" text-anchor="middle">• Lavamanos Pedal</text>
+                <text x="250" y="82" fill="#065f46" font-size="9.5" text-anchor="middle">• Jabón + Secador</text>
+                <text x="250" y="99" fill="#065f46" font-size="9.5" text-anchor="middle">• Pediluvio (400 ppm)</text>
+
+                <!-- ZONA GRIS 1: RECEPCIÓN Y BODEGA MATERIAS PRIMAS -->
+                <rect x="195" y="210" width="230" height="200" fill="#fef08a" stroke="#b45309" stroke-width="2"/>
+                <text x="310" y="245" fill="#78350f" font-size="12" font-weight="bold" text-anchor="middle">ZONA GRIS: RECEPCIÓN Y MP</text>
+                <text x="310" y="265" fill="#92400e" font-size="10" text-anchor="middle">• Estibas PEAD (≥15cm piso / 60cm muro)</text>
+                <text x="310" y="282" fill="#92400e" font-size="10" text-anchor="middle">• Lavado Preliminar MP (50-100 ppm)</text>
+                <text x="310" y="300" fill="#92400e" font-size="10" text-anchor="middle">• Cuarto Frío MP (≤ 4°C)</text>
+
+                <!-- ZONA BLANCA 1: PROCESAMIENTO, FORMULACIÓN Y COCCIÓN -->
+                <rect x="310" y="10" width="340" height="190" fill="#d1fae5" stroke="#047857" stroke-width="2.5"/>
+                <text x="480" y="40" fill="#064e3b" font-size="13" font-weight="bold" text-anchor="middle">ZONA BLANCA 1: PROCESO Y COCCIÓN</text>
+                <text x="480" y="60" fill="#065f46" font-size="10" text-anchor="middle">• Mesones y Marmitas Acero INOX AISI 304 / 316L (Res. 683)</text>
+                <text x="480" y="78" fill="#065f46" font-size="10" text-anchor="middle">• Piso Monolítico Pendiente 2% + Sifones INOX Ø 4"</text>
+                <text x="480" y="96" fill="#065f46" font-size="10" text-anchor="middle">• Uniones Piso-Pared en Curva Media Caña (R ≥ 2.5 cm)</text>
+                <circle cx="360" cy="160" r="10" fill="#0284c7"/><text x="360" y="164" fill="#fff" font-size="8" font-weight="bold" text-anchor="middle">S1</text>
+                <circle cx="590" cy="160" r="10" fill="#0284c7"/><text x="590" y="164" fill="#fff" font-size="8" font-weight="bold" text-anchor="middle">S2</text>
+
+                <!-- ZONA BLANCA 2: ÁREA EXCLUSIVA DE ENVASADO Y SELLADO (ART. 20) -->
+                <rect x="660" y="10" width="230" height="190" fill="#a7f3d0" stroke="#047857" stroke-width="2.5"/>
+                <text x="775" y="40" fill="#064e3b" font-size="12" font-weight="bold" text-anchor="middle">ZONA BLANCA 2: ENVASADO</text>
+                <text x="775" y="60" fill="#065f46" font-size="10" text-anchor="middle">• Área Exclusiva (Art. 20 Res. 2674)</text>
+                <text x="775" y="78" fill="#065f46" font-size="10" text-anchor="middle">• Presión Positiva de Aire Filtrado</text>
+                <text x="775" y="96" fill="#065f46" font-size="10" text-anchor="middle">• Codificado Lote / Vencimiento</text>
+                <circle cx="775" cy="160" r="10" fill="#0284c7"/><text x="775" y="164" fill="#fff" font-size="8" font-weight="bold" text-anchor="middle">S3</text>
+
+                <!-- ZONA GRIS 2: BODEGA PRODUCTO TERMINADO Y DESPACHO -->
+                <rect x="435" y="210" width="455" height="200" fill="#fef08a" stroke="#b45309" stroke-width="2"/>
+                <text x="662" y="245" fill="#78350f" font-size="12" font-weight="bold" text-anchor="middle">ZONA GRIS: PRODUCTO TERMINADO, EMPAQUE SECUNDARIO Y DESPACHO</text>
+                <text x="662" y="268" fill="#92400e" font-size="10" text-anchor="middle">• Estibas Plásticas Rotación PEPS / FIFO (Separado de Materia Prima)</text>
+                <text x="662" y="286" fill="#92400e" font-size="10" text-anchor="middle">• Muelle de Despacho con Cortina Traslapada y Burlete Hermético (&lt; 5 mm)</text>
+
+                <!-- FLECHAS DE FLUJO SECUENCIAL UNIDIRECCIONAL -->
+                <path d="M 330 220 L 330 130 L 430 130" fill="none" stroke="#15803d" stroke-width="4" stroke-dasharray="6,3"/>
+                <polygon points="430,124 444,130 430,136" fill="#15803d"/>
+                <text x="345" y="122" fill="#15803d" font-size="10" font-weight="bold">1. Ingreso MP Limpia</text>
+
+                <path d="M 550 130 L 680 130" fill="none" stroke="#15803d" stroke-width="4"/>
+                <polygon points="680,124 694,130 680,136" fill="#15803d"/>
+                <text x="615" y="122" fill="#15803d" font-size="10" font-weight="bold" text-anchor="middle">2. A Envasado</text>
+
+                <path d="M 775 180 L 775 330 L 600 330" fill="none" stroke="#b45309" stroke-width="4"/>
+                <polygon points="600,324 586,330 600,336" fill="#b45309"/>
+                <text x="690" y="350" fill="#78350f" font-size="10" font-weight="bold" text-anchor="middle">3. Salida Producto Terminado → Despacho</text>
+              </svg>
+            </div>
+            <p class="text-[11px] text-slate-600">
+              <strong>Leyenda Hidráulica:</strong> Los círculos azules (<code>S1, S2, S3</code>) indican la ubicación de los <strong>sifones sanitarios en acero inoxidable Ø 4" con rejilla removible y trampa de olores</strong>, hacia los cuales convergen las pendientes del <strong>2%</strong> del piso monolítico.
+            </p>
+          </div>
+
+          <!-- TABLA TÉCNICA DE DIMENSIONAMIENTO DE ÁREAS Y ESPECIFICACIONES CIVILES -->
+          <div class="grid sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-300 space-y-1.5">
+              <strong class="text-emerald-950 block uppercase">2. Cuadro de Áreas y Obra Civil Sanitaria (Art. 6 y 7 Res. 2674):</strong>
+              <div id="plPrintAreasText" class="text-[11px] text-slate-700 leading-relaxed">--</div>
+              <div id="plPrintCivilText" class="text-[11px] text-slate-700 leading-relaxed pt-1 border-t border-slate-200">--</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-300 space-y-1.5">
+              <strong class="text-emerald-950 block uppercase">3. Especificación de Acero Inoxidable y Equipos (Res. 683 y 4142 de 2012):</strong>
+              <div id="plPrintInoxText" class="text-[11px] text-slate-700 leading-relaxed">--</div>
+            </div>
+          </div>
+
+          <!-- FIRMAS -->
+          <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Recibido por Propietario / Dirección de Obra</strong><br>
+              <span class="text-slate-600" id="plPrintFirma">Alimentos Del Valle S.A.S.</span>
+            </div>
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Diseño Higiénico por Ingeniería de Alimentos</strong><br>
+              <span class="text-slate-600">AYC Ingeniería y Asesorías de Alimentos • Tel: +57 315 717 2270</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -1481,7 +1734,7 @@
     }
 
     // 2. CAMBIO DE MÓDULOS
-    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp'];
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp', 'planta'];
     function switchModule(modId) {
       MODULES.forEach(m => {
         document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
@@ -1859,6 +2112,62 @@
       setTxt('hcPrintFirma', emp);
     }
 
+    // 10. MÓDULO SERVICIO 5: DISEÑO HIGIÉNICO DE PLANTA 2D, PISOS 2%, MEDIA CAÑA E INOX 304/316
+    function calcPlantDesign() {
+      const emp = (document.getElementById('plEmpresa')?.value || 'Empresa de Alimentos');
+      const ubi = (document.getElementById('plUbicacion')?.value || 'Colombia');
+      const largo = parseFloat(document.getElementById('plLargo')?.value || '15') || 15;
+      const ancho = parseFloat(document.getElementById('plAncho')?.value || '8') || 8;
+      const matriz = document.getElementById('plMatriz')?.value || '316';
+      const pisoSpec = document.getElementById('plPiso')?.value || '';
+
+      const areaTotal = largo * ancho;
+      const areaBlanca = areaTotal * 0.50;
+      const areaGris = areaTotal * 0.32;
+      const areaNegra = areaTotal * 0.18;
+
+      const sifones = Math.max(2, Math.ceil((areaBlanca + areaGris * 0.5) / 35));
+      const desnivelCm = (ancho / 2) * 2; // 2% hacia drenaje central
+      const mediaCanaMl = (2 * (largo + ancho)) * 2; // perímetro externo + divisiones internas aprox
+
+      document.getElementById('plKpiArea').textContent = `${areaTotal.toFixed(1)} m²`;
+      document.getElementById('plKpiZonas').textContent = `Blanca: ${areaBlanca.toFixed(1)} m² • Gris: ${areaGris.toFixed(1)} m² • Negra: ${areaNegra.toFixed(1)} m²`;
+      document.getElementById('plKpiSifones').textContent = `${sifones} Sifones INOX Ø 4"`;
+      document.getElementById('plKpiDesnivel').textContent = `Desnivel hidráulico al 2%: ${desnivelCm.toFixed(1)} cm hacia drenaje`;
+      document.getElementById('plKpiMediaCana').textContent = `${mediaCanaMl.toFixed(1)} m lineales`;
+      document.getElementById('plKpiInox').textContent = matriz === '316' ? 'AISI 316L + 304' : 'AISI 304 Sanitario';
+
+      document.getElementById('plPrintHeaderSub').textContent = `Proyecto: ${emp} (${ubi}) • Área Total: ${areaTotal.toFixed(1)} m² (${largo}m × ${ancho}m)`;
+      document.getElementById('plPrintFirma').textContent = emp;
+
+      document.getElementById('plPrintAreasText').innerHTML = `
+        • <strong>Área Total Construida:</strong> ${areaTotal.toFixed(1)} m² (${largo} m de largo × ${ancho} m de ancho).<br>
+        • <strong>Zona Blanca (Proceso + Envasado con Presión Positiva — 50%):</strong> ${areaBlanca.toFixed(1)} m².<br>
+        • <strong>Zona Gris (Recepción MP, Bodega PEPS y Despacho — 32%):</strong> ${areaGris.toFixed(1)} m².<br>
+        • <strong>Zona Negra (Vestieres, Sanitarios y Cuarto Residuos — 18%):</strong> ${areaNegra.toFixed(1)} m².
+      `;
+
+      document.getElementById('plPrintCivilText').innerHTML = `
+        • <strong>Pisos y Pendiente del 2% (Art. 7 Num. 1):</strong> ${pisoSpec}. Desnivel calculado de <strong>${desnivelCm.toFixed(1)} cm</strong> convergiendo hacia <strong>${sifones} sifones sanitarios en acero inoxidable Ø 4"</strong> con rejilla removible y trampa anti-reflujo.<br>
+        • <strong>Curvas Sanitarias Media Caña (Art. 7 Num. 2):</strong> <strong>${mediaCanaMl.toFixed(1)} metros lineales</strong> de media caña epóxica/poliuretano con radio mínimo de <strong>2.5 cm a 5.0 cm</strong> en todas las uniones piso-pared y encuentros de muros.<br>
+        • <strong>Paredes, Techos e Iluminación:</strong> Muros lisos lavables en pintura epóxica blanca, cielo raso liso hermético, ventanas con anjeo milimétrico y alféizar a 45°, luminarias LED IP65 inastillables (540 lux en envasado / 220 lux en proceso).
+      `;
+
+      if (matriz === '316') {
+        document.getElementById('plPrintInoxText').innerHTML = `
+          • <strong>Contacto Directo en Cocción Ácida / Salmueras:</strong> Se especifica <strong>Acero Inoxidable Austenítico AISI 316 / 316L (con 2–3% de Molibdeno)</strong> conforme a las <strong>Resoluciones 683 y 4142 de 2012</strong> para marmitas, agitadores, bombas y tuberías en contacto con matrices ácidas ($pH &lt; 4.5$) o cloruros, previniendo corrosión por picadura (<em>pitting</em>).<br>
+          • <strong>Mesones de Apoyo y Empaque:</strong> Acero Inoxidable <strong>AISI 304</strong> calibre 16/18.<br>
+          • <strong>Acabado Sanitario EHEDG:</strong> Rugosidad superficial $R_a \le 0.8\ \mu\text{m}$, soldadura continua TIG con gas Argón decapada y pasivada, esquinas redondeadas, sin tornillería expuesta, madera ni hierro oxidable.
+        `;
+      } else {
+        document.getElementById('plPrintInoxText').innerHTML = `
+          • <strong>Superficies en Contacto Directo y Mesones:</strong> Se especifica <strong>Acero Inoxidable Austenítico AISI 304 (18% Cr / 8% Ni)</strong> calibre 16/18 conforme a las <strong>Resoluciones 683 y 4142 de 2012</strong> para mesones sanitarios, tolvas, bandejas y equipos de proceso.<br>
+          • <strong>Acabado Sanitario EHEDG:</strong> Rugosidad superficial $R_a \le 0.8\ \mu\text{m}$ (acabado 2B / N°4 sanitario), soldadura continua TIG decapada y pasivada sin porosidades, estructura tubular sellada en acero inoxidable y apoyos niveladores sanitarios.<br>
+          • <strong>Polímeros Permitidos (Res. 4143/2012):</strong> Estibas y superficies de corte exclusivamente en Polietileno de Alta Densidad (PEAD virgen); <strong>cero madera o materiales porosos</strong>.
+        `;
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initAuditTable();
       calcPpm();
@@ -1868,6 +2177,7 @@
       renderPoesManual();
       evalCodexTree();
       renderHaccpManual();
+      calcPlantDesign();
     });
   </script>
 </body>
