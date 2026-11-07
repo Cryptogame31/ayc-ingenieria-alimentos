@@ -71,13 +71,13 @@
                                                            "mode":  "list",
                                                            "__rl":  true,
                                                            "cachedResultName":  "Hoja 1",
+                                                           "cachedResultUrl":  "https://docs.google.com/spreadsheets/d/1GVOdGD49OJmPY74bWDbY7XgCzdU4H4fQYAmu-HTVuVE/edit?gid=0#gid=0",
                                                            "value":  "gid=0"
                                                        },
                                          "documentId":  {
-                                                            "mode":  "list",
+                                                            "mode":  "id",
                                                             "__rl":  true,
-                                                            "cachedResultName":  "👉 SELECCIONA AQUÍ EL GOOGLE SHEET DE AYC ALIMENTOS",
-                                                            "value":  ""
+                                                            "value":  "1GVOdGD49OJmPY74bWDbY7XgCzdU4H4fQYAmu-HTVuVE"
                                                         },
                                          "options":  {
 
@@ -101,27 +101,23 @@
                   },
                   {
                       "parameters":  {
-                                         "chatId":  "1795595987",
-                                         "text":  "=🛡️ NUEVO LEAD — AYC INGENIERÍA DE ALIMENTOS\n━━━━━━━━━━━━━━━━━━━━━━━━━\n👤 Cliente: {{ $json.clientName }}\n🏢 Empresa: {{ $json.company }}\n📱 WhatsApp: {{ $json.whatsapp }}\n📧 Correo: {{ $json.email }}\n🎯 Servicio Solicitado: {{ $json.obstacleLabel }}\n📘 Kit Desbloqueado: {{ $json.leadMagnetTitle }}\n🔗 Link Kit PDF: {{ $json.leadMagnetUrl }}\n📝 Notas: {{ $json.notas }}\n📅 Fecha: {{ $now.format(\u0027yyyy-MM-dd HH:mm\u0027) }}",
-                                         "additionalFields":  {
-                                                                  "appendAttribution":  false
-                                                              }
+                                         "specifyBody":  "json",
+                                         "sendBody":  true,
+                                         "method":  "POST",
+                                         "options":  {
+
+                                                     },
+                                         "jsonBody":  "={{ JSON.stringify({ chat_id: \u00271795595987\u0027, text: \u0027🛡️ NUEVO LEAD — AYC INGENIERÍA DE ALIMENTOS\\n━━━━━━━━━━━━━━━━━━━━━━━━━\\n👤 Cliente: \u0027 + $json.clientName + \u0027\\n🏢 Empresa: \u0027 + $json.company + \u0027\\n📱 WhatsApp: \u0027 + $json.whatsapp + \u0027\\n📧 Correo: \u0027 + $json.email + \u0027\\n🎯 Servicio Solicitado: \u0027 + $json.obstacleLabel + \u0027\\n📘 Kit Desbloqueado: \u0027 + $json.leadMagnetTitle + \u0027\\n🔗 Link Kit PDF: \u0027 + $json.leadMagnetUrl + \u0027\\n📝 Notas: \u0027 + $json.notas }) }}",
+                                         "url":  "https://api.telegram.org/bot9222136617:AAHX2IPVkFMaaeNbL-OuVqnyHtBH9R8YvoM/sendMessage"
                                      },
-                      "type":  "n8n-nodes-base.telegram",
-                      "typeVersion":  1.2,
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
                       "position":  [
                                        5904,
                                        2880
                                    ],
                       "id":  "telegram-ayc-alimentos-lead-alert",
                       "name":  "Avisar Lead AYC Alimentos a Telegram",
-                      "webhookId":  "e182d394-6a11-44ce-8c28-9f17a265f199",
-                      "credentials":  {
-                                          "telegramApi":  {
-                                                              "id":  "RdMerhIrVvMheN9s",
-                                                              "name":  "👉 CAMBIAR POR BOT DE TELEGRAM DE AYC ALIMENTOS"
-                                                          }
-                                      },
                       "onError":  "continueRegularOutput"
                   },
                   {
