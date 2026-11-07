@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-CO">
 <head>
   <meta charset="UTF-8">
@@ -30,6 +30,15 @@
     .cta-box { margin-top: 30px; background: linear-gradient(135deg, #064e3b, #042f2e); color: #fff; padding: 24px 28px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .cta-box h3 { margin: 0 0 6px 0; font-size: 1.25rem; color: #fbbf24; }
     .cta-box p { margin: 0; font-size: 0.88rem; opacity: 0.92; max-width: 560px; }
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      .toolbar { padding: 12px 14px; text-align: center; justify-content: center; }
+      .sheet { padding: 18px 14px; border-radius: 12px; }
+      h1 { font-size: 1.3rem; }
+      h2 { font-size: 1.02rem; }
+      table { display: block; overflow-x: auto; font-size: 0.78rem; }
+      .cta-box { padding: 18px 16px; text-align: center; justify-content: center; }
+    }
     @media print {
       body { background: #fff; padding: 0; }
       .no-print { display: none !important; }

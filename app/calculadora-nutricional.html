@@ -105,6 +105,23 @@
     button.secondary-btn { background: #374151; color: #fff; border: none; padding: 9px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.84rem; }
 
     /* ==========================================================================
+       OPTIMIZACIÓN RESPONSIVE PARA MÓVILES Y TABLETS (SIN DESBORDES)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      header { padding: 14px 16px; }
+      header h1 { font-size: 1.12rem; }
+      .mode-tabs { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+      .mode-tab { padding: 8px 6px; font-size: 0.78rem; text-align: center; }
+      .card { padding: 12px; }
+      .summary-strip { grid-template-columns: repeat(2, 1fr); }
+      table.recipe-table { display: block; overflow-x: auto; white-space: nowrap; }
+      .nutri-table { max-width: 100%; padding: 8px 10px; }
+      .seal-svg { width: 92px; height: 92px; }
+      .btn-bar button { width: 100%; }
+    }
+
+    /* ==========================================================================
        OPTIMIZACIÓN DE IMPRESIÓN / PDF EN UNA SOLA HOJA SIN PARTIR LA TABLA
        ========================================================================== */
     @page {
