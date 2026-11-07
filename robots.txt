@@ -1,0 +1,33 @@
+﻿# robots.txt — AYC Ingeniería y Asesorías de Alimentos — Normatividad Sanitaria e Inocuidad en Colombia
+# Optimizado para Google Search, AI Overviews, Bing/Copilot, ChatGPT Search y Perplexity
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Rastreador de búsqueda en tiempo real de OpenAI (ChatGPT Search)
+User-agent: OAI-SearchBot
+Allow: /
+
+# Rastreador de respuestas y citas de Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Rastreadores de búsqueda y asistencia de Anthropic / Apple / Google Extended
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Política diferenciada para entrenamiento masivo de modelos (GPTBot)
+User-agent: GPTBot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://aycalimentos.com/sitemap.xml
+

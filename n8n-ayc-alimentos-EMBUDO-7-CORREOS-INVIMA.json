@@ -1,0 +1,818 @@
+﻿{
+    "name":  "AYC Ingeniería de Alimentos — Embudo 7 Correos INVIMA, BPM, HACCP y Tablas Nutricionales",
+    "nodes":  [
+                  {
+                      "parameters":  {
+                                         "httpMethod":  "POST",
+                                         "path":  "ayc-alimentos-invima",
+                                         "responseMode":  "responseNode",
+                                         "options":  {
+                                                         "allowedOrigins":  "*"
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.webhook",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       5328,
+                                       2560
+                                   ],
+                      "id":  "a1c99202-8871-4a12-9c55-2026aycfood1",
+                      "name":  "Webhook Diagnóstico AYC Alimentos",
+                      "webhookId":  "ayc-alimentos-invima"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const inputItem = $input.first().json || {};\nlet raw = inputItem.body !== undefined ? inputItem.body : inputItem;\nif (typeof raw === \u0027string\u0027) {\n  try { raw = JSON.parse(raw); } catch (e) { raw = {}; }\n}\nraw = raw || {};\nlet d = (raw.data \u0026\u0026 typeof raw.data === \u0027object\u0027) ? raw.data : raw;\nif (typeof d === \u0027string\u0027) {\n  try { d = JSON.parse(d); } catch (e) { d = {}; }\n}\nd = d || {};\n\nconst clientName = String(d.nombre || d.fullName || d.clientName || \u0027Empresario Alimentario\u0027).trim();\nconst whatsapp = String(d.whatsapp || d.clientPhone || d.telefono || \u0027Por confirmar vía correo\u0027).trim();\nconst email = String(d.email || d.clientEmail || d.correo || \u0027\u0027).trim();\nconst company = String(d.empresa || d.company || d.clientCompany || d.producto || \u0027Tu Empresa de Alimentos\u0027).trim();\nconst obstacleLabel = String(d.servicio || d.selectedService || d.interesPrincipal || d.obstaculo || \u0027Consultoría Sanitaria e Inocuidad INVIMA\u0027).trim();\nconst revenueLabel = String(d.presupuesto || d.facturacion || \u0027Diagnóstico \u0026 Kit de Blindaje INVIMA 2026\u0027).trim();\n\nconst officialPhone = \u0027573157172270\u0027;\n\nconst prof = {\n  unitLabel: \u0027AYC Ingeniería y Asesorías de Alimentos (Blindaje INVIMA \u0026 Inocuidad)\u0027,\n  unitBadge: \u0027// INGENIERÍA SANITARIA, TRÁMITES INVIMA, BPM, HACCP Y TABLAS NUTRICIONALES\u0027,\n  unitEmoji: \u0027🛡️\u0027,\n  accentColor: \u0027#10B981\u0027,\n  secondaryColor: \u0027#F59E0B\u0027,\n  heroTitle: \u0027TU KIT DE BLINDAJE INVIMA 2026 Y RUTA SANITARIA\u0027,\n  heroSubtitle: \u0027Res. 2674/2013 · Res. 810 y 2492 · Ley 2069 Tarifa $0 · HACCP Dec. 60/2002\u0027,\n  dreamGoal: \u0027lograr Concepto Sanitario Favorable (≥ 90%), obtener tus Registros Sanitarios RSA/PSA/NSA sin rechazos y comercializar tus productos libres de sellos octogonales en supermercados\u0027,\n  priceReference: \u0027Pliego 1 BPM + Plan de Saneamiento + Curso 10h: Desde $700.000 COP | Pliego 2 Tablas Nutricionales \u0026 Clean Label (Res. 2492) | Pliego 3 Trámites INVIMA RSA/PSA/NSA (Tarifa $0 microempresas Ley 2069) | Pliego 4 Sistema HACCP (Dec. 60/2002): Desde $1.200.000 COP\u0027,\n  leadMagnetCode: \u0027AYC-KIT-2026\u0027,\n  leadMagnetTitle: \u0027📘 Kit de Blindaje INVIMA 2026 (Checklist 25 Puntos + Umbrales Res. 2492)\u0027,\n  leadMagnetDeliverable: \u0027Checklist de Inspección Res. 2674/2013 + Tabla de Umbrales de Sellos Octogonales Res. 2492 + Ruta Tarifa $0 INVIMA (Ley 2069)\u0027,\n  leadMagnetUrl: \u0027https://aycalimentos.com/kit-blindaje-invima-2026.html\u0027,\n  pillar1Title: \u002701. BPM \u0026 Plan de Saneamiento POES\u0027,\n  pillar1Desc: \u0027Manuales a la medida en ppm, control de agua potable, plagas, residuos y curso certificado de 10 horas (Res. 2674/2013)\u0027,\n  pillar2Title: \u002702. Tablas Nutricionales \u0026 0 Sellos\u0027,\n  pillar2Desc: \u0027Cálculo exacto ICBF TCAC 2018 (Res. 810 y 2492) y reformulación Clean Label para eliminar sellos octogonales\u0027,\n  pillar3Title: \u002703. Registros INVIMA (Ley 2069 $0)\u0027,\n  pillar3Desc: \u0027Radicación técnica de RSA, PSA y NSA según riesgo Res. 719/2015 con beneficio de tasa $0 para microempresas\u0027,\n  pillar4Title: \u002704. HACCP, Plantas EHEDG \u0026 GFSI\u0027,\n  pillar4Desc: \u0027Certificación Dec. 60/2002, validación microbiológica Res. 1407/2022, diseño higiénico de plantas e I+D\u0027,\n  case1Quote: \u0027Pasamos de tener requerimientos pendientes en el Plan de Saneamiento a lograr Concepto Sanitario Favorable superior al 94% y estandarizar toda la planta con el curso de 10 horas.\u0027,\n  case1Author: \u0027🏭 Planta Procesadora de Alimentos — Implementación BPM \u0026 POES · ✔ Verificado por AYC Ingeniería\u0027,\n  case2Quote: \u0027Con la reformulación técnica y el cálculo nutricional bajo la Resolución 2492 evitamos los sellos frontales de advertencia y entramos a comercializar en cadenas regionales.\u0027,\n  case2Author: \u0027🥫 Marca de Alimentos Empacados — Tablas Nutricionales \u0026 Registro INVIMA · ✔ Verificado por AYC Ingeniería\u0027,\n  bonusTitle: \u0027Pre-Auditoría de 1 Etiqueta Nutricional (Res. 2492) o Diagnóstico Sanitario Express de 15 Minutos SIN COSTO\u0027,\n  bonusDesc: \u0027Exclusivo al activar tu cotización dentro de las próximas 72 horas por WhatsApp (+57 315 717 2270)\u0027,\n  ctaText: \u0027🛡️ Reclamar Bono 72h y Cotizar con Ingeniero AYC\u0027,\n  waMsg: ¡Hola equipo de AYC Ingeniería y Asesorías de Alimentos! Soy ${clientName} de ${company}. Recibí el Kit de Blindaje INVIMA 2026 en mi correo y quiero reclamar mi Bono de 72h para cotizar: ${obstacleLabel}.\n};\n\nconst leadMagnetTitle = String(d.recurso_solicitado || prof.leadMagnetTitle).trim();\nconst leadMagnetUrl = String(d.url_recurso || prof.leadMagnetUrl).trim();\nconst leadMagnetDeliverable = prof.leadMagnetDeliverable;\nconst leadMagnetCode = prof.leadMagnetCode;\n\nconst waPrimaryUrl = https://wa.me/${officialPhone}?text=${encodeURIComponent(prof.waMsg)};\nconst waSecondaryUrl = https://wa.me/${officialPhone}?text=${encodeURIComponent(¡Hola AYC Ingeniería y Asesorías de Alimentos! Soy ${clientName} (${company}). Acabo de recibir el \\\"${leadMagnetTitle}\\\" y tengo una consulta sobre ${obstacleLabel}.)};\n\nreturn [{\n  json: {\n    clientName,\n    whatsapp,\n    email,\n    company,\n    revenueKey: \u0027ayc\u0027,\n    revenueLabel,\n    obstacleKey: \u0027ayc\u0027,\n    obstacleLabel,\n    profileKey: \u0027ayc_alimentos\u0027,\n    unitLabel: prof.unitLabel,\n    unitBadge: prof.unitBadge,\n    unitEmoji: prof.unitEmoji,\n    accentColor: prof.accentColor,\n    secondaryColor: prof.secondaryColor,\n    heroTitle: prof.heroTitle,\n    heroSubtitle: prof.heroSubtitle,\n    dreamGoal: prof.dreamGoal,\n    priceReference: prof.priceReference,\n    leadMagnetCode,\n    leadMagnetTitle,\n    leadMagnetDeliverable,\n    leadMagnetUrl,\n    pillar1Title: prof.pillar1Title,\n    pillar1Desc: prof.pillar1Desc,\n    pillar2Title: prof.pillar2Title,\n    pillar2Desc: prof.pillar2Desc,\n    pillar3Title: prof.pillar3Title,\n    pillar3Desc: prof.pillar3Desc,\n    pillar4Title: prof.pillar4Title,\n    pillar4Desc: prof.pillar4Desc,\n    case1Quote: prof.case1Quote,\n    case1Author: prof.case1Author,\n    case2Quote: prof.case2Quote,\n    case2Author: prof.case2Author,\n    bonusTitle: prof.bonusTitle,\n    bonusDesc: prof.bonusDesc,\n    ctaText: prof.ctaText,\n    waPrimaryUrl,\n    waSecondaryUrl,\n    fuente: d.fuente || \u0027Web Oficial AYC Ingeniería y Asesorías de Alimentos\u0027,\n    notas: d.notas || d.detalles || Recurso desbloqueado: ${leadMagnetTitle}\n  }\n}];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       5616,
+                                       2560
+                                   ],
+                      "id":  "bfa75904-2ae3-45b8-a6f0-3068c5cf5aa3",
+                      "name":  "Preparar Datos Embudo"
+                  },
+                  {
+                      "parameters":  {
+                                         "respondWith":  "json",
+                                         "responseBody":  "={\n  \"ok\": true,\n  \"status\": \"processed\",\n  \"profileKey\": \"{{ $json.profileKey }}\",\n  \"unitLabel\": \"{{ $json.unitLabel }}\",\n  \"leadMagnetCode\": \"{{ $json.leadMagnetCode }}\",\n  \"leadMagnetTitle\": \"{{ $json.leadMagnetTitle }}\",\n  \"leadMagnetUrl\": \"{{ $json.leadMagnetUrl }}\",\n  \"clientName\": \"{{ $json.clientName }}\",\n  \"email\": \"{{ $json.email }}\"\n}",
+                                         "options":  {
+                                                         "responseCode":  200
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.respondToWebhook",
+                      "typeVersion":  1.5,
+                      "position":  [
+                                       5904,
+                                       2208
+                                   ],
+                      "id":  "bfbf85b5-124d-4d34-b2e5-bd5752533981",
+                      "name":  "Respond to Webhook"
+                  },
+                  {
+                      "parameters":  {
+                                         "operation":  "append",
+                                         "documentId":  {
+                                                            "__rl":  true,
+                                                            "value":  "1_enk22kue69W47eLllLVon-IyKGspaaNffBlFC5bCew",
+                                                            "mode":  "list",
+                                                            "cachedResultName":  "Base de datos para cotizaciones sarahy",
+                                                            "cachedResultUrl":  "https://docs.google.com/spreadsheets/d/1_enk22kue69W47eLllLVon-IyKGspaaNffBlFC5bCew/edit?usp=drivesdk"
+                                                        },
+                                         "sheetName":  {
+                                                           "__rl":  true,
+                                                           "value":  "gid=0",
+                                                           "mode":  "list"
+                                                       },
+                                         "columns":  {
+                                                         "mappingMode":  "defineBelow",
+                                                         "value":  {
+                                                                       "Nombre":  "={{ $json.clientName }} ({{ $json.company }})",
+                                                                       "WhatsApp":  "={{ $json.whatsapp }}",
+                                                                       "Correo":  "={{ $json.email }}",
+                                                                       "Evento ":  "=[AYC ALIMENTOS] {{ $json.unitLabel }} ({{ $json.leadMagnetCode }})",
+                                                                       "Fecha ":  "={{ $now.format(\u0027yyyy-MM-dd HH:mm\u0027) }}",
+                                                                       "Invitados ":  "={{ $json.revenueLabel }}",
+                                                                       "Estado":  "={{ $json.obstacleLabel }} | {{ $json.leadMagnetTitle }}"
+                                                                   },
+                                                         "matchingColumns":  [
+
+                                                                             ],
+                                                         "schema":  [
+                                                                        {
+                                                                            "id":  "Nombre",
+                                                                            "displayName":  "Nombre",
+                                                                            "type":  "string",
+                                                                            "display":  true,
+                                                                            "required":  false,
+                                                                            "defaultMatch":  false,
+                                                                            "canBeUsedToMatch":  true
+                                                                        },
+                                                                        {
+                                                                            "id":  "WhatsApp",
+                                                                            "displayName":  "WhatsApp",
+                                                                            "type":  "string",
+                                                                            "display":  true,
+                                                                            "required":  false,
+                                                                            "defaultMatch":  false,
+                                                                            "canBeUsedToMatch":  true
+                                                                        },
+                                                                        {
+                                                                            "id":  "Correo",
+                                                                            "displayName":  "Correo",
+                                                                            "type":  "string",
+                                                                            "display":  true,
+                                                                            "required":  false,
+                                                                            "defaultMatch":  false,
+                                                                            "canBeUsedToMatch":  true
+                                                                        },
+                                                                        {
+                                                                            "id":  "Evento ",
+                                                                            "displayName":  "Evento ",
+                                                                            "type":  "string",
+                                                                            "display":  true,
+                                                                            "required":  false,
+                                                                            "defaultMatch":  false,
+                                                                            "canBeUsedToMatch":  true
+                                                                        },
+                                                                        {
+                                                                            "id":  "Fecha ",
+                                                                            "displayName":  "Fecha ",
+                                                                            "type":  "string",
+                                                                            "display":  true,
+                                                                            "required":  false,
+                                                                            "defaultMatch":  false,
+                                                                            "canBeUsedToMatch":  true
+                                                                        },
+                                                                        {
+                                                                            "id":  "Invitados ",
+                                                                            "displayName":  "Invitados ",
+                                                                            "type":  "string",
+                                                                            "display":  true,
+                                                                            "required":  false,
+                                                                            "defaultMatch":  false,
+                                                                            "canBeUsedToMatch":  true
+                                                                        },
+                                                                        {
+                                                                            "id":  "Estado",
+                                                                            "displayName":  "Estado",
+                                                                            "type":  "string",
+                                                                            "display":  true,
+                                                                            "required":  false,
+                                                                            "defaultMatch":  false,
+                                                                            "canBeUsedToMatch":  true
+                                                                        }
+                                                                    ],
+                                                         "attemptToConvertTypes":  false,
+                                                         "convertFieldsToString":  false
+                                                     },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.googleSheets",
+                      "typeVersion":  4.7,
+                      "position":  [
+                                       5904,
+                                       2704
+                                   ],
+                      "id":  "aa41de35-c5ed-4223-b786-146133c59381",
+                      "name":  "Guardar Lead en Sheet",
+                      "credentials":  {
+                                          "googleSheetsOAuth2Api":  {
+                                                                        "id":  "C6YOamhB5FllqLBz",
+                                                                        "name":  "BANQUETES OK"
+                                                                    }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "chatId":  "1795595987",
+                                         "text":  "=🚀 *NUEVO LEAD — AYC INGENIERÍA DE ALIMENTOS* {{ $json.unitEmoji }}\n━━━━━━━━━━━━━━━━━━━━━━━━━\n🏷️ *Unidad:* {{ $json.unitLabel }}\n👤 *Cliente:* {{ $json.clientName }}\n🏢 *Empresa / Producto:* {{ $json.company }}\n📱 *WhatsApp:* {{ $json.whatsapp || \u0027No registrado\u0027 }}\n📧 *Correo:* {{ $json.email || \u0027No registrado\u0027 }}\n💰 *Presupuesto / Facturación:* {{ $json.revenueLabel }}\n🎯 *Interés / Obstáculo:* {{ $json.obstacleLabel }}\n📘 *Blueprint Desbloqueado:* {{ $json.leadMagnetCode }} — {{ $json.leadMagnetTitle }}\n🔗 *Link Recurso:* {{ $json.leadMagnetUrl }}\n📝 *Notas:* {{ $json.notas || \u0027Diagnóstico Web\u0027 }}\n🌐 *Origen:* {{ $json.fuente }}",
+                                         "additionalFields":  {
+                                                                  "appendAttribution":  false
+                                                              }
+                                     },
+                      "type":  "n8n-nodes-base.telegram",
+                      "typeVersion":  1.2,
+                      "position":  [
+                                       5904,
+                                       2880
+                                   ],
+                      "id":  "telegram-ayc-alimentos-lead-alert",
+                      "name":  "Avisar Lead AYC Alimentos a Telegram",
+                      "webhookId":  "e182d394-6a11-44ce-8c28-9f17a265f199",
+                      "credentials":  {
+                                          "telegramApi":  {
+                                                              "id":  "RdMerhIrVvMheN9s",
+                                                              "name":  "Clientes Sarahy"
+                                                          }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const d = $(\u0027Preparar Datos Embudo\u0027).first().json;\nconst html = `\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e\u003cmeta charset=\u0027UTF-8\u0027\u003e\u003cmeta name=\u0027viewport\u0027 content=\u0027width=device-width,initial-scale=1\u0027\u003e\u003c/head\u003e\u003cbody style=\u0027margin:0;padding:0;background:#0B0F19;font-family:Arial,Helvetica,sans-serif;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd align=\u0027center\u0027 style=\u0027padding:24px 14px;\u0027\u003e\u003ctable width=\u0027600\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027max-width:600px;width:100%;background:#11151f;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.65);border:1px solid #232939;\u0027\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:linear-gradient(135deg,${d.accentColor},${d.secondaryColor});padding:6px;font-size:0;\u0027\u003e\u0026nbsp;\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:38px 34px 20px;text-align:center;background:linear-gradient(180deg,#151b2b 0%,#11151f 100%);\u0027\u003e\u003cp style=\u0027margin:0 0 8px;font-size:11px;letter-spacing:2.5px;color:#22D3EE;text-transform:uppercase;font-weight:bold;\u0027\u003e${d.unitBadge}\u003c/p\u003e\u003cdiv style=\u0027font-size:34px;margin-bottom:8px;\u0027\u003e${d.unitEmoji}\u003c/div\u003e\u003ch1 style=\u0027margin:0;color:#ffffff;font-size:25px;font-family:Georgia,serif;letter-spacing:0.5px;\u0027\u003e${d.heroTitle}\u003c/h1\u003e\u003cp style=\u0027margin:8px 0 0;color:#9aa3b2;font-size:13px;\u0027\u003e${d.heroSubtitle}\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:10px 34px 22px;\u0027\u003e\u003ch2 style=\u0027margin:0 0 14px;color:#ffffff;font-size:21px;font-family:Georgia,serif;\u0027\u003e¡Hola, \u003cspan style=\u0027color:#22D3EE;\u0027\u003e${d.clientName}\u003c/span\u003e! 🚀\u003c/h2\u003e\u003cp style=\u0027margin:0 0 16px;color:#c3c8d3;font-size:15px;line-height:1.75;\u0027\u003eHemos recibido tu solicitud en \u003cstrong style=\u0027color:#fff;\u0027\u003eAYC Ingeniería y Asesorías de Alimentos\u003c/strong\u003e (${d.unitLabel}). Nuestro equipo ya estructuró la ruta recomendada para ayudarte a \u003cstrong\u003e${d.dreamGoal}\u003c/strong\u003e.\u003c/p\u003e\n\n\u003c!-- CAJA DOPAMÍNICA DE DESCARGA DEL LEAD MAGNET / BLUEPRINT OFICIAL --\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:linear-gradient(135deg,#0f172a,#1e1b4b);border:2px solid #22D3EE;border-radius:14px;margin-bottom:22px;box-shadow:0 8px 30px rgba(6,182,212,0.2);\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:22px;text-align:center;\u0027\u003e\n\u003cp style=\u0027margin:0 0 6px;color:#22D3EE;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;\u0027\u003e🎁 TU RECURSO EJECUTIVO DESBLOQUEADO (${d.leadMagnetCode})\u003c/p\u003e\n\u003ch3 style=\u0027margin:0 0 8px;color:#ffffff;font-size:19px;font-family:Georgia,serif;\u0027\u003e${d.leadMagnetTitle}\u003c/h3\u003e\n\u003cp style=\u0027margin:0 0 16px;color:#cbd5e1;font-size:13px;line-height:1.6;\u0027\u003eIncluye: ${d.leadMagnetDeliverable}\u003c/p\u003e\n\u003ca href=\u0027${d.leadMagnetUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,#06B6D4,#7C3AED);color:#ffffff;padding:14px 28px;border-radius:50px;font-size:14px;font-weight:bold;text-decoration:none;box-shadow:0 4px 18px rgba(6,182,212,0.4);\u0027\u003e📥 ABRIR Y DESCARGAR DOCUMENTO OFICIAL (PDF)\u003c/a\u003e\n\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\n\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#171c29;border-left:4px solid ${d.accentColor};border-radius:0 10px 10px 0;margin-bottom:20px;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:18px 22px;\u0027\u003e\u003cp style=\u0027margin:0 0 6px;color:#22D3EE;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;\u0027\u003e📋 Resumen de tu Perfil Calificado\u003c/p\u003e\u003cp style=\u0027margin:0;color:#e2e8f0;font-size:14px;line-height:1.9;\u0027\u003e🏷️ \u003cstrong\u003eUnidad Especializada:\u003c/strong\u003e ${d.unitLabel}\u003cbr\u003e🏢 \u003cstrong\u003eEmpresa / Proyecto:\u003c/strong\u003e ${d.company}\u003cbr\u003e💰 \u003cstrong\u003eInversión / Alcance:\u003c/strong\u003e ${d.revenueLabel}\u003cbr\u003e🎯 \u003cstrong\u003eObjetivo Principal:\u003c/strong\u003e \u003cspan style=\u0027color:#22D3EE;\u0027\u003e${d.obstacleLabel}\u003c/span\u003e\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#0B0F19;border:1px solid #283044;border-radius:12px;margin-bottom:20px;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:18px 22px;\u0027\u003e\u003cp style=\u0027margin:0 0 6px;color:#F59E0B;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;\u0027\u003e💡 Rango de Inversión y Alcance Oficial\u003c/p\u003e\u003cp style=\u0027margin:0;color:#c3c8d3;font-size:13px;line-height:1.7;\u0027\u003e${d.priceReference}\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\n\u003cp style=\u0027margin:0 0 20px;color:#c3c8d3;font-size:15px;line-height:1.75;\u0027\u003eHaz clic en el botón de abajo para hablar directamente con nuestro estratega en WhatsApp y dar el primer paso hoy mismo:\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px 32px;text-align:center;\u0027\u003e\u003ca href=\u0027${d.waPrimaryUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:#ffffff;padding:17px 34px;border-radius:50px;font-size:15px;font-weight:bold;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,0.35);\u0027\u003e${d.ctaText}\u003c/a\u003e\u003cp style=\u0027margin:12px 0 0;font-size:12px;color:#7a8393;\u0027\u003e⚡ Línea directa de Ingeniería WhatsApp AYC: +57 315 717 2270\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:20px 30px;text-align:center;border-top:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0;color:#22D3EE;font-size:12px;font-style:italic;\u0027\u003e\"Calidad, Inocuidad y Blindaje Regulatorio INVIMA Llave en Mano\" — AYC Ingeniería y Asesorías de Alimentos\u003c/p\u003e\u003cp style=\u0027margin:6px 0 0;color:#5b6272;font-size:11px;\u0027\u003eColombia · Consultoría en Ingeniería de Alimentos · WhatsApp +57 315 717 2270\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/body\u003e\u003c/html\u003e`;\nreturn [{ json: { html, subject: `${d.unitEmoji} ${d.clientName}, tu recurso \"${d.leadMagnetTitle}\" y ruta sanitaria en AYC Ingeniería están listos` } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       5904,
+                                       2400
+                                   ],
+                      "id":  "9914f20b-6835-4868-95fc-71e4e91bf219",
+                      "name":  "Build Email 1 Body"
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "cotizaciones@casadebanquetessarahy.com",
+                                         "toEmail":  "={{ $(\u0027Preparar Datos Embudo\u0027).first().json.email }}",
+                                         "subject":  "={{ $json.subject }}",
+                                         "html":  "={{ $json.html }}",
+                                         "options":  {
+                                                         "appendAttribution":  false
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       6144,
+                                       2400
+                                   ],
+                      "id":  "c20d02fb-a0c8-41b3-a2ca-45c06d98f748",
+                      "name":  "📧 Email 1 - Diagnóstico Listo",
+                      "webhookId":  "5987648b-6b86-427a-81f7-654ee3922d9a",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "n5JFascjYjHhnCcI",
+                                                       "name":  "Banquetes sarahy amazon server"
+                                                   }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "amount":  1,
+                                         "unit":  "hours"
+                                     },
+                      "type":  "n8n-nodes-base.wait",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       6368,
+                                       2400
+                                   ],
+                      "id":  "67750452-6b26-49bd-b0b2-315bb4c63784",
+                      "name":  "⏱ Wait 1 Hora",
+                      "webhookId":  "966ece47-e9ab-4101-9b9f-117ad36fc4b7"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const d = $(\u0027Preparar Datos Embudo\u0027).first().json;\nconst html = `\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e\u003cmeta charset=\u0027UTF-8\u0027\u003e\u003cmeta name=\u0027viewport\u0027 content=\u0027width=device-width,initial-scale=1\u0027\u003e\u003c/head\u003e\u003cbody style=\u0027margin:0;padding:0;background:#0B0F19;font-family:Arial,sans-serif;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd align=\u0027center\u0027 style=\u0027padding:24px 14px;\u0027\u003e\u003ctable width=\u0027600\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027max-width:600px;width:100%;background:#11151f;border-radius:16px;overflow:hidden;border:1px solid #232939;\u0027\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:linear-gradient(135deg,${d.accentColor},${d.secondaryColor});padding:32px 30px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0 0 4px;font-size:11px;letter-spacing:3px;color:#0B0F19;text-transform:uppercase;font-weight:bold;\u0027\u003eAYC Ingeniería y Asesorías de Alimentos · Seguimiento Técnico\u003c/p\u003e\u003ch1 style=\u0027margin:0;color:#0B0F19;font-size:25px;font-family:Georgia,serif;\u0027\u003e👋 ${d.clientName}, ¿pudiste descargar tu Blueprint y revisar tu ruta?\u003c/h1\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:32px 34px 20px;\u0027\u003e\u003cp style=\u0027margin:0 0 18px;color:#c3c8d3;font-size:15px;line-height:1.8;\u0027\u003eHace aproximadamente una hora te enviamos el acceso a \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.leadMagnetTitle}\u003c/strong\u003e junto con el resumen estratégico de \u003cstrong\u003e${d.unitLabel}\u003c/strong\u003e para \u003cstrong\u003e${d.company}\u003c/strong\u003e. Queremos confirmar que pudiste abrirlo sin inconvenientes 💜\u003c/p\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#171c29;border-left:4px solid #06B6D4;border-radius:0 8px 8px 0;margin-bottom:20px;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:18px 20px;\u0027\u003e\u003cp style=\u0027margin:0;color:#c3c8d3;font-size:14px;line-height:1.9;\u0027\u003e${d.unitEmoji} \u003cstrong\u003eSolución Seleccionada:\u003c/strong\u003e ${d.unitLabel}\u003cbr\u003e📘 \u003cstrong\u003eDocumento Oficial:\u003c/strong\u003e \u003ca href=\u0027${d.leadMagnetUrl}\u0027 style=\u0027color:#22D3EE;font-weight:bold;text-decoration:underline;\u0027\u003e${d.leadMagnetTitle} (Abrir PDF)\u003c/a\u003e\u003cbr\u003e💰 \u003cstrong\u003eReferencia:\u003c/strong\u003e ${d.priceReference}\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\n\u003cp style=\u0027margin:0 0 20px;color:#c3c8d3;font-size:15px;line-height:1.8;\u0027\u003eNuestro equipo está disponible ahora mismo en WhatsApp para resolver cualquier duda puntual o iniciar tu proyecto sin demoras:\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px 32px;text-align:center;\u0027\u003e\u003ca href=\u0027${d.waPrimaryUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:16px 34px;border-radius:50px;font-size:15px;font-weight:bold;text-decoration:none;margin-bottom:10px;\u0027\u003e${d.ctaText}\u003c/a\u003e\u003cbr\u003e\u003ca href=\u0027${d.leadMagnetUrl}\u0027 style=\u0027display:inline-block;color:#22D3EE;padding:10px 24px;font-size:13px;font-weight:bold;text-decoration:none;\u0027\u003e📥 Volver a abrir mi Blueprint / Guía en PDF\u003c/a\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:20px;text-align:center;border-top:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0;color:#22D3EE;font-size:12px;font-style:italic;\u0027\u003e\"Ingeniería sanitaria aplicada en planta\" — AYC Ingeniería y Asesorías de Alimentos\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/body\u003e\u003c/html\u003e`;\nreturn [{ json: { html, subject: `👋 ${d.clientName}, ¿pudiste abrir tu ${d.leadMagnetTitle}? — AYC Ingeniería de Alimentos` } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       6592,
+                                       2400
+                                   ],
+                      "id":  "f1a8d644-0d4f-4b91-be1e-066c4ed3c661",
+                      "name":  "Build Email 2 Body"
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "cotizaciones@casadebanquetessarahy.com",
+                                         "toEmail":  "={{ $(\u0027Preparar Datos Embudo\u0027).first().json.email }}",
+                                         "subject":  "={{ $json.subject }}",
+                                         "html":  "={{ $json.html }}",
+                                         "options":  {
+                                                         "appendAttribution":  false
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       6816,
+                                       2400
+                                   ],
+                      "id":  "2c269bf7-00d1-4db9-b86f-1bdb539a4bc7",
+                      "name":  "📧 Email 2 - Seguimiento 1h",
+                      "webhookId":  "8db64a32-5445-428c-81a7-2e28703fdd85",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "n5JFascjYjHhnCcI",
+                                                       "name":  "Banquetes sarahy amazon server"
+                                                   }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "amount":  23,
+                                         "unit":  "hours"
+                                     },
+                      "type":  "n8n-nodes-base.wait",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       7040,
+                                       2400
+                                   ],
+                      "id":  "849ba87a-e975-4fce-b1ad-55cf52ba199c",
+                      "name":  "⏱ Wait 23h (Día 1 total)",
+                      "webhookId":  "dd620c99-f0a5-4255-83d2-cf2f5ece76e0"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const d = $(\u0027Preparar Datos Embudo\u0027).first().json;\nconst html = `\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e\u003cmeta charset=\u0027UTF-8\u0027\u003e\u003cmeta name=\u0027viewport\u0027 content=\u0027width=device-width,initial-scale=1\u0027\u003e\u003c/head\u003e\u003cbody style=\u0027margin:0;padding:0;background:#0B0F19;font-family:Arial,sans-serif;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd align=\u0027center\u0027 style=\u0027padding:24px 14px;\u0027\u003e\u003ctable width=\u0027600\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027max-width:600px;width:100%;background:#11151f;border-radius:16px;overflow:hidden;border:1px solid #232939;\u0027\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:38px 30px 24px;text-align:center;border-bottom:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0 0 6px;color:#22D3EE;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:bold;\u0027\u003e${d.unitBadge}\u003c/p\u003e\u003ch1 style=\u0027margin:0;color:#fff;font-size:26px;font-family:Georgia,serif;\u0027\u003eLos 4 Pilares de ${d.unitLabel} ${d.unitEmoji}\u003c/h1\u003e\u003cdiv style=\u0027margin:14px auto 0;width:80px;height:3px;background:linear-gradient(90deg,${d.accentColor},${d.secondaryColor});\u0027\u003e\u003c/div\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:28px 34px 16px;\u0027\u003e\u003cp style=\u0027margin:0 0 16px;color:#c3c8d3;font-size:15px;line-height:1.8;\u0027\u003eHola \u003cstrong style=\u0027color:#fff;\u0027\u003e${d.clientName}\u003c/strong\u003e, ayer desbloqueaste \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.leadMagnetTitle}\u003c/strong\u003e. Hoy queremos mostrarte exactamente los 4 pilares con los que ejecutamos esta solución en \u003cstrong\u003eAYC Ingeniería y Asesorías de Alimentos\u003c/strong\u003e para garantizarte retorno de inversión:\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px 24px;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#171c29;border-radius:12px;border:1px solid #2a3246;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:24px;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd width=\u002750%\u0027 style=\u0027padding:10px 8px;vertical-align:top;\u0027\u003e\u003cp style=\u0027margin:0;color:#fff;font-size:14px;\u0027\u003e⚡ \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.pillar1Title}\u003c/strong\u003e\u003cbr\u003e\u003cspan style=\u0027font-size:12px;color:#9aa3b2;line-height:1.5;\u0027\u003e${d.pillar1Desc}\u003c/span\u003e\u003c/p\u003e\u003c/td\u003e\u003ctd width=\u002750%\u0027 style=\u0027padding:10px 8px;vertical-align:top;\u0027\u003e\u003cp style=\u0027margin:0;color:#fff;font-size:14px;\u0027\u003e🎯 \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.pillar2Title}\u003c/strong\u003e\u003cbr\u003e\u003cspan style=\u0027font-size:12px;color:#9aa3b2;line-height:1.5;\u0027\u003e${d.pillar2Desc}\u003c/span\u003e\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd width=\u002750%\u0027 style=\u0027padding:10px 8px;vertical-align:top;\u0027\u003e\u003cp style=\u0027margin:0;color:#fff;font-size:14px;\u0027\u003e💎 \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.pillar3Title}\u003c/strong\u003e\u003cbr\u003e\u003cspan style=\u0027font-size:12px;color:#9aa3b2;line-height:1.5;\u0027\u003e${d.pillar3Desc}\u003c/span\u003e\u003c/p\u003e\u003c/td\u003e\u003ctd width=\u002750%\u0027 style=\u0027padding:10px 8px;vertical-align:top;\u0027\u003e\u003cp style=\u0027margin:0;color:#fff;font-size:14px;\u0027\u003e🚀 \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.pillar4Title}\u003c/strong\u003e\u003cbr\u003e\u003cspan style=\u0027font-size:12px;color:#9aa3b2;line-height:1.5;\u0027\u003e${d.pillar4Desc}\u003c/span\u003e\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px 32px;text-align:center;\u0027\u003e\u003ca href=\u0027${d.waPrimaryUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,${d.accentColor},${d.secondaryColor});color:#fff;padding:16px 38px;border-radius:50px;font-size:15px;font-weight:bold;text-decoration:none;margin-bottom:10px;\u0027\u003e${d.ctaText}\u003c/a\u003e\u003cbr\u003e\u003ca href=\u0027${d.leadMagnetUrl}\u0027 style=\u0027display:inline-block;color:#22D3EE;font-size:12px;text-decoration:underline;margin-top:6px;\u0027\u003e📘 Repasar documento: ${d.leadMagnetTitle}\u003c/a\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:20px;text-align:center;border-top:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0;color:#22D3EE;font-size:12px;font-style:italic;\u0027\u003e\"01 Diagnóstico Sanitario · 02 Ingeniería Documental · 03 Implementación en Planta · 04 Aval INVIMA\" — AYC Alimentos\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/body\u003e\u003c/html\u003e`;\nreturn [{ json: { html, subject: `${d.unitEmoji} Cómo ejecutamos ${d.unitLabel} paso a paso en ${d.company}` } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       7264,
+                                       2400
+                                   ],
+                      "id":  "6fe722a3-b9ec-4a6d-b4f3-42bec675b926",
+                      "name":  "Build Email 3 Body"
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "cotizaciones@casadebanquetessarahy.com",
+                                         "toEmail":  "={{ $(\u0027Preparar Datos Embudo\u0027).first().json.email }}",
+                                         "subject":  "={{ $json.subject }}",
+                                         "html":  "={{ $json.html }}",
+                                         "options":  {
+                                                         "appendAttribution":  false
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       7488,
+                                       2400
+                                   ],
+                      "id":  "0e5350c4-ccf7-4a60-a9cf-5c8d4693a05a",
+                      "name":  "📧 Email 3 - Día 1",
+                      "webhookId":  "e732131a-d46f-4ab8-8d5d-4b8c03334b16",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "n5JFascjYjHhnCcI",
+                                                       "name":  "Banquetes sarahy amazon server"
+                                                   }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "amount":  2,
+                                         "unit":  "days"
+                                     },
+                      "type":  "n8n-nodes-base.wait",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       7712,
+                                       2400
+                                   ],
+                      "id":  "aad17fe1-7133-4192-a8d2-15e085a76228",
+                      "name":  "⏱ Wait 2 Días (Día 3 total)",
+                      "webhookId":  "3f74c8b5-cdd5-410b-ba99-c7e7d584597a"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const d = $(\u0027Preparar Datos Embudo\u0027).first().json;\nconst html = `\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e\u003cmeta charset=\u0027UTF-8\u0027\u003e\u003cmeta name=\u0027viewport\u0027 content=\u0027width=device-width,initial-scale=1\u0027\u003e\u003c/head\u003e\u003cbody style=\u0027margin:0;padding:0;background:#0B0F19;font-family:Arial,sans-serif;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd align=\u0027center\u0027 style=\u0027padding:24px 14px;\u0027\u003e\u003ctable width=\u0027600\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027max-width:600px;width:100%;background:#11151f;border-radius:16px;overflow:hidden;border:1px solid #232939;\u0027\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:linear-gradient(135deg,${d.accentColor},${d.secondaryColor});padding:34px 30px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0 0 4px;color:#0B0F19;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:bold;\u0027\u003eCasos Reales en Planta · AYC Ingeniería de Alimentos\u003c/p\u003e\u003ch1 style=\u0027margin:0;color:#0B0F19;font-size:25px;font-family:Georgia,serif;\u0027\u003eResultados reales en ${d.unitLabel} ⭐\u003c/h1\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:30px 34px 12px;\u0027\u003e\u003cp style=\u0027margin:0 0 18px;color:#c3c8d3;font-size:15px;line-height:1.8;\u0027\u003eHola \u003cstrong style=\u0027color:#fff;\u0027\u003e${d.clientName}\u003c/strong\u003e, sabemos que antes de dar el paso en \u003cstrong\u003e${d.unitLabel}\u003c/strong\u003e quieres ver resultados tangibles. Mira lo que han logrado empresas y proyectos reales de nuestro ecosistema:\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px;\u0027\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#171c29;border-left:4px solid #06B6D4;border-radius:0 8px 8px 0;margin-bottom:16px;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:20px;\u0027\u003e\u003cp style=\u0027margin:0 0 6px;color:#22D3EE;font-size:16px;\u0027\u003e⭐⭐⭐⭐⭐\u003c/p\u003e\u003cp style=\u0027margin:0 0 8px;color:#e2e8f0;font-size:14px;font-style:italic;line-height:1.6;\u0027\u003e\"${d.case1Quote}\"\u003c/p\u003e\u003cp style=\u0027margin:0;color:#9aa3b2;font-size:12px;font-weight:bold;\u0027\u003e${d.case1Author}\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#171c29;border-left:4px solid #7C3AED;border-radius:0 8px 8px 0;margin-bottom:22px;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:20px;\u0027\u003e\u003cp style=\u0027margin:0 0 6px;color:#22D3EE;font-size:16px;\u0027\u003e⭐⭐⭐⭐⭐\u003c/p\u003e\u003cp style=\u0027margin:0 0 8px;color:#e2e8f0;font-size:14px;font-style:italic;line-height:1.6;\u0027\u003e\"${d.case2Quote}\"\u003c/p\u003e\u003cp style=\u0027margin:0;color:#9aa3b2;font-size:12px;font-weight:bold;\u0027\u003e${d.case2Author}\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\n\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px 30px;text-align:center;\u0027\u003e\u003ca href=\u0027${d.waPrimaryUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:15px 36px;border-radius:50px;font-size:15px;font-weight:bold;text-decoration:none;margin-bottom:10px;\u0027\u003e✅ Quiero resultados así en mi negocio\u003c/a\u003e\u003cbr\u003e\u003ca href=\u0027${d.waSecondaryUrl}\u0027 style=\u0027display:inline-block;background:transparent;color:#22D3EE;padding:11px 26px;border-radius:50px;font-size:13px;font-weight:bold;text-decoration:none;border:1px solid #22D3EE;margin-top:8px;\u0027\u003e💬 Hablar con un especialista\u003c/a\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:20px;text-align:center;border-top:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0;color:#22D3EE;font-size:12px;font-style:italic;\u0027\u003e\"Ingeniería de alimentos que garantiza Concepto Sanitario Favorable y cero sanciones\" — AYC Alimentos\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/body\u003e\u003c/html\u003e`;\nreturn [{ json: { html, subject: `⭐ Casos reales de éxito en ${d.unitLabel} — AYC Ingeniería de Alimentos` } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       7936,
+                                       2400
+                                   ],
+                      "id":  "c86b8344-b80a-4b52-860c-32795b9071ce",
+                      "name":  "Build Email 4 Body"
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "cotizaciones@casadebanquetessarahy.com",
+                                         "toEmail":  "={{ $(\u0027Preparar Datos Embudo\u0027).first().json.email }}",
+                                         "subject":  "={{ $json.subject }}",
+                                         "html":  "={{ $json.html }}",
+                                         "options":  {
+                                                         "appendAttribution":  false
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       8160,
+                                       2400
+                                   ],
+                      "id":  "def97902-46eb-451d-ad18-787eaf6eadbf",
+                      "name":  "📧 Email 4 - Día 3 Testimonios",
+                      "webhookId":  "753f62be-02be-4d03-8e88-e54c6075f0a4",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "n5JFascjYjHhnCcI",
+                                                       "name":  "Banquetes sarahy amazon server"
+                                                   }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "amount":  4,
+                                         "unit":  "days"
+                                     },
+                      "type":  "n8n-nodes-base.wait",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       8384,
+                                       2400
+                                   ],
+                      "id":  "5882d8ce-9be1-4e73-8b18-cb7769457dac",
+                      "name":  "⏱ Wait 4 Días (Semana total)",
+                      "webhookId":  "58abf644-d846-4d49-8bd6-d39748ec1ae3"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const d = $(\u0027Preparar Datos Embudo\u0027).first().json;\nconst html = `\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e\u003cmeta charset=\u0027UTF-8\u0027\u003e\u003cmeta name=\u0027viewport\u0027 content=\u0027width=device-width,initial-scale=1\u0027\u003e\u003c/head\u003e\u003cbody style=\u0027margin:0;padding:0;background:#0B0F19;font-family:Arial,sans-serif;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd align=\u0027center\u0027 style=\u0027padding:24px 14px;\u0027\u003e\u003ctable width=\u0027600\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027max-width:600px;width:100%;background:#11151f;border-radius:16px;overflow:hidden;border:1px solid #232939;\u0027\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:linear-gradient(135deg,#e65c00,#f9d423);padding:14px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0;color:#0B0F19;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;\u0027\u003e🎁 BENEFICIO ESPECIAL ACTIVADO POR 72 HORAS\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:34px 30px 20px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0 0 4px;color:#22D3EE;font-size:11px;letter-spacing:3px;text-transform:uppercase;\u0027\u003e${d.unitLabel}\u003c/p\u003e\u003ch1 style=\u0027margin:0;color:#fff;font-size:25px;font-family:Georgia,serif;\u0027\u003eUn impulso exclusivo para ${d.company}\u003c/h1\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:24px 34px 20px;\u0027\u003e\u003cp style=\u0027margin:0 0 18px;color:#c3c8d3;font-size:15px;line-height:1.8;\u0027\u003eHola \u003cstrong style=\u0027color:#fff;\u0027\u003e${d.clientName}\u003c/strong\u003e, ha pasado una semana desde tu solicitud sobre \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.obstacleLabel}\u003c/strong\u003e. Queremos que des el paso definitivo esta semana con un beneficio de alto valor incluido:\u003c/p\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027border:2px dashed #22D3EE;border-radius:12px;background:#171c29;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:24px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0 0 6px;font-size:12px;color:#F59E0B;letter-spacing:2px;text-transform:uppercase;font-weight:bold;\u0027\u003e🎁 Bono por Confirmar esta Semana\u003c/p\u003e\u003ch3 style=\u0027margin:6px 0 10px;color:#ffffff;font-size:19px;font-family:Georgia,serif;\u0027\u003e${d.bonusTitle}\u003c/h3\u003e\u003cp style=\u0027margin:0;color:#c3c8d3;font-size:14px;line-height:1.6;\u0027\u003e${d.bonusDesc}\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:12px 34px 32px;text-align:center;\u0027\u003e\u003ca href=\u0027${d.waPrimaryUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,#e65c00,#f9a825);color:#fff;padding:17px 38px;border-radius:50px;font-size:15px;font-weight:bold;text-decoration:none;box-shadow:0 6px 24px rgba(230,92,0,0.45);\u0027\u003e🔒 Reclamar mi Bono y Activar Ahora\u003c/a\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:20px;text-align:center;border-top:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0;color:#22D3EE;font-size:12px;font-style:italic;\u0027\u003e\"Inocuidad, cumplimiento INVIMA y excelencia en la industria alimentaria\" — AYC Ingeniería de Alimentos\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/body\u003e\u003c/html\u003e`;\nreturn [{ json: { html, subject: `🎁 ${d.clientName}, activamos un bono especial para tu proyecto en AYC Ingeniería de Alimentos` } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       8608,
+                                       2400
+                                   ],
+                      "id":  "65715fe1-9585-4c19-8dcb-395668d84bcb",
+                      "name":  "Build Email 5 Body"
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "cotizaciones@casadebanquetessarahy.com",
+                                         "toEmail":  "={{ $(\u0027Preparar Datos Embudo\u0027).first().json.email }}",
+                                         "subject":  "={{ $json.subject }}",
+                                         "html":  "={{ $json.html }}",
+                                         "options":  {
+                                                         "appendAttribution":  false
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       8832,
+                                       2400
+                                   ],
+                      "id":  "52ee687a-bad2-40b7-b4ce-8df846e3291b",
+                      "name":  "📧 Email 5 - Semana Escasez",
+                      "webhookId":  "3f92655c-ef45-4a6f-a8fb-15df1304e464",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "n5JFascjYjHhnCcI",
+                                                       "name":  "Banquetes sarahy amazon server"
+                                                   }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "amount":  8,
+                                         "unit":  "days"
+                                     },
+                      "type":  "n8n-nodes-base.wait",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       9056,
+                                       2400
+                                   ],
+                      "id":  "88dd02fd-148f-4174-809d-ab643d99c72f",
+                      "name":  "⏱ Wait 8 Días (15 Días total)",
+                      "webhookId":  "b5139a3f-6390-4a52-a4ae-b1539eb92091"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const d = $(\u0027Preparar Datos Embudo\u0027).first().json;\nconst html = `\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e\u003cmeta charset=\u0027UTF-8\u0027\u003e\u003cmeta name=\u0027viewport\u0027 content=\u0027width=device-width,initial-scale=1\u0027\u003e\u003c/head\u003e\u003cbody style=\u0027margin:0;padding:0;background:#0B0F19;font-family:Arial,sans-serif;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd align=\u0027center\u0027 style=\u0027padding:24px 14px;\u0027\u003e\u003ctable width=\u0027600\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027max-width:600px;width:100%;background:#11151f;border-radius:16px;overflow:hidden;border:1px solid #232939;\u0027\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#7f1d1d;padding:14px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0;color:#fde047;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:bold;\u0027\u003e🔴 ÚLTIMA VERIFICACIÓN DE CUPO Y BENEFICIOS\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:linear-gradient(135deg,#5b1010,#0B0F19);padding:34px 30px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0 0 4px;color:#22D3EE;font-size:11px;letter-spacing:3px;text-transform:uppercase;\u0027\u003e${d.unitLabel}\u003c/p\u003e\u003ch1 style=\u0027margin:0;color:#fff;font-size:25px;font-family:Georgia,serif;\u0027\u003e¿Mantenemos reservado tu beneficio, ${d.clientName}?\u003c/h1\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:28px 34px 20px;\u0027\u003e\u003cp style=\u0027margin:0 0 16px;color:#c3c8d3;font-size:15px;line-height:1.8;\u0027\u003eHan pasado 15 días desde que descargaste \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.leadMagnetTitle}\u003c/strong\u003e en \u003cstrong\u003eAYC Ingeniería y Asesorías de Alimentos\u003c/strong\u003e. Esta semana cerramos la asignación de cupos y bonos del sprint actual.\u003c/p\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#2a1414;border:1px solid #ef4444;border-radius:10px;margin-bottom:18px;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:20px;\u0027\u003e\u003cp style=\u0027margin:0 0 8px;color:#fca5a5;font-size:13px;font-weight:bold;\u0027\u003e⚡ Si confirmas hoy por WhatsApp mantienes:\u003c/p\u003e\u003cp style=\u0027margin:0;color:#e2e8f0;font-size:14px;line-height:1.8;\u0027\u003e• \u003cstrong\u003e${d.bonusTitle}\u003c/strong\u003e\u003cbr\u003e• Tarifas congeladas de la edición vigente\u003cbr\u003e• Prioridad de ejecución con nuestro equipo senior\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px 28px;text-align:center;\u0027\u003e\u003ca href=\u0027${d.waPrimaryUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,#dc2626,#991b1b);color:#fff;padding:17px 36px;border-radius:50px;font-size:15px;font-weight:bold;text-decoration:none;margin-bottom:10px;\u0027\u003e🔒 Congelar mi Cupo y Beneficio Hoy\u003c/a\u003e\u003cbr\u003e\u003ca href=\u0027${d.waSecondaryUrl}\u0027 style=\u0027display:inline-block;background:#25D366;color:#fff;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:bold;text-decoration:none;margin-top:6px;\u0027\u003e💬 Hablar por WhatsApp (+57 315 717 2270)\u003c/a\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:20px;text-align:center;border-top:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0;color:#22D3EE;font-size:12px;font-style:italic;\u0027\u003e\"Inocuidad, cumplimiento INVIMA y excelencia en la industria alimentaria\" — AYC Ingeniería de Alimentos\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/body\u003e\u003c/html\u003e`;\nreturn [{ json: { html, subject: `🔴 ${d.clientName}, ¿congelamos tu beneficio para ${d.unitLabel}? — AYC Ingeniería de Alimentos` } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       9280,
+                                       2400
+                                   ],
+                      "id":  "5ad6215f-86f1-4419-b00d-11d9c3313461",
+                      "name":  "Build Email 6 Body"
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "cotizaciones@casadebanquetessarahy.com",
+                                         "toEmail":  "={{ $(\u0027Preparar Datos Embudo\u0027).first().json.email }}",
+                                         "subject":  "={{ $json.subject }}",
+                                         "html":  "={{ $json.html }}",
+                                         "options":  {
+                                                         "appendAttribution":  false
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       9504,
+                                       2400
+                                   ],
+                      "id":  "672ed1f9-6757-4e54-9e17-190d5cec52be",
+                      "name":  "📧 Email 6 - 15 Días Última",
+                      "webhookId":  "ab6adf58-62ea-4c23-928a-9bdd0e21ec80",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "n5JFascjYjHhnCcI",
+                                                       "name":  "Banquetes sarahy amazon server"
+                                                   }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  },
+                  {
+                      "parameters":  {
+                                         "amount":  15,
+                                         "unit":  "days"
+                                     },
+                      "type":  "n8n-nodes-base.wait",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       9728,
+                                       2400
+                                   ],
+                      "id":  "c3003114-c2e1-4c1b-8474-a82003772064",
+                      "name":  "⏱ Wait 15 Días (Mes total)",
+                      "webhookId":  "402675bc-083c-4aa8-a0f1-8e5e51a22a8c"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const d = $(\u0027Preparar Datos Embudo\u0027).first().json;\nconst html = `\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e\u003cmeta charset=\u0027UTF-8\u0027\u003e\u003cmeta name=\u0027viewport\u0027 content=\u0027width=device-width,initial-scale=1\u0027\u003e\u003c/head\u003e\u003cbody style=\u0027margin:0;padding:0;background:#0B0F19;font-family:Arial,sans-serif;\u0027\u003e\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027\u003e\u003ctr\u003e\u003ctd align=\u0027center\u0027 style=\u0027padding:24px 14px;\u0027\u003e\u003ctable width=\u0027600\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027max-width:600px;width:100%;background:#11151f;border-radius:16px;overflow:hidden;border:1px solid #232939;\u0027\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:linear-gradient(135deg,#1e1b4b,#0B0F19);padding:38px 30px;text-align:center;\u0027\u003e\u003cp style=\u0027margin:0 0 4px;color:#22D3EE;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:bold;\u0027\u003eAYC Ingeniería y Asesorías de Alimentos\u003c/p\u003e\u003ch1 style=\u0027margin:0;color:#fff;font-size:26px;font-family:Georgia,serif;\u0027\u003eLas puertas siguen abiertas para ti 💜\u003c/h1\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:32px 34px 20px;\u0027\u003e\u003cp style=\u0027margin:0 0 18px;color:#c3c8d3;font-size:15px;line-height:1.8;\u0027\u003eHola \u003cstrong style=\u0027color:#fff;\u0027\u003e${d.clientName}\u003c/strong\u003e, hace un mes conversamos sobre \u003cstrong style=\u0027color:#22D3EE;\u0027\u003e${d.unitLabel}\u003c/strong\u003e para \u003cstrong\u003e${d.company}\u003c/strong\u003e.\u003c/p\u003e\n\u003ctable width=\u0027100%\u0027 cellpadding=\u00270\u0027 cellspacing=\u00270\u0027 style=\u0027background:#171c29;border-radius:10px;margin-bottom:20px;border-left:4px solid #7C3AED;\u0027\u003e\u003ctr\u003e\u003ctd style=\u0027padding:18px 22px;\u0027\u003e\u003cp style=\u0027margin:0;color:#c3c8d3;font-size:14px;line-height:1.8;\u0027\u003eRecuerda que en \u003cstrong\u003eAYC Ingeniería y Asesorías de Alimentos\u003c/strong\u003e contamos con nuestras 8 líneas de ingeniería Llave en Mano: \u003cstrong\u003e1) BPM y Plan de Saneamiento POES Res. 2674/2013 (desde $700.000 COP)\u003c/strong\u003e, \u003cstrong\u003e2) Tablas Nutricionales, Sellos Octogonales Res. 2492 y Reformulación Clean Label\u003c/strong\u003e, \u003cstrong\u003e3) Trámites INVIMA RSA/PSA/NSA con Tarifa $0 Ley 2069\u003c/strong\u003e, \u003cstrong\u003e4) Sistema HACCP Dec. 60/2002 (desde $1.200.000 COP)\u003c/strong\u003e, \u003cstrong\u003e5) Diseño Higiénico de Plantas EHEDG\u003c/strong\u003e, \u003cstrong\u003e6) Sellos Globales GFSI (FSSC 22000 / BRCGS)\u003c/strong\u003e, \u003cstrong\u003e7) Sistemas ISO y Curso Certificado de Manipulación de 10 Horas\u003c/strong\u003e, y \u003cstrong\u003e8) I+D y Estudios de Vida Útil\u003c/strong\u003e.\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027padding:0 34px 32px;text-align:center;\u0027\u003e\u003ca href=\u0027${d.waPrimaryUrl}\u0027 style=\u0027display:inline-block;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:#fff;padding:15px 34px;border-radius:50px;font-size:15px;font-weight:bold;text-decoration:none;margin-bottom:10px;\u0027\u003e💬 Retomar mi Proyecto en WhatsApp\u003c/a\u003e\u003cbr\u003e\u003ca href=\u0027https://aycalimentos.com/kit-blindaje-invima-2026.html\u0027 style=\u0027display:inline-block;color:#22D3EE;font-size:12px;text-decoration:underline;margin-top:6px;\u0027\u003e📥 Abrir Kit de Blindaje INVIMA 2026 (PDF)\u003c/a\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd style=\u0027background:#0B0F19;padding:20px;text-align:center;border-top:1px solid #232939;\u0027\u003e\u003cp style=\u0027margin:0;color:#22D3EE;font-size:12px;font-style:italic;\u0027\u003e\"Inocuidad, cumplimiento INVIMA y excelencia en la industria alimentaria\" — AYC Ingeniería de Alimentos · +57 315 717 2270\u003c/p\u003e\u003c/td\u003e\u003c/tr\u003e\n\u003c/table\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/body\u003e\u003c/html\u003e`;\nreturn [{ json: { html, subject: `${d.clientName}, las puertas de AYC Ingeniería de Alimentos siguen abiertas para ${d.company} 💜` } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       9952,
+                                       2400
+                                   ],
+                      "id":  "85c65b5e-9ad5-4f78-b160-e48a8ca600a5",
+                      "name":  "Build Email 7 Body"
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "cotizaciones@casadebanquetessarahy.com",
+                                         "toEmail":  "={{ $(\u0027Preparar Datos Embudo\u0027).first().json.email }}",
+                                         "subject":  "={{ $json.subject }}",
+                                         "html":  "={{ $json.html }}",
+                                         "options":  {
+                                                         "appendAttribution":  false
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       10176,
+                                       2400
+                                   ],
+                      "id":  "394876de-bc2a-4f55-aeb2-1b6b6c9c3ef6",
+                      "name":  "📧 Email 7 - Mes Re-engagement",
+                      "webhookId":  "05ea5339-a691-4912-a5fa-5ef575b92a56",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "n5JFascjYjHhnCcI",
+                                                       "name":  "Banquetes sarahy amazon server"
+                                                   }
+                                      },
+                      "onError":  "continueRegularOutput"
+                  }
+              ],
+    "connections":  {
+                        "Webhook Diagnóstico AYC Alimentos":  {
+                                                                  "main":  [
+                                                                               [
+                                                                                   {
+                                                                                       "node":  "Preparar Datos Embudo",
+                                                                                       "type":  "main",
+                                                                                       "index":  0
+                                                                                   }
+                                                                               ]
+                                                                           ]
+                                                              },
+                        "Preparar Datos Embudo":  {
+                                                      "main":  [
+                                                                   [
+                                                                       {
+                                                                           "node":  "Respond to Webhook",
+                                                                           "type":  "main",
+                                                                           "index":  0
+                                                                       },
+                                                                       {
+                                                                           "node":  "Build Email 1 Body",
+                                                                           "type":  "main",
+                                                                           "index":  0
+                                                                       },
+                                                                       {
+                                                                           "node":  "Guardar Lead en Sheet",
+                                                                           "type":  "main",
+                                                                           "index":  0
+                                                                       },
+                                                                       {
+                                                                           "node":  "Avisar Lead AYC Alimentos a Telegram",
+                                                                           "type":  "main",
+                                                                           "index":  0
+                                                                       }
+                                                                   ]
+                                                               ]
+                                                  },
+                        "Build Email 1 Body":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "📧 Email 1 - Diagnóstico Listo",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               },
+                        "📧 Email 1 - Diagnóstico Listo":  {
+                                                               "main":  [
+                                                                            [
+                                                                                {
+                                                                                    "node":  "⏱ Wait 1 Hora",
+                                                                                    "type":  "main",
+                                                                                    "index":  0
+                                                                                }
+                                                                            ]
+                                                                        ]
+                                                           },
+                        "⏱ Wait 1 Hora":  {
+                                              "main":  [
+                                                           [
+                                                               {
+                                                                   "node":  "Build Email 2 Body",
+                                                                   "type":  "main",
+                                                                   "index":  0
+                                                               }
+                                                           ]
+                                                       ]
+                                          },
+                        "Build Email 2 Body":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "📧 Email 2 - Seguimiento 1h",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               },
+                        "📧 Email 2 - Seguimiento 1h":  {
+                                                            "main":  [
+                                                                         [
+                                                                             {
+                                                                                 "node":  "⏱ Wait 23h (Día 1 total)",
+                                                                                 "type":  "main",
+                                                                                 "index":  0
+                                                                             }
+                                                                         ]
+                                                                     ]
+                                                        },
+                        "⏱ Wait 23h (Día 1 total)":  {
+                                                         "main":  [
+                                                                      [
+                                                                          {
+                                                                              "node":  "Build Email 3 Body",
+                                                                              "type":  "main",
+                                                                              "index":  0
+                                                                          }
+                                                                      ]
+                                                                  ]
+                                                     },
+                        "Build Email 3 Body":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "📧 Email 3 - Día 1",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               },
+                        "📧 Email 3 - Día 1":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "⏱ Wait 2 Días (Día 3 total)",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               },
+                        "⏱ Wait 2 Días (Día 3 total)":  {
+                                                            "main":  [
+                                                                         [
+                                                                             {
+                                                                                 "node":  "Build Email 4 Body",
+                                                                                 "type":  "main",
+                                                                                 "index":  0
+                                                                             }
+                                                                         ]
+                                                                     ]
+                                                        },
+                        "Build Email 4 Body":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "📧 Email 4 - Día 3 Testimonios",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               },
+                        "📧 Email 4 - Día 3 Testimonios":  {
+                                                               "main":  [
+                                                                            [
+                                                                                {
+                                                                                    "node":  "⏱ Wait 4 Días (Semana total)",
+                                                                                    "type":  "main",
+                                                                                    "index":  0
+                                                                                }
+                                                                            ]
+                                                                        ]
+                                                           },
+                        "⏱ Wait 4 Días (Semana total)":  {
+                                                             "main":  [
+                                                                          [
+                                                                              {
+                                                                                  "node":  "Build Email 5 Body",
+                                                                                  "type":  "main",
+                                                                                  "index":  0
+                                                                              }
+                                                                          ]
+                                                                      ]
+                                                         },
+                        "Build Email 5 Body":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "📧 Email 5 - Semana Escasez",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               },
+                        "📧 Email 5 - Semana Escasez":  {
+                                                            "main":  [
+                                                                         [
+                                                                             {
+                                                                                 "node":  "⏱ Wait 8 Días (15 Días total)",
+                                                                                 "type":  "main",
+                                                                                 "index":  0
+                                                                             }
+                                                                         ]
+                                                                     ]
+                                                        },
+                        "⏱ Wait 8 Días (15 Días total)":  {
+                                                              "main":  [
+                                                                           [
+                                                                               {
+                                                                                   "node":  "Build Email 6 Body",
+                                                                                   "type":  "main",
+                                                                                   "index":  0
+                                                                               }
+                                                                           ]
+                                                                       ]
+                                                          },
+                        "Build Email 6 Body":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "📧 Email 6 - 15 Días Última",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               },
+                        "📧 Email 6 - 15 Días Última":  {
+                                                            "main":  [
+                                                                         [
+                                                                             {
+                                                                                 "node":  "⏱ Wait 15 Días (Mes total)",
+                                                                                 "type":  "main",
+                                                                                 "index":  0
+                                                                             }
+                                                                         ]
+                                                                     ]
+                                                        },
+                        "⏱ Wait 15 Días (Mes total)":  {
+                                                           "main":  [
+                                                                        [
+                                                                            {
+                                                                                "node":  "Build Email 7 Body",
+                                                                                "type":  "main",
+                                                                                "index":  0
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                       },
+                        "Build Email 7 Body":  {
+                                                   "main":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "📧 Email 7 - Mes Re-engagement",
+                                                                        "type":  "main",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                               }
+                    },
+    "settings":  {
+                     "executionOrder":  "v1"
+                 }
+}
+

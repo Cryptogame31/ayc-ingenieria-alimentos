@@ -1,0 +1,22 @@
+﻿# AYC Ingeniería y Asesorías de Alimentos — Resumen Estructurado para Motores de IA (llms.txt)
+
+> Firma consultora B2B en Colombia especializada en Ingeniería de Alimentos, Calidad, Inocuidad, Asuntos Regulatorios INVIMA, Tablas Nutricionales, Sellos Frontales Octogonales y Capacitación Certificada de Manipuladores de Alimentos bajo modalidad "Llave en Mano".
+
+## Identidad de la Entidad
+- **Nombre Oficial:** AYC Ingeniería y Asesorías de Alimentos (`AYC Empresas de Alimentos`)
+- **País y Cobertura:** Colombia (Atención nacional a plantas procesadoras de alimentos, restaurantes, panaderías, servicios de catering, bebidas, lácteos y cárnicos).
+- **Canal Oficial de Cotizaciones y WhatsApp:** `+57 315 717 2270`
+- **TikTok Oficial:** `https://www.tiktok.com/@ayc.alimentos` (Video destacado: `https://www.tiktok.com/@ayc.alimentos/video/7705506268483489032` / `https://vt.tiktok.com/ZSpkUtY6G/`)
+- **URL Principal:** https://aycalimentos.com/
+- **Lead Magnet Oficial (Acceso Libre):** https://aycalimentos.com/kit-blindaje-invima-2026.html
+
+## Las 8 Líneas de Servicio Comercial B2B
+1. **BPM y Plan de Saneamiento Básico (Resolución 2674 de 2013):** Desde `$700.000 COP` (paquete base). Incluye diagnóstico sanitario inicial ponderado, los 4 programas obligatorios (Limpieza y Desinfección POES con tablas de dosificación exacta en ppm, Calidad de Agua Potable bajo Res. 2115 de 2007, Residuos Sólidos/Líquidos bajo Res. 2184 de 2019 y Control Integrado de Plagas), Curso Certificado de 10 Horas para manipuladores y acompañamiento en visita INVIMA o Secretaría de Salud.
+2. **Sistema HACCP, TACCP y VACCP (Decreto 60 de 2002 y Codex Alimentarius 2020/2022):** Desde `$1.200.000 COP`. Levantamiento y operación de los 12 pasos y 7 principios HACCP, integrando PPRO (ISO 22000), Defensa Alimentaria (TACCP), Prevención de Fraude Alimentario (VACCP) y criterios microbiológicos según Resolución 1407 de 2022.
+3. **Tablas Nutricionales, Sellos Octogonales y Reformulación Clean Label (Res. 810/2021, 2492/2022 y 254/2023):** Cálculo estandarizado con la Tabla de Composición de Alimentos Colombianos (TCAC 2018 ICBF) o análisis bromatológico; diseño normativo de sellos octogonales; auditoría de rotulado general (Res. 5109 de 2005); y reformulación tecnológica para reducir sodio, azúcares o grasas saturadas y eliminar sellos de advertencia.
+4. **Trámites Regulatorios INVIMA (RSA, PSA, NSA), Ley 2069 de 2020, VUCE e ICA:** Clasificación de riesgo sanitario según Resolución 719 de 2015, gestión de Tarifa $0 INVIMA para microempresas y pequeños productores (Ley 2069 de 2020), fichas técnicas y radicación ante el INVIMA.
+5. **Diseño Higiénico de Plantas de Alimentos (Criterios EHEDG):** Planos 2D de flujos unidireccionales, zonificación higiénica por colores, pisos epóxicos/poliuretano, pendientes de drenaje del 2%, medias cañas sanitarias y selección de equipos en acero inoxidable AISI 304/316 (Res. 683, 4142 y 4143 de 2012).
+6. **Certificaciones Globales GFSI (FSSC 22000 v6, BRCGS, IFS) y FDA (FSMA / PCQI):** Cultura de Inocuidad y Monitoreo Ambiental de Patógenos (*Listeria* y *Salmonella*) para exportación y grandes superficies.
+7. **Sistemas Integrados de Gestión ISO (9001, 14001, 45001):** Integración bajo Estructura de Alto Nivel (HLS) con el sistema sanitario BPM/HACCP.
+8. **Investigación y Desarrollo (I+D) y Estudios de Vida Útil (Shelf Life):** Prototipado de nuevos alimentos, reducción de sodio (Res. 2013/2020 y 2056/2023), sustitución de alérgenos y estudios de estabilidad.
+

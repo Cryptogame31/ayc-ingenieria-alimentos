@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040b08"/>
+      <stop offset="55%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="48" y="48" width="1104" height="534" rx="28" fill="none" stroke="#10b981" stroke-width="2" stroke-opacity="0.4"/>
+  <text x="90" y="130" fill="#34d399" font-family="sans-serif" font-size="22" font-weight="800" letter-spacing="2">AYC INGENIERÍA Y ASESORÍAS DE ALIMENTOS • COLOMBIA</text>
+  <text x="90" y="235" fill="#ffffff" font-family="sans-serif" font-size="56" font-weight="900">Blindaje Sanitario INVIMA,</text>
+  <text x="90" y="305" fill="url(#accent)" font-family="sans-serif" font-size="56" font-weight="900">BPM, HACCP y Etiquetado</text>
+  <text x="90" y="385" fill="#d1fae5" font-family="sans-serif" font-size="26" font-weight="500">Consultoría Llave en Mano: Res. 2674/2013 • Res. 810 y 2492 • Ley 2069 Tarifa $0</text>
+  <rect x="90" y="445" width="470" height="68" rx="16" fill="#10b981"/>
+  <text x="325" y="488" text-anchor="middle" fill="#040b08" font-family="sans-serif" font-size="25" font-weight="900">Diagnóstico y Kit INVIMA Gratis →</text>
+</svg>
