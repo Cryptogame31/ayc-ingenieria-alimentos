@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-CO" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -1620,6 +1620,31 @@
         }
       });
 
+      // 1. Notificación instantánea al Bot Independiente de Telegram de AYC Alimentos (@AYCalimentosleads_bot)
+      try {
+        const tgText = [
+          '🛡️ NUEVO LEAD — AYC INGENIERÍA DE ALIMENTOS',
+          '━━━━━━━━━━━━━━━━━━━━━━━━━',
+          '👤 Cliente: ' + (payload.clientName || 'Sin nombre'),
+          '🏢 Empresa: ' + (payload.clientCompany || 'Sin empresa'),
+          '📱 WhatsApp: ' + (payload.clientPhone || 'Sin teléfono'),
+          '📧 Correo: ' + (payload.clientEmail || 'Sin correo'),
+          '🎯 Servicio Solicitado: ' + (payload.selectedService || 'Consultoría Sanitaria'),
+          '📘 Kit Desbloqueado: Kit de Blindaje INVIMA 2026',
+          '📝 Notas: ' + (payload.notes || payload.leadMagnet || 'Registro directo en Web Oficial AYC')
+        ].join('\n');
+
+        fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN_AYC}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID_AYC,
+            text: tgText
+          })
+        }).catch(() => {});
+      } catch (eTg) {}
+
+      // 2. Envío al Flujo de Automatización n8n (Google Sheet + Secuencia de 7 Correos)
       try {
         const res = await fetch(WEBHOOK_N8N_AYC_URL, {
           method: 'POST',
