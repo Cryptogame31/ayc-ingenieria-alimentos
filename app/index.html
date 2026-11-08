@@ -144,6 +144,9 @@
       <button onclick="switchModule('planta')" id="mnav-planta" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-emerald-500/40 bg-emerald-950/80 text-xs font-bold text-emerald-300 flex items-center gap-1.5">
         <span>🏗️</span> <span>Servicio 5: Diseño Planta 2D & INOX</span>
       </button>
+      <button onclick="switchModule('gfsi')" id="mnav-gfsi" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-amber-500/40 bg-amber-950/80 text-xs font-bold text-amber-300 flex items-center gap-1.5">
+        <span>🌎</span> <span>GFSI, FDA (FSMA) & EMP</span>
+      </button>
     </div>
 
     <!-- MENÚ LATERAL DE LOS 8 MÓDULOS OPERATIVOS (ESCRITORIO) -->
@@ -193,6 +196,10 @@
           <button onclick="switchModule('planta')" id="nav-planta" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-950/30 text-xs sm:text-sm font-bold text-emerald-300 hover:text-white transition flex items-center justify-between cursor-pointer">
             <span class="flex items-center gap-2.5"><span>🏗️</span> <span>11. Servicio 5: Diseño Planta 2D & INOX</span></span>
             <span class="px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 font-mono font-extrabold text-[10px]">EHEDG</span>
+          </button>
+          <button onclick="switchModule('gfsi')" id="nav-gfsi" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-amber-500/30 bg-amber-950/30 text-xs sm:text-sm font-bold text-amber-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🌎</span> <span>12. GFSI (FSSC/BRCGS), FDA & EMP</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-emerald-400 text-slate-950 font-mono font-extrabold text-[10px]">PCQI</span>
           </button>
         </nav>
       </div>
@@ -354,6 +361,19 @@
             </div>
             <p class="text-xs text-zinc-300 leading-relaxed">
               Calcula áreas en $\text{m}^2$, sifones, pendiente del $2\%$ y curvas media caña ($\ge 2.5\text{ cm}$), selecciona entre <strong>Acero Inoxidable AISI 304 y AISI 316L</strong>, genera el <strong>Plano 2D Vectorial con Zonificación por Colores y Flujo Unidireccional</strong> e imprime la <strong>Memoria Constructiva Antidemolición en PDF (`MEM-DIS-001`)</strong>.
+            </p>
+          </div>
+
+          <div onclick="switchModule('gfsi')" class="p-5 rounded-2xl glass-card border border-emerald-400/40 hover:border-emerald-400 transition cursor-pointer group sm:col-span-2 xl:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🌎</span>
+                <h3 class="text-base font-extrabold text-emerald-300 group-hover:text-white transition">Certificaciones Globales GFSI (FSSC 22000 v6 / BRCGS v9 / IFS v8) + FDA FSMA (PCQI) + Monitoreo Ambiental (EMP)</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-bold">Exportación EE.UU. / Europa & Maquila Retail</span>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Incluye enlaces directos a <strong>FDA FFRM, 21 CFR Part 117 (PCQI), FSSC 22000 v6 y D-U-N-S</strong>, la matriz de <strong>Monitoreo Ambiental de Patógenos EMP por Zonas 1 a 4 (Listeria / Salmonella / ATP)</strong>, el Plan de <strong>Cultura de Inocuidad</strong> y el <strong>Generador en PDF del Food Safety Plan FDA + Dossier GFSI (`MAN-GFSI-FDA-001`)</strong>.
             </p>
           </div>
         </div>
@@ -1713,6 +1733,257 @@
         </div>
       </section>
 
+      <!-- =========================================================================
+           MÓDULO 12: CERTIFICACIONES GLOBALES GFSI (FSSC 22000 v6 / BRCGS v9 / IFS v8), FDA (FSMA - PCQI) & EMP
+           ========================================================================= -->
+      <section id="mod-gfsi" class="hidden space-y-6">
+        <div class="p-6 rounded-3xl glass-card border border-emerald-400/40 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-mono text-xs font-bold">
+                EXPORTACIÓN EE.UU. / EUROPA & MAQUILA RETAIL • FSSC 22000 v6 • BRCGS v9 • IFS v8 • FDA FSMA (21 CFR 117 — PCQI)
+              </span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-2">🌎 Centro de Certificaciones Globales GFSI, FDA (FSMA) y Monitoreo Ambiental (EMP)</h2>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
+                Herramienta integral para preparar plantas exportadoras o maquiladoras de marcas propias (<em>Private Label</em>): portales directos de la <strong>FDA y GFSI</strong>, zonificación de <strong>Monitoreo Ambiental de Patógenos (EMP Zonas 1 a 4)</strong>, <strong>Plan de Cultura de Inocuidad</strong> y <strong>Generador en PDF del Food Safety Plan (PCQI) + Dossier GFSI</strong>.
+              </p>
+            </div>
+            <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              🖨️ Imprimir Food Safety Plan FDA + Dossier GFSI (PDF)
+            </button>
+          </div>
+
+          <!-- ENLACES DIRECTOS A PORTALES INTERNACIONALES FDA, DUNS, FSSC 22000, BRCGS E IFS -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
+            <a href="https://www.access.fda.gov/" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-emerald-400 font-bold">PORTAL OFICIAL EE.UU.</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🇺🇸 1. FDA Industry Systems (FFRM) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Registro obligatorio de plantas de alimentos ante la FDA (renovación bienal años pares) y Prior Notice.</p>
+            </a>
+            <a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-117" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-amber-500/30 hover:border-amber-400 transition block">
+              <span class="text-[10px] font-mono text-amber-300 font-bold">NORMA FEDERAL FSMA</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📜 2. FDA 21 CFR Part 117 (PCQI) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Regulación oficial de Controles Preventivos para Alimentos de Consumo Humano (HARPC / Food Safety Plan).</p>
+            </a>
+            <a href="https://www.dnb.com/duns.html" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-teal-500/30 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-teal-300 font-bold">IDENTIFICADOR UFI</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🔢 3. Portal Oficial Número D-U-N-S ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Consulta y solicitud del código DUNS de 9 dígitos exigido por la FDA para mantener activo el registro FFRM.</p>
+            </a>
+            <a href="https://www.fssc.com/schemes/fssc-22000/documents/fssc-22000-version-6/" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">ESQUEMA GFSI GLOBAL</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📘 4. FSSC 22000 Versión 6.0 (Docs) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Descarga oficial de los Requisitos Adicionales 2.5.1 a 2.5.18 (ISO 22000 + ISO/TS 22002-1).</p>
+            </a>
+            <a href="https://www.brcgs.com/our-standards/food-safety/" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-amber-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">RETAIL & MARCAS PROPIAS</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🇬🇧 5. BRCGS Food Safety Issue 9 ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Estándar global para maquiladores de grandes cadenas de retail en EE.UU., Reino Unido y Latinoamérica.</p>
+            </a>
+            <a href="https://www.ifs-certification.com/en/standards/ifs-food" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">EXPORTACIÓN UNIÓN EUROPEA</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🇪🇺 6. IFS Food Version 8 ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Estándar GFSI líder para exportación y maquila hacia supermercados de Alemania, Francia, España e Italia.</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- RESUMEN EJECUTIVO DE INGENIERÍA: DIFERENCIAS FSSC 22000 v6 vs BRCGS v9 vs FDA FSMA + EMP ZONAS 1 A 4 -->
+        <div class="grid lg:grid-cols-12 gap-5 no-print">
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-emerald-500/30 space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold">GUÍA DEL PCQI & AUDITOR LÍDER GFSI</span>
+            <h3 class="text-base font-extrabold text-white">📋 Qué Exige Cada Estándar (FSSC v6 vs. BRCGS v9 vs. FDA FSMA)</h3>
+            <div class="space-y-2.5 text-xs text-zinc-300">
+              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-amber-300">1. FDA FSMA (21 CFR Part 117 — Food Safety Plan firmado por PCQI):</strong>
+                <p class="text-[11px] mt-1 leading-relaxed">
+                  A diferencia del HACCP tradicional, exige los <strong>4 Controles Preventivos HARPC</strong>: (1) <em>Process Controls</em> (térmicos/pH/$a_w$); (2) <em>Allergen Controls</em> para los <strong>9 Grandes Alérgenos de EE.UU. (incluyendo Sésamo/Ajonjolí por la Ley FASTER)</strong>; (3) <em>Sanitation Controls</em> (zonificación e hisopados en áreas RTE); y (4) <em>Supply-Chain Program</em> (homologación de proveedores) + <em>Recall Plan</em> obligatorio.
+                </p>
+              </div>
+              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-emerald-300">2. FSSC 22000 Versión 6.0 (ISO 22000 + ISO/TS 22002-1 + Req. Adicionales 2.5):</strong>
+                <p class="text-[11px] mt-1 leading-relaxed">
+                  Exige como novedades críticas en v6: <strong>2.5.7 Monitoreo Ambiental (EMP)</strong> documentado, <strong>2.5.8 Plan de Cultura de Calidad e Inocuidad</strong> con KPIs medibles, <strong>2.5.9 Control de Calidad y Peso Legal</strong>, <strong>2.5.15 Diseño Higiénico y Gestión de Equipos</strong> y <strong>2.5.16 Reducción de Desperdicio de Alimentos (Food Loss)</strong>.
+                </p>
+              </div>
+              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-teal-300">3. BRCGS Food Safety v9 e IFS Food v8:</strong>
+                <p class="text-[11px] mt-1 leading-relaxed">
+                  Auditorías altamente prescriptivas en piso de planta (incluyendo 1 auditoría no anunciada cada 3 años), evaluación directa a operarios sobre Cultura de Inocuidad, control estricto de vidrios/plásticos quebradizos, validación de rayos X/detector de metales y trazabilidad bidireccional en <strong>máximo 4 horas</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-amber-500/30 space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">MONITOREO AMBIENTAL DE PATÓGENOS (EMP — SEEK & DESTROY)</span>
+            <h3 class="text-base font-extrabold text-white">🦠 Mapa de las 4 Zonas Higiénicas de Hisopado (Listeria / Salmonella / ATP)</h3>
+            <div class="space-y-2 text-xs text-zinc-300">
+              <div class="p-2.5 rounded-xl bg-red-950/60 border border-red-500/40">
+                <strong class="text-red-300">🔴 ZONA 1 (Contacto Directo con Alimento RTE Post-Letalidad):</strong>
+                <p class="text-[11px] mt-0.5">Mesones de empaque, boquillas de llenado, cuchillas, bandas transportadoras, manos/guantes. <strong>Monitoreo:</strong> Bioluminiscencia ATP (diario pre-operativo), Enterobacterias/Coliformes y validación de ausencia de alérgenos.</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-amber-950/60 border border-amber-500/40">
+                <strong class="text-amber-300">🟠 ZONA 2 (Superficies Adyacentes a Zona 1 — Sin Contacto Directo):</strong>
+                <p class="text-[11px] mt-0.5">Chasis exterior de equipos, botoneras, bordes inferiores de mesones, cortinas sanitarias. <strong>Monitoreo Quincenal:</strong> Hisopado para <em>Listeria spp.</em> (plantas húmedas/frías) o <em>Salmonella spp.</em> (plantas secas).</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-teal-950/60 border border-teal-500/40">
+                <strong class="text-teal-300">🟡 ZONA 3 (Dentro de Sala de Proceso pero Lejos de Zona 1):</strong>
+                <p class="text-[11px] mt-0.5"><strong>Sifones y drenajes de piso</strong> (principal reservorio de biopelículas de <em>Listeria</em>), pisos, paredes, ruedas de carros y bandejas de evaporadores de frío. <strong>Monitoreo Semanal/Mensual:</strong> <em>Listeria spp. / Salmonella spp.</em></p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/15">
+                <strong class="text-zinc-200">⚪ ZONA 4 (Áreas Externas a Proceso):</strong>
+                <p class="text-[11px] mt-0.5">Vestieres, pasillos, bodegas y muelles de carga. <strong>Monitoreo Mensual/Trimestral:</strong> Verificación de eficacia de pediluvios y filtros sanitarios.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GENERADOR INTERACTIVO DEL FOOD SAFETY PLAN (FDA FSMA - PCQI) + DOSSIER GFSI + PROGRAMA EMP EN PDF -->
+        <div class="p-6 rounded-2xl glass-card border border-emerald-500/30 space-y-4 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold">ENTREGABLE INTERNACIONAL LLAVE EN MANO • MAN-GFSI-FDA-001</span>
+              <h3 class="text-lg font-extrabold text-white">📄 Generador en PDF: Plan de Inocuidad FDA (FSMA / PCQI) + Programa EMP (Zonas 1–4) + Cultura GFSI</h3>
+              <p class="text-xs text-zinc-400">Personaliza los datos de la planta exportadora o maquiladora e imprime el dossier oficial listo para auditorías de certificación o clientes internacionales.</p>
+            </div>
+            <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              🖨️ Imprimir Dossier GFSI / FDA FSMA en PDF
+            </button>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="block text-zinc-400 mb-1">Empresa Exportadora / Maquiladora</label>
+              <input type="text" id="gfEmpresa" value="Alimentos Del Valle S.A.S. — NIT 901.456.789-1" oninput="renderGfsiManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Esquema Objetivo (GFSI / FDA FSMA)</label>
+              <select id="gfEsquema" onchange="renderGfsiManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-emerald-500/40 text-emerald-300 font-bold">
+                <option value="FSSC 22000 Versión 6.0 + FDA FSMA 21 CFR Part 117 (Exportación EE.UU.)" selected>FSSC 22000 v6 + FDA FSMA 21 CFR Part 117 (PCQI)</option>
+                <option value="BRCGS Food Safety Issue 9 + FDA FSMA (Maquila Retail & Exportación)">BRCGS Food Safety Issue 9 + FDA FSMA</option>
+                <option value="IFS Food Version 8 (Exportación Unión Europea & Marcas Propias)">IFS Food Version 8 (Exportación Europa & Retail)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Registro FDA FFR / Número D-U-N-S</label>
+              <input type="text" id="gfFdaDuns" value="FDA FFR: En trámite / Vigente • DUNS (9 dígitos): Verificado" oninput="renderGfsiManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-3">
+              <label class="block text-zinc-400 mb-1">1. Controles Preventivos FDA FSMA (21 CFR 117.135: Proceso, Big 9 Alérgenos con Sésamo, Saneamiento y Supply-Chain)</label>
+              <input type="text" id="gfControlesFda" value="Process Control: Tratamiento térmico validado ≥ 74°C × 15s • Allergen Control: Segregación y validación de etiqueta para los 9 Grandes Alérgenos FDA (incluyendo Sésamo/Ajonjolí - FASTER Act) • Sanitation Control: Higienización pre-operativa verificada por bioluminiscencia ATP (< 30 RLU en Zona 1) • Supply-Chain: Homologación anual y CoA por lote." oninput="renderGfsiManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-3">
+              <label class="block text-zinc-400 mb-1">2. Programa de Monitoreo Ambiental de Patógenos (EMP — FSSC 22000 Req. 2.5.7 / 21 CFR 117.165)</label>
+              <input type="text" id="gfEmpPlan" value="Zona 1 (Contacto directo): Hisopado ATP diario + Enterobacterias semanal (< 10 UFC/cm²) • Zona 2 (Adyacente): Hisopado quincenal Listeria spp. / Salmonella spp. (Ausencia/superficie) • Zona 3 (Sifones, pisos y difusores de frío): Hisopado quincenal Listeria spp. • Zona 4 (Vestieres y pasillos): Control mensual." oninput="renderGfsiManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-3">
+              <label class="block text-zinc-400 mb-1">3. Plan de Cultura de Inocuidad Alimentaria y Trazabilidad / Recall (FSSC Req. 2.5.8 / BRCGS Cláusula 1.1.2)</label>
+              <input type="text" id="gfCultura" value="5 Pilares GFSI: (1) Compromiso gerencial con presupuesto sanitario; (2) Empoderamiento del operario para detener línea ante desvíos; (3) Encuesta anual de Cultura de Inocuidad; (4) Simulacro semestral de Recall y Trazabilidad bidireccional (Meta: 100% del balance de masa en ≤ 2 horas)." oninput="renderGfsiManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+          </div>
+        </div>
+
+        <!-- HOJA OFICIAL IMPRIMIBLE: FOOD SAFETY PLAN (FDA FSMA - PCQI) + DOSSIER GFSI + PROGRAMA EMP (MAN-GFSI-FDA-001) -->
+        <div class="p-8 rounded-2xl bg-white text-slate-900 border border-slate-300 shadow-2xl space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-emerald-800 pb-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-800 font-bold">DOSSIER INTERNACIONAL GFSI & FDA FSMA (21 CFR PART 117 — PCQI)</span>
+              <h3 class="text-xl font-black text-slate-950 mt-0.5">FOOD SAFETY PLAN, MONITOREO AMBIENTAL (EMP) Y CULTURA GFSI</h3>
+              <p class="text-xs text-slate-600 font-bold" id="gfPrintHeaderSub">Planta: Alimentos Del Valle S.A.S. • Esquema: FSSC 22000 v6 + FDA FSMA</p>
+            </div>
+            <div class="text-right font-mono text-[11px] bg-slate-100 p-2.5 rounded-lg border border-slate-300">
+              <div><strong>Código:</strong> <span>MAN-GFSI-FDA-001</span></div>
+              <div><strong>Estándar:</strong> <span>GFSI / 21 CFR 117</span></div>
+              <div><strong>Trazabilidad:</strong> <span>≤ 2 Horas (100% Masa)</span></div>
+            </div>
+          </div>
+
+          <table class="w-full text-xs border-collapse border border-slate-300">
+            <tbody>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">Establecimiento Exportador / Maquilador:</td>
+                <td class="p-2 border border-slate-300 font-bold w-1/4" id="gfPrintEmpresa">--</td>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">Identificación FDA / DUNS:</td>
+                <td class="p-2 border border-slate-300 font-mono w-1/4" id="gfPrintFdaDuns">--</td>
+              </tr>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300">Esquema de Certificación Alcance:</td>
+                <td class="p-2 border border-slate-300 font-bold text-emerald-900" colspan="3" id="gfPrintEsquema">--</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              1. CONTROLES PREVENTIVOS HARPC BAJO NORMATIVA FDA FSMA (21 CFR PART 117 — PCQI) Y REQUISITOS ADICIONALES FSSC 22000 v6
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed" id="gfPrintControlesFda">--</p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              2. PROGRAMA DE MONITOREO AMBIENTAL DE PATÓGENOS (EMP — ZONAS HIGIÉNICAS 1, 2, 3 Y 4)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed" id="gfPrintEmpPlan">--</p>
+            <table class="w-full text-[11px] border-collapse border border-slate-300">
+              <thead>
+                <tr class="bg-slate-800 text-white">
+                  <th class="p-1.5 border border-slate-400 text-left">Zona Higiénica EMP</th>
+                  <th class="p-1.5 border border-slate-400 text-left">Superficies Muestreadas en Planta</th>
+                  <th class="p-1.5 border border-slate-400 text-center">Indicador / Patógeno Objetivo</th>
+                  <th class="p-1.5 border border-slate-400 text-left">Acción Correctiva ante Positivo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p-1.5 border border-slate-300 font-bold text-red-900">Zona 1 (Contacto Directo)</td>
+                  <td class="p-1.5 border border-slate-300">Mesones INOX, boquillas de llenado, cuchillas, bandas y manos</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">ATP (&lt;30 RLU) • Enterobacterias (&lt;10 UFC) • Alérgeno</td>
+                  <td class="p-1.5 border border-slate-300">Retener lote, re-higienizar y requerir 3 negativos consecutivos antes de liberar.</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-1.5 border border-slate-300 font-bold text-amber-900">Zona 2 (Adyacente)</td>
+                  <td class="p-1.5 border border-slate-300">Estructura externa de equipos, botoneras y bordes de mesones</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">Listeria spp. / Salmonella spp. (Ausencia)</td>
+                  <td class="p-1.5 border border-slate-300">Desarme profundo, sanitización de choque e hisopado de Zona 1 adyacente.</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 border border-slate-300 font-bold text-teal-900">Zona 3 (Entorno Sala)</td>
+                  <td class="p-1.5 border border-slate-300">Sifones de piso, drenajes, paredes, ruedas y difusores de frío</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">Listeria spp. / Salmonella spp. (Ausencia)</td>
+                  <td class="p-1.5 border border-slate-300">Protocolo <em>Seek &amp; Destroy</em> con amonio cuaternario/ácido peracético sin agua a alta presión.</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-1.5 border border-slate-300 font-bold text-slate-800">Zona 4 (Externa)</td>
+                  <td class="p-1.5 border border-slate-300">Vestieres, pasillos, bodegas y muelle de despacho</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono">Listeria spp. / Indicadores de barrera</td>
+                  <td class="p-1.5 border border-slate-300">Reforzar concentración de pediluvios (400–500 ppm) y control de calzado sanitario.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="space-y-1.5">
+            <h4 class="text-xs font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              3. PLAN DE CULTURA DE INOCUIDAD ALIMENTARIA, TRAZABILIDAD Y RETIRO DE PRODUCTO (RECALL PLAN — 21 CFR 117.139)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed" id="gfPrintCultura">--</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Alta Dirección / Representante Legal</strong><br>
+              <span class="text-slate-600" id="gfPrintFirma">Alimentos Del Valle S.A.S.</span>
+            </div>
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Estructurado por Consultoría PCQI &amp; Auditoría GFSI</strong><br>
+              <span class="text-slate-600">AYC Ingeniería y Asesorías de Alimentos • Tel: +57 315 717 2270</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -1734,7 +2005,7 @@
     }
 
     // 2. CAMBIO DE MÓDULOS
-    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp', 'planta'];
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp', 'planta', 'gfsi'];
     function switchModule(modId) {
       MODULES.forEach(m => {
         document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
@@ -1859,7 +2130,8 @@
       { id: 'pliego3', name: 'Pliego 3: Trámite Regulatorio INVIMA (RSA / PSA / NSA) + Gestión Ley 2069', deliverables: 'Clasificación de riesgo Res. 719/2015, fichas técnicas de producto, radicación en plataforma INVIMA y gestión de Tarifa $0 para microempresas.', price: 650000, checked: false },
       { id: 'pliego4', name: 'Pliego 4: Diseño e Implementación Sistema HACCP + TACCP + VACCP (Dec. 60/2002)', deliverables: 'Levantamiento de los 12 pasos y 7 principios Codex, matriz PCC/PPRO, Defensa Alimentaria, Fraude y criterios microbiológicos Res. 1407/2022.', price: 1200000, checked: false },
       { id: 'pliego5', name: 'Servicio 5: Diseño Higiénico de Planta de Alimentos (Criterios EHEDG)', deliverables: 'Layout sanitario con flujos unidireccionales, zonificación por colores, especificación de pisos/drenajes/medias cañas y acero INOX 304/316.', price: 1500000, checked: false },
-      { id: 'pliego6', name: 'Servicio 6: Curso Corporativo Manipulación de Alimentos (10 Horas — Res. 2674)', deliverables: 'Capacitación teórico-práctica de 10 horas, evaluación escrita calificada (≥80%), emisión de Certificados y Carnés para manipuladores.', price: 350000, checked: false }
+      { id: 'pliego6', name: 'Servicio 6: Curso Corporativo Manipulación de Alimentos (10 Horas — Res. 2674)', deliverables: 'Capacitación teórico-práctica de 10 horas, evaluación escrita calificada (≥80%), emisión de Certificados y Carnés para manipuladores.', price: 350000, checked: false },
+      { id: 'pliego7', name: 'Servicio 7: Certificaciones Globales GFSI (FSSC 22000 v6 / BRCGS v9 / IFS v8) y FDA FSMA (PCQI)', deliverables: 'Registro FDA FFRM, Food Safety Plan 21 CFR Part 117 (PCQI), Monitoreo Ambiental de Patógenos EMP (Zonas 1-4) y Plan de Cultura de Inocuidad.', price: 2500000, checked: false }
     ];
 
     function initQuoteBuilder() {
@@ -2168,6 +2440,29 @@
       }
     }
 
+    // 11. MÓDULO 12: CERTIFICACIONES GLOBALES GFSI, FDA (FSMA - PCQI) Y MONITOREO AMBIENTAL (EMP)
+    function renderGfsiManual() {
+      const val = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.value : '';
+      };
+      const setTxt = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+
+      const emp = val('gfEmpresa') || 'Planta Exportadora';
+      const esq = val('gfEsquema') || 'FSSC 22000 v6 + FDA FSMA';
+      setTxt('gfPrintHeaderSub', `Planta: ${emp} • Esquema: ${esq}`);
+      setTxt('gfPrintEmpresa', emp);
+      setTxt('gfPrintEsquema', esq);
+      setTxt('gfPrintFdaDuns', val('gfFdaDuns'));
+      setTxt('gfPrintControlesFda', val('gfControlesFda'));
+      setTxt('gfPrintEmpPlan', val('gfEmpPlan'));
+      setTxt('gfPrintCultura', val('gfCultura'));
+      setTxt('gfPrintFirma', emp);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initAuditTable();
       calcPpm();
@@ -2178,6 +2473,7 @@
       evalCodexTree();
       renderHaccpManual();
       calcPlantDesign();
+      renderGfsiManual();
     });
   </script>
 </body>
