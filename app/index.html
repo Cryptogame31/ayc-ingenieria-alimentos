@@ -147,6 +147,9 @@
       <button onclick="switchModule('gfsi')" id="mnav-gfsi" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-amber-500/40 bg-amber-950/80 text-xs font-bold text-amber-300 flex items-center gap-1.5">
         <span>🌎</span> <span>GFSI, FDA (FSMA) & EMP</span>
       </button>
+      <button onclick="switchModule('iso')" id="mnav-iso" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-teal-500/40 bg-teal-950/80 text-xs font-bold text-teal-300 flex items-center gap-1.5">
+        <span>♻️</span> <span>ISO (HLS), Ambiental & Plan 10h</span>
+      </button>
     </div>
 
     <!-- MENÚ LATERAL DE LOS 8 MÓDULOS OPERATIVOS (ESCRITORIO) -->
@@ -200,6 +203,10 @@
           <button onclick="switchModule('gfsi')" id="nav-gfsi" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-amber-500/30 bg-amber-950/30 text-xs sm:text-sm font-bold text-amber-300 hover:text-white transition flex items-center justify-between cursor-pointer">
             <span class="flex items-center gap-2.5"><span>🌎</span> <span>12. GFSI (FSSC/BRCGS), FDA & EMP</span></span>
             <span class="px-1.5 py-0.5 rounded bg-emerald-400 text-slate-950 font-mono font-extrabold text-[10px]">PCQI</span>
+          </button>
+          <button onclick="switchModule('iso')" id="nav-iso" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-teal-500/30 bg-teal-950/30 text-xs sm:text-sm font-bold text-teal-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>♻️</span> <span>13. Sistemas ISO (HLS), Ambiental & 10h</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-teal-400 text-slate-950 font-mono font-extrabold text-[10px]">HSEQ</span>
           </button>
         </nav>
       </div>
@@ -374,6 +381,19 @@
             </div>
             <p class="text-xs text-zinc-300 leading-relaxed">
               Incluye enlaces directos a <strong>FDA FFRM, 21 CFR Part 117 (PCQI), FSSC 22000 v6 y D-U-N-S</strong>, la matriz de <strong>Monitoreo Ambiental de Patógenos EMP por Zonas 1 a 4 (Listeria / Salmonella / ATP)</strong>, el Plan de <strong>Cultura de Inocuidad</strong> y el <strong>Generador en PDF del Food Safety Plan FDA + Dossier GFSI (`MAN-GFSI-FDA-001`)</strong>.
+            </p>
+          </div>
+
+          <div onclick="switchModule('iso')" class="p-5 rounded-2xl glass-card border border-teal-400/40 hover:border-teal-400 transition cursor-pointer group sm:col-span-2 xl:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">♻️</span>
+                <h3 class="text-base font-extrabold text-teal-300 group-hover:text-white transition">Sistemas Integrados ISO (HLS: 9001 + 14001 + 45001 + 22000), Gestión Ambiental Alimentaria (Vertimientos / REP) y Escuela en Planta 10h</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-mono text-[11px] font-bold">Estructura HLS • Res. 0631/2015 • REP Envases • Art. 12 Res. 2674</span>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Unifica Calidad, Medio Ambiente, SST e Inocuidad en <strong>7 formatos únicos sin duplicar papelería</strong>, controla <strong>trampas de grasa, vertimientos (`Res. 0631/2015`) y REP de envases (`Res. 1407/2018`)</strong>, e imprime en PDF el <strong>Manual Integrado HSEQ + Plan Anual de Capacitación de 10 Horas (`MAN-SIG-HLS-001`)</strong>.
             </p>
           </div>
         </div>
@@ -1984,6 +2004,246 @@
         </div>
       </section>
 
+      <!-- =========================================================================
+           MÓDULO 13: SISTEMAS INTEGRADOS ISO (HLS), GESTIÓN AMBIENTAL ALIMENTARIA Y ESCUELA EN PLANTA (10H)
+           ========================================================================= -->
+      <section id="mod-iso" class="hidden space-y-6">
+        <div class="p-6 rounded-3xl glass-card border border-teal-400/40 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-teal-500/20 border border-teal-400/40 text-teal-300 font-mono text-xs font-bold">
+                SISTEMA INTEGRADO HSEQ + INOCUIDAD • ISO 9001 • ISO 14001 • ISO 45001 • ISO 22000 • ART. 12 RES. 2674
+              </span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-2">♻️ Sistemas Integrados ISO (Estructura HLS), Ambiental Alimentario y Escuela 10h</h2>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
+                Unifica Calidad, Medio Ambiente, SST y el Plan Anual de Capacitación de 10 Horas con la operación sanitaria de la planta <strong>sin duplicar formatos</strong>, controlando trampas de grasa, vertimientos (<code>Res. 0631/2015</code>) y Responsabilidad Extendida del Productor (<code>REP</code> de envases y empaques).
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="switchModule('academia')" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+                🎓 Abrir Escuela 10h (12 Slides + Carnés) →
+              </button>
+              <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+                🖨️ Imprimir Manual Integrado HLS + Ambiental + Plan 10h (PDF)
+              </button>
+            </div>
+          </div>
+
+          <!-- ACCESOS RÁPIDOS NORMATIVOS Y PORTALES AMBIENTALES / ESCUELA -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+            <button onclick="switchModule('academia')" class="text-left p-3.5 rounded-2xl bg-zinc-900/90 border border-amber-500/30 hover:border-amber-400 transition cursor-pointer">
+              <span class="text-[10px] font-mono text-amber-300 font-bold">ESCUELA EN PLANTA (ART. 12)</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🎓 1. Proyectar Curso 10h y Carnés</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Abre las 12 diapositivas con notas de orador y genera los Diplomas y Carnés en PDF.</p>
+            </button>
+            <a href="https://www.anla.gov.co/" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-teal-500/30 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-teal-300 font-bold">REP ENVASES Y EMPAQUES</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🌿 2. Portal ANLA / VITAL (REP) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Cumplimiento Resolución 1407 de 2018 y 1342 de 2020 para envases puestos en el mercado.</p>
+            </a>
+            <a href="./normas/Resolucion_2674_de_2013_BPM.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-emerald-300 font-bold">CAPACITACIÓN Y RESIDUOS</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 3. Res. 2674 (Art. 11–14 y 26) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Soporte legal del Plan Anual de 10 Horas, estado de salud y residuos sólidos/líquidos.</p>
+            </a>
+            <a href="./Paquete_Maestro_BPM_POES_HACCP_INVIMA.xlsx" download class="p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">REGISTRO TRAMPAS Y RESIDUOS</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📊 4. Descargar FOR-PSB-003 (.xlsx)</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Bitácora unificada de evacuación de residuos y limpieza de trampas de grasa.</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- GUÍA TÉCNICA DEL INGENIERO: LOS 3 PILARES DE INTEGRACIÓN (HLS + AMBIENTAL ALIMENTARIO + SST) -->
+        <div class="grid lg:grid-cols-12 gap-5 no-print">
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-teal-500/30 space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-teal-300 font-bold">ANEXO SL ISO • ESTRUCTURA DE ALTO NIVEL (HLS)</span>
+            <h3 class="text-base font-extrabold text-white">🔗 Los 7 Registros Maestros que Unifican ISO 9001 + 14001 + 45001 + 22000 + INVIMA</h3>
+            <p class="text-xs text-zinc-400">Así evitas llenar a la planta de 4 carpetas repetidas; un solo registro cumple todas las normas a la vez:</p>
+            <div class="space-y-1.5 text-xs text-zinc-300">
+              <div class="p-2 rounded-xl bg-zinc-900/80 border border-white/10"><strong>1. Cláusulas 4 y 5 (Liderazgo):</strong> Una sola <code>Política y Objetivos Integrados HSEQ-Inocuidad (DOC-SIG-01)</code>.</div>
+              <div class="p-2 rounded-xl bg-zinc-900/80 border border-white/10"><strong>2. Cláusula 6 (Riesgos):</strong> Una sola <code>Matriz Integrada: Peligros HACCP + Aspectos Ambientales + Peligros SST (MAT-SIG-02)</code>.</div>
+              <div class="p-2 rounded-xl bg-zinc-900/80 border border-white/10"><strong>3. Cláusula 7.2 (Competencia):</strong> Un solo <code>Plan Anual de Capacitación de 10 Horas (BPM + SST + Ambiental — FOR-CAP-03)</code>.</div>
+              <div class="p-2 rounded-xl bg-zinc-900/80 border border-white/10"><strong>4. Cláusula 7.5 (Documentación):</strong> Un solo <code>Listado Maestro de Documentos y Registros (FOR-DOC-04)</code>.</div>
+              <div class="p-2 rounded-xl bg-zinc-900/80 border border-white/10"><strong>5. Cláusula 8 (Operación):</strong> Procedimientos POES integrados con Hojas de Seguridad <code>SGA/GHS</code> y bloqueo <code>LOTO</code>.</div>
+              <div class="p-2 rounded-xl bg-zinc-900/80 border border-white/10"><strong>6. Cláusula 9 (Desempeño):</strong> Un solo <code>Programa de Auditoría Interna Integrada y Revisión Gerencial (FOR-AUD-06)</code>.</div>
+              <div class="p-2 rounded-xl bg-zinc-900/80 border border-white/10"><strong>7. Cláusula 10 (Mejora):</strong> Un solo formato de <code>No Conformidades y Acciones Correctivas SAC (FOR-SAC-07)</code>.</div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-emerald-500/30 space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-300 font-bold">GESTIÓN AMBIENTAL Y SST PARA PLANTAS DE ALIMENTOS</span>
+            <h3 class="text-base font-extrabold text-white">🌿 Trampas de Grasa, Vertimientos, REP de Envases y SST Alimentario</h3>
+            <div class="space-y-2 text-xs text-zinc-300">
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-teal-300">1. Trampas de Grasa y Vertimientos (Resolución 0631 de 2015 MinAmbiente):</strong>
+                <p class="text-[11px] mt-0.5">Retiro semanal/quincenal de natas y lodos registrado en <code>FOR-PSB-003</code> y caracterización anual de Aguas Residuales no Domésticas (<code>ARnD</code>: pH 6.0–9.0, Temp ≤ 40°C, DBO5, DQO, SST, Grasas y Aceites).</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-amber-300">2. Responsabilidad Extendida del Productor — REP (Res. 1407 de 2018 y 1342 de 2020):</strong>
+                <p class="text-[11px] mt-0.5">Obligatorio para empresas que ponen en el mercado envases y empaques de plástico, cartón, papel, vidrio o metal: línea base en toneladas/año y adhesión a Plan Colectivo ante la <strong>ANLA</strong>.</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-emerald-300">3. Aceite de Cocina Usado — ACU (Res. 0316/2018) y Colores (Res. 2184/2019):</strong>
+                <p class="text-[11px] mt-0.5">Entrega de ACU a gestor inscrito para biodiésel con certificado ambiental y separación en recipientes Blanco (aprovechables), Verde (orgánicos) y Negro (no aprovechables).</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
+                <strong class="text-zinc-200">4. SST en Planta de Alimentos (ISO 45001 / Dec. 1072):</strong>
+                <p class="text-[11px] mt-0.5">Rotulado químico <code>SGA/GHS (Dec. 1496/2018)</code> para desinfectantes/CIP, calzado blanco antideslizante, bloqueo <code>LOTO</code> al lavar equipos y examen médico anual unificado con <code>Art. 11 Res. 2674</code> (KOH, frotis y coprológico).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GENERADOR INTERACTIVO EN PDF: MANUAL INTEGRADO SIG (HLS) + PLAN AMBIENTAL + PLAN ANUAL DE CAPACITACIÓN 10H -->
+        <div class="p-6 rounded-2xl glass-card border border-teal-500/30 space-y-4 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-teal-300 font-bold">ENTREGABLE DOCUMENTAL LLAVE EN MANO • MAN-SIG-HLS-001</span>
+              <h3 class="text-lg font-extrabold text-white">📄 Generador en PDF: Manual Integrado ISO (HLS) + Plan Ambiental Alimentario + Cronograma Anual 10 Horas</h3>
+              <p class="text-xs text-zinc-400">Personaliza los datos de la empresa de tu cliente e imprime el documento oficial que cumple simultáneamente el Plan Anual de Capacitación de la <strong>Res. 2674 (Art. 12)</strong>, la gestión ambiental y la estructura ISO.</p>
+            </div>
+            <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-extrabold text-xs sm:text-sm transition cursor-pointer">
+              🖨️ Imprimir Manual Integrado + Plan 10h en PDF
+            </button>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="block text-zinc-400 mb-1">Empresa / Planta de Alimentos</label>
+              <input type="text" id="isoEmpresa" value="Alimentos Del Valle S.A.S. — NIT 901.456.789-1" oninput="renderIsoManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Normas Integradas bajo Estructura HLS</label>
+              <input type="text" id="isoNormas" value="Res. 2674/2013 + ISO 22000 + ISO 9001 + ISO 14001 + ISO 45001 (SG-SST)" oninput="renderIsoManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+            </div>
+            <div>
+              <label class="block text-zinc-400 mb-1">Número de Manipuladores en Escuela 10h</label>
+              <input type="text" id="isoPersonal" value="Total personal operativo, calidad y logística de planta" oninput="renderIsoManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-3">
+              <label class="block text-zinc-400 mb-1">Gestión Ambiental en Planta (Trampas de Grasa, Vertimientos Res. 0631/2015, ACU Res. 0316/2018 y REP Res. 1407/2018)</label>
+              <input type="text" id="isoAmbiental" value="Limpieza quincenal de trampa de grasa (FOR-PSB-003) • Caracterización anual de vertimientos ARnD (Res. 0631/2015) • Separación en fuente código de colores Blanco/Verde/Negro (Res. 2184/2019) • Vinculación a Plan Colectivo REP de envases y empaques ante ANLA (Res. 1407/2018)." oninput="renderIsoManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+            <div class="sm:col-span-3">
+              <label class="block text-zinc-400 mb-1">Seguridad y Salud en el Trabajo Integrada con BPM (ISO 45001 / Decreto 1072 / Art. 11 y 14 Res. 2674)</label>
+              <input type="text" id="isoSst" value="Certificados médicos anuales de aptitud para manipular alimentos (KOH uñas, frotis faríngeo y coprológico - Art. 11) • Dotación blanca sin bolsillos superiores y calzado antideslizante impermeable (Art. 14) • Fichas SGA/GHS para químicos de limpieza POES y protocolo LOTO en mantenimiento." oninput="renderIsoManual()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            </div>
+          </div>
+        </div>
+
+        <!-- HOJA OFICIAL IMPRIMIBLE: MANUAL INTEGRADO SIG (HLS) + GESTIÓN AMBIENTAL + PLAN ANUAL DE CAPACITACIÓN 10 HORAS -->
+        <div class="p-8 rounded-2xl bg-white text-slate-900 border border-slate-300 shadow-2xl space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-teal-800 pb-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-teal-800 font-bold">SISTEMA INTEGRADO DE GESTIÓN (ANEXO SL HLS) • ART. 12 Y 13 RES. 2674 DE 2013</span>
+              <h3 class="text-xl font-black text-slate-950 mt-0.5">MANUAL INTEGRADO HSEQ-INOCUIDAD, AMBIENTAL Y PLAN ANUAL 10 HORAS</h3>
+              <p class="text-xs text-slate-600 font-bold" id="isoPrintHeaderSub">Planta: Alimentos Del Valle S.A.S. • Alcance: HSEQ + Inocuidad</p>
+            </div>
+            <div class="text-right font-mono text-[11px] bg-slate-100 p-2.5 rounded-lg border border-slate-300">
+              <div><strong>Código:</strong> <span>MAN-SIG-HLS-001</span></div>
+              <div><strong>Intensidad:</strong> <span>10 Horas / Año Certificadas</span></div>
+              <div><strong>Estructura:</strong> <span>Alto Nivel (HLS — 0 Duplicidad)</span></div>
+            </div>
+          </div>
+
+          <table class="w-full text-xs border-collapse border border-slate-300">
+            <tbody>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">Establecimiento / Razón Social:</td>
+                <td class="p-2 border border-slate-300 font-bold w-1/4" id="isoPrintEmpresa">--</td>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300 w-1/4">Personal Cubierto:</td>
+                <td class="p-2 border border-slate-300 w-1/4" id="isoPrintPersonal">--</td>
+              </tr>
+              <tr>
+                <td class="p-2 bg-slate-100 font-bold border border-slate-300">Normas Unificadas (HLS):</td>
+                <td class="p-2 border border-slate-300 font-bold text-teal-900" colspan="3" id="isoPrintNormas">--</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="space-y-1.5">
+            <h4 class="text-xs font-black text-teal-950 uppercase bg-teal-100 px-3 py-1.5 rounded border-l-4 border-teal-700">
+              1. MATRIZ DE UNIFICACIÓN DOCUMENTAL BAJO ESTRUCTURA DE ALTO NIVEL (HLS — CERO DUPLICIDAD DE FORMATOS)
+            </h4>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              El establecimiento integra sus sistemas de Inocuidad (<code>Res. 2674/2013</code> e <code>ISO 22000</code>), Calidad (<code>ISO 9001</code>), Medio Ambiente (<code>ISO 14001</code>) y SST (<code>ISO 45001 / Dec. 1072</code>) mediante 7 registros únicos: (1) Política Integrada HSEQ-Inocuidad (<code>DOC-SIG-01</code>); (2) Matriz Integrada de Peligros HACCP, Aspectos Ambientales y Riesgos SST (<code>MAT-SIG-02</code>); (3) Plan Anual de Capacitación 10 Horas (<code>FOR-CAP-03</code>); (4) Listado Maestro Documental (<code>FOR-DOC-04</code>); (5) POES Integrados (<code>FOR-PSB-001 a 004</code>); (6) Auditoría Interna Unificada (<code>FOR-AUD-06</code>); y (7) Acciones Correctivas y Mejora (<code>FOR-SAC-07</code>).
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-300">
+              <strong class="text-teal-950 block mb-1 uppercase">2. Gestión Ambiental Alimentaria (ISO 14001 / MinAmbiente):</strong>
+              <p class="text-[11px] text-slate-700 leading-relaxed" id="isoPrintAmbiental">--</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-300">
+              <strong class="text-teal-950 block mb-1 uppercase">3. SST y Salud Ocupacional de Manipuladores (ISO 45001 / Art. 11 y 14):</strong>
+              <p class="text-[11px] text-slate-700 leading-relaxed" id="isoPrintSst">--</p>
+            </div>
+          </div>
+
+          <!-- CRONOGRAMA OFICIAL DEL PLAN ANUAL DE CAPACITACIÓN DE 10 HORAS (ART. 12 Y 13 RES. 2674 DE 2013) -->
+          <div class="space-y-1.5">
+            <h4 class="text-xs font-black text-teal-950 uppercase bg-teal-100 px-3 py-1.5 rounded border-l-4 border-teal-700">
+              4. PLAN ANUAL DE CAPACITACIÓN CONTINUA — ESCUELA EN PLANTA DE 10 HORAS (ARTÍCULOS 12 Y 13 RESOLUCIÓN 2674 DE 2013)
+            </h4>
+            <table class="w-full text-[11px] border-collapse border border-slate-300">
+              <thead>
+                <tr class="bg-slate-800 text-white">
+                  <th class="p-1.5 border border-slate-400 text-left">Módulo Académico</th>
+                  <th class="p-1.5 border border-slate-400 text-left">Contenido Técnico Integrado (Inocuidad + Ambiental + SST)</th>
+                  <th class="p-1.5 border border-slate-400 text-center">Duración</th>
+                  <th class="p-1.5 border border-slate-400 text-left">Evaluación y Evidencia INVIMA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p-1.5 border border-slate-300 font-bold">Módulo 1 (Trimestre I)</td>
+                  <td class="p-1.5 border border-slate-300">Legislación Sanitaria (Res. 2674/2013), Peligros B/Q/F/Alérgenos, ETAs y Cultura de Inocuidad.</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono font-bold">2.0 Horas</td>
+                  <td class="p-1.5 border border-slate-300">Lista de asistencia + Pre-test</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-1.5 border border-slate-300 font-bold">Módulo 2 (Trimestre I)</td>
+                  <td class="p-1.5 border border-slate-300">Estado de Salud (Art. 11), Dotación Reglamentaria (Art. 14), EPP y Protocolo de Lavado de Manos.</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono font-bold">2.0 Horas</td>
+                  <td class="p-1.5 border border-slate-300">Inspección práctica en filtro sanitario</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 border border-slate-300 font-bold">Módulo 3 (Trimestre II)</td>
+                  <td class="p-1.5 border border-slate-300">Contaminación Cruzada, Temperaturas Críticas (PCCs), Cadena de Frío y Rotación PEPS/FIFO.</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono font-bold">2.0 Horas</td>
+                  <td class="p-1.5 border border-slate-300">Taller práctico de termometría</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-1.5 border border-slate-300 font-bold">Módulo 4 (Trimestre III)</td>
+                  <td class="p-1.5 border border-slate-300">Plan de Saneamiento POES (dosificación en ppm), Agua Potable (Res. 2115) y Riesgo Químico SGA/SST.</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono font-bold">2.0 Horas</td>
+                  <td class="p-1.5 border border-slate-300">Práctica de dilución en ppm y Cloro/pH</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 border border-slate-300 font-bold">Módulo 5 (Trimestre IV)</td>
+                  <td class="p-1.5 border border-slate-300">Gestión Ambiental (Res. 2184 colores, trampas de grasa, REP) + Examen Final y Emisión de Carnés.</td>
+                  <td class="p-1.5 border border-slate-300 text-center font-mono font-bold">2.0 Horas</td>
+                  <td class="p-1.5 border border-slate-300 font-bold text-emerald-900">Examen calificado (≥80%) + Diploma y Carné</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Aprobado por Representante Legal / Gerencia</strong><br>
+              <span class="text-slate-600" id="isoPrintFirma">Alimentos Del Valle S.A.S.</span>
+            </div>
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Director Académico y Consultor HSEQ — Ingeniería de Alimentos</strong><br>
+              <span class="text-slate-600">AYC Ingeniería y Asesorías de Alimentos • Tel: +57 315 717 2270</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -2005,7 +2265,7 @@
     }
 
     // 2. CAMBIO DE MÓDULOS
-    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp', 'planta', 'gfsi'];
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp', 'planta', 'gfsi', 'iso'];
     function switchModule(modId) {
       MODULES.forEach(m => {
         document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
@@ -2131,7 +2391,8 @@
       { id: 'pliego4', name: 'Pliego 4: Diseño e Implementación Sistema HACCP + TACCP + VACCP (Dec. 60/2002)', deliverables: 'Levantamiento de los 12 pasos y 7 principios Codex, matriz PCC/PPRO, Defensa Alimentaria, Fraude y criterios microbiológicos Res. 1407/2022.', price: 1200000, checked: false },
       { id: 'pliego5', name: 'Servicio 5: Diseño Higiénico de Planta de Alimentos (Criterios EHEDG)', deliverables: 'Layout sanitario con flujos unidireccionales, zonificación por colores, especificación de pisos/drenajes/medias cañas y acero INOX 304/316.', price: 1500000, checked: false },
       { id: 'pliego6', name: 'Servicio 6: Curso Corporativo Manipulación de Alimentos (10 Horas — Res. 2674)', deliverables: 'Capacitación teórico-práctica de 10 horas, evaluación escrita calificada (≥80%), emisión de Certificados y Carnés para manipuladores.', price: 350000, checked: false },
-      { id: 'pliego7', name: 'Servicio 7: Certificaciones Globales GFSI (FSSC 22000 v6 / BRCGS v9 / IFS v8) y FDA FSMA (PCQI)', deliverables: 'Registro FDA FFRM, Food Safety Plan 21 CFR Part 117 (PCQI), Monitoreo Ambiental de Patógenos EMP (Zonas 1-4) y Plan de Cultura de Inocuidad.', price: 2500000, checked: false }
+      { id: 'pliego7', name: 'Servicio 7: Certificaciones Globales GFSI (FSSC 22000 v6 / BRCGS v9 / IFS v8) y FDA FSMA (PCQI)', deliverables: 'Registro FDA FFRM, Food Safety Plan 21 CFR Part 117 (PCQI), Monitoreo Ambiental de Patógenos EMP (Zonas 1-4) y Plan de Cultura de Inocuidad.', price: 2500000, checked: false },
+      { id: 'pliego8', name: 'Servicio 8: Sistemas Integrados ISO (HLS 9001/14001/45001), Gestión Ambiental (Vertimientos/REP) y Escuela 10h', deliverables: 'Unificación documental HLS sin duplicar formatos, gestión de trampas de grasa/vertimientos Res. 0631, REP de envases Res. 1407/2018 y Plan Anual 10h.', price: 1400000, checked: false }
     ];
 
     function initQuoteBuilder() {
@@ -2463,6 +2724,28 @@
       setTxt('gfPrintFirma', emp);
     }
 
+    // 12. MÓDULO 13: SISTEMAS INTEGRADOS ISO (HLS), GESTIÓN AMBIENTAL ALIMENTARIA Y PLAN ANUAL 10 HORAS
+    function renderIsoManual() {
+      const val = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.value : '';
+      };
+      const setTxt = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+
+      const emp = val('isoEmpresa') || 'Planta de Alimentos';
+      const normas = val('isoNormas') || 'HSEQ + Inocuidad';
+      setTxt('isoPrintHeaderSub', `Planta: ${emp} • Alcance: ${normas}`);
+      setTxt('isoPrintEmpresa', emp);
+      setTxt('isoPrintNormas', normas);
+      setTxt('isoPrintPersonal', val('isoPersonal'));
+      setTxt('isoPrintAmbiental', val('isoAmbiental'));
+      setTxt('isoPrintSst', val('isoSst'));
+      setTxt('isoPrintFirma', emp);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initAuditTable();
       calcPpm();
@@ -2474,6 +2757,7 @@
       renderHaccpManual();
       calcPlantDesign();
       renderGfsiManual();
+      renderIsoManual();
     });
   </script>
 </body>
