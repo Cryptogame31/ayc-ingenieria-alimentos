@@ -150,6 +150,9 @@
       <button onclick="switchModule('iso')" id="mnav-iso" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-teal-500/40 bg-teal-950/80 text-xs font-bold text-teal-300 flex items-center gap-1.5">
         <span>♻️</span> <span>ISO (HLS), Ambiental & Plan 10h</span>
       </button>
+      <button onclick="switchModule('id')" id="mnav-id" class="nav-btn shrink-0 px-3.5 py-2 rounded-xl border border-amber-500/40 bg-amber-950/80 text-xs font-bold text-amber-300 flex items-center gap-1.5">
+        <span>🧬</span> <span>I+D, Vida Útil (Q10) & Sodio</span>
+      </button>
     </div>
 
     <!-- MENÚ LATERAL DE LOS 8 MÓDULOS OPERATIVOS (ESCRITORIO) -->
@@ -207,6 +210,10 @@
           <button onclick="switchModule('iso')" id="nav-iso" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-teal-500/30 bg-teal-950/30 text-xs sm:text-sm font-bold text-teal-300 hover:text-white transition flex items-center justify-between cursor-pointer">
             <span class="flex items-center gap-2.5"><span>♻️</span> <span>13. Sistemas ISO (HLS), Ambiental & 10h</span></span>
             <span class="px-1.5 py-0.5 rounded bg-teal-400 text-slate-950 font-mono font-extrabold text-[10px]">HSEQ</span>
+          </button>
+          <button onclick="switchModule('id')" id="nav-id" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl border border-amber-500/30 bg-amber-950/30 text-xs sm:text-sm font-bold text-amber-300 hover:text-white transition flex items-center justify-between cursor-pointer">
+            <span class="flex items-center gap-2.5"><span>🧬</span> <span>14. I+D, Vida Útil (Q10) & Sodio</span></span>
+            <span class="px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 font-mono font-extrabold text-[10px]">Res. 2013</span>
           </button>
         </nav>
       </div>
@@ -394,6 +401,19 @@
             </div>
             <p class="text-xs text-zinc-300 leading-relaxed">
               Unifica Calidad, Medio Ambiente, SST e Inocuidad en <strong>7 formatos únicos sin duplicar papelería</strong>, controla <strong>trampas de grasa, vertimientos (`Res. 0631/2015`) y REP de envases (`Res. 1407/2018`)</strong>, e imprime en PDF el <strong>Manual Integrado HSEQ + Plan Anual de Capacitación de 10 Horas (`MAN-SIG-HLS-001`)</strong>.
+            </p>
+          </div>
+
+          <div onclick="switchModule('id')" class="p-5 rounded-2xl glass-card border border-amber-400/40 hover:border-amber-400 transition cursor-pointer group sm:col-span-2 xl:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🧬</span>
+                <h3 class="text-base font-extrabold text-amber-300 group-hover:text-white transition">Investigación, Desarrollo (I+D), Calculadora de Vida Útil Acelerada (Q10), Clean Label y Reducción de Sodio (Res. 2013 y 2056)</h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono text-[11px] font-bold">Arrhenius Q10 • Res. 2013/2020 • Res. 2056/2023 • Clean Label</span>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Calcula estudios de <strong>Vida Útil Acelerada ($Q_{10}$) y en Tiempo Real</strong>, descarga las <strong>6 matrices en Excel (.csv)</strong> de reducción de sodio (`KCl + Umami`), eliminación de sellos octogonales (`Inulina/Alulosa`), sustitución de alérgenos y escalado industrial, e imprime el <strong>Certificado de Vida Útil y Dossier I+D en PDF (`DOC-ID-VU-001`)</strong>.
             </p>
           </div>
         </div>
@@ -2352,6 +2372,238 @@
         </div>
       </section>
 
+      <!-- =========================================================================
+           MÓDULO 14: INVESTIGACIÓN, DESARROLLO (I+D), VIDA ÚTIL (Q10), CLEAN LABEL & REDUCCIÓN DE SODIO (RES. 2013 Y 2056)
+           ========================================================================= -->
+      <section id="mod-id" class="hidden space-y-6">
+        <div class="p-6 rounded-3xl glass-card border border-amber-400/40 no-print">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 font-mono text-xs font-bold">
+                LABORATORIO DE I+D+i ALIMENTARIO • ARRHENIUS Q10 • RES. 2013 DE 2020 • RES. 2056 DE 2023 • CLEAN LABEL & PLANT-BASED
+              </span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-2">🧬 Centro de Investigación, Desarrollo (I+D), Reformulación y Vida Útil</h2>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
+                Herramientas interactivas para diseñar productos ganadores de supermercado, calcular <strong>Estudios de Vida Útil Acelerada ($Q_{10}$) o en Tiempo Real</strong>, cumplir las metas de <strong>Reducción de Sodio (`Res. 2013 y 2056`)</strong>, sustituir alérgenos y eliminar sellos octogonales (`Res. 2492`).
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="switchModule('calculadora')" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+                🏷️ Simular en Calculadora ICBF →
+              </button>
+              <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition cursor-pointer">
+                🖨️ Imprimir Certificado Vida Útil + Dossier I+D (PDF)
+              </button>
+            </div>
+          </div>
+
+          <!-- ENLACES DIRECTOS A LAS NORMAS OFICIALES DE I+D, SODIO, ADITIVOS Y ROTULADO -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+            <a href="./normas/Resolucion_2013_de_2020_Reduccion_Sodio.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-amber-500/30 hover:border-amber-400 transition block">
+              <span class="text-[10px] font-mono text-amber-300 font-bold">METAS DE SODIO (59 GRUPOS)</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 1. Resolución 2013/2020 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Límites máximos obligatorios de sodio en mg/100g para alimentos en Colombia.</p>
+            </a>
+            <a href="./normas/Resolucion_2056_de_2023_Modificacion_Sodio.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 hover:border-emerald-400 transition block">
+              <span class="text-[10px] font-mono text-emerald-300 font-bold">ACTUALIZACIÓN SODIO</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 2. Resolución 2056/2023 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Modificación de plazos y evaluación de conformidad de reducción de sodio.</p>
+            </a>
+            <a href="https://www.fao.org/gsfaonline/index.html?lang=es" target="_blank" rel="noopener" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-teal-500/30 hover:border-teal-400 transition block">
+              <span class="text-[10px] font-mono text-teal-300 font-bold">BASE CODEX ADITIVOS (SIN)</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">🌐 3. Codex GSFA Online (FAO) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Buscador oficial de dosis máximas (ppm) y códigos SIN/INS de aditivos y conservantes.</p>
+            </a>
+            <a href="./normas/Resolucion_2492_de_2022_Sellos_Octogonales.pdf" target="_blank" class="p-3.5 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-amber-400 transition block">
+              <span class="text-[10px] font-mono text-zinc-300 font-bold">UMBRALES CLEAN LABEL</span>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white mt-0.5">📄 4. Resolución 2492/2022 (PDF) ↗</h3>
+              <p class="text-[11px] text-zinc-400 mt-1">Puntos de corte de azúcares, grasas saturadas, trans, sodio y edulcorantes.</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- HERRAMIENTA INTERACTIVA 1: CALCULADORA CIENTÍFICA DE VIDA ÚTIL ACELERADA (MODELO Q10 ARRHENIUS) Y EN TIEMPO REAL -->
+        <div class="grid lg:grid-cols-12 gap-5 no-print">
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-amber-500/30 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">CINÉTICA DE DETERIORO • MODELO ARRHENIUS Q10</span>
+              <button onclick="downloadIdCsv('MATRIZ-VIDA-UTIL')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] cursor-pointer">
+                📥 Descargar Planilla Vida Útil (.csv)
+              </button>
+            </div>
+            <h3 class="text-base font-extrabold text-white">⏱️ Calculadora de Estudio de Vida Útil Acelerada ($Q_{10}$) y Cortes de Muestreo</h3>
+            <p class="text-xs text-zinc-400">Calcula el factor de aceleración térmica $f_a = Q_{10}^{(T_2 - T_1)/10}$ y proyecta la vida útil comercial y los 5 puntos de control en laboratorio (`T0` a `T4`).</p>
+
+            <div class="grid sm:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1">Producto / Prototipo Evaluado</label>
+                <input type="text" id="idProducto" value="Salsa Artesanal / Snack Clean Label" oninput="calcShelfLifeQ10()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">Empresa / Marca Solicitante</label>
+                <input type="text" id="idEmpresa" value="Alimentos Del Valle S.A.S." oninput="calcShelfLifeQ10()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">Temp. Almacenamiento Normal $T_1$ (°C)</label>
+                <input type="number" id="idT1" value="20" step="1" oninput="calcShelfLifeQ10()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-emerald-500/40 text-emerald-300 font-mono font-bold">
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">Temp. Cámara Acelerada $T_2$ (°C)</label>
+                <input type="number" id="idT2" value="40" step="1" oninput="calcShelfLifeQ10()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-amber-500/40 text-amber-300 font-mono font-bold">
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">Coeficiente Cinético $Q_{10}$ del Alimento</label>
+                <select id="idQ10" onchange="calcShelfLifeQ10()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-white/15 text-white font-bold">
+                  <option value="2.0">Q10 = 2.0 (Snacks, panadería, salsas, deshidratados)</option>
+                  <option value="2.5" selected>Q10 = 2.5 (Emulsiones, chocolatería, bebidas, polvos)</option>
+                  <option value="3.0">Q10 = 3.0 (Pardeamiento Maillard, conservas dulces)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1">Días Estables en Cámara Acelerada ($T_2$)</label>
+                <input type="number" id="idDiasCamara" value="45" min="5" max="365" step="5" oninput="calcShelfLifeQ10()" class="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-teal-500/40 text-teal-300 font-mono font-bold">
+              </div>
+            </div>
+
+            <div id="idQ10ResultBox" class="p-4 rounded-xl bg-emerald-950/70 border border-emerald-400 text-xs text-emerald-100 leading-relaxed">
+              <!-- Poblado por calcShelfLifeQ10() -->
+            </div>
+          </div>
+
+          <!-- HERRAMIENTA INTERACTIVA 2: LOS 6 PROTOCOLOS DE REFORMULACIÓN I+D CON CARGA EN PDF Y DESCARGA EXCEL (.CSV) -->
+          <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-teal-500/30 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-teal-300 font-bold">MATRICES DE REFORMULACIÓN INDUSTRIAL (INTERACTIVO)</span>
+              <span class="px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px] font-bold">Ver en PDF o Bajar Excel ↓</span>
+            </div>
+            <h3 class="text-base font-extrabold text-white">🧪 Los 6 Sistemas de Prototipado: Sodio, Clean Label, Plant-Based y Escalado</h3>
+
+            <div class="space-y-2 text-xs text-zinc-200">
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-amber-400 transition flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <strong class="text-amber-300">1. Reducción de Sodio (Res. 2013 y 2056):</strong> Sistema <code>NaCl + KCl + Extracto Levadura Umami</code> (-35% a -45% Sodio).
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="loadIdTemplate('ID-SODIO-01')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] cursor-pointer">📄 Ver / PDF</button>
+                  <button onclick="downloadIdCsv('ID-SODIO-01')" class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-teal-300 border border-teal-500/30 font-bold text-[11px] cursor-pointer">📥 Excel (.csv)</button>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-amber-400 transition flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <strong class="text-amber-300">2. Cero Sellos Azúcar / Edulcorantes (Res. 2492):</strong> Bulking con <code>Inulina + Fibra Tapioca + Alulosa</code>.
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="loadIdTemplate('ID-AZUCAR-02')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] cursor-pointer">📄 Ver / PDF</button>
+                  <button onclick="downloadIdCsv('ID-AZUCAR-02')" class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-teal-300 border border-teal-500/30 font-bold text-[11px] cursor-pointer">📥 Excel (.csv)</button>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-amber-400 transition flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <strong class="text-amber-300">3. Conservación Clean Label (Hurdle Tech):</strong> Reemplazo de Benzoato/Sorbato por <code>Fermentos + Vinagre Tamponado + Romero</code>.
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="loadIdTemplate('ID-CLEAN-04')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] cursor-pointer">📄 Ver / PDF</button>
+                  <button onclick="downloadIdCsv('ID-CLEAN-04')" class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-teal-300 border border-teal-500/30 font-bold text-[11px] cursor-pointer">📥 Excel (.csv)</button>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-amber-400 transition flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <strong class="text-amber-300">4. Prototipado Plant-Based y Grasas Saturadas:</strong> Emulsiones con <code>Proteína de Arveja/Garbanzo + Oleogeles</code>.
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="loadIdTemplate('ID-GRASA-03')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] cursor-pointer">📄 Ver / PDF</button>
+                  <button onclick="downloadIdCsv('ID-GRASA-03')" class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-teal-300 border border-teal-500/30 font-bold text-[11px] cursor-pointer">📥 Excel (.csv)</button>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-amber-400 transition flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <strong class="text-amber-300">5. Sustitución de Alérgenos (Sin Gluten / Huevo / Leche):</strong> Matrices con <code>Psyllium, HPMC, Lecitina Girasol</code>.
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="loadIdTemplate('ID-ALERGENO-05')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] cursor-pointer">📄 Ver / PDF</button>
+                  <button onclick="downloadIdCsv('ID-ALERGENO-05')" class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-teal-300 border border-teal-500/30 font-bold text-[11px] cursor-pointer">📥 Excel (.csv)</button>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/10 hover:border-amber-400 transition flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <strong class="text-amber-300">6. Escalado Industrial de Fórmulas y Costeo:</strong> De bache piloto ($1\text{ kg}$) a planta ($100\text{–}500\text{ kg}$) con merma.
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="loadIdTemplate('ID-ESCALADO-06')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] cursor-pointer">📄 Ver / PDF</button>
+                  <button onclick="downloadIdCsv('ID-ESCALADO-06')" class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-teal-300 border border-teal-500/30 font-bold text-[11px] cursor-pointer">📥 Excel (.csv)</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOJA OFICIAL IMPRIMIBLE: CERTIFICADO DE ESTUDIO DE VIDA ÚTIL (Q10) Y DOSSIER DE REFORMULACIÓN I+D (DOC-ID-VU-001) -->
+        <div class="p-8 rounded-2xl bg-white text-slate-900 border border-slate-300 shadow-2xl space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-amber-700 pb-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-amber-800 font-bold">DOSSIER DE INGENIERÍA I+D+i • ESTABILIDAD ARRHENIUS Q10 • RES. 2013/2020 • RES. 2492/2022</span>
+              <h3 class="text-xl font-black text-slate-950 mt-0.5">PROTOCOLO DE FORMULACIÓN Y ESTUDIO DE VIDA ÚTIL</h3>
+              <p class="text-xs text-slate-600 font-bold" id="idPrintHeaderSub">Producto: Salsa Artesanal / Snack Clean Label • Empresa: Alimentos Del Valle S.A.S.</p>
+            </div>
+            <div class="text-right font-mono text-[11px] bg-slate-100 p-2.5 rounded-lg border border-slate-300">
+              <div><strong>Código:</strong> <span>DOC-ID-VU-001</span></div>
+              <div><strong>Modelo:</strong> <span>Cinética Q10 + Res. 1407</span></div>
+              <div><strong>Sodio:</strong> <span>Conforme Res. 2013/2056</span></div>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-xs text-slate-800 space-y-1">
+            <strong class="text-amber-950 block uppercase">1. Dictamen de Proyección de Vida Útil (Modelo Cinético $Q_{10}$ y Tiempo Real):</strong>
+            <div id="idPrintQ10Summary" class="leading-relaxed">--</div>
+          </div>
+
+          <div class="space-y-1.5">
+            <h4 class="text-xs font-black text-slate-950 uppercase bg-slate-200 px-3 py-1.5 rounded border-l-4 border-slate-800">
+              2. CRONOGRAMA DE LOS 5 TIEMPOS DE MUESTREO EN CÁMARA Y PARÁMETROS DE ACEPTACIÓN (MICROBIOLÓGICO, FISICOQUÍMICO Y SENSORIAL)
+            </h4>
+            <table class="w-full text-[11px] border-collapse border border-slate-300">
+              <thead>
+                <tr class="bg-slate-800 text-white">
+                  <th class="p-1.5 border border-slate-400 text-left">Punto de Corte</th>
+                  <th class="p-1.5 border border-slate-400 text-center">Día en Cámara ($T_2$)</th>
+                  <th class="p-1.5 border border-slate-400 text-center">Equivalencia Comercial ($T_1$)</th>
+                  <th class="p-1.5 border border-slate-400 text-left">Análisis Fisicoquímico y Sensorial</th>
+                  <th class="p-1.5 border border-slate-400 text-left">Validación Microbiológica (Res. 1407/2022)</th>
+                </tr>
+              </thead>
+              <tbody id="idPrintSamplingTable">
+                <!-- Poblado dinámicamente por calcShelfLifeQ10() -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="space-y-1.5">
+            <h4 class="text-xs font-black text-emerald-950 uppercase bg-emerald-100 px-3 py-1.5 rounded border-l-4 border-emerald-700">
+              3. PROTOCOLO ACTIVO DE REFORMULACIÓN I+D, REDUCCIÓN DE SODIO (RES. 2013/2056) Y CLEAN LABEL
+            </h4>
+            <div id="idDynamicTemplateBox" class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-300 text-xs text-slate-800 space-y-1.5">
+              <!-- Poblado por loadIdTemplate() -->
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Aprobado por Empresa Titular / Gerencia I+D</strong><br>
+              <span class="text-slate-600" id="idPrintFirma">Alimentos Del Valle S.A.S.</span>
+            </div>
+            <div class="border-t border-slate-800 pt-2">
+              <strong>Estructurado y Avalado por Ingeniería de Alimentos</strong><br>
+              <span class="text-slate-600">AYC Ingeniería y Asesorías de Alimentos • Tel: +57 315 717 2270</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -2373,7 +2625,7 @@
     }
 
     // 2. CAMBIO DE MÓDULOS
-    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp', 'planta', 'gfsi', 'iso'];
+    const MODULES = ['dashboard', 'calculadora', 'auditoria', 'ppm', 'academia', 'cotizador', 'biblioteca', 'invima', 'poes', 'haccp', 'planta', 'gfsi', 'iso', 'id'];
     function switchModule(modId) {
       MODULES.forEach(m => {
         document.getElementById('mod-' + m).classList.toggle('hidden', m !== modId);
@@ -2500,7 +2752,8 @@
       { id: 'pliego5', name: 'Servicio 5: Diseño Higiénico de Planta de Alimentos (Criterios EHEDG)', deliverables: 'Layout sanitario con flujos unidireccionales, zonificación por colores, especificación de pisos/drenajes/medias cañas y acero INOX 304/316.', price: 1500000, checked: false },
       { id: 'pliego6', name: 'Servicio 6: Curso Corporativo Manipulación de Alimentos (10 Horas — Res. 2674)', deliverables: 'Capacitación teórico-práctica de 10 horas, evaluación escrita calificada (≥80%), emisión de Certificados y Carnés para manipuladores.', price: 350000, checked: false },
       { id: 'pliego7', name: 'Servicio 7: Certificaciones Globales GFSI (FSSC 22000 v6 / BRCGS v9 / IFS v8) y FDA FSMA (PCQI)', deliverables: 'Registro FDA FFRM, Food Safety Plan 21 CFR Part 117 (PCQI), Monitoreo Ambiental de Patógenos EMP (Zonas 1-4) y Plan de Cultura de Inocuidad.', price: 2500000, checked: false },
-      { id: 'pliego8', name: 'Servicio 8: Sistemas Integrados ISO (HLS 9001/14001/45001), Gestión Ambiental (Vertimientos/REP) y Escuela 10h', deliverables: 'Unificación documental HLS sin duplicar formatos, gestión de trampas de grasa/vertimientos Res. 0631, REP de envases Res. 1407/2018 y Plan Anual 10h.', price: 1400000, checked: false }
+      { id: 'pliego8', name: 'Servicio 8: Sistemas Integrados ISO (HLS 9001/14001/45001), Gestión Ambiental (Vertimientos/REP) y Escuela 10h', deliverables: 'Unificación documental HLS sin duplicar formatos, gestión de trampas de grasa/vertimientos Res. 0631, REP de envases Res. 1407/2018 y Plan Anual 10h.', price: 1400000, checked: false },
+      { id: 'pliego9', name: 'Servicio 9: Investigación y Desarrollo (I+D), Reformulación Clean Label / Sodio (Res. 2013) y Estudio de Vida Útil', deliverables: 'Prototipado funcional/plant-based, reducción de sodio Res. 2013 y 2056, sustitución de alérgenos y protocolo de vida útil acelerada Q10.', price: 1100000, checked: false }
     ];
 
     function initQuoteBuilder() {
@@ -2930,6 +3183,125 @@
       URL.revokeObjectURL(url);
     }
 
+    // 13. MÓDULO 14: I+D, VIDA ÚTIL ACELERADA (Q10), CLEAN LABEL Y REDUCCIÓN DE SODIO (RES. 2013 Y 2056)
+    let latestVidaUtilCsv = '';
+
+    function calcShelfLifeQ10() {
+      const prod = document.getElementById('idProducto')?.value || 'Prototipo Alimentario';
+      const emp = document.getElementById('idEmpresa')?.value || 'Empresa Solicitante';
+      const t1 = parseFloat(document.getElementById('idT1')?.value || '20');
+      const t2 = parseFloat(document.getElementById('idT2')?.value || '40');
+      const q10 = parseFloat(document.getElementById('idQ10')?.value || '2.5');
+      const diasCamara = parseFloat(document.getElementById('idDiasCamara')?.value || '45') || 45;
+
+      const deltaT = t2 - t1;
+      const fa = Math.pow(q10, deltaT / 10);
+      const diasReales = Math.round(diasCamara * fa);
+      const mesesReales = (diasReales / 30).toFixed(1);
+
+      const box = document.getElementById('idQ10ResultBox');
+      if (box) {
+        box.innerHTML = `
+          ✅ <strong>FACTOR DE ACELERACIÓN ($f_a = ${fa.toFixed(2)}\\times$):</strong> Cada <strong>1 día</strong> en cámara a <strong>${t2}°C</strong> equivale a <strong>${fa.toFixed(2)} días</strong> a <strong>${t1}°C</strong> ($Q_{10} = ${q10}$).<br>
+          🏆 <strong>VIDA ÚTIL ESTIMADA COMERCIAL:</strong> <strong>${diasReales} días (${mesesReales} meses)</strong> almacenado a ${t1}°C tras superar ${diasCamara} días en cámara acelerada.
+        `;
+      }
+
+      document.getElementById('idPrintHeaderSub').textContent = `Producto: ${prod} • Empresa: ${emp}`;
+      document.getElementById('idPrintFirma').textContent = emp;
+      document.getElementById('idPrintQ10Summary').innerHTML = `
+        Para el producto <strong>${prod}</strong> de <strong>${emp}</strong>, aplicando la ecuación cinética de Arrhenius con coeficiente <strong>$Q_{10} = ${q10}$</strong>, temperatura de referencia comercial <strong>$T_1 = ${t1}^\\circ\\text{C}$</strong> y temperatura de abuso acelerado <strong>$T_2 = ${t2}^\\circ\\text{C}$</strong> ($\Delta T = ${deltaT}^\\circ\\text{C}$), se obtiene un Factor de Aceleración <strong>$f_a = ${fa.toFixed(2)}$</strong>. Un período de estabilidad de <strong>${diasCamara} días</strong> en cámara acelerada sustenta técnicamente una <strong>Vida Útil Comercial de ${diasReales} días (${mesesReales} meses)</strong>.
+      `;
+
+      const fractions = [0, 0.25, 0.50, 0.75, 1.0];
+      const rowsHtml = [];
+      const csvLines = ['Punto_Corte;Dia_Camara_T2;Dia_Equivalente_Comercial_T1;Meses_Equivalentes;Parametros_Fisicoquimicos;Parametros_Sensoriales;Validacion_Microbiologica_Res1407'];
+
+      fractions.forEach((f, idx) => {
+        const dCam = Math.round(diasCamara * f);
+        const dReal = Math.round(diasReales * f);
+        const mReal = (dReal / 30).toFixed(1);
+        const microTxt = (idx === 0 || idx === 2 || idx === 4)
+          ? 'Recuento completo Res. 1407/2022 (Salmonella, E. coli, Mohos/Levaduras, Mesófilos)'
+          : 'Control de indicadores (Mohos/Levaduras y Mesófilos)';
+        rowsHtml.push(`
+          <tr class="${idx % 2 === 1 ? 'bg-slate-50' : ''}">
+            <td class="p-1.5 border border-slate-300 font-bold">Corte T${idx} (${Math.round(f * 100)}%)</td>
+            <td class="p-1.5 border border-slate-300 text-center font-mono font-bold">Día ${dCam}</td>
+            <td class="p-1.5 border border-slate-300 text-center font-mono font-bold text-emerald-900">Día ${dReal} (${mReal} m)</td>
+            <td class="p-1.5 border border-slate-300">pH, actividad de agua ($a_w$), humedad %, acidez/peróxidos y panel sensorial (color, olor, sabor, textura ≥ 4.0/5.0)</td>
+            <td class="p-1.5 border border-slate-300">${microTxt}</td>
+          </tr>
+        `);
+        csvLines.push(`Corte T${idx} (${Math.round(f * 100)}%);Dia ${dCam} a ${t2}C;Dia ${dReal} a ${t1}C;${mReal} meses;pH + aw + Humedad + Peroxidos;Panel Sensorial Hedonico (>=4.0/5.0);${microTxt}`);
+      });
+
+      document.getElementById('idPrintSamplingTable').innerHTML = rowsHtml.join('');
+      latestVidaUtilCsv = csvLines.join('\n');
+    }
+
+    const ID_TEMPLATES = {
+      'ID-SODIO-01': {
+        title: 'SISTEMA ACTIVO: ID-SODIO-01 — REDUCCIÓN DE SODIO BAJO RESOLUCIÓN 2013 DE 2020 Y 2056 DE 2023 + EXENCION SELLO RES. 2492',
+        html: `<strong>Ingeniería de Reemplazo Salino (-35% a -45% Na):</strong> Se reemplaza el 35%–40% del Cloruro de Sodio ($\text{NaCl}$, que contiene 39.3% de Sodio elemental) por <strong>Cloruro de Potasio ($\text{KCl}$ grado USP/FCC, 0% Sodio)</strong> sinergizado con <strong>0.15%–0.30% de Extracto de Levadura rico en 5'-ribonucleótidos (IMP+GMP) y aromas naturales umami</strong> para bloquear las notas metálicas/amargas del potasio. Meta técnica: mantener el sodio final por debajo del tope de la <code>Res. 2013/2020</code> y $< 1\text{ mg Na / kcal}$ (y $< 300\text{ mg Na / 100g}$) para evitar el sello octogonal "EXCESO EN SODIO".`,
+        csv: `Ingrediente_Funcional;Formula_Original_%;Formula_Reformulada_Baja_en_Sodio_%;Aporte_Sodio_mg_por_100g;Funcion_Tecnologica_I+D\nSal Refinada (Cloruro de Sodio NaCl);1.60%;0.95%;373 mg -> 221 mg (-40.7% Na);Sabor salado base y fuerza ionica\nCloruro de Potasio (KCl Grado Alimenticio SIN 508);0.00%;0.50%;0 mg Sodio;Sustituto salino libre de sodio\nExtracto de Levadura Natural (Umami 5-Ribonucleotidos);0.00%;0.20%;8 mg Sodio;Enmascarador de notas metalicas del KCl y potenciador salado\nAcido Citrico / Especias Naturales;0.20%;0.35%;0 mg Sodio;Realce de percepcion acida-salada en papilas gustativas`
+      },
+      'ID-AZUCAR-02': {
+        title: 'SISTEMA ACTIVO: ID-AZUCAR-02 — ELIMINACIÓN DE SELLOS "EXCESO EN AZÚCARES" Y "CONTIENE EDULCORANTES" (RES. 2492/2022)',
+        html: `<strong>Estrategia Clean Label (Sin Azúcar Añadido ni Edulcorantes Artificiales):</strong> En Colombia, la <code>Res. 2492 de 2022</code> exige sello negro si se usan edulcorantes no calóricos o polioles (stevia, sucralosa, eritritol, maltitol). Para lograr dulzor y cuerpo (<em>bulking</em>) <strong>sin disparar el sello de Azúcares ($\ge 10\%\ \text{kcal}$) ni el de Edulcorantes</strong>, se formula con <strong>Fibras Prebióticas Solubles de cadena corta (Inulina de achicoria nativa, Fibra soluble de tapioca/maíz)</strong> combinadas con concentrado desmineralizado de fruta natural dentro del margen $< 9.5\%\ \text{kcal}$ de azúcares libres.`,
+        csv: `Ingrediente_Funcional;Formula_Tradicional_%;Formula_Sin_Sellos_Res2492_%;Impacto_en_Sellos_Res_2492;Funcion_Tecnologica_I+D\nSacarosa / Azucar Blanca;18.0%;3.5%;Reduce azucares libres a < 9.5% de las kcal totales;Dulzor base dentro del margen legal sin sello\nInulina de Achicoria / Fibra Soluble de Tapioca;0.0%;11.5%;0 g Azucar anadido y NO clasifica como edulcorante;Agente de volumen (bulking), textura cremosa y fibra prebiotica\nAroma Natural de Vainilla / Caramelo (Modulador Dulce);0.05%;0.20%;Sin impacto en sellos;Potencia la percepcion sensorial de dulzor en un +25%`
+      },
+      'ID-CLEAN-04': {
+        title: 'SISTEMA ACTIVO: ID-CLEAN-04 — CONSERVACIÓN "CLEAN LABEL" Y TECNOLOGÍA DE OBSTÁCULOS (SIN SORBATO NI BENZOATO SINTÉTICO)',
+        html: `<strong>Sustitución de Conservantes Artificiales para Supermercados Premium y Exportación:</strong> Se reemplaza el Benzoato de Sodio (SIN 211) y Sorbato de Potasio (SIN 202) por un sistema multi-barrera (<em>Hurdle Technology</em>): (1) <strong>Fermento de Dextrosa/Maíz Cultivado</strong> (rico en péptidos antimicrobianos y ácidos orgánicos naturales, 0.5%–1.2%); (2) <strong>Vinagre Tamponado en Polvo (Buffered Vinegar)</strong> a pH neutro para inhibir <em>Listeria</em> y mohos; (3) <strong>Extracto de Romero Desodorizado (Ácido Carnósico) + Tocoferoles Mixtos</strong> para frenar rancidez oxidativa.`,
+        csv: `Vector_Deterioro;Conservante_Sintetico_Eliminado;Sustituto_Clean_Label_Natural;Dosis_Recomendada_%;Mecanismo_de_Accion\nMohos y Levaduras;Sorbato de Potasio (SIN 202);Fermento de Azucar/Maiz Cultivado + Natamicina natural;0.60% - 1.00%;Inhibicion de membrana celular fungica con declaracion etiqueta limpia\nBacterias Patogenas (Listeria/Salmonella);Benzoato de Sodio / Nitritos;Vinagre Tamponado (Buffered Vinegar) + Extracto de Apio/Acerola;0.40% - 0.80%;Control bacteriostatico sin alterar pH ni sabor acido\nRancidez Oxidativa de Grasas;BHT / BHA / TBHQ;Extracto de Romero Desodorizado + Tocoferoles Naturales;0.05% - 0.15%;Captura de radicales libres perowilo (aumenta vida util Q10 en +50%)`
+      },
+      'ID-GRASA-03': {
+        title: 'SISTEMA ACTIVO: ID-GRASA-03 — PROTOTIPADO PLANT-BASED Y REDUCCIÓN DE GRASAS SATURADAS (< 10% KCAL RES. 2492)',
+        html: `<strong>Ingeniería de Textura Plant-Based y Perfil Lipídico Saludable:</strong> Para evitar el sello "EXCESO EN GRASAS SATURADAS" ($\ge 10\%\ \text{kcal}$), se sustituye la grasa de palma/mantequilla/grasa bovina por una <strong>emulsión estructurada (Oleogel / Emulsión gelificada)</strong> compuesta por Aceite de Girasol Alto Oleico (82% monoinsaturado, $< 8\%$ saturado) atrapado en una red de <strong>Proteína Aislada de Arveja/Garbanzo + Almidón Modificado/Fibra de Cítricos + Metilcelulosa/Goma Xantana</strong>.`,
+        csv: `Componente_Estructural;Ingrediente_Plant_Based;Porcentaje_Formula_%;Funcion_Reologica_y_Sensorial\nMatriz Proteica Texturizada;Aislado de Proteina de Arveja (80%) + Proteina de Garbanzo;14.0%;Capacidad de retencion de agua/aceite (WHC/OHC) y mordida carnica\nFase Lipidica Baja en Saturadas;Aceite de Girasol Alto Oleico (< 8% grasa saturada);9.0%;Jugosidad sin superar el umbral del 10% kcal de grasas saturadas Res. 2492\nSistema Hidrocoloide Termogelificante;Metilcelulosa A4M + Goma Xantana + Fibra Citrica;1.8%;Gelificacion en caliente (firmeza al cocinar/morder) y estabilidad en frio`
+      },
+      'ID-ALERGENO-05': {
+        title: 'SISTEMA ACTIVO: ID-ALERGENO-05 — SUSTITUCIÓN TECNOLÓGICA DE ALÉRGENOS (SIN GLUTEN, SIN HUEVO, SIN LÁCTEOS NI SOYA)',
+        html: `<strong>Matrices Hipolergénicas Funcionales:</strong><br>• <strong>Sustitución de Huevo (Panadería/Salsas):</strong> 1 huevo entero ($50\text{ g}$) = $3\text{ g}$ Proteína de Arveja/Lenteja + $1.5\text{ g}$ Lecitina de Girasol (libre de alérgeno soya) + $0.3\text{ g}$ Goma Xantana + $45.2\text{ g}$ Agua.<br>• <strong>Sustitución de Gluten (Panificación):</strong> Harina de arroz ($55\%$) + Almidón de yuca ($25\%$) + Fécula de papa ($15\%$) + Fibra de <em>Psyllium</em> / HPMC ($5\%$) para retener gas $\text{CO}_2$ de fermentación.`,
+        csv: `Alergeno_a_Eliminar;Aplicacion_Industrial;Sistema_Sustituto_Libre_de_Alergenos;Proporcion_de_Reemplazo;Resultado_Tecnologico\nTrigo / Gluten;Panaderia, Tortillas y Pastas;Harina Arroz (55%) + Almidon Yuca (25%) + Papa (15%) + Psyllium/HPMC (5%);Reemplazo 1:1 de harina de trigo;Miga elastica, volumen alveolar y sin desmoronamiento\nHuevo (Ovoalbumina/Yema);Mayonesas, Salsas y Tortas;Proteina Garbanzo/Arveja (6%) + Lecitina Girasol (3%) + Xantana (0.6%) + Agua;Reemplazo 1:1 en peso de huevo liquido;Emulsion estable a choques termicos y 0% colesterol\nLeche / Caseina / Lactosa;Bebidas, Postres y Helados;Base coloidal de Avena/Coco + Proteina Haba + Goma Gellan/Algarrobo;Reemplazo 1:1 de leche fluida;Cremosidad (mouthfeel) sin sinéresis ni separacion de fases\nLecitina de Soya;Chocolateria y Panificacion;Lecitina de Girasol No-GMO / Polirricinoleato de Poliglicerol (PGPR);0.3% - 0.5% sobre peso total;Reduccion de viscosidad Casson y etiqueta "Libre de Soya"`
+      },
+      'ID-ESCALADO-06': {
+        title: 'SISTEMA ACTIVO: ID-ESCALADO-06 — ESTANDARIZACIÓN DE FÓRMULAS INDUSTRIALES, ESCALADO DE BACHE Y CONTROL DE MERMA',
+        html: `<strong>Paso de Laboratorio ($1\text{ kg}$) a Planta Industrial ($100\text{ kg}$ – $500\text{ kg}$):</strong> Toda fórmula maestra se expresa tanto en <strong>Porcentaje Masa/Masa ($\sum = 100.00\%$)</strong> para radicación INVIMA como en <strong>Porcentaje Panadero</strong>. Al escalar a marmita u horno industrial, se aplica el factor de corrección por <strong>Merma Evaporativa (% Merma = $[(\text{Peso Crudo} - \text{Peso Cocido}) / \text{Peso Crudo}] \times 100$)</strong>, el cual concentra sólidos y nutrientes (conectado directamente con la Calculadora Nutricional del Módulo 2).`,
+        csv: `Ingrediente_Formula_Maestra;Porcentaje_Exacto_%;Bache_Piloto_Lab_1Kg_(g);Bache_Planta_100Kg_(Kg);Bache_Industrial_500Kg_(Kg);Costo_por_Kg_COP;Costo_en_Bache_100Kg_COP\nMateria Prima Base 1;62.50%;625.0 g;62.50 Kg;312.50 Kg;6500;406250\nIngrediente Funcional 2;22.00%;220.0 g;22.00 Kg;110.00 Kg;9200;202400\nSistema Fibra / Texturizante Clean Label;12.00%;120.0 g;12.00 Kg;60.00 Kg;14500;174000\nSistema Salino Reducido (NaCl + KCl + Umami);1.65%;16.5 g;1.65 Kg;8.25 Kg;8000;13200\nSistema Conservante / Antioxidante Natural;0.85%;8.5 g;0.85 Kg;4.25 Kg;38000;32300\nEspecias y Aromas Naturales;1.00%;10.0 g;1.00 Kg;5.00 Kg;25000;25000\nTOTAL FORMULA CRUDA;100.00%;1000.0 g;100.00 Kg;500.00 Kg;--;853150`
+      }
+    };
+
+    function loadIdTemplate(code) {
+      const item = ID_TEMPLATES[code];
+      const box = document.getElementById('idDynamicTemplateBox');
+      if (item && box) {
+        box.innerHTML = `<div class="font-black text-emerald-950">${item.title}</div><div class="text-[11px] leading-relaxed">${item.html}</div>`;
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function downloadIdCsv(code) {
+      let csvContent = '';
+      if (code === 'MATRIZ-VIDA-UTIL') {
+        calcShelfLifeQ10();
+        csvContent = latestVidaUtilCsv;
+      } else if (ID_TEMPLATES[code]) {
+        csvContent = ID_TEMPLATES[code].csv;
+      }
+      if (!csvContent) return;
+      const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${code}_Laboratorio_ID_AYC.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initAuditTable();
       calcPpm();
@@ -2943,6 +3315,8 @@
       renderGfsiManual();
       renderIsoManual();
       loadSigTemplate('DOC-SIG-01');
+      calcShelfLifeQ10();
+      loadIdTemplate('ID-SODIO-01');
     });
   </script>
 </body>
