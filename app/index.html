@@ -785,7 +785,12 @@
         <div class="grid md:grid-cols-2 gap-5 no-print">
           <!-- PASO A PASO DEL INGENIERO -->
           <div class="p-5 rounded-2xl glass-card space-y-3">
-            <h3 class="text-sm font-extrabold text-amber-400 uppercase tracking-wider border-b border-white/10 pb-2">📋 2. Paso a Paso Operativo del Ingeniero (5 Fases)</h3>
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+              <h3 class="text-sm font-extrabold text-amber-400 uppercase tracking-wider">📋 2. Paso a Paso Operativo del Ingeniero (5 Fases)</h3>
+              <button onclick="downloadGfsiCsv('INVIMA-5-FASES')" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[10px] transition cursor-pointer">
+                📥 Cronograma 5 Fases (.csv)
+              </button>
+            </div>
             <ol class="space-y-3 text-xs text-zinc-200 leading-relaxed">
               <li class="p-3 rounded-xl bg-zinc-900/80 border-l-4 border-emerald-400">
                 <strong class="text-white block">FASE 1: Inscripción de la Fábrica ante el INVIMA</strong>
@@ -817,7 +822,12 @@
 
           <!-- CHECKLIST DE DOCUMENTOS QUE DEBE ENTREGAR EL CLIENTE -->
           <div class="p-5 rounded-2xl glass-card space-y-3">
-            <h3 class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider border-b border-white/10 pb-2">📂 3. Checklist de Documentos que Debes Pedirle al Cliente</h3>
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+              <h3 class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider">📂 3. Checklist de Documentos que Debes Pedirle al Cliente</h3>
+              <button onclick="downloadGfsiCsv('INVIMA-CHECKLIST-7')" class="px-2.5 py-1 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-[10px] transition cursor-pointer">
+                📥 Checklist Cliente (.csv)
+              </button>
+            </div>
             <p class="text-xs text-zinc-400">Marca cada requisito a medida que el cliente te lo envíe por WhatsApp o correo:</p>
             <div class="space-y-2 text-xs text-zinc-200">
               <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 cursor-pointer">
@@ -1348,24 +1358,45 @@
 
           <!-- HERRAMIENTA INTERACTIVA 2: RESUMEN DE LOS 12 PASOS CODEX + PPRO + TACCP + VACCP -->
           <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-white/10 space-y-3">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">GUÍA DE CAMPO DEL INGENIERO • 12 PASOS Y 7 PRINCIPIOS</span>
-            <h3 class="text-base font-extrabold text-white">📋 Ruta de Implementación InHouse (Codex + ISO 22000 + GFSI)</h3>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">GUÍA INTERACTIVA DE CAMPO • 12 PASOS Y 7 PRINCIPIOS</span>
+                <h3 class="text-base font-extrabold text-white">📋 Ruta de Implementación InHouse (Codex + ISO 22000 + GFSI)</h3>
+              </div>
+              <button onclick="downloadGfsiCsv('HACCP-12-PASOS')" class="px-2.5 py-1.5 rounded-lg bg-teal-400 hover:bg-teal-300 text-slate-950 font-extrabold text-[10px] transition cursor-pointer">
+                📥 Checklist 12 Pasos (.csv)
+              </button>
+            </div>
             <div class="space-y-2 text-xs text-zinc-300">
-              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
-                <strong class="text-teal-300">Pasos Preliminares 1 al 5:</strong> (1) Acta del Equipo HACCP multidisciplinario; (2) Ficha técnica de inocuidad ($pH$, $a_w$, humedad, ${}^\circ\text{Brix}$, Res. 1407/2022); (3) Uso previsto, población destino y declaración de los <strong>8 grupos de alérgenos</strong>; (4) Diagrama de flujo de proceso; (5) Verificación <em>In Situ</em> firmada en planta.
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 space-y-1">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-teal-300">Pasos Preliminares 1 al 5:</strong>
+                  <button onclick="downloadGfsiCsv('HACCP-12-PASOS')" class="px-2 py-0.5 rounded bg-teal-500/20 hover:bg-teal-400 hover:text-slate-950 text-teal-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                </div>
+                <p>(1) Acta del Equipo HACCP multidisciplinario; (2) Ficha técnica de inocuidad ($pH$, $a_w$, humedad, ${}^\circ\text{Brix}$, Res. 1407/2022); (3) Uso previsto, población destino y declaración de los <strong>8 grupos de alérgenos</strong>; (4) Diagrama de flujo de proceso; (5) Verificación <em>In Situ</em> firmada en planta.</p>
               </div>
-              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
-                <strong class="text-emerald-300">Los 7 Principios Codex (Pasos 6 al 12):</strong> (P1) Análisis de Peligros Biológicos, Químicos, Físicos y Alérgenos; (P2) Determinación de PCC; (P3) Límites Críticos medibles ($\text{Temp}$, $\text{tiempo}$, $pH$, $\text{mm}$); (P4) Sistema de Monitoreo (<em>Qué, Cómo, Frecuencia, Quién</em>); (P5) Acciones Correctivas sobre proceso y lote retenido; (P6) Validación y Verificación (Lab Res. 1407/2022 y calibración); (P7) Registros (<code>FOR-HACCP-001</code>, <code>FOR-PCC-01</code>).
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 space-y-1">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-emerald-300">Los 7 Principios Codex (Pasos 6 al 12):</strong>
+                  <a href="./Paquete_Maestro_BPM_POES_HACCP_INVIMA.xlsx" download class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition">📊 FOR-HACCP (.xlsx)</a>
+                </div>
+                <p>(P1) Análisis de Peligros Biológicos, Químicos, Físicos y Alérgenos; (P2) Determinación de PCC; (P3) Límites Críticos medibles ($\text{Temp}$, $\text{tiempo}$, $pH$, $\text{mm}$); (P4) Sistema de Monitoreo (<em>Qué, Cómo, Frecuencia, Quién</em>); (P5) Acciones Correctivas sobre proceso y lote retenido; (P6) Validación y Verificación (Lab Res. 1407/2022 y calibración); (P7) Registros (<code>FOR-HACCP-001</code>, <code>FOR-PCC-01</code>).</p>
               </div>
-              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
-                <strong class="text-amber-300">Diferencia PCC vs. PPRO (ISO 22000:2018):</strong>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 space-y-1">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-amber-300">Diferencia PCC vs. PPRO (ISO 22000:2018):</strong>
+                  <button onclick="downloadGfsiCsv('HACCP-PCC-PPRO')" class="px-2 py-0.5 rounded bg-amber-500/20 hover:bg-amber-400 hover:text-slate-950 text-amber-300 font-bold text-[10px] transition cursor-pointer">📥 Matriz PCC/PPRO (.csv)</button>
+                </div>
                 <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[11px]">
                   <li><strong>PCC (Punto Crítico de Control):</strong> Etapa con límite crítico cuantitativo estricto cuya pérdida de control genera riesgo inaceptable directo (ej. <em>Pasteurización $\ge 74^\circ\text{C}$ por $15\text{ s}$</em> o <em>Detector de Metales</em>).</li>
                   <li><strong>PPRO (Prerrequisito Operativo):</strong> Medida de control esencial con criterio de acción donde el peligro no es eliminado de forma absoluta en un único punto, pero previene su proliferación (ej. <em>Abatimiento/enfriamiento de $60^\circ\text{C}$ a $\le 4^\circ\text{C}$ en $&lt;4\text{ h}$</em>, control de alérgenos en cambio de línea o filtros sanitarios).</li>
                 </ul>
               </div>
-              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10">
-                <strong class="text-teal-300">Módulos TACCP (Food Defense) y VACCP (Food Fraud):</strong>
+              <div class="p-2.5 rounded-xl bg-zinc-900/80 border border-white/10 space-y-1">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-teal-300">Módulos TACCP (Food Defense) y VACCP (Food Fraud):</strong>
+                  <button onclick="downloadGfsiCsv('HACCP-TACCP-VACCP')" class="px-2 py-0.5 rounded bg-teal-500/20 hover:bg-teal-400 hover:text-slate-950 text-teal-300 font-bold text-[10px] transition cursor-pointer">📥 Matriz TACCP/VACCP (.csv)</button>
+                </div>
                 <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[11px]">
                   <li><strong>TACCP (Defensa Alimentaria):</strong> Evaluación de amenazas intencionales/sabotaje (cerramiento perimetral, candados en tanque de agua potable y cuarto de químicos, precintos numerados en transporte).</li>
                   <li><strong>VACCP (Prevención de Fraude):</strong> Mitigación de adulteración económica por dilución o sustitución en materias primas críticas (leche, aceites, miel, especias, cacao) con Certificados de Análisis (CoA) y pruebas de autenticidad.</li>
@@ -1828,27 +1859,56 @@
           </div>
         </div>
 
-        <!-- RESUMEN EJECUTIVO DE INGENIERÍA: DIFERENCIAS FSSC 22000 v6 vs BRCGS v9 vs FDA FSMA + EMP ZONAS 1 A 4 -->
+        <!-- RESUMEN EJECUTIVO INTERACTIVO DE INGENIERÍA: DIFERENCIAS FSSC 22000 v6 vs BRCGS v9 vs FDA FSMA + EMP ZONAS 1 A 4 -->
         <div class="grid lg:grid-cols-12 gap-5 no-print">
           <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-emerald-500/30 space-y-3">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold">GUÍA DEL PCQI & AUDITOR LÍDER GFSI</span>
-            <h3 class="text-base font-extrabold text-white">📋 Qué Exige Cada Estándar (FSSC v6 vs. BRCGS v9 vs. FDA FSMA)</h3>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold">GUÍA INTERACTIVA DEL PCQI & AUDITOR LÍDER GFSI</span>
+                <h3 class="text-base font-extrabold text-white">📋 Qué Exige Cada Estándar (FSSC v6 vs. BRCGS v9 vs. FDA FSMA)</h3>
+              </div>
+              <button onclick="downloadGfsiCsv('MATRIZ-GFSI-COMPLETA')" class="px-2.5 py-1.5 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-[11px] transition cursor-pointer">
+                📥 Descargar Checklist Global (.csv)
+              </button>
+            </div>
+            <p class="text-[11px] text-zinc-400">Cada bloque tiene botones para <strong>cargar el protocolo en la vista de impresión PDF</strong> o <strong>descargar su lista de chequeo en Excel (.csv)</strong>:</p>
             <div class="space-y-2.5 text-xs text-zinc-300">
-              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10">
-                <strong class="text-amber-300">1. FDA FSMA (21 CFR Part 117 — Food Safety Plan firmado por PCQI):</strong>
-                <p class="text-[11px] mt-1 leading-relaxed">
+              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10 space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-amber-300">1. FDA FSMA (21 CFR Part 117 — Food Safety Plan PCQI):</strong>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button onclick="loadGfsiTemplate('GFSI-FDA-FSMA')" class="px-2 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-400 hover:text-slate-950 text-amber-300 font-bold text-[10px] transition cursor-pointer">📄 Ver / PDF</button>
+                    <button onclick="downloadGfsiCsv('GFSI-FDA-FSMA')" class="px-2 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                    <a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-117" target="_blank" rel="noopener" class="px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-[10px] transition">📜 21 CFR 117 ↗</a>
+                  </div>
+                </div>
+                <p class="text-[11px] leading-relaxed">
                   A diferencia del HACCP tradicional, exige los <strong>4 Controles Preventivos HARPC</strong>: (1) <em>Process Controls</em> (térmicos/pH/$a_w$); (2) <em>Allergen Controls</em> para los <strong>9 Grandes Alérgenos de EE.UU. (incluyendo Sésamo/Ajonjolí por la Ley FASTER)</strong>; (3) <em>Sanitation Controls</em> (zonificación e hisopados en áreas RTE); y (4) <em>Supply-Chain Program</em> (homologación de proveedores) + <em>Recall Plan</em> obligatorio.
                 </p>
               </div>
-              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10">
-                <strong class="text-emerald-300">2. FSSC 22000 Versión 6.0 (ISO 22000 + ISO/TS 22002-1 + Req. Adicionales 2.5):</strong>
-                <p class="text-[11px] mt-1 leading-relaxed">
+              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10 space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-emerald-300">2. FSSC 22000 Versión 6.0 (ISO 22000 + Req. Adicionales 2.5):</strong>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button onclick="loadGfsiTemplate('GFSI-FSSC-V6')" class="px-2 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition cursor-pointer">📄 Ver / PDF</button>
+                    <button onclick="downloadGfsiCsv('GFSI-FSSC-V6')" class="px-2 py-1 rounded-lg bg-teal-500/20 hover:bg-teal-400 hover:text-slate-950 text-teal-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                    <a href="https://www.fssc.com/schemes/fssc-22000/documents/fssc-22000-version-6/" target="_blank" rel="noopener" class="px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-[10px] transition">📘 Docs v6 ↗</a>
+                  </div>
+                </div>
+                <p class="text-[11px] leading-relaxed">
                   Exige como novedades críticas en v6: <strong>2.5.7 Monitoreo Ambiental (EMP)</strong> documentado, <strong>2.5.8 Plan de Cultura de Calidad e Inocuidad</strong> con KPIs medibles, <strong>2.5.9 Control de Calidad y Peso Legal</strong>, <strong>2.5.15 Diseño Higiénico y Gestión de Equipos</strong> y <strong>2.5.16 Reducción de Desperdicio de Alimentos (Food Loss)</strong>.
                 </p>
               </div>
-              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10">
-                <strong class="text-teal-300">3. BRCGS Food Safety v9 e IFS Food v8:</strong>
-                <p class="text-[11px] mt-1 leading-relaxed">
+              <div class="p-3 rounded-xl bg-zinc-900/80 border border-white/10 space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-teal-300">3. BRCGS Food Safety v9 e IFS Food v8:</strong>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button onclick="loadGfsiTemplate('GFSI-BRCGS-IFS')" class="px-2 py-1 rounded-lg bg-teal-500/20 hover:bg-teal-400 hover:text-slate-950 text-teal-300 font-bold text-[10px] transition cursor-pointer">📄 Ver / PDF</button>
+                    <button onclick="downloadGfsiCsv('GFSI-BRCGS-IFS')" class="px-2 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                    <a href="https://www.brcgs.com/our-standards/food-safety/" target="_blank" rel="noopener" class="px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-[10px] transition">🇬🇧 BRCGS v9 ↗</a>
+                  </div>
+                </div>
+                <p class="text-[11px] leading-relaxed">
                   Auditorías altamente prescriptivas en piso de planta (incluyendo 1 auditoría no anunciada cada 3 años), evaluación directa a operarios sobre Cultura de Inocuidad, control estricto de vidrios/plásticos quebradizos, validación de rayos X/detector de metales y trazabilidad bidireccional en <strong>máximo 4 horas</strong>.
                 </p>
               </div>
@@ -1856,24 +1916,56 @@
           </div>
 
           <div class="lg:col-span-6 p-5 rounded-2xl glass-card border border-amber-500/30 space-y-3">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">MONITOREO AMBIENTAL DE PATÓGENOS (EMP — SEEK & DESTROY)</span>
-            <h3 class="text-base font-extrabold text-white">🦠 Mapa de las 4 Zonas Higiénicas de Hisopado (Listeria / Salmonella / ATP)</h3>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">MONITOREO AMBIENTAL DE PATÓGENOS (EMP — SEEK & DESTROY)</span>
+                <h3 class="text-base font-extrabold text-white">🦠 Mapa de las 4 Zonas Higiénicas de Hisopado (Listeria / Salmonella / ATP)</h3>
+              </div>
+              <button onclick="downloadGfsiCsv('EMP-MATRIZ-4-ZONAS')" class="px-2.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] transition cursor-pointer">
+                📥 Matriz EMP 4 Zonas (.csv)
+              </button>
+            </div>
+            <p class="text-[11px] text-zinc-400">Haz clic en cualquier Zona para cargar su protocolo de hisopado y acción correctiva en el PDF o descargar la planilla de muestreo en Excel:</p>
             <div class="space-y-2 text-xs text-zinc-300">
-              <div class="p-2.5 rounded-xl bg-red-950/60 border border-red-500/40">
-                <strong class="text-red-300">🔴 ZONA 1 (Contacto Directo con Alimento RTE Post-Letalidad):</strong>
-                <p class="text-[11px] mt-0.5">Mesones de empaque, boquillas de llenado, cuchillas, bandas transportadoras, manos/guantes. <strong>Monitoreo:</strong> Bioluminiscencia ATP (diario pre-operativo), Enterobacterias/Coliformes y validación de ausencia de alérgenos.</p>
+              <div class="p-2.5 rounded-xl bg-red-950/60 border border-red-500/40 space-y-1.5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-red-300">🔴 ZONA 1 (Contacto Directo con Alimento RTE Post-Letalidad):</strong>
+                  <div class="flex gap-1.5">
+                    <button onclick="loadGfsiTemplate('EMP-ZONA-1')" class="px-2 py-0.5 rounded bg-red-500/30 hover:bg-red-400 hover:text-slate-950 text-red-200 font-bold text-[10px] transition cursor-pointer">📄 Ver / PDF</button>
+                    <button onclick="downloadGfsiCsv('EMP-ZONA-1')" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                  </div>
+                </div>
+                <p class="text-[11px]">Mesones de empaque, boquillas de llenado, cuchillas, bandas transportadoras, manos/guantes. <strong>Monitoreo:</strong> Bioluminiscencia ATP (diario pre-operativo &lt;30 RLU), Enterobacterias/Coliformes y validación de ausencia de alérgenos.</p>
               </div>
-              <div class="p-2.5 rounded-xl bg-amber-950/60 border border-amber-500/40">
-                <strong class="text-amber-300">🟠 ZONA 2 (Superficies Adyacentes a Zona 1 — Sin Contacto Directo):</strong>
-                <p class="text-[11px] mt-0.5">Chasis exterior de equipos, botoneras, bordes inferiores de mesones, cortinas sanitarias. <strong>Monitoreo Quincenal:</strong> Hisopado para <em>Listeria spp.</em> (plantas húmedas/frías) o <em>Salmonella spp.</em> (plantas secas).</p>
+              <div class="p-2.5 rounded-xl bg-amber-950/60 border border-amber-500/40 space-y-1.5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-amber-300">🟠 ZONA 2 (Superficies Adyacentes a Zona 1 — Sin Contacto Directo):</strong>
+                  <div class="flex gap-1.5">
+                    <button onclick="loadGfsiTemplate('EMP-ZONA-2')" class="px-2 py-0.5 rounded bg-amber-500/30 hover:bg-amber-400 hover:text-slate-950 text-amber-200 font-bold text-[10px] transition cursor-pointer">📄 Ver / PDF</button>
+                    <button onclick="downloadGfsiCsv('EMP-ZONA-2')" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                  </div>
+                </div>
+                <p class="text-[11px]">Chasis exterior de equipos, botoneras, bordes inferiores de mesones, cortinas sanitarias. <strong>Monitoreo Quincenal:</strong> Hisopado para <em>Listeria spp.</em> (plantas húmedas/frías) o <em>Salmonella spp.</em> (plantas secas).</p>
               </div>
-              <div class="p-2.5 rounded-xl bg-teal-950/60 border border-teal-500/40">
-                <strong class="text-teal-300">🟡 ZONA 3 (Dentro de Sala de Proceso pero Lejos de Zona 1):</strong>
-                <p class="text-[11px] mt-0.5"><strong>Sifones y drenajes de piso</strong> (principal reservorio de biopelículas de <em>Listeria</em>), pisos, paredes, ruedas de carros y bandejas de evaporadores de frío. <strong>Monitoreo Semanal/Mensual:</strong> <em>Listeria spp. / Salmonella spp.</em></p>
+              <div class="p-2.5 rounded-xl bg-teal-950/60 border border-teal-500/40 space-y-1.5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-teal-300">🟡 ZONA 3 (Dentro de Sala de Proceso pero Lejos de Zona 1):</strong>
+                  <div class="flex gap-1.5">
+                    <button onclick="loadGfsiTemplate('EMP-ZONA-3')" class="px-2 py-0.5 rounded bg-teal-500/30 hover:bg-teal-400 hover:text-slate-950 text-teal-200 font-bold text-[10px] transition cursor-pointer">📄 Ver / PDF</button>
+                    <button onclick="downloadGfsiCsv('EMP-ZONA-3')" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                  </div>
+                </div>
+                <p class="text-[11px]"><strong>Sifones y drenajes de piso</strong> (principal reservorio de biopelículas de <em>Listeria</em>), pisos, paredes, ruedas de carros y bandejas de evaporadores de frío. <strong>Monitoreo Semanal/Quincenal:</strong> <em>Listeria spp. / Salmonella spp.</em></p>
               </div>
-              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/15">
-                <strong class="text-zinc-200">⚪ ZONA 4 (Áreas Externas a Proceso):</strong>
-                <p class="text-[11px] mt-0.5">Vestieres, pasillos, bodegas y muelles de carga. <strong>Monitoreo Mensual/Trimestral:</strong> Verificación de eficacia de pediluvios y filtros sanitarios.</p>
+              <div class="p-2.5 rounded-xl bg-zinc-900/90 border border-white/15 space-y-1.5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-zinc-200">⚪ ZONA 4 (Áreas Externas a Proceso):</strong>
+                  <div class="flex gap-1.5">
+                    <button onclick="loadGfsiTemplate('EMP-ZONA-4')" class="px-2 py-0.5 rounded bg-white/15 hover:bg-white/30 text-white font-bold text-[10px] transition cursor-pointer">📄 Ver / PDF</button>
+                    <button onclick="downloadGfsiCsv('EMP-ZONA-4')" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 font-bold text-[10px] transition cursor-pointer">📥 Excel (.csv)</button>
+                  </div>
+                </div>
+                <p class="text-[11px]">Vestieres, pasillos, bodegas y muelles de carga. <strong>Monitoreo Mensual/Trimestral:</strong> Verificación de eficacia de pediluvios (400–500 ppm) y filtros sanitarios.</p>
               </div>
             </div>
           </div>
@@ -2009,6 +2101,14 @@
               3. PLAN DE CULTURA DE INOCUIDAD ALIMENTARIA, TRAZABILIDAD Y RETIRO DE PRODUCTO (RECALL PLAN — 21 CFR 117.139)
             </h4>
             <p class="text-xs text-slate-700 leading-relaxed" id="gfPrintCultura">--</p>
+          </div>
+
+          <!-- SECCIÓN DINÁMICA DE PROTOCOLO GFSI / FDA / ZONA EMP SELECCIONADO -->
+          <div id="gfDynamicTemplateBox" class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 text-xs text-slate-800 space-y-1">
+            <div class="font-black text-emerald-950">PROTOCOLO ACTIVO EN IMPRESIÓN: GFSI-FDA-FSMA — CONTROLES PREVENTIVOS HARPC (21 CFR PART 117) Y ALÉRGENO SÉSAMO (FASTER ACT)</div>
+            <div class="text-[11px] leading-relaxed">
+              Haz clic en cualquiera de los botones <strong>"📄 Ver / PDF"</strong> de los estándares internacionales (FDA FSMA, FSSC 22000 v6, BRCGS v9) o de las <strong>Zonas Higiénicas EMP 1 a 4</strong> arriba para anexar su lista de chequeo y protocolo técnico directamente en este documento antes de imprimir.
+            </div>
           </div>
 
           <div class="grid grid-cols-2 gap-8 pt-6 text-center text-xs">
@@ -3085,6 +3185,102 @@
       setTxt('gfPrintFirma', emp);
     }
 
+    const GFSI_TEMPLATES = {
+      'GFSI-FDA-FSMA': {
+        title: 'PROTOCOLO ACTIVO EN IMPRESIÓN: GFSI-FDA-FSMA — CONTROLES PREVENTIVOS HARPC (21 CFR PART 117 — PCQI) Y ALÉRGENO SÉSAMO',
+        html: `<strong>Requisitos Federales FDA FSMA (21 CFR Part 117):</strong><br>• <strong>1. Process Controls (21 CFR 117.135(c)(1)):</strong> Parámetros críticos de cocción/pasteurización, acidificación ($pH \\le 4.2$), actividad de agua ($a_w$) y refrigeración validados científicamente.<br>• <strong>2. Food Allergen Controls (21 CFR 117.135(c)(2) & FASTER Act):</strong> Prevención de contacto cruzado y verificación de etiqueta para los <strong>9 Grandes Alérgenos de EE.UU.: Leche, Huevo, Pescado, Mariscos Crustáceos, Nueces de Árbol, Maní/Cacahuate, Trigo, Soya y Sésamo/Ajonjolí (9° alérgeno obligatorio)</strong>.<br>• <strong>3. Sanitation Controls (21 CFR 117.135(c)(3)):</strong> Higienización validada de superficies Zona 1 y control ambiental en alimentos listos para el consumo (RTE).<br>• <strong>4. Supply-Chain Program & Recall Plan (21 CFR 117.139 / Subpart G):</strong> Homologación de proveedores de ingredientes de riesgo y plan escrito de retiro de mercado con simulacro anual.`,
+        csv: `Subparte_21CFR117;Control_Preventivo_HARPC_FDA;Requisito_Obligatorio_PCQI;Parametro_o_Evidencia_en_Planta;Frecuencia_Verificacion;Responsable\nSubpart A/B;Registro FDA FFRM y Codigo DUNS;Renovacion bienal anos pares (Oct-Dic) + Agente en EE.UU.;Numero FFR de 11 digitos y DUNS de 9 digitos activos;Bienal / Anual;Representante Legal / PCQI\n117.135(c)(1);Process Control (Control de Proceso);Tratamiento termico letal o control de pH / aw;Temp >= 74C x 15s o pH <= 4.2 registrado por lote;Cada bache de produccion;Operario Coccion / PCQI\n117.135(c)(2);Food Allergen Control (9 Alergenos EE.UU.);Segregacion y revision de etiqueta para los Big 9 (incluyendo Sesamo - FASTER Act);Hisopado de proteina alergenica en cambio de linea y checklist de rotulo;Cada cambio de referencia;Inspector de Calidad\n117.135(c)(3);Sanitation Control (Control de Saneamiento);POES validado en superficies de contacto directo RTE (Zona 1);Bioluminiscencia ATP < 30 RLU pre-operativo e hisopado EMP;Diario pre-operativo;Supervisor Saneamiento\nSubpart G;Supply-Chain Program (Cadena de Suministro);Aprobacion de proveedores de materias primas con peligros significativos;Auditoria de segunda/tercera parte + CoA microbiologico/quimico por lote;Por lote recibido / Anual;Compras y Calidad\n117.139;Recall Plan (Plan de Retiro de Mercado);Procedimiento escrito de notificacion a clientes/FDA y balance de masa;Simulacro de trazabilidad bidireccional (100% masa en <= 2 horas);Semestral;Equipo PCQI / Gerencia`
+      },
+      'GFSI-FSSC-V6': {
+        title: 'PROTOCOLO ACTIVO EN IMPRESIÓN: GFSI-FSSC-V6 — REQUISITOS ADICIONALES FSSC 22000 VERSIÓN 6.0 (2.5.1 A 2.5.18)',
+        html: `<strong>Checklist de Novedades Obligatorias FSSC 22000 Versión 6.0:</strong><br>• <strong>2.5.4 Gestión de Alérgenos:</strong> Validación de limpieza en cambios de producto y entrenamiento anual.<br>• <strong>2.5.5 y 2.5.6 Defensa Alimentaria (TACCP) y Mitigación de Fraude (VACCP):</strong> Evaluaciones de amenaza y vulnerabilidad cubriendo todas las materias primas.<br>• <strong>2.5.7 Monitoreo Ambiental (EMP):</strong> Programa basado en riesgo para <em>Listeria spp.</em> y <em>Salmonella spp.</em> en Zonas 1 a 4.<br>• <strong>2.5.8 Cultura de Calidad e Inocuidad:</strong> Plan documentado con objetivos medibles (comunicación, retroalimentación, empoderamiento y medición).<br>• <strong>2.5.9 Control de Calidad y Peso Legal:</strong> Control estadístico de peso/volumen neto en línea.<br>• <strong>2.5.15 Gestión de Equipos y Diseño Higiénico:</strong> Especificación de compra sanitaria EHEDG e inspección tras mantenimiento.<br>• <strong>2.5.16 Pérdida y Desperdicio de Alimentos (Food Loss & Waste):</strong> Meta anual de reducción de merma orgánica.`,
+        csv: `Numeral_FSSC_v6;Requisito_Adicional_FSSC_22000_v6;Exigencia_Nueva_en_Version_6;Documento_o_Formato_de_Cumplimiento;Meta_KPI;Estado_en_Planta\n2.5.1;Gestion de Servicios y Compras;Analisis de laboratorios externos acreditados ISO 17025 (ONAC);Contratos y alcance de acreditacion ONAC vigente;100% Labs Acreditados;Conforme\n2.5.2;Etiquetado de Productos;Verificacion normativa pais destino y control de artes/bobinas;Lista de chequeo Res 810/2492 o FDA 21 CFR 101;0 Errores de Etiqueta;Conforme\n2.5.3;Defensa Alimentaria (TACCP);Evaluacion de amenazas de sabotaje y plan de mitigacion fisica;Matriz TACCP + Control de accesos y precintos;Revision Anual;Conforme\n2.5.4;Mitigacion del Fraude Alimentario (VACCP);Evaluacion de vulnerabilidad economica en materias primas;Matriz VACCP + Homologacion y CoA de proveedores;Revision Anual;Conforme\n2.5.7;Monitoreo Ambiental de Patogenos (EMP);Mapa de hisopados Zonas 1 a 4 y analisis de tendencias;Programa EMP-GFSI-01 (Listeria / Salmonella / ATP);100% Muestras Programadas;Conforme\n2.5.8;Cultura de Calidad e Inocuidad;Plan anual con actividades, encuesta y KPIs de cultura;Plan de Cultura GFSI + Encuesta anual al personal;>= 85% Indice Cultura;Conforme\n2.5.9;Control de Calidad y Peso Neto;Control sistematico de parametros de calidad y peso/volumen legal;Registro de control de peso en envasado por lote;Cumplimiento metrologico;Conforme\n2.5.15;Gestion de Equipos y Diseno Higienico;Especificacion higienica al comprar equipos y liberacion post-mantenimiento;Checklist EHEDG / INOX 304-316 y orden de mantenimiento;100% Equipos Validados;Conforme\n2.5.16;Perdida y Desperdicio de Alimentos (Food Loss);Politica y objetivos medibles para reducir desperdicio de alimentos;Indicador mensual de merma de proceso y donacion segura;Reduccion >= 10% anual;En ejecucion`
+      },
+      'GFSI-BRCGS-IFS': {
+        title: 'PROTOCOLO ACTIVO EN IMPRESIÓN: GFSI-BRCGS-IFS — ESTÁNDARES BRCGS FOOD SAFETY v9 E IFS FOOD v8 (RETAIL Y EXPORTACIÓN UE)',
+        html: `<strong>Requisitos Críticos de Auditoría en Piso de Planta (BRCGS v9 / IFS v8):</strong><br>• <strong>Auditoría No Anunciada Obligatoria:</strong> Al menos 1 vez cada 3 años la casa certificadora audita la planta sin previo aviso.<br>• <strong>Control de Vidrios, Plásticos Quebradizos y Cuchillas (Cláusula 4.9 BRCGS):</strong> Inventario numerado e inspección por turno de todo acrílico, mirilla, luminaria, aguja o cuchilla en planta.<br>• <strong>Zonificación de Alto Riesgo / Alto Cuidado (High Risk / High Care):</strong> Separación física y cambio de calzado/dotación para productos listos para el consumo (RTE).<br>• <strong>Trazabilidad y Balance de Masa en ≤ 4 Horas:</strong> Ejercicio vertical completo (hacia adelante y hacia atrás) incluyendo empaque primario.`,
+        csv: `Clausula_BRCGS_v9_IFS_v8;Requisito_Fundamental_Retail_Global;Criterio_de_Auditoria_en_Piso_Planta;Registro_Obligatorio;Meta_Exigida\n1.1 Compromiso Gerencial;Cultura de Inocuidad y Recursos;Entrevista directa del auditor con operarios sin presencia de jefes;Plan de Cultura y Actas de Revision Gerencial;0 No Conformidades Mayores\n2.0 Plan de Inocuidad;HACCP / HARPC Validado en Planta;Validacion cientifica de limites criticos y verificacion de diagramas in-situ;MAN-HACCP-001 y FOR-PCC-01/02;100% PCCs Bajo Control\n3.9 Trazabilidad;Trazabilidad Bidireccional y Balance de Masa;Prueba cronometrada desde materia prima/empaque hasta cliente final y viceversa;Formato Simulacro Trazabilidad y Balance Masa (98%-102%);Completar en <= 4 Horas (Meta AYC <= 2h)\n4.9 Control Cuerpos Extranos;Control de Vidrio, Plastico Quebradizo y Metal;Inspeccion por turno de cuchillas, mallas, acrilicos y luminarias protegidas;Inventario e Inspeccion de Vidrios y Quebradizos;100% Integro sin roturas\n4.11 Limpieza e Higiene;Validacion de POES y Monitoreo Ambiental EMP;Inspeccion visual desarmando equipos + resultados de hisopados Zonas 1-4;FOR-PSB-001 + Resultados ATP y Listeria/Salmonella;Liberacion pre-operativa 100%\n6.2 Control de Etiquetado;Cambio de Linea y Verificacion de Bobinas/Etiquetas;Despeje de linea documentado para evitar cruce de etiquetas o alergenos;Registro de Despeje de Linea y Control de Empaque;0 Retiros por Etiquetado`
+      },
+      'EMP-ZONA-1': {
+        title: 'ZONA ACTIVA EN IMPRESIÓN: 🔴 ZONA 1 EMP — SUPERFICIES EN CONTACTO DIRECTO CON EL ALIMENTO RTE POST-LETALIDAD',
+        html: `<strong>Protocolo Técnico Zona 1 (Máxima Criticidad Sanitaria):</strong><br>• <strong>Puntos de Hisopado:</strong> Mesones de acero inoxidable de porcionado/empaque, boquillas dosificadoras, cuchillas de tajadoras, bandas transportadoras en contacto con producto desnudo, tolvas de llenado y manos/guantes de operarios.<br>• <strong>Parámetros y Frecuencia:</strong> Bioluminiscencia <strong>ATP diario pre-operativo ($&lt; 30\\text{ RLU}$)</strong>, Recuento de Enterobacterias / Coliformes totales semanal ($&lt; 10\\text{ UFC/cm}^2$) e hisopado rápido de proteína alergénica tras lavados de cambio de referencia.<br>• <strong>Acción Correctiva ante Desvío:</strong> Prohibido arrancar línea si ATP $\\ge 30\\text{ RLU}$ (repetir ciclo alcalino + desinfección). Si se investiga patógeno en Zona 1, se <strong>retiene el lote producido</strong> hasta obtener 3 resultados negativos consecutivos.`,
+        csv: `Codigo_Punto;Zona_EMP;Superficie_Especifica_Muestreada;Area_Muestreo;Indicador_o_Patogeno;Limite_Aceptable;Frecuencia;Accion_Correctiva_Inmediata\nZ1-01;Zona 1 (Contacto Directo);Meson central INOX de empaque primario;100 cm2 (10x10 cm);Bioluminiscencia ATP y Enterobacterias;< 30 RLU ATP y < 10 UFC/cm2;Diario Pre-Operativo / Semanal;Re-lavar y desinfectar a 200 ppm antes de liberar linea\nZ1-02;Zona 1 (Contacto Directo);Boquilla de llenado / Dosificadora;Hisopado interno completo;ATP + Enterobacterias + Alergeno residual;< 30 RLU y Ausencia Alergeno;Diario / Cada cambio de linea;Desarmar valvula, lavar en CIP/COP y repetir prueba ATP\nZ1-03;Zona 1 (Contacto Directo);Cuchilla de tajadora / Cortadora;Hisopado filo y disco;ATP + Enterobacterias + Listeria (en investigacion);< 30 RLU y < 10 UFC;Diario Pre-Operativo;Sanitizar con alcohol 70% o amonio cuaternario 200 ppm\nZ1-04;Zona 1 (Contacto Directo);Manos y guantes de operario de envasado;5 dedos ambas manos;Coliformes Fecales / E. coli / Staph. aureus;Ausencia / < 10 UFC por mano;Quincenal sin previo aviso;Reentrenamiento inmediato en lavado de manos y cambio de guantes`
+      },
+      'EMP-ZONA-2': {
+        title: 'ZONA ACTIVA EN IMPRESIÓN: 🟠 ZONA 2 EMP — SUPERFICIES ADYACENTES A ZONA 1 (SIN CONTACTO DIRECTO CON ALIMENTO)',
+        html: `<strong>Protocolo Técnico Zona 2 (Barrera Inmediata a Contacto Directo):</strong><br>• <strong>Puntos de Hisopado:</strong> Estructura o chasis exterior de empacadoras y marmitas, paneles de control y botoneras que toca el operario, bordes inferiores (labios) de los mesones de acero inoxidable, mangueras de servicio y cortinas hawaianas.<br>• <strong>Patógeno Objetivo y Frecuencia:</strong> Hisopado con esponja hidratada en caldo neutralizante D/E o Letheen cada <strong>15 días</strong> durante operación (2–4 horas después de arrancar turno) buscando <strong><em>Listeria spp.</em></strong> (plantas húmedas/refrigeradas) o <strong><em>Salmonella spp.</em></strong> (plantas de polvos/secos).<br>• <strong>Acción Correctiva ante Positivo:</strong> Parada programada de línea, desarme de carcasas y botoneras, lavado profundo, rotación de principio activo desinfectante e hisopado obligatorio de la Zona 1 adyacente.`,
+        csv: `Codigo_Punto;Zona_EMP;Superficie_Especifica_Muestreada;Metodo_Toma;Patogeno_Objetivo;Criterio_Aceptacion;Frecuencia;Accion_Correctiva_Inmediata\nZ2-01;Zona 2 (Adyacente);Panel de botones y pantalla tactil de empacadora;Esponja neutralizante Letheen;Listeria spp. / Salmonella spp.;Ausencia en superficie muestreada;Quincenal en operacion;Limpieza con espuma clorada/peracetico e hisopar Zona 1 contigua\nZ2-02;Zona 2 (Adyacente);Borde inferior y patas altas de meson de empaque;Esponja 3M hidratada (1000 cm2);Listeria spp.;Ausencia en superficie muestreada;Quincenal en operacion;Eliminar acumulacion de grasa/condensado y reforzar POES\nZ2-03;Zona 2 (Adyacente);Chasis externo de dosificadora / tolva;Esponja neutralizante;Listeria spp. / Salmonella spp.;Ausencia en superficie muestreada;Quincenal en operacion;Desarme de guardas y sanitizacion de choque (400 ppm)`
+      },
+      'EMP-ZONA-3': {
+        title: 'ZONA ACTIVA EN IMPRESIÓN: 🟡 ZONA 3 EMP — SIFONES, DRENAJES, PISOS Y DIFUSORES DE FRÍO (SEEK & DESTROY)',
+        html: `<strong>Protocolo Técnico Zona 3 (Caza de Reservorios y Biopelículas — <em>Seek &amp; Destroy</em>):</strong><br>• <strong>Puntos Críticos de Hisopado:</strong> <strong>Sifones y rejillas de drenaje de piso</strong> (el nicho #1 de <em>Listeria monocytogenes</em> en la industria alimentaria), grietas o uniones de piso, medias cañas, ruedas de carros transportadores, gatos estibadores y bandejas de condensado de evaporadores de cuartos fríos.<br>• <strong>Regla de Oro Sanitaria en Zona 3:</strong> <strong>PROHIBIDO lavar sifones o drenajes con manguera de alta presión durante o antes de producir</strong>, ya que genera aerosoles microscópicos que transportan <em>Listeria</em> del sifón directamente a los mesones de Zona 1.<br>• <strong>Acción Correctiva:</strong> Cepillado dedicado por código de color (cepillo negro exclusivo para drenajes), aplicación de espuma enzimática anti-biofilm + ácido peracético o amonio cuaternario a $800\\text{–}1000\\text{ ppm}$ y colocación de anillos o bloques bactericidas en sifones.`,
+        csv: `Codigo_Punto;Zona_EMP;Superficie_Especifica_Muestreada;Riesgo_Sanitario;Patogeno_Objetivo;Criterio_Aceptacion;Frecuencia;Protocolo_Seek_and_Destroy\nZ3-01;Zona 3 (Entorno Sala);Interior de sifon y rejilla drenaje Sala Blanca;Reservorio #1 de biopeliculas de Listeria;Listeria spp.;Ausencia en muestra;Semanal / Quincenal;Cepillo negro exclusivo, detergente enzimatico anti-biofilm y desinfeccion a 800 ppm (CERO hidrolavadora alta presion)\nZ3-02;Zona 3 (Entorno Sala);Bandeja de condensado de unidad evaporadora cuarto frio;Goteo y dispersion por aire frio;Listeria spp. y Mohos Ambientales;Ausencia de Listeria;Quincenal;Limpieza de serpentin y bandeja + pastilla biocida en drenaje de condensado\nZ3-03;Zona 3 (Entorno Sala);Ruedas de carros escabiladeros y estibadores;Vector movil entre zonas;Listeria spp. / Salmonella spp.;Ausencia en muestra;Quincenal;Paso obligatorio por rodiluvio desinfectante y cepillado semanal de ejes\nZ3-04;Zona 3 (Entorno Sala);Media cana piso-pared bajo zona de lavado;Acumulacion de humedad;Listeria spp.;Ausencia en muestra;Mensual;Inspeccion de sello epoxico y desinfeccion dirigida`
+      },
+      'EMP-ZONA-4': {
+        title: 'ZONA ACTIVA EN IMPRESIÓN: ⚪ ZONA 4 EMP — ÁREAS EXTERNAS A PROCESO Y BARRERAS SANITARIAS (FILTROS Y PEDILUVIOS)',
+        html: `<strong>Protocolo Técnico Zona 4 (Contención Perimetral de la Planta):</strong><br>• <strong>Puntos de Hisopado:</strong> Pisos de vestieres y esclusas sanitarias, pasillos externos, bodegas de empaque y materia prima, muelles de carga/descarga y cuarto de residuos.<br>• <strong>Objetivo del Monitoreo Mensual/Trimestral:</strong> Verificar que los <strong>pediluvios / espuma sanitaria de botas ($400\\text{–}500\\text{ ppm}$)</strong>, el cambio de calzado y las puertas con cierre automático impidan el ingreso de patógenos desde el exterior hacia las Zonas 3, 2 y 1.`,
+        csv: `Codigo_Punto;Zona_EMP;Superficie_Especifica_Muestreada;Funcion_Barrera;Indicador_o_Patogeno;Criterio_Aceptacion;Frecuencia;Accion_Correctiva\nZ4-01;Zona 4 (Externa);Piso de filtro sanitario antes y despues del pediluvio;Validar eficacia del pediluvio (400-500 ppm);Listeria spp. / Enterobacterias;Ausencia despues del pediluvio;Mensual;Recambio cada 4 horas de solucion de pediluvio y verificacion con tiras ppm\nZ4-02;Zona 4 (Externa);Piso de muelle de recepcion de materias primas;Control de ingreso desde camiones;Salmonella spp. / Listeria spp.;Ausencia en muestra;Trimestral;Lavado y desinfeccion de muelle tras cada descarga de proveedores\nZ4-03;Zona 4 (Externa);Manijas de vestieres y casilleros de operarios;Control de higiene personal;Indicadores / Staph. aureus;< 100 UFC / superficie;Trimestral;Desinfeccion diaria de vestieres y refuerzo de lavado de manos`
+      },
+      'EMP-MATRIZ-4-ZONAS': {
+        title: 'MATRIZ COMPLETA DE MONITOREO AMBIENTAL DE PATÓGENOS (EMP — ZONAS HIGIÉNICAS 1, 2, 3 Y 4)',
+        html: '',
+        csv: `Codigo_Punto;Zona_Higienica_EMP;Superficie_Muestreada_en_Planta;Patogeno_o_Indicador_Objetivo;Limite_Critico_Aceptacion;Frecuencia_Muestreo;Accion_Correctiva_ante_Positivo\nZ1-01;Zona 1 (Contacto Directo RTE);Mesones INOX empaque, boquillas, cuchillas y bandas;ATP + Enterobacterias + Alergenos;< 30 RLU ATP y < 10 UFC/cm2;Diario Pre-Operativo / Semanal;Detener arranque, re-higienizar y si hay patogeno retener lote hasta 3 negativos consecutivos\nZ2-01;Zona 2 (Adyacente sin contacto);Chasis de equipos, botoneras y bordes de mesones;Listeria spp. (humedo) / Salmonella spp. (seco);Ausencia en superficie;Quincenal en operacion (2-4h tras inicio);Desarme profundo, sanitizacion de choque e hisopado obligatorio de Zona 1 adyacente\nZ3-01;Zona 3 (Entorno Sala Proceso);Sifones de piso, drenajes, ruedas de carros y difusores frio;Listeria spp. / Salmonella spp.;Ausencia en superficie;Semanal / Quincenal;Protocolo Seek & Destroy con cepillo negro dedicado, detergente anti-biofilm y CERO agua a alta presion\nZ4-01;Zona 4 (Areas Externas);Vestieres, filtros sanitarios, bodegas y muelles;Listeria spp. / Indicadores de barrera;Ausencia tras filtro sanitario;Mensual / Trimestral;Reforzar concentracion de pediluvios (400-500 ppm) y control de cambio de calzado`
+      },
+      'MATRIZ-GFSI-COMPLETA': {
+        title: 'CHECKLIST GLOBAL CONSOLIDADO: FDA FSMA (21 CFR 117) + FSSC 22000 v6 + BRCGS v9',
+        html: '',
+        csv: `Estandar_Internacional;Clausula_o_Requisito;Exigencia_Tecnica_Auditoria;Evidencia_Documental_y_Operativa_en_Planta;Estado\nFDA FSMA (21 CFR 117);FFRM + DUNS + PCQI;Registro FDA renovado anos pares + Food Safety Plan firmado por PCQI;Certificado PCQI + Numero FFR activo + DUNS 9 digitos;Requerido\nFDA FSMA (21 CFR 117);4 Controles Preventivos HARPC;Proceso + 9 Alergenos EE.UU. (incluye Sesamo FASTER Act) + Saneamiento + Proveedores;MAN-GFSI-FDA-001 + Registros diarios de controles preventivos;Requerido\nFSSC 22000 Version 6.0;Req. Adicional 2.5.7 EMP;Programa de Monitoreo Ambiental basado en riesgo (Zonas 1 a 4);Mapa de hisopados Listeria/Salmonella + Tendencias;Requerido\nFSSC 22000 Version 6.0;Req. Adicional 2.5.8 Cultura;Plan de Cultura de Calidad e Inocuidad con KPIs y encuesta anual;Plan Cultura GFSI + Resultados encuesta y capacitacion 10h;Requerido\nFSSC 22000 Version 6.0;Req. Adicional 2.5.15 y 2.5.16;Diseno higienico de equipos EHEDG y meta de reduccion de desperdicio (Food Loss);Especificacion INOX 304/316 + Indicador mensual de mermas;Requerido\nBRCGS v9 / IFS Food v8;Trazabilidad y Vidrios/Quebradizos;Trazabilidad bidireccional en <= 4 horas + control de vidrios/cuchillas por turno;Simulacro semestral de Recall (<= 2h) + Inventario de vidrios;Requerido`
+      },
+      'INVIMA-5-FASES': {
+        title: 'CRONOGRAMA OPERATIVO DE 5 FASES PARA TRÁMITE INVIMA (RSA / PSA / NSA + LEY 2069)',
+        html: '',
+        csv: `Fase;Actividad_Ingeniero_AYC;Norma_Aplicable;Entregable_o_Portal;Tiempo_Estimado\nFase 1;Inscripcion de fabrica y verificacion de Concepto Sanitario;Art. 126 Dec. 019/2012 y Res. 2674/2013;Inscripcion web INVIMA + Acta visita >= 60%;Dia 1\nFase 2;Clasificacion de riesgo (Alto RSA / Medio PSA / Bajo NSA) y agrupamiento de variedades;Resolucion 719 de 2015 y Art. 42 Res. 2674;Definicion de Grupo, Subgrupo y Categoria;Dia 1\nFase 3;Validacion de exencion Tarifa $0 para Microempresas;Ley 2069 de 2020 y Decreto 957 de 2019;Certificacion Contador Publico + Codigo Tarifario Exento;Dia 2\nFase 4;Elaboracion de Ficha Tecnica Oficial y Auditoria de Etiqueta/Sellos;Res. 2674, 5109/2005, 810/2021 y 2492/2022;Ficha Tecnica PDF (Modulo 8) + Tabla y Sellos (Modulo 2);Dia 2 a 3\nFase 5;Radicacion en Oficina Virtual INVIMA y seguimiento a Control Posterior;Resolucion 2674 de 2013;Acto Administrativo RSA/PSA/NSA concedido;Dia 4`
+      },
+      'INVIMA-CHECKLIST-7': {
+        title: 'CHECKLIST DE LOS 7 DOCUMENTOS QUE DEBE ENTREGAR EL CLIENTE PARA RADICAR ANTE INVIMA',
+        html: '',
+        csv: `Item;Documento_Requerido_al_Cliente;Criterio_de_Revision_del_Ingeniero;Obligatorio_Para;Estado_Recepcion\n1;Certificado de Camara de Comercio (<= 30 dias);Objeto social incluye alimentos y tamano empresarial visible;Todos los tramites RSA/PSA/NSA;Pendiente\n2;RUT Actualizado (DIAN);Codigos CIIU de industria o comercio de alimentos (Grupo 10/11);Todos los tramites;Pendiente\n3;Certificacion de Ingresos Anuales firmada por Contador (+ TP y Cedula);Acredita condicion de Microempresa (Dec. 957/2019) para Tarifa $0;Tramites con Tarifa $0 Ley 2069;Pendiente\n4;Poder o Autorizacion Tecnica firmada por Representante Legal;Autoriza al ingeniero/consultor para radicar ante Oficina Virtual INVIMA;Todos los tramites;Pendiente\n5;Contrato o Certificacion de Maquila (si fabrica con tercero);La planta maquiladora debe tener Concepto Sanitario Favorable INVIMA;Marcas propias con maquilador;Segun aplique\n6;Formula Cuali-Cuantitativa en Porcentaje (Suma = 100.00%);Aditivos con funcion tecnologica y codigo SIN/INS (Res. 2606/2009);Elaborar Ficha Tecnica;Pendiente\n7;Fichas Tecnicas de Material de Envase/Empaque Primario;Certificado de aptitud para contacto con alimentos (Res. 683/4142/4143 de 2012);Elaborar Dossier Tecnico;Pendiente`
+      },
+      'HACCP-12-PASOS': {
+        title: 'LISTA DE CHEQUEO DE LOS 12 PASOS Y 7 PRINCIPIOS DEL CODEX ALIMENTARIUS (DECRETO 60 DE 2002)',
+        html: '',
+        csv: `Paso_Codex;Principio_HACCP;Actividad_de_Implementacion_en_Planta;Codigo_Registro_AYC;Norma_Referencia\nPaso 1;Preliminar;Conformacion y Acta del Equipo HACCP multidisciplinario;ACT-HACCP-01;Art. 5 Decreto 60/2002\nPaso 2;Preliminar;Descripcion tecnica del producto (pH, aw, Brix, vida util, empaque y Res. 1407/2022);FT-HACCP-02;Art. 6 Decreto 60/2002\nPaso 3;Preliminar;Determinacion del uso previsto, poblacion vulnerable y 8 grupos de alergenos;FT-HACCP-02;Codex CXC 1-1969\nPaso 4;Preliminar;Elaboracion del Diagrama de Flujo de Proceso (recepcion a despacho);DF-HACCP-03;Art. 6 Decreto 60/2002\nPaso 5;Preliminar;Confirmacion y verificacion In-Situ del Diagrama de Flujo firmada en planta;DF-HACCP-03;Codex Paso 5\nPaso 6;Principio 1;Analisis de Peligros Biologicos, Quimicos, Fisicos, Alergenos y Radiologicos (P x S);FOR-HACCP-001;Principio 1 Codex\nPaso 7;Principio 2;Determinacion de Puntos Criticos de Control (PCC) y PPRO con Arbol de Decisiones;FOR-HACCP-001;Principio 2 / ISO 22000\nPaso 8;Principio 3;Establecimiento de Limites Criticos medibles para cada PCC (Temp, tiempo, pH, mm);MAN-HACCP-001;Principio 3 Codex\nPaso 9;Principio 4;Sistema de Monitoreo de cada PCC (Que, Como, Frecuencia, Quien);FOR-PCC-01 y 02;Principio 4 Codex\nPaso 10;Principio 5;Establecimiento de Acciones Correctivas y control de Producto No Conforme;FOR-PNC-01;Principio 5 Codex\nPaso 11;Principio 6;Procedimientos de Validacion y Verificacion (Lab Res. 1407/2022 y metrologia);FOR-VER-01;Principio 6 / Res. 1407/2022\nPaso 12;Principio 7;Sistema de Documentacion y Conservacion de Registros por >= 2 anos;MAN-HACCP-001;Principio 7 Codex`
+      },
+      'HACCP-PCC-PPRO': {
+        title: 'MATRIZ COMPARATIVA Y DE GESTIÓN DE PCC vs. PPRO (ISO 22000:2018 CLÁUSULA 8.5)',
+        html: '',
+        csv: `Clasificacion_ISO22000;Etapa_Ejemplo_en_Planta;Peligro_Significativo_Controlado;Limite_Critico_o_Criterio_de_Accion;Monitoreo_y_Registro;Accion_ante_Desvio\nPCC 1 (Punto Critico de Control);Pasteurizacion / Coccion Termica;Supervivencia de Salmonella spp., Listeria monocytogenes y E. coli O157:H7;Limite Critico: Temp centro >= 74C sostenida por >= 15 segundos;Termometro punzon calibrado cada bache en FOR-PCC-01;Retener bache y reprocesar termicamente hasta alcanzar 74C x 15s\nPCC 2 (Punto Critico de Control);Tamizado Sanitario / Detector de Metales;Fragmentos metalicos o cuerpos extranos cortopunzantes;Limite Critico: Malla 100% integra (< 2.0 mm) / Ausencia Fe, No-Fe e INOX;Inspeccion inicio, mitad y fin de turno en FOR-PCC-02;Detener linea, retener producto desde ultimo chequeo conforme y re-inspeccionar\nPPRO 1 (Prerrequisito Operativo);Choque Termico / Enfriamiento Rapido;Germinacion de esporulados termorresistentes (Bacillus / Clostridium);Criterio de Accion: Reducir de 60C a <= 21C en 2h y a <= 4C en < 4h totales;Registro de curva de enfriamiento por lote;Ajustar carga del abatidor/cuarto frio y evaluar inocuidad del lote\nPPRO 2 (Prerrequisito Operativo);Lavado de Cambio de Linea por Alergenos;Contaminacion cruzada con proteina alergenica (Leche, Soya, Gluten, Nueces);Criterio de Accion: Ausencia visual + Kit rapido de alergeno negativo;Verificacion pre-operativa en cambio de referencia;Repetir ciclo completo de lavado alcalino y enjuague antes de producir`
+      },
+      'HACCP-TACCP-VACCP': {
+        title: 'MATRIZ OPERATIVA DE DEFENSA ALIMENTARIA (TACCP) Y PREVENCIÓN DE FRAUDE (VACCP)',
+        html: '',
+        csv: `Modulo_GFSI;Punto_o_Materia_Prima_Evaluada;Amenaza_TACCP_o_Vulnerabilidad_VACCP;Nivel_Riesgo;Medida_de_Mitigacion_Obligatoria;Frecuencia_Verificacion;Responsable\nTACCP (Food Defense);Tanque de Reserva de Agua Potable;Sabotaje o contaminacion intencional del suministro hidrico;Alto;Tapa hermetica con candado de seguridad (llave custodiada por Calidad) + Monitoreo diario Cloro/pH en FOR-PSB-002;Diario / Semanal;Jefe de Calidad\nTACCP (Food Defense);Cuarto de Quimicos y Aditivos Restringidos;Acceso no autorizado y contaminacion quimica deliberada;Alto;Almacenamiento bajo llave, inventario de consumo por turno y acceso exclusivo a personal autorizado;Diario por turno;Supervisor de Planta\nTACCP (Food Defense);Muelle de Despacho y Vehiculos de Transporte;Apertura o contaminacion en ruta de distribucion;Medio;Inspeccion vehicular e instalacion de precintos numerados de seguridad registrados en remision;Cada despacho;Logistica y Calidad\nVACCP (Food Fraud);Leche Cruda / Derivados Lacteos;Adulteracion economica por aguado, adicion de suero, neutralizantes o antibioticos;Alto;Pruebas de plataforma por recepcion (Crioscopia, densidad, alcohol, inhibidores/antibioticos y cloruros);Cada recepcion de lote;Analista de Recepcion\nVACCP (Food Fraud);Aceites Vegetales, Miel, Cacao y Especias Molidas;Dilucion con aceites baratos, jarabe de maiz o rellenos vegetales/colorantes;Medio-Alto;Compras solo a proveedores homologados + Certificado de Analisis (CoA) por lote + Indice de refraccion/cenizas;Por lote / Semestral;Compras y Calidad`
+      }
+    };
+
+    function loadGfsiTemplate(code) {
+      const item = GFSI_TEMPLATES[code];
+      const box = document.getElementById('gfDynamicTemplateBox');
+      if (item && box) {
+        box.innerHTML = `<div class="font-black text-emerald-950">${item.title}</div><div class="text-[11px] leading-relaxed">${item.html}</div>`;
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function downloadGfsiCsv(code) {
+      const item = GFSI_TEMPLATES[code];
+      if (!item || !item.csv) return;
+      const blob = new Blob(['\uFEFF' + item.csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${code}_Plantilla_Oficial_AYC.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
     // 12. MÓDULO 13: SISTEMAS INTEGRADOS ISO (HLS), GESTIÓN AMBIENTAL ALIMENTARIA Y PLAN ANUAL 10 HORAS
     function renderIsoManual() {
       const val = (id) => {
@@ -3313,6 +3509,7 @@
       renderHaccpManual();
       calcPlantDesign();
       renderGfsiManual();
+      loadGfsiTemplate('GFSI-FDA-FSMA');
       renderIsoManual();
       loadSigTemplate('DOC-SIG-01');
       calcShelfLifeQ10();
